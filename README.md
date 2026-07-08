@@ -37,6 +37,7 @@ docs/
   07_beschattung_wetter.md
   08_rf_fenstergriffe.md
   09_home_assistant.md
+  10_glastaster_bedienkonzept.md
 ets-import/
   gruppenadressen.csv
   physikalische-adressen.csv
@@ -45,6 +46,12 @@ ets-import/
 ## Aktueller Stand
 
 Erstplanung auf Basis der vorhandenen Hardware und der genannten Räume.
+
+Neu ergänzt:
+
+- Bedienkonzept für MDT Glastaster Smart II
+- Glastaster steuern raumweise Licht und Rollläden
+- Wohnzimmer-Glastaster steuert zusätzlich die Markise
 
 Offene Punkte:
 
