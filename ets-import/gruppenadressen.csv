@@ -1,4 +1,21 @@
 Hauptgruppe;Mittelgruppe;Gruppenadresse;Name;DPT
+Zentral;Haus;0/0/0;Zentral Aus;1.001
+Zentral;Haus;0/0/1;Haus verlassen;1.001
+Zentral;Haus;0/0/2;Nachtmodus;1.001
+Zentral;Haus;0/0/3;Urlaub;1.001
+Zentral;Haus;0/0/4;Panik;1.001
+Zentral;Haus;0/0/5;Anwesenheit;1.001
+Zentral;Rollladen;0/1/0;Alle Rollladen Hoch;1.008
+Zentral;Rollladen;0/1/1;Alle Rollladen Runter;1.008
+Zentral;Rollladen;0/1/2;Alle Rollladen Stop;1.010
+Zentral;Beschattung;0/2/0;Beschattungsautomatik Ein;1.001
+Zentral;Beschattung;0/2/1;Beschattungsautomatik Aus;1.001
+Zentral;Beschattung;0/2/2;Markise Einfahren Zentral;1.008
+Zentral;Beschattung;0/2/3;Wetterschutz Aktiv;1.001
+Zentral;Heizung;0/3/0;Heizung Komfort;1.001
+Zentral;Heizung;0/3/1;Heizung Nacht;1.001
+Zentral;Heizung;0/3/2;Heizung Eco;1.001
+Zentral;Heizung;0/3/3;Heizung Frostschutz;1.001
 Licht;Wohnzimmer;1/0/0;Wohnzimmer Licht Schalten;1.001
 Licht;Wohnzimmer;1/0/1;Wohnzimmer Licht Status;1.001
 Licht;Esszimmer;1/1/0;Esszimmer Licht Schalten;1.001
@@ -43,6 +60,7 @@ Beschattung;Markise;2/4/0;Markise Auf Ab;1.008
 Beschattung;Markise;2/4/1;Markise Stop;1.010
 Beschattung;Markise;2/4/2;Markise Position Soll;5.001
 Beschattung;Markise;2/4/3;Markise Position Status;5.001
+Beschattung;Markise;2/4/4;Markise Gesperrt;1.001
 Heizung;Wohnzimmer;3/0/0;Wohnzimmer Solltemperatur;9.001
 Heizung;Wohnzimmer;3/0/1;Wohnzimmer Isttemperatur;9.001
 Heizung;Wohnzimmer;3/0/2;Wohnzimmer Betriebsmodus;20.102
@@ -86,21 +104,47 @@ Heizung;Bad vorne;3/7/4;Bad vorne Fensterstatus Raum;1.019
 Wetter;Allgemein;4/0/0;Außentemperatur;9.001
 Wetter;Allgemein;4/0/1;Windgeschwindigkeit;9.005
 Wetter;Allgemein;4/0/2;Regen;1.001
+Wetter;Allgemein;4/0/3;Dämmerung;1.001
 Wetter;Helligkeit;4/1/0;Helligkeit Ost;9.004
 Wetter;Helligkeit;4/1/1;Helligkeit Süd;9.004
 Wetter;Helligkeit;4/1/2;Helligkeit West;9.004
+Wetter;Alarm;4/2/0;Windwarnung;1.001
+Wetter;Alarm;4/2/1;Windalarm;1.001
+Wetter;Alarm;4/2/2;Regenalarm;1.001
+Wetter;Alarm;4/2/3;Frostalarm;1.001
+Wetter;Beschattung;4/3/0;Sonne Ost Aktiv;1.001
+Wetter;Beschattung;4/3/1;Sonne Süd Aktiv;1.001
+Wetter;Beschattung;4/3/2;Sonne West Aktiv;1.001
+Wetter;Beschattung;4/3/3;Beschattung Automatik Aktiv;1.001
 Fenster;Wohnzimmer;5/0/0;Wohnzimmer Fenstergriff 1 Status;1.019
 Fenster;Wohnzimmer;5/0/1;Wohnzimmer Fenstergriff 2 Status;1.019
 Fenster;Wohnzimmer;5/0/2;Wohnzimmer Fenstergriff 3 Status;1.019
+Fenster;Wohnzimmer;5/0/10;Wohnzimmer Fensterstatus Raum;1.019
 Fenster;Küche;5/1/0;Küche Fenstergriff 1 Status;1.019
 Fenster;Küche;5/1/1;Küche Fenstergriff 2 Status;1.019
+Fenster;Küche;5/1/10;Küche Fensterstatus Raum;1.019
 Fenster;Bad vorne;5/2/0;Bad vorne Fenstergriff Status;1.019
+Fenster;Bad vorne;5/2/10;Bad vorne Fensterstatus Raum;1.019
 Fenster;Arbeitszimmer;5/3/0;Arbeitszimmer Fenstergriff 1 Status;1.019
 Fenster;Arbeitszimmer;5/3/1;Arbeitszimmer Fenstergriff 2 Status;1.019
+Fenster;Arbeitszimmer;5/3/10;Arbeitszimmer Fensterstatus Raum;1.019
 Fenster;Schlafzimmer;5/4/0;Schlafzimmer Fenstergriff 1 Status;1.019
 Fenster;Schlafzimmer;5/4/1;Schlafzimmer Fenstergriff 2 Status;1.019
+Fenster;Schlafzimmer;5/4/10;Schlafzimmer Fensterstatus Raum;1.019
 Fenster;Badezimmer;5/5/0;Badezimmer Fenstergriff 1 Status;1.019
 Fenster;Badezimmer;5/5/1;Badezimmer Fenstergriff 2 Status;1.019
+Fenster;Badezimmer;5/5/10;Badezimmer Fensterstatus Raum;1.019
 Präsenz;Gang;6/0/0;Gang Präsenz;1.001
 Präsenz;Gang;6/0/1;Gang Bewegung;1.001
 Präsenz;Gang;6/0/2;Gang Helligkeit;9.004
+Szenen;Allgemein;7/0/0;Szene Fernsehen;18.001
+Szenen;Allgemein;7/0/1;Szene Essen;18.001
+Szenen;Allgemein;7/0/2;Szene Gute Nacht;18.001
+Szenen;Allgemein;7/0/3;Szene Haus verlassen;18.001
+Status;Allgemein;8/0/0;Status Fenster offen gesamt;1.001
+Status;Allgemein;8/0/1;Status Wetterschutz aktiv;1.001
+Status;Allgemein;8/0/2;Status Urlaub aktiv;1.001
+Status;Allgemein;8/0/3;Status Nachtmodus aktiv;1.001
+Status;Allgemein;8/0/4;Status Haus verlassen aktiv;1.001
+Home Assistant;Status;9/0/0;HA Status Online;1.001
+Home Assistant;Status;9/0/1;HA Zentral Anzeige;1.001
