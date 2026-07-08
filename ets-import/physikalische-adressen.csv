@@ -1,0 +1,39 @@
+Adresse;Gerät;Raum/Funktion;Hinweis
+1.1.1;MDT STR-0640.01;Busversorgung;Diagnose
+1.1.2;MDT SCN-IP100.03;IP Router;ETS und LAN
+1.1.3;MDT RF-LK001.02;RF Linienkoppler;KNX RF
+1.1.10;MDT SCN-LOG1.02;Logik;Zentrale Logik
+1.1.11;MDT SCN-SAFE.01;Statusmodul;Statusfunktionen
+1.1.12;MDT SCN-RTC20.01;Schaltuhr;Zeitprogramme
+1.1.20;MDT AKS-2416.03;Schaltaktor;Licht
+1.1.21;MDT AMI-1216.02;Schaltaktor;Messung
+1.1.22;MDT AZI-0616.01;Schaltaktor;Leistung
+1.1.23;MDT JAL-0810M.02;Jalousieaktor;Rollladen Markise
+1.1.24;MDT AKH-0800.02;Heizungsaktor;FBH
+1.1.30;MDT AKD-0424V.02;RGBW Controller;Reserve
+1.1.31;MDT AKD-0424R.02;RGBW Controller REG;Reserve
+1.1.32;MDT SCN-DALI64.03;DALI Control;Reserve
+1.1.40;Gira Wetterstation;Wetter;Dach
+1.1.41;MDT SCN-P360D4.03;Präsenzmelder;Gang
+1.1.50;MDT Glastaster Smart II;Wohnzimmer;Bedienung
+1.1.51;MDT Glastaster Smart II;Esszimmer;Bedienung
+1.1.52;MDT Glastaster Smart II;Küche;Bedienung
+1.1.53;MDT Glastaster Smart II;Arbeitszimmer;Bedienung
+1.1.54;MDT Glastaster Smart II;Gang 1;Bedienung
+1.1.55;MDT Glastaster Smart II;Gang 2;Bedienung
+1.1.56;MDT Glastaster Smart II;Gang 3;Bedienung
+1.1.57;MDT Glastaster Smart II;Schlafzimmer;Bedienung
+1.1.58;MDT Glastaster Smart II;Badezimmer;Bedienung
+1.1.59;MDT Glastaster Smart II;Bad vorne;Bedienung
+1.1.70;RF Fenstergriff;Wohnzimmer 1;RF
+1.1.71;RF Fenstergriff;Wohnzimmer 2;RF
+1.1.72;RF Fenstergriff;Wohnzimmer 3;RF
+1.1.73;RF Fenstergriff;Küche 1;RF
+1.1.74;RF Fenstergriff;Küche 2;RF
+1.1.75;RF Fenstergriff;Bad vorne;RF
+1.1.76;RF Fenstergriff;Arbeitszimmer 1;RF
+1.1.77;RF Fenstergriff;Arbeitszimmer 2;RF
+1.1.78;RF Fenstergriff;Schlafzimmer 1;RF
+1.1.79;RF Fenstergriff;Schlafzimmer 2;RF
+1.1.80;RF Fenstergriff;Badezimmer 1;RF
+1.1.81;RF Fenstergriff;Badezimmer 2;RF
