@@ -23,7 +23,7 @@
 |---:|---|---|---|
 | 0/2/0 | Beschattungsautomatik Freigabe | 1.001 | Befehl |
 | 0/2/1 | Beschattungsautomatik Status | 1.001 | Rückmeldung |
-| 0/2/2 | Markise Einfahren Schutz | 1.001 | Schutzbefehl |
+| 0/2/2 | Markise Einfahren Schutz | 1.008 | Schutzbefehl |
 | 0/2/3 | Wetterschutz Aktiv Status | 1.001 | Rückmeldung |
 
 ## Heizung zentral
