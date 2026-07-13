@@ -2,95 +2,26 @@
 
 ## Ziel
 
-Das Logikmodul übernimmt wichtige Grundlogiken direkt auf KNX. Home Assistant darf diese Logiken anzeigen oder ergänzen, aber nicht ersetzen.
+Das Logikmodul übernimmt Schutz- und Grundlogiken direkt auf KNX. Home Assistant kann Zustände anzeigen oder ergänzen, ist aber keine Voraussetzung für deren Ausführung.
 
 ## Logikliste
 
-### LOG001 – Windalarm Markise
+| ID | Auslöser | Aktion | Ergebnis |
+|---|---|---|---|
+| LOG001 | Windalarm | `Markise Einfahren Schutz` senden | Markise fährt ein |
+| LOG002 | Regenalarm | `Markise Einfahren Schutz` senden | Markise fährt ein |
+| LOG003 | Frostalarm | Markise sperren, `Wetterschutz Aktiv Status` setzen | Schutz vor Betrieb bei Frost |
+| LOG004 | Fensterstatus Raum offen/gekippt | Betriebsart des Raums absenken | keine unnötige Heizenergie |
+| LOG005 | Haus verlassen | `Zentral Aus` senden | normale Lichtkreise aus |
+| LOG006 | Haus verlassen oder Urlaub | `Heizung Zentral Betriebsart Soll` auf Eco setzen | Heizung abgesenkt |
+| LOG007 | Nachtmodus | `Heizung Zentral Betriebsart Soll` auf Nacht setzen | Nachtbetrieb |
+| LOG008 | Panik | definierte Lichtgruppen einschalten | Not- und Abschreckfunktion |
 
-```text
-Wenn Windalarm = 1
-Dann Markise Einfahren Zentral = 1
-Und Wetterschutz Aktiv = 1
-```
+## Regeln für die Umsetzung
 
-Zweck: Markise vor Wind schützen.
+- Nur die Logik bzw. das zuständige Gerät schreibt Statusgruppenadressen.
+- Schutzbefehle haben Vorrang vor Komfort- und Tasterbefehlen.
+- Ein Schutzende gibt die Markise nicht automatisch wieder frei; die Freigabe folgt der sicheren Parametrierung des Jalousieaktors.
+- Die konkreten Objektbezeichnungen und Werte der MDT- und Gira-Produktdatenbanken werden beim Verknüpfen in ETS geprüft.
 
-### LOG002 – Regenalarm Markise
-
-```text
-Wenn Regenalarm = 1
-Dann Markise Einfahren Zentral = 1
-Und Wetterschutz Aktiv = 1
-```
-
-Zweck: Markise bei Regen einfahren.
-
-### LOG003 – Frostalarm Markise sperren
-
-```text
-Wenn Frostalarm = 1
-Dann Wetterschutz Aktiv = 1
-```
-
-Zweck: Schutzfunktion bei Frost.
-
-### LOG004 – Fenster offen Heizung absenken
-
-```text
-Wenn Fensterstatus Raum = offen/gekippt
-Dann Heizung Raum Eco oder Frostschutz
-```
-
-Zweck: keine Heizenergie verschwenden.
-
-### LOG005 – Haus verlassen Licht aus
-
-```text
-Wenn Haus verlassen = 1
-Dann Zentral Aus = 1
-```
-
-Zweck: alle normalen Lichtkreise ausschalten.
-
-### LOG006 – Haus verlassen Heizung Eco
-
-```text
-Wenn Haus verlassen = 1
-Dann Heizung Eco = 1
-```
-
-Zweck: Heizung absenken.
-
-### LOG007 – Nachtmodus
-
-```text
-Wenn Nachtmodus = 1
-Dann Heizung Nacht = 1
-Und Ganglicht nur reduziert schalten, falls Dimmung später vorhanden
-```
-
-Aktuell ist Licht nur ein/aus geplant. Eine reduzierte Gangbeleuchtung ist daher eine spätere Erweiterung mit DALI, Dimmer oder LED.
-
-### LOG008 – Urlaub
-
-```text
-Wenn Urlaub = 1
-Dann Heizung Eco = 1
-Dann Beschattungsautomatik Ein = 1
-```
-
-Zweck: längere Abwesenheit.
-
-### LOG009 – Panik
-
-```text
-Wenn Panik = 1
-Dann ausgewählte Lichter ein
-```
-
-Zweck: Not- oder Abschreckfunktion.
-
-## Empfehlung
-
-Jede Logik bekommt in ETS einen klaren Namen mit Nummer. So kann später nachvollzogen werden, warum eine Funktion ausgelöst wurde.
+Jede Logik erhält in ETS einen klaren Namen mit ID, damit Auslöser und Wirkung nachvollziehbar bleiben.
