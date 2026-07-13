@@ -1,150 +1,195 @@
-Hauptgruppe;Mittelgruppe;Gruppenadresse;Name;DPT
-Zentral;Haus;0/0/0;Zentral Aus;1.001
-Zentral;Haus;0/0/1;Haus verlassen;1.001
-Zentral;Haus;0/0/2;Nachtmodus;1.001
-Zentral;Haus;0/0/3;Urlaub;1.001
-Zentral;Haus;0/0/4;Panik;1.001
-Zentral;Haus;0/0/5;Anwesenheit;1.001
-Zentral;Rollladen;0/1/0;Alle Rollladen Hoch;1.008
-Zentral;Rollladen;0/1/1;Alle Rollladen Runter;1.008
-Zentral;Rollladen;0/1/2;Alle Rollladen Stop;1.010
-Zentral;Beschattung;0/2/0;Beschattungsautomatik Ein;1.001
-Zentral;Beschattung;0/2/1;Beschattungsautomatik Aus;1.001
-Zentral;Beschattung;0/2/2;Markise Einfahren Zentral;1.008
-Zentral;Beschattung;0/2/3;Wetterschutz Aktiv;1.001
-Zentral;Heizung;0/3/0;Heizung Komfort;1.001
-Zentral;Heizung;0/3/1;Heizung Nacht;1.001
-Zentral;Heizung;0/3/2;Heizung Eco;1.001
-Zentral;Heizung;0/3/3;Heizung Frostschutz;1.001
-Licht;Wohnzimmer;1/0/0;Wohnzimmer Licht Schalten;1.001
-Licht;Wohnzimmer;1/0/1;Wohnzimmer Licht Status;1.001
-Licht;Esszimmer;1/1/0;Esszimmer Licht Schalten;1.001
-Licht;Esszimmer;1/1/1;Esszimmer Licht Status;1.001
-Licht;Küche;1/2/0;Küche Licht Schalten;1.001
-Licht;Küche;1/2/1;Küche Licht Status;1.001
-Licht;Arbeitszimmer;1/3/0;Arbeitszimmer Licht Schalten;1.001
-Licht;Arbeitszimmer;1/3/1;Arbeitszimmer Licht Status;1.001
-Licht;Gang;1/4/0;Gang Licht Schalten;1.001
-Licht;Gang;1/4/1;Gang Licht Status;1.001
-Licht;Schlafzimmer;1/5/0;Schlafzimmer Licht Schalten;1.001
-Licht;Schlafzimmer;1/5/1;Schlafzimmer Licht Status;1.001
-Licht;Badezimmer;1/6/0;Badezimmer Licht Schalten;1.001
-Licht;Badezimmer;1/6/1;Badezimmer Licht Status;1.001
-Licht;Bad vorne;1/7/0;Bad vorne Licht Schalten;1.001
-Licht;Bad vorne;1/7/1;Bad vorne Licht Status;1.001
-Beschattung;Wohnzimmer;2/0/0;Wohnzimmer Rollladen links Auf Ab;1.008
-Beschattung;Wohnzimmer;2/0/1;Wohnzimmer Rollladen links Stop;1.010
-Beschattung;Wohnzimmer;2/0/2;Wohnzimmer Rollladen links Position Soll;5.001
-Beschattung;Wohnzimmer;2/0/3;Wohnzimmer Rollladen links Position Status;5.001
-Beschattung;Wohnzimmer;2/0/10;Wohnzimmer Rollladen rechts Auf Ab;1.008
-Beschattung;Wohnzimmer;2/0/11;Wohnzimmer Rollladen rechts Stop;1.010
-Beschattung;Wohnzimmer;2/0/12;Wohnzimmer Rollladen rechts Position Soll;5.001
-Beschattung;Wohnzimmer;2/0/13;Wohnzimmer Rollladen rechts Position Status;5.001
-Beschattung;Arbeitszimmer;2/1/0;Arbeitszimmer Rollladen Auf Ab;1.008
-Beschattung;Arbeitszimmer;2/1/1;Arbeitszimmer Rollladen Stop;1.010
-Beschattung;Arbeitszimmer;2/1/2;Arbeitszimmer Rollladen Position Soll;5.001
-Beschattung;Arbeitszimmer;2/1/3;Arbeitszimmer Rollladen Position Status;5.001
-Beschattung;Schlafzimmer;2/2/0;Schlafzimmer Rollladen links Auf Ab;1.008
-Beschattung;Schlafzimmer;2/2/1;Schlafzimmer Rollladen links Stop;1.010
-Beschattung;Schlafzimmer;2/2/2;Schlafzimmer Rollladen links Position Soll;5.001
-Beschattung;Schlafzimmer;2/2/3;Schlafzimmer Rollladen links Position Status;5.001
-Beschattung;Schlafzimmer;2/2/10;Schlafzimmer Rollladen rechts Auf Ab;1.008
-Beschattung;Schlafzimmer;2/2/11;Schlafzimmer Rollladen rechts Stop;1.010
-Beschattung;Schlafzimmer;2/2/12;Schlafzimmer Rollladen rechts Position Soll;5.001
-Beschattung;Schlafzimmer;2/2/13;Schlafzimmer Rollladen rechts Position Status;5.001
-Beschattung;Badezimmer;2/3/0;Badezimmer Rollladen Auf Ab;1.008
-Beschattung;Badezimmer;2/3/1;Badezimmer Rollladen Stop;1.010
-Beschattung;Badezimmer;2/3/2;Badezimmer Rollladen Position Soll;5.001
-Beschattung;Badezimmer;2/3/3;Badezimmer Rollladen Position Status;5.001
-Beschattung;Markise;2/4/0;Markise Auf Ab;1.008
-Beschattung;Markise;2/4/1;Markise Stop;1.010
-Beschattung;Markise;2/4/2;Markise Position Soll;5.001
-Beschattung;Markise;2/4/3;Markise Position Status;5.001
-Beschattung;Markise;2/4/4;Markise Gesperrt;1.001
-Heizung;Wohnzimmer;3/0/0;Wohnzimmer Solltemperatur;9.001
-Heizung;Wohnzimmer;3/0/1;Wohnzimmer Isttemperatur;9.001
-Heizung;Wohnzimmer;3/0/2;Wohnzimmer Betriebsmodus;20.102
-Heizung;Wohnzimmer;3/0/3;Wohnzimmer Ventilstellung;5.001
-Heizung;Wohnzimmer;3/0/4;Wohnzimmer Fensterstatus Raum;1.019
-Heizung;Esszimmer;3/1/0;Esszimmer Solltemperatur;9.001
-Heizung;Esszimmer;3/1/1;Esszimmer Isttemperatur;9.001
-Heizung;Esszimmer;3/1/2;Esszimmer Betriebsmodus;20.102
-Heizung;Esszimmer;3/1/3;Esszimmer Ventilstellung;5.001
-Heizung;Esszimmer;3/1/4;Esszimmer Fensterstatus Raum;1.019
-Heizung;Küche;3/2/0;Küche Solltemperatur;9.001
-Heizung;Küche;3/2/1;Küche Isttemperatur;9.001
-Heizung;Küche;3/2/2;Küche Betriebsmodus;20.102
-Heizung;Küche;3/2/3;Küche Ventilstellung;5.001
-Heizung;Küche;3/2/4;Küche Fensterstatus Raum;1.019
-Heizung;Arbeitszimmer;3/3/0;Arbeitszimmer Solltemperatur;9.001
-Heizung;Arbeitszimmer;3/3/1;Arbeitszimmer Isttemperatur;9.001
-Heizung;Arbeitszimmer;3/3/2;Arbeitszimmer Betriebsmodus;20.102
-Heizung;Arbeitszimmer;3/3/3;Arbeitszimmer Ventilstellung;5.001
-Heizung;Arbeitszimmer;3/3/4;Arbeitszimmer Fensterstatus Raum;1.019
-Heizung;Gang;3/4/0;Gang Solltemperatur;9.001
-Heizung;Gang;3/4/1;Gang Isttemperatur;9.001
-Heizung;Gang;3/4/2;Gang Betriebsmodus;20.102
-Heizung;Gang;3/4/3;Gang Ventilstellung;5.001
-Heizung;Gang;3/4/4;Gang Fensterstatus Raum;1.019
-Heizung;Schlafzimmer;3/5/0;Schlafzimmer Solltemperatur;9.001
-Heizung;Schlafzimmer;3/5/1;Schlafzimmer Isttemperatur;9.001
-Heizung;Schlafzimmer;3/5/2;Schlafzimmer Betriebsmodus;20.102
-Heizung;Schlafzimmer;3/5/3;Schlafzimmer Ventilstellung;5.001
-Heizung;Schlafzimmer;3/5/4;Schlafzimmer Fensterstatus Raum;1.019
-Heizung;Badezimmer;3/6/0;Badezimmer Solltemperatur;9.001
-Heizung;Badezimmer;3/6/1;Badezimmer Isttemperatur;9.001
-Heizung;Badezimmer;3/6/2;Badezimmer Betriebsmodus;20.102
-Heizung;Badezimmer;3/6/3;Badezimmer Ventilstellung;5.001
-Heizung;Badezimmer;3/6/4;Badezimmer Fensterstatus Raum;1.019
-Heizung;Bad vorne;3/7/0;Bad vorne Solltemperatur;9.001
-Heizung;Bad vorne;3/7/1;Bad vorne Isttemperatur;9.001
-Heizung;Bad vorne;3/7/2;Bad vorne Betriebsmodus;20.102
-Heizung;Bad vorne;3/7/3;Bad vorne Ventilstellung;5.001
-Heizung;Bad vorne;3/7/4;Bad vorne Fensterstatus Raum;1.019
-Wetter;Allgemein;4/0/0;Außentemperatur;9.001
-Wetter;Allgemein;4/0/1;Windgeschwindigkeit;9.005
-Wetter;Allgemein;4/0/2;Regen;1.001
-Wetter;Allgemein;4/0/3;Dämmerung;1.001
-Wetter;Helligkeit;4/1/0;Helligkeit Ost;9.004
-Wetter;Helligkeit;4/1/1;Helligkeit Süd;9.004
-Wetter;Helligkeit;4/1/2;Helligkeit West;9.004
-Wetter;Alarm;4/2/0;Windwarnung;1.001
-Wetter;Alarm;4/2/1;Windalarm;1.001
-Wetter;Alarm;4/2/2;Regenalarm;1.001
-Wetter;Alarm;4/2/3;Frostalarm;1.001
-Wetter;Beschattung;4/3/0;Sonne Ost Aktiv;1.001
-Wetter;Beschattung;4/3/1;Sonne Süd Aktiv;1.001
-Wetter;Beschattung;4/3/2;Sonne West Aktiv;1.001
-Wetter;Beschattung;4/3/3;Beschattung Automatik Aktiv;1.001
-Fenster;Wohnzimmer;5/0/0;Wohnzimmer Fenstergriff 1 Status;1.019
-Fenster;Wohnzimmer;5/0/1;Wohnzimmer Fenstergriff 2 Status;1.019
-Fenster;Wohnzimmer;5/0/2;Wohnzimmer Fenstergriff 3 Status;1.019
-Fenster;Wohnzimmer;5/0/10;Wohnzimmer Fensterstatus Raum;1.019
-Fenster;Küche;5/1/0;Küche Fenstergriff 1 Status;1.019
-Fenster;Küche;5/1/1;Küche Fenstergriff 2 Status;1.019
-Fenster;Küche;5/1/10;Küche Fensterstatus Raum;1.019
-Fenster;Bad vorne;5/2/0;Bad vorne Fenstergriff Status;1.019
-Fenster;Bad vorne;5/2/10;Bad vorne Fensterstatus Raum;1.019
-Fenster;Arbeitszimmer;5/3/0;Arbeitszimmer Fenstergriff 1 Status;1.019
-Fenster;Arbeitszimmer;5/3/1;Arbeitszimmer Fenstergriff 2 Status;1.019
-Fenster;Arbeitszimmer;5/3/10;Arbeitszimmer Fensterstatus Raum;1.019
-Fenster;Schlafzimmer;5/4/0;Schlafzimmer Fenstergriff 1 Status;1.019
-Fenster;Schlafzimmer;5/4/1;Schlafzimmer Fenstergriff 2 Status;1.019
-Fenster;Schlafzimmer;5/4/10;Schlafzimmer Fensterstatus Raum;1.019
-Fenster;Badezimmer;5/5/0;Badezimmer Fenstergriff 1 Status;1.019
-Fenster;Badezimmer;5/5/1;Badezimmer Fenstergriff 2 Status;1.019
-Fenster;Badezimmer;5/5/10;Badezimmer Fensterstatus Raum;1.019
-Präsenz;Gang;6/0/0;Gang Präsenz;1.001
-Präsenz;Gang;6/0/1;Gang Bewegung;1.001
-Präsenz;Gang;6/0/2;Gang Helligkeit;9.004
-Szenen;Allgemein;7/0/0;Szene Fernsehen;18.001
-Szenen;Allgemein;7/0/1;Szene Essen;18.001
-Szenen;Allgemein;7/0/2;Szene Gute Nacht;18.001
-Szenen;Allgemein;7/0/3;Szene Haus verlassen;18.001
-Status;Allgemein;8/0/0;Status Fenster offen gesamt;1.001
-Status;Allgemein;8/0/1;Status Wetterschutz aktiv;1.001
-Status;Allgemein;8/0/2;Status Urlaub aktiv;1.001
-Status;Allgemein;8/0/3;Status Nachtmodus aktiv;1.001
-Status;Allgemein;8/0/4;Status Haus verlassen aktiv;1.001
-Home Assistant;Status;9/0/0;HA Status Online;1.001
-Home Assistant;Status;9/0/1;HA Zentral Anzeige;1.001
+﻿"Haupt";"Mitte";"Unter";"Adresse"
+"Zentral";;;"0/-/-"
+;"Haus";;"0/0/-"
+;;"Zentral Aus";"0/0/0"
+;;"Haus verlassen";"0/0/1"
+;;"Nachtmodus";"0/0/2"
+;;"Urlaub";"0/0/3"
+;;"Panik";"0/0/4"
+;"Rollladen";;"0/1/-"
+;;"Alle Rollladen Auf / Ab";"0/1/0"
+;;"Alle Rollladen Stop / Schritt";"0/1/1"
+;"Beschattung";;"0/2/-"
+;;"Beschattungsautomatik Freigabe";"0/2/0"
+;;"Beschattungsautomatik Status";"0/2/1"
+;;"Markise Einfahren Schutz";"0/2/2"
+;;"Wetterschutz Aktiv Status";"0/2/3"
+;"Heizung";;"0/3/-"
+;;"Heizung Zentral Betriebsart Soll";"0/3/0"
+;;"Heizung Zentral Betriebsart Status";"0/3/1"
+"Licht";;;"1/-/-"
+;"Wohnzimmer";;"1/0/-"
+;;"Wohnzimmer Licht Schalten";"1/0/0"
+;;"Wohnzimmer Licht Status";"1/0/1"
+;"Esszimmer";;"1/1/-"
+;;"Esszimmer Licht Schalten";"1/1/0"
+;;"Esszimmer Licht Status";"1/1/1"
+;"Küche";;"1/2/-"
+;;"Küche Licht Schalten";"1/2/0"
+;;"Küche Licht Status";"1/2/1"
+;"Arbeitszimmer";;"1/3/-"
+;;"Arbeitszimmer Licht Schalten";"1/3/0"
+;;"Arbeitszimmer Licht Status";"1/3/1"
+;"Gang";;"1/4/-"
+;;"Gang Licht Schalten";"1/4/0"
+;;"Gang Licht Status";"1/4/1"
+;"Schlafzimmer";;"1/5/-"
+;;"Schlafzimmer Licht Schalten";"1/5/0"
+;;"Schlafzimmer Licht Status";"1/5/1"
+;"Badezimmer";;"1/6/-"
+;;"Badezimmer Licht Schalten";"1/6/0"
+;;"Badezimmer Licht Status";"1/6/1"
+;"Bad vorne";;"1/7/-"
+;;"Bad vorne Licht Schalten";"1/7/0"
+;;"Bad vorne Licht Status";"1/7/1"
+"Beschattung";;;"2/-/-"
+;"Wohnzimmer";;"2/0/-"
+;;"Wohnzimmer Rollladen links Auf Ab";"2/0/0"
+;;"Wohnzimmer Rollladen links Stop";"2/0/1"
+;;"Wohnzimmer Rollladen links Position Soll";"2/0/2"
+;;"Wohnzimmer Rollladen links Position Status";"2/0/3"
+;;"Wohnzimmer Rollladen rechts Auf Ab";"2/0/10"
+;;"Wohnzimmer Rollladen rechts Stop";"2/0/11"
+;;"Wohnzimmer Rollladen rechts Position Soll";"2/0/12"
+;;"Wohnzimmer Rollladen rechts Position Status";"2/0/13"
+;"Arbeitszimmer";;"2/1/-"
+;;"Arbeitszimmer Rollladen Auf Ab";"2/1/0"
+;;"Arbeitszimmer Rollladen Stop";"2/1/1"
+;;"Arbeitszimmer Rollladen Position Soll";"2/1/2"
+;;"Arbeitszimmer Rollladen Position Status";"2/1/3"
+;"Schlafzimmer";;"2/2/-"
+;;"Schlafzimmer Rollladen links Auf Ab";"2/2/0"
+;;"Schlafzimmer Rollladen links Stop";"2/2/1"
+;;"Schlafzimmer Rollladen links Position Soll";"2/2/2"
+;;"Schlafzimmer Rollladen links Position Status";"2/2/3"
+;;"Schlafzimmer Rollladen rechts Auf Ab";"2/2/10"
+;;"Schlafzimmer Rollladen rechts Stop";"2/2/11"
+;;"Schlafzimmer Rollladen rechts Position Soll";"2/2/12"
+;;"Schlafzimmer Rollladen rechts Position Status";"2/2/13"
+;"Badezimmer";;"2/3/-"
+;;"Badezimmer Rollladen Auf Ab";"2/3/0"
+;;"Badezimmer Rollladen Stop";"2/3/1"
+;;"Badezimmer Rollladen Position Soll";"2/3/2"
+;;"Badezimmer Rollladen Position Status";"2/3/3"
+;"Markise";;"2/4/-"
+;;"Markise Auf Ab";"2/4/0"
+;;"Markise Stop";"2/4/1"
+;;"Markise Position Soll";"2/4/2"
+;;"Markise Position Status";"2/4/3"
+;;"Markise Gesperrt";"2/4/4"
+"Heizung";;;"3/-/-"
+;"Wohnzimmer";;"3/0/-"
+;;"Wohnzimmer Solltemperatur";"3/0/0"
+;;"Wohnzimmer Isttemperatur";"3/0/1"
+;;"Wohnzimmer Betriebsmodus";"3/0/2"
+;;"Wohnzimmer Ventilstellung";"3/0/3"
+;;"Wohnzimmer Fensterstatus Raum";"3/0/4"
+;"Esszimmer";;"3/1/-"
+;;"Esszimmer Solltemperatur";"3/1/0"
+;;"Esszimmer Isttemperatur";"3/1/1"
+;;"Esszimmer Betriebsmodus";"3/1/2"
+;;"Esszimmer Ventilstellung";"3/1/3"
+;;"Esszimmer Fensterstatus Raum";"3/1/4"
+;"Küche";;"3/2/-"
+;;"Küche Solltemperatur";"3/2/0"
+;;"Küche Isttemperatur";"3/2/1"
+;;"Küche Betriebsmodus";"3/2/2"
+;;"Küche Ventilstellung";"3/2/3"
+;;"Küche Fensterstatus Raum";"3/2/4"
+;"Arbeitszimmer";;"3/3/-"
+;;"Arbeitszimmer Solltemperatur";"3/3/0"
+;;"Arbeitszimmer Isttemperatur";"3/3/1"
+;;"Arbeitszimmer Betriebsmodus";"3/3/2"
+;;"Arbeitszimmer Ventilstellung";"3/3/3"
+;;"Arbeitszimmer Fensterstatus Raum";"3/3/4"
+;"Gang";;"3/4/-"
+;;"Gang Solltemperatur";"3/4/0"
+;;"Gang Isttemperatur";"3/4/1"
+;;"Gang Betriebsmodus";"3/4/2"
+;;"Gang Ventilstellung";"3/4/3"
+;;"Gang Fensterstatus Raum";"3/4/4"
+;"Schlafzimmer";;"3/5/-"
+;;"Schlafzimmer Solltemperatur";"3/5/0"
+;;"Schlafzimmer Isttemperatur";"3/5/1"
+;;"Schlafzimmer Betriebsmodus";"3/5/2"
+;;"Schlafzimmer Ventilstellung";"3/5/3"
+;;"Schlafzimmer Fensterstatus Raum";"3/5/4"
+;"Badezimmer";;"3/6/-"
+;;"Badezimmer Solltemperatur";"3/6/0"
+;;"Badezimmer Isttemperatur";"3/6/1"
+;;"Badezimmer Betriebsmodus";"3/6/2"
+;;"Badezimmer Ventilstellung";"3/6/3"
+;;"Badezimmer Fensterstatus Raum";"3/6/4"
+;"Bad vorne";;"3/7/-"
+;;"Bad vorne Solltemperatur";"3/7/0"
+;;"Bad vorne Isttemperatur";"3/7/1"
+;;"Bad vorne Betriebsmodus";"3/7/2"
+;;"Bad vorne Ventilstellung";"3/7/3"
+;;"Bad vorne Fensterstatus Raum";"3/7/4"
+"Wetter";;;"4/-/-"
+;"Allgemein";;"4/0/-"
+;;"Außentemperatur";"4/0/0"
+;;"Windgeschwindigkeit";"4/0/1"
+;;"Regen";"4/0/2"
+;;"Dämmerung";"4/0/3"
+;"Helligkeit";;"4/1/-"
+;;"Helligkeit Ost";"4/1/0"
+;;"Helligkeit Süd";"4/1/1"
+;;"Helligkeit West";"4/1/2"
+;"Alarm";;"4/2/-"
+;;"Windwarnung";"4/2/0"
+;;"Windalarm";"4/2/1"
+;;"Regenalarm";"4/2/2"
+;;"Frostalarm";"4/2/3"
+;"Beschattung";;"4/3/-"
+;;"Sonne Ost Aktiv";"4/3/0"
+;;"Sonne Süd Aktiv";"4/3/1"
+;;"Sonne West Aktiv";"4/3/2"
+;;"Beschattung Automatik Aktiv";"4/3/3"
+"Fenster";;;"5/-/-"
+;"Wohnzimmer";;"5/0/-"
+;;"Wohnzimmer Fenstergriff 1 Status";"5/0/0"
+;;"Wohnzimmer Fenstergriff 2 Status";"5/0/1"
+;;"Wohnzimmer Fenstergriff 3 Status";"5/0/2"
+;;"Wohnzimmer Fensterstatus Raum";"5/0/10"
+;"Küche";;"5/1/-"
+;;"Küche Fenstergriff 1 Status";"5/1/0"
+;;"Küche Fenstergriff 2 Status";"5/1/1"
+;;"Küche Fensterstatus Raum";"5/1/10"
+;"Bad vorne";;"5/2/-"
+;;"Bad vorne Fenstergriff Status";"5/2/0"
+;;"Bad vorne Fensterstatus Raum";"5/2/10"
+;"Arbeitszimmer";;"5/3/-"
+;;"Arbeitszimmer Fenstergriff 1 Status";"5/3/0"
+;;"Arbeitszimmer Fenstergriff 2 Status";"5/3/1"
+;;"Arbeitszimmer Fensterstatus Raum";"5/3/10"
+;"Schlafzimmer";;"5/4/-"
+;;"Schlafzimmer Fenstergriff 1 Status";"5/4/0"
+;;"Schlafzimmer Fenstergriff 2 Status";"5/4/1"
+;;"Schlafzimmer Fensterstatus Raum";"5/4/10"
+;"Badezimmer";;"5/5/-"
+;;"Badezimmer Fenstergriff 1 Status";"5/5/0"
+;;"Badezimmer Fenstergriff 2 Status";"5/5/1"
+;;"Badezimmer Fensterstatus Raum";"5/5/10"
+"Präsenz";;;"6/-/-"
+;"Gang";;"6/0/-"
+;;"Gang Präsenz";"6/0/0"
+;;"Gang Bewegung";"6/0/1"
+;;"Gang Helligkeit";"6/0/2"
+"Szenen";;;"7/-/-"
+;"Allgemein";;"7/0/-"
+;;"Szene Fernsehen";"7/0/0"
+;;"Szene Essen";"7/0/1"
+;;"Szene Gute Nacht";"7/0/2"
+;;"Szene Haus verlassen";"7/0/3"
+"Status";;;"8/-/-"
+;"Allgemein";;"8/0/-"
+;;"Status Fenster offen gesamt";"8/0/0"
+;;"Status Wetterschutz aktiv";"8/0/1"
+;;"Status Urlaub aktiv";"8/0/2"
+;;"Status Nachtmodus aktiv";"8/0/3"
+;;"Status Haus verlassen aktiv";"8/0/4"
+"Home Assistant";;;"9/-/-"
+;"Status";;"9/0/-"
+;;"HA Status Online";"9/0/0"
+;;"HA Zentral Anzeige";"9/0/1"
