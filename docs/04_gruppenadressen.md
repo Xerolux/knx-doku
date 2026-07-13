@@ -1,67 +1,48 @@
 # 04 – Gruppenadressen
 
+## Gruppenadressstil
+
+Das Projekt verwendet den ETS-Stil **3 Ebenen**:
+
+`Hauptgruppe / Mittelgruppe / Untergruppe`
+
+Die Datei [../ets-import/gruppenadressen.csv](../ets-import/gruppenadressen.csv) bildet diese Struktur exakt ab und kann direkt in ETS importiert werden. Die DPT-Referenz steht getrennt in [../ets-import/gruppenadressen-planung.csv](../ets-import/gruppenadressen-planung.csv).
+
 ## Hauptgruppen
 
-```text
-0 Zentral
-1 Licht
-2 Beschattung
-3 Heizung
-4 Wetter
-5 Fenster
-6 Präsenz
-7 Szenen
-8 Status
-9 Home Assistant
-```
+| Nr. | Bereich | Inhalt |
+|---:|---|---|
+| 0 | Zentral | Hauszustände, zentrale Beschattung und Heizung |
+| 1 | Licht | Schalten und Status je Raum |
+| 2 | Beschattung | Rollläden und Markise |
+| 3 | Heizung | Raumregelung und Fensterstatus |
+| 4 | Wetter | Messwerte, Alarme, Automatikfreigaben |
+| 5 | Fenster | einzelne RF-Fenstergriffe und Raumstatus |
+| 6 | Präsenz | Präsenz, Bewegung und Helligkeit |
+| 7 | Szenen | Szenenaufrufe |
+| 8 | Status | hausweite Sammelmeldungen |
+| 9 | Home Assistant | optionale Diagnose- und Anzeigeobjekte |
 
-## Licht
+## Konventionen
 
-Pro Raum werden zuerst nur zwei Gruppenadressen benötigt:
+| Art | Benennung | Beispiel |
+|---|---|---|
+| Befehl | `… Schalten`, `… Soll`, `… Freigabe` | `Wohnzimmer Licht Schalten` |
+| Rückmeldung | `… Status`, `… Ist` | `Wohnzimmer Licht Status` |
+| Position | `… Position Soll` / `… Position Status` | `Markise Position Status` |
+| Schutz | eindeutiger Auslöser und Status | `Markise Einfahren Schutz` / `Wetterschutz Aktiv Status` |
 
-```text
-1/x/0 Licht Schalten
-1/x/1 Licht Status
-```
+- Eine Gruppenadresse hat genau eine Bedeutung und wird nicht erneut vergeben.
+- Taster, Aktor und Visualisierung verwenden für dieselbe Funktion dieselbe Befehlsadresse.
+- Rückmeldungen werden nur vom zuständigen Gerät bzw. der Logik geschrieben.
+- Der DPT muss zum Kommunikationsobjekt der importierten Produktdatenbank passen. Die Planungsdatei ist eine Sollvorgabe, keine Überschreibung des Geräteobjekts.
 
-## Beschattung
+## Zentralfunktionen
 
-Pro Rollladen:
+Zentrale Befehle sind konfliktfrei angelegt:
 
-```text
-2/x/0 Auf/Ab
-2/x/1 Stop
-2/x/2 Position Soll
-2/x/3 Position Status
-```
+- Beschattungsautomatik: eine **Freigabe** und eine **Status**-Rückmeldung, keine getrennten Ein-/Aus-Befehle.
+- Heizung: eine zentrale **Betriebsart Soll** und eine **Betriebsart Status** mit DPT 20.102, keine parallelen Komfort-/Nacht-/Eco-/Frost-Bitbefehle.
+- Rollläden: ein zentraler Auf-/Ab-Befehl sowie ein separater Stop-/Schritt-Befehl.
 
-## Heizung
-
-Pro Raum:
-
-```text
-3/x/0 Solltemperatur
-3/x/1 Isttemperatur
-3/x/2 Betriebsmodus
-3/x/3 Ventilstellung
-3/x/4 Fensterstatus Raum
-```
-
-## Fenster
-
-Pro Fenstergriff:
-
-```text
-5/x/y Fenstergriff Status
-```
-
-## Wetter
-
-```text
-4/0/0 Außentemperatur
-4/0/1 Windgeschwindigkeit
-4/0/2 Regen
-4/0/3 Helligkeit Ost
-4/0/4 Helligkeit Süd
-4/0/5 Helligkeit West
-```
+Die vollständige Liste steht in der Importdatei und in [12 – Zentralfunktionen](12_zentralfunktionen.md).
