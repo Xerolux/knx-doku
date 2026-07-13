@@ -1,57 +1,40 @@
 # 12 – Zentralfunktionen
 
-## Ziel
-
-Zentralfunktionen bündeln wichtige Hauszustände. Sie werden von Glastastern, Logikmodul, Schaltuhr und optional Home Assistant verwendet.
-
 ## Hauszustände
 
-| Funktion | Gruppenadresse | Zweck |
-|---|---:|---|
-| Zentral Aus | 0/0/0 | alle normalen Lichtkreise aus |
-| Haus verlassen | 0/0/1 | Abwesenheitsmodus |
-| Nachtmodus | 0/0/2 | reduzierte Beleuchtung / Nachtbetrieb |
-| Urlaub | 0/0/3 | längere Abwesenheit |
-| Panik | 0/0/4 | Notfunktion, Licht an |
-| Anwesenheit | 0/0/5 | Haus bewohnt / normal |
+| Gruppenadresse | Funktion | DPT | Zweck |
+|---:|---|---|---|
+| 0/0/0 | Zentral Aus | 1.001 | alle normalen Lichtkreise ausschalten |
+| 0/0/1 | Haus verlassen | 1.001 | Abwesenheitsmodus auslösen |
+| 0/0/2 | Nachtmodus | 1.001 | Nachtbetrieb aktiv |
+| 0/0/3 | Urlaub | 1.001 | längere Abwesenheit |
+| 0/0/4 | Panik | 1.001 | definierte Notfunktion |
 
 ## Rollladen zentral
 
-| Funktion | Gruppenadresse | Zweck |
-|---|---:|---|
-| Alle Rollläden Hoch | 0/1/0 | zentrale Fahrt hoch |
-| Alle Rollläden Runter | 0/1/1 | zentrale Fahrt runter |
-| Alle Rollläden Stop | 0/1/2 | zentrale Stop-Funktion |
+| Gruppenadresse | Funktion | DPT | Zweck |
+|---:|---|---|---|
+| 0/1/0 | Alle Rollladen Auf / Ab | 1.008 | gemeinsame Fahrtrichtung |
+| 0/1/1 | Alle Rollladen Stop / Schritt | 1.007 | Fahrt stoppen oder Schritt fahren |
 
 ## Beschattung zentral
 
-| Funktion | Gruppenadresse | Zweck |
-|---|---:|---|
-| Beschattungsautomatik Ein | 0/2/0 | Automatik freigeben |
-| Beschattungsautomatik Aus | 0/2/1 | Automatik sperren |
-| Markise Einfahren Zentral | 0/2/2 | Schutz- und Zentralbefehl |
-| Wetterschutz Aktiv | 0/2/3 | Status für Anzeige und Sperren |
+| Gruppenadresse | Funktion | DPT | Richtung |
+|---:|---|---|---|
+| 0/2/0 | Beschattungsautomatik Freigabe | 1.001 | Befehl |
+| 0/2/1 | Beschattungsautomatik Status | 1.001 | Rückmeldung |
+| 0/2/2 | Markise Einfahren Schutz | 1.001 | Schutzbefehl |
+| 0/2/3 | Wetterschutz Aktiv Status | 1.001 | Rückmeldung |
 
-## Heizungsmodi zentral
+## Heizung zentral
 
-| Funktion | Gruppenadresse | Zweck |
-|---|---:|---|
-| Heizung Komfort | 0/3/0 | normale Nutzung |
-| Heizung Nacht | 0/3/1 | Nachtabsenkung |
-| Heizung Eco | 0/3/2 | Abwesenheit |
-| Heizung Frostschutz | 0/3/3 | Minimalbetrieb |
+| Gruppenadresse | Funktion | DPT | Richtung |
+|---:|---|---|---|
+| 0/3/0 | Heizung Zentral Betriebsart Soll | 20.102 | Befehl |
+| 0/3/1 | Heizung Zentral Betriebsart Status | 20.102 | Rückmeldung |
+
+Eine zentrale Betriebsart verhindert widersprüchliche Parallelbefehle wie gleichzeitig „Komfort“ und „Eco“. Welcher Wert welcher Betriebsart entspricht, wird anhand der Kommunikationsobjekte des verwendeten Heizungsaktors und der Raumregler festgelegt.
 
 ## Anzeige auf Glastastern
 
-Sinnvolle Statusanzeigen:
-
-- Haus verlassen aktiv
-- Nachtmodus aktiv
-- Urlaub aktiv
-- Wetterschutz aktiv
-- Fenster offen
-- Markise gesperrt
-
-## Empfehlung
-
-Zentralfunktionen sollen sparsam, aber eindeutig aufgebaut werden. Jeder Zentralzustand muss klar sagen, was im Haus passieren soll.
+Sinnvolle Statusanzeigen sind Haus verlassen, Nachtmodus, Urlaub, Wetterschutz, Fenster offen und Markise gesperrt.
