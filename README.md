@@ -15,7 +15,7 @@ Die vollständige, sichere Importreihenfolge steht in [ets-import/ETS_IMPORT.md]
 
 > Die Importdatei enthält nur die ETS-Gruppenadressstruktur. DPTs, physikalische Adressen und die Verknüpfung der Geräteobjekte werden bewusst getrennt gepflegt.
 
-## Dateien
+## Dokumentation
 
 | Bereich | Inhalt |
 |---|---|
@@ -32,6 +32,10 @@ Die vollständige, sichere Importreihenfolge steht in [ets-import/ETS_IMPORT.md]
 | [docs/11_wetterstation_gira.md](docs/11_wetterstation_gira.md) | Wetterstation |
 | [docs/12_zentralfunktionen.md](docs/12_zentralfunktionen.md) | zentrale Funktionen |
 | [docs/13_logikmodul.md](docs/13_logikmodul.md) | KNX-Logiken |
+| [docs/14_schaltschrank.md](docs/14_schaltschrank.md) | Schaltschrankaufbau und Schutzkonzept |
+| [docs/15_stromkreise.md](docs/15_stromkreise.md) | RCD-, LS- und Aktorzuordnung |
+| [docs/16_beschriftung.md](docs/16_beschriftung.md) | Beschriftungsstandard für Geräte, Klemmen und Leitungen |
+| [docs/17_wartung.md](docs/17_wartung.md) | Abnahme, Wartung und offene Punkte |
 
 ## ETS-Importdateien
 
@@ -42,9 +46,19 @@ Die vollständige, sichere Importreihenfolge steht in [ets-import/ETS_IMPORT.md]
 | [ets-import/physikalische-adressen.csv](ets-import/physikalische-adressen.csv) | Geräte- und Adresscheckliste |
 | [ets-import/ETS_IMPORT.md](ets-import/ETS_IMPORT.md) | Importanleitung und Regeln |
 
+## Schutzkonzept
+
+Die geplante Verteilung besteht aus zwei getrennten RCD-Gruppen mit jeweils bis zu acht nachgeschalteten Leitungsschutzschaltern. Beleuchtung, Beschattung, Heizung und technische Versorgungen werden eindeutig den Schutzorganen und Aktorkanälen zugeordnet. Die endgültigen Bemessungswerte und Messergebnisse sind vor Ort durch die Elektrofachkraft zu bestätigen.
+
 ## Planungsprinzip
 
 - Grundfunktionen bleiben auf KNX: Licht, Beschattung, Heizung, Fenster- und Wetterschutz.
 - Befehle und Rückmeldungen haben getrennte Gruppenadressen.
 - Die Geräteobjekte und deren DPTs aus der jeweiligen Produktdatenbank sind verbindlich.
 - Home Assistant darf ergänzen, aber keine Schutz- oder Grundfunktion voraussetzen.
+- Jedes Betriebsmittel, jede Leitung und jeder Aktorkanal erhält eine eindeutige Kennzeichnung.
+- Planungswerte werden nach Abschluss durch die tatsächliche Verdrahtung und die elektrischen Messwerte ersetzt.
+
+## Aktueller Status
+
+Die Dokumentation enthält einen belastbaren Planungsstand. Noch zu bestätigen sind insbesondere die tatsächlichen RCD- und LS-Daten, die vollständige Klemmenbelegung, die Funktion des zweiten IP-Routers, die Belegung des zweiten Heizungsaktors sowie das Mess- und Abnahmeprotokoll.
