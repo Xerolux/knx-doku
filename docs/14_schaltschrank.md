@@ -11,33 +11,33 @@ Die KNX-Komponenten sind in einem separaten Verteilfeld mit ausreichender Platzr
 5. KNX- und 24-V-Spannungsversorgungen
 6. Reserve für DALI, RGBW und spätere Erweiterungen
 
-## Vorgesehenes Schutzkonzept
+## Schutzkonzept
 
-Für die Endstromkreise sind zwei getrennte RCD-Gruppen vorgesehen. Jede Gruppe besteht aus einem vierpoligen Fehlerstrom-Schutzschalter und bis zu acht nachgeschalteten Leitungsschutzschaltern.
+Für die Endstromkreise sind zwei getrennte RCD-Gruppen vorgesehen. Jede Gruppe besteht aus einem vierpoligen Fehlerstrom-Schutzschalter mit **40 A Bemessungsstrom und 30 mA Bemessungsdifferenzstrom** sowie bis zu acht nachgeschalteten Leitungsschutzschaltern mit **B-Charakteristik und 16 A Bemessungsstrom**.
 
 ```text
-RCD 1
-├── LS01
-├── LS02
-├── LS03
-├── LS04
-├── LS05
-├── LS06
-├── LS07
-└── LS08
+RCD 1: 4-polig, 40 A, 30 mA
+├── LS01 B16 A
+├── LS02 B16 A
+├── LS03 B16 A
+├── LS04 B16 A
+├── LS05 B16 A
+├── LS06 B16 A
+├── LS07 B16 A
+└── LS08 B16 A
 
-RCD 2
-├── LS09
-├── LS10
-├── LS11
-├── LS12
-├── LS13
-├── LS14
-├── LS15
-└── LS16
+RCD 2: 4-polig, 40 A, 30 mA
+├── LS09 B16 A
+├── LS10 B16 A
+├── LS11 B16 A
+├── LS12 B16 A
+├── LS13 B16 A
+├── LS14 B16 A
+├── LS15 B16 A
+└── LS16 B16 A
 ```
 
-Die endgültigen Bemessungswerte, Auslösecharakteristiken und Leiterquerschnitte müssen anhand der vorhandenen Geräte, Leitungen, Verlegearten, Schleifenimpedanzen und Herstellerangaben geprüft werden.
+Die B16-A-Absicherung ist der dokumentierte Planungsstand. Vor Inbetriebnahme müssen Leitungstyp, Leiterquerschnitt, Verlegeart, Leitungslänge, Spannungsfall, Schleifenimpedanz, Kurzschlussstrom und die zulässige Belastung der angeschlossenen Aktoren geprüft werden. Die 40-A-RCDs müssen durch die vorgeschaltete Absicherung beziehungsweise durch die Auslegung der Anlage gegen Überlast geschützt sein.
 
 ## Wichtige Verdrahtungsregeln
 
@@ -55,7 +55,8 @@ Die endgültigen Bemessungswerte, Auslösecharakteristiken und Leiterquerschnitt
 ### KNX-Infrastruktur
 
 - Enertex KNX PowerSupply 960³
-- MDT SCN-IP100.03 IP Router
+- MDT SCN-IP100.03 IP Router für die Wohnhauslinie
+- zweiter MDT SCN-IP100.03 als Reserve für eine spätere Außenlinie
 - MDT VC-EASY.02 VisuControl Easy
 - MDT SCN-SAFE.01 Sicherheitsmodul
 - MDT SCN-LOG1.02 Logikmodul
@@ -70,7 +71,7 @@ Die endgültigen Bemessungswerte, Auslösecharakteristiken und Leiterquerschnitt
 ### Hilfsspannungen
 
 - KNX-Busspannungsversorgung
-- EARU DR-30-24, 24 V DC
+- EARU DR-30-24, 24 V DC, als Zusatzversorgung der Gira Wetterstation vorgesehen
 
 ## Reserve
 
