@@ -1,46 +1,17 @@
-Adresse;Gerät;Raum/Funktion;Hinweis
-1.1.1;MDT STR-0640.01;Busversorgung;Diagnose
-1.1.2;MDT SCN-IP100.03;IP Router;ETS und LAN
-1.1.3;MDT RF-LK001.02;RF Medien-/Linienkoppler;Kopplung 1.1 zu 1.2
-1.1.10;MDT SCN-LOG1.02;Logik;Zentrale Logik
-1.1.11;MDT SCN-SAFE.01;Statusmodul;Statusfunktionen
-1.1.12;MDT SCN-RTC20.01;Schaltuhr;Zeitprogramme
-1.1.20;MDT AKS-2416.03;Schaltaktor;Licht
-1.1.21;MDT AMI-1216.02;Schaltaktor;Messung
-1.1.22;MDT AZI-0616.01;Schaltaktor;Leistung
-1.1.23;MDT JAL-0810M.02;Jalousieaktor;Rollladen Markise
-1.1.24;MDT AKH-0800.02;Heizungsaktor;FBH
-1.1.30;MDT AKD-0424V.02;RGBW Controller;Reserve
-1.1.31;MDT AKD-0424R.02;RGBW Controller REG;Reserve
-1.1.32;MDT SCN-DALI64.03;DALI Control;Reserve
-1.1.40;Gira Wetterstation;Wetter;Dach
-1.1.41;MDT SCN-P360D4.03;Präsenzmelder;Gang
-1.1.50;MDT Glastaster Smart II;Wohnzimmer;Bedienung
-1.1.51;MDT Glastaster Smart II;Esszimmer;Bedienung
-1.1.52;MDT Glastaster Smart II;Küche;Bedienung
-1.1.53;MDT Glastaster Smart II;Arbeitszimmer;Bedienung
-1.1.54;MDT Glastaster Smart II;Gang 1;Bedienung
-1.1.55;MDT Glastaster Smart II;Gang 2;Bedienung
-1.1.56;MDT Glastaster Smart II;Gang 3;Bedienung
-1.1.57;MDT Glastaster Smart II;Schlafzimmer;Bedienung
-1.1.58;MDT Glastaster Smart II;Badezimmer;Bedienung
-1.1.59;MDT Glastaster Smart II;Bad vorne;Bedienung
-1.2.1;RF Fenstergriff;Wohnzimmer 1;KNX RF
-1.2.2;RF Fenstergriff;Wohnzimmer 2;KNX RF
-1.2.3;RF Fenstergriff;Wohnzimmer 3;KNX RF
-1.2.4;RF Fenstergriff;Küche 1;KNX RF
-1.2.5;RF Fenstergriff;Küche 2;KNX RF
-1.2.6;RF Fenstergriff;Bad vorne;KNX RF
-1.2.7;RF Fenstergriff;Arbeitszimmer 1;KNX RF
-1.2.8;RF Fenstergriff;Arbeitszimmer 2;KNX RF
-1.2.9;RF Fenstergriff;Schlafzimmer 1;KNX RF
-1.2.10;RF Fenstergriff;Schlafzimmer 2;KNX RF
-1.2.11;RF Fenstergriff;Badezimmer 1;KNX RF
-1.2.12;RF Fenstergriff;Badezimmer 2;KNX RF
-1.3.1;KNX TP Linienkoppler;Außenlinie;erst bei Ausbau
-1.3.2;KNX Busspannungsversorgung;Außenlinie;erst bei Ausbau
-1.3.10;Reserve;Wetterstation außen;optional
-1.3.20;Reserve;Außenbeleuchtung / Außenaktor;optional
-1.3.21;Reserve;Garage / Gartenhaus;optional
-1.3.30;Reserve;Tor- oder Türsteuerung;optional
-1.3.40;Reserve;Außenmelder;optional
+Adresse;Gerät;Raum/Funktion;Status/Hinweis
+1.1.0;MDT SCN-IP100.03;IP Router Secure;aktuell im ETS-Projekt
+1.1.1;Enertex KNX PowerSupply 960;Busspannungsversorgung;aktuell im ETS-Projekt
+1.1.2;Gira 5114 00;RF Multi/TP Medienkoppler;erzeugt RF Segment 1 unter Linie 1.1
+1.1.3;MDT AKS-2416.03;Schaltaktor 24-fach;aktuell im ETS-Projekt
+1.1.4;MDT JAL-0810M.02;Jalousieaktor 8-fach;aktuell im ETS-Projekt
+1.1.5;MDT AKH-0800.02;Heizungsaktor 1;aktuell im ETS-Projekt
+1.1.6;MDT AKH-0800.02;Heizungsaktor 2;aktuell im ETS-Projekt
+1.1.7;MDT SCN-RTC20.01;Schaltuhr;aktuell im ETS-Projekt
+1.1.8;MDT SCN-LOG1.02;Logikmodul;aktuell im ETS-Projekt
+1.1.9;MDT SCN-SAFE.01;Sicherheitsmodul;aktuell im ETS-Projekt
+1.1.10;MDT VC-EASY.02;VisuControl Easy II;aktuell im ETS-Projekt
+1.1.40;Gira 2074 00;Wetterstation Plus;aktuell auf TP-Linie 1.1
+1.1.20-1.1.39;Reserve;Innensensoren und Bedienstellen;erst bei tatsächlichem Gerät vergeben
+1.1.41-1.1.59;Reserve;weitere Wetter- und Außengeräte;erst bei tatsächlichem Gerät vergeben
+RF Segment 1;KNX RF Geräte;Fenstergriffe und Funkgeräte;Adressen später direkt durch ETS festlegen
+1.3.x;Reserve;TP Außenlinie;aktuell vollständig unbestückt
