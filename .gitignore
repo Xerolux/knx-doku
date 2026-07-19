@@ -1,0 +1,15 @@
+# ETS projects and backups contain installation-specific data and secrets
+*.knxproj
+*.knxproj.backup
+*.bak
+
+# Local exports and temporary archives
+*.zip
+*.tmp
+~$*
+
+# Operating system / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
