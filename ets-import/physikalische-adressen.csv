@@ -1,7 +1,7 @@
 Adresse;Gerät;Raum/Funktion;Hinweis
 1.1.1;MDT STR-0640.01;Busversorgung;Diagnose
 1.1.2;MDT SCN-IP100.03;IP Router;ETS und LAN
-1.1.3;MDT RF-LK001.02;RF Linienkoppler;KNX RF
+1.1.3;MDT RF-LK001.02;RF Medien-/Linienkoppler;Kopplung 1.1 zu 1.2
 1.1.10;MDT SCN-LOG1.02;Logik;Zentrale Logik
 1.1.11;MDT SCN-SAFE.01;Statusmodul;Statusfunktionen
 1.1.12;MDT SCN-RTC20.01;Schaltuhr;Zeitprogramme
@@ -25,15 +25,22 @@ Adresse;Gerät;Raum/Funktion;Hinweis
 1.1.57;MDT Glastaster Smart II;Schlafzimmer;Bedienung
 1.1.58;MDT Glastaster Smart II;Badezimmer;Bedienung
 1.1.59;MDT Glastaster Smart II;Bad vorne;Bedienung
-1.1.70;RF Fenstergriff;Wohnzimmer 1;RF
-1.1.71;RF Fenstergriff;Wohnzimmer 2;RF
-1.1.72;RF Fenstergriff;Wohnzimmer 3;RF
-1.1.73;RF Fenstergriff;Küche 1;RF
-1.1.74;RF Fenstergriff;Küche 2;RF
-1.1.75;RF Fenstergriff;Bad vorne;RF
-1.1.76;RF Fenstergriff;Arbeitszimmer 1;RF
-1.1.77;RF Fenstergriff;Arbeitszimmer 2;RF
-1.1.78;RF Fenstergriff;Schlafzimmer 1;RF
-1.1.79;RF Fenstergriff;Schlafzimmer 2;RF
-1.1.80;RF Fenstergriff;Badezimmer 1;RF
-1.1.81;RF Fenstergriff;Badezimmer 2;RF
+1.2.1;RF Fenstergriff;Wohnzimmer 1;KNX RF
+1.2.2;RF Fenstergriff;Wohnzimmer 2;KNX RF
+1.2.3;RF Fenstergriff;Wohnzimmer 3;KNX RF
+1.2.4;RF Fenstergriff;Küche 1;KNX RF
+1.2.5;RF Fenstergriff;Küche 2;KNX RF
+1.2.6;RF Fenstergriff;Bad vorne;KNX RF
+1.2.7;RF Fenstergriff;Arbeitszimmer 1;KNX RF
+1.2.8;RF Fenstergriff;Arbeitszimmer 2;KNX RF
+1.2.9;RF Fenstergriff;Schlafzimmer 1;KNX RF
+1.2.10;RF Fenstergriff;Schlafzimmer 2;KNX RF
+1.2.11;RF Fenstergriff;Badezimmer 1;KNX RF
+1.2.12;RF Fenstergriff;Badezimmer 2;KNX RF
+1.3.1;KNX TP Linienkoppler;Außenlinie;erst bei Ausbau
+1.3.2;KNX Busspannungsversorgung;Außenlinie;erst bei Ausbau
+1.3.10;Reserve;Wetterstation außen;optional
+1.3.20;Reserve;Außenbeleuchtung / Außenaktor;optional
+1.3.21;Reserve;Garage / Gartenhaus;optional
+1.3.30;Reserve;Tor- oder Türsteuerung;optional
+1.3.40;Reserve;Außenmelder;optional
