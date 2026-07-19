@@ -2,24 +2,24 @@
 
 ## RF-Kopplung
 
-Der MDT RF-LK001.02 verbindet KNX TP mit KNX RF.
+Der MDT RF-LK001.02 verbindet die KNX-TP-Linie **1.1** mit der KNX-RF-Linie **1.2**. Die RF-Fenstergriffe sind deshalb als Teilnehmer der Linie 1.2 angelegt.
 
 ## Zuordnung
 
 | Physikalische Adresse | Raum | Gerät |
 |---|---|---|
-| 1.1.70 | Wohnzimmer | Fenstergriff 1 |
-| 1.1.71 | Wohnzimmer | Fenstergriff 2 |
-| 1.1.72 | Wohnzimmer | Fenstergriff 3 |
-| 1.1.73 | Küche | Fenstergriff 1 |
-| 1.1.74 | Küche | Fenstergriff 2 |
-| 1.1.75 | Bad vorne | Fenstergriff 1 |
-| 1.1.76 | Arbeitszimmer | Fenstergriff 1 |
-| 1.1.77 | Arbeitszimmer | Fenstergriff 2 |
-| 1.1.78 | Schlafzimmer | Fenstergriff 1 |
-| 1.1.79 | Schlafzimmer | Fenstergriff 2 |
-| 1.1.80 | Badezimmer | Fenstergriff 1 |
-| 1.1.81 | Badezimmer | Fenstergriff 2 |
+| 1.2.1 | Wohnzimmer | Fenstergriff 1 |
+| 1.2.2 | Wohnzimmer | Fenstergriff 2 |
+| 1.2.3 | Wohnzimmer | Fenstergriff 3 |
+| 1.2.4 | Küche | Fenstergriff 1 |
+| 1.2.5 | Küche | Fenstergriff 2 |
+| 1.2.6 | Bad vorne | Fenstergriff 1 |
+| 1.2.7 | Arbeitszimmer | Fenstergriff 1 |
+| 1.2.8 | Arbeitszimmer | Fenstergriff 2 |
+| 1.2.9 | Schlafzimmer | Fenstergriff 1 |
+| 1.2.10 | Schlafzimmer | Fenstergriff 2 |
+| 1.2.11 | Badezimmer | Fenstergriff 1 |
+| 1.2.12 | Badezimmer | Fenstergriff 2 |
 
 ## Gruppenadressen
 
@@ -38,6 +38,8 @@ Der MDT RF-LK001.02 verbindet KNX TP mit KNX RF.
 5/5/1 Badezimmer Fenstergriff 2 Status
 ```
 
+Die Gruppenadressen bleiben medienunabhängig. TP-, RF- und IP-Teilnehmer können dieselbe Gruppenadresse verwenden, wenn die Filtertabellen und Kommunikationsobjekte passend parametriert sind.
+
 ## Inbetriebnahmehinweis
 
-Die RF-Geräte sollten nacheinander eingelernt und sofort sauber beschriftet werden.
+Die RF-Geräte nacheinander einlernen, sofort eindeutig beschriften und anschließend Reichweite, Batteriestatus und Telegrammweiterleitung über den Medienkoppler prüfen.
