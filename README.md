@@ -2,24 +2,35 @@
 
 Planungs- und Inbetriebnahmedokumentation für die KNX-Installation des Wohnhauses. Der Schwerpunkt liegt auf einer autarken KNX-Grundfunktion; Home Assistant ergänzt Visualisierung, Auswertungen und Komfortautomationen.
 
-## Schnellstart für ETS
+## Schnellstart für ETS 6
 
-Die Gruppenadressen können direkt in ein ETS-Projekt mit **3-Ebenen-Gruppenadressstil** importiert werden:
+Die Gruppenadressen können direkt im nativen XML-Format in ein ETS-Projekt mit **3-Ebenen-Gruppenadressstil** importiert werden:
 
 1. Projekt in ETS anlegen oder öffnen.
 2. In **Gruppenadressen** den obersten Eintrag rechtsklicken und **Gruppenadressen importieren** wählen.
-3. [ets-import/gruppenadressen.csv](ets-import/gruppenadressen.csv) auswählen.
-4. Danach Produktdatenbanken importieren, Geräte einfügen und die Kommunikationsobjekte verbinden.
+3. [ets-import/gruppenadressen.xml](ets-import/gruppenadressen.xml) auswählen.
+4. Danach Produktdatenbanken importieren, Linien und Geräte anlegen und Kommunikationsobjekte verbinden.
 
-Die vollständige, sichere Importreihenfolge steht in [ets-import/ETS_IMPORT.md](ets-import/ETS_IMPORT.md).
+Die vollständige Importreihenfolge steht in [ets-import/ETS_IMPORT.md](ets-import/ETS_IMPORT.md).
 
-> Die Importdatei enthält nur die ETS-Gruppenadressstruktur. DPTs, physikalische Adressen und die Verknüpfung der Geräteobjekte werden bewusst getrennt gepflegt.
+> Die XML enthält ausschließlich die Gruppenadressstruktur. DPTs, physikalische Adressen, Geräte und Objektverknüpfungen werden getrennt gepflegt.
+
+## Topologie
+
+```text
+Bereich 1
+├── 1.1 KNX TP – Innenbereich und Hauptverteilung
+├── 1.2 KNX RF – Fenstergriffe und Funkgeräte
+└── 1.3 KNX TP – Außenbereich / Reserve
+```
+
+Der MDT RF-LK001.02 koppelt die TP-Linie 1.1 mit der RF-Linie 1.2. Die Linie 1.3 ist für Außenbereich, Garage, Gartenhaus, Torsteuerung und spätere Erweiterungen reserviert.
 
 ## Dokumentation
 
 | Bereich | Inhalt |
 |---|---|
-| [docs/01_topologie.md](docs/01_topologie.md) | Linie und vorgeschlagene physikalische Adressen |
+| [docs/01_topologie.md](docs/01_topologie.md) | Linien 1.1 TP, 1.2 RF und 1.3 Außenbereich sowie physikalische Adressen |
 | [docs/02_geraeteliste.md](docs/02_geraeteliste.md) | vorhandene KNX-Hardware |
 | [docs/03_raeume_funktionen.md](docs/03_raeume_funktionen.md) | Räume und Ausbaustufen |
 | [docs/04_gruppenadressen.md](docs/04_gruppenadressen.md) | Adresskonzept und Benennungsregeln |
@@ -41,10 +52,10 @@ Die vollständige, sichere Importreihenfolge steht in [ets-import/ETS_IMPORT.md]
 
 | Datei | Verwendung |
 |---|---|
-| [ets-import/gruppenadressen.csv](ets-import/gruppenadressen.csv) | direkt in ETS importieren |
+| [ets-import/gruppenadressen.xml](ets-import/gruppenadressen.xml) | nativer Gruppenadress-Import für ETS 6 |
 | [ets-import/gruppenadressen-planung.csv](ets-import/gruppenadressen-planung.csv) | DPT- und Planungsreferenz |
 | [ets-import/physikalische-adressen.csv](ets-import/physikalische-adressen.csv) | Geräte- und Adresscheckliste |
-| [ets-import/ETS_IMPORT.md](ets-import/ETS_IMPORT.md) | Importanleitung und Regeln |
+| [ets-import/ETS_IMPORT.md](ets-import/ETS_IMPORT.md) | Importanleitung, Topologie und Regeln |
 
 ## Schutzkonzept
 
@@ -57,6 +68,7 @@ Die geplante Verteilung besteht aus zwei getrennten RCD-Gruppen mit jeweils bis 
 - Die Geräteobjekte und deren DPTs aus der jeweiligen Produktdatenbank sind verbindlich.
 - Home Assistant darf ergänzen, aber keine Schutz- oder Grundfunktion voraussetzen.
 - Jedes Betriebsmittel, jede Leitung und jeder Aktorkanal erhält eine eindeutige Kennzeichnung.
+- Jedes Medium und jeder Bereich erhält eine nachvollziehbare Linie: TP innen, RF und optional TP außen.
 - Planungswerte werden nach Abschluss durch die tatsächliche Verdrahtung und die elektrischen Messwerte ersetzt.
 
 ## Aktueller Status
