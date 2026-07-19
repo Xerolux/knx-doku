@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<GroupAddress-Export xmlns="http://knx.org/xml/ga-export/01">
+  <GroupRange Name="Zentral" RangeStart="1" RangeEnd="2047">
+    <GroupRange Name="Haus" RangeStart="1" RangeEnd="255">
+      <GroupAddress Name="Haus verlassen" Address="0/0/1" />
+      <GroupAddress Name="Nachtmodus" Address="0/0/2" />
+      <GroupAddress Name="Urlaub" Address="0/0/3" />
+      <GroupAddress Name="Panik" Address="0/0/4" />
+    </GroupRange>
+    <GroupRange Name="Rollladen" RangeStart="256" RangeEnd="511">
+      <GroupAddress Name="Alle Rollladen Auf / Ab" Address="0/1/0" />
+      <GroupAddress Name="Alle Rollladen Stop / Schritt" Address="0/1/1" />
+    </GroupRange>
+    <GroupRange Name="Beschattung" RangeStart="512" RangeEnd="767">
+      <GroupAddress Name="Beschattungsautomatik Freigabe" Address="0/2/0" />
+      <GroupAddress Name="Beschattungsautomatik Status" Address="0/2/1" />
+      <GroupAddress Name="Markise Einfahren Schutz" Address="0/2/2" />
+      <GroupAddress Name="Wetterschutz Aktiv Status" Address="0/2/3" />
+    </GroupRange>
+    <GroupRange Name="Heizung" RangeStart="768" RangeEnd="1023">
+      <GroupAddress Name="Heizung Zentral Betriebsart Soll" Address="0/3/0" />
+      <GroupAddress Name="Heizung Zentral Betriebsart Status" Address="0/3/1" />
+    </GroupRange>
+  </GroupRange>
+  <GroupRange Name="Licht" RangeStart="2048" RangeEnd="4095">
+    <GroupRange Name="Wohnzimmer" RangeStart="2048" RangeEnd="2303">
+      <GroupAddress Name="Wohnzimmer Licht Schalten" Address="1/0/0" />
+      <GroupAddress Name="Wohnzimmer Licht Status" Address="1/0/1" />
+    </GroupRange>
+    <GroupRange Name="Esszimmer" RangeStart="2304" RangeEnd="2559">
+      <GroupAddress Name="Esszimmer Licht Schalten" Address="1/1/0" />
+      <GroupAddress Name="Esszimmer Licht Status" Address="1/1/1" />
+    </GroupRange>
+    <GroupRange Name="Küche" RangeStart="2560" RangeEnd="2815">
+      <GroupAddress Name="Küche Licht Schalten" Address="1/2/0" />
+      <GroupAddress Name="Küche Licht Status" Address="1/2/1" />
+    </GroupRange>
+    <GroupRange Name="Arbeitszimmer" RangeStart="2816" RangeEnd="3071">
+      <GroupAddress Name="Arbeitszimmer Licht Schalten" Address="1/3/0" />
+      <GroupAddress Name="Arbeitszimmer Licht Status" Address="1/3/1" />
+    </GroupRange>
+    <GroupRange Name="Gang" RangeStart="3072" RangeEnd="3327">
+      <GroupAddress Name="Gang Licht Schalten" Address="1/4/0" />
+      <GroupAddress Name="Gang Licht Status" Address="1/4/1" />
+    </GroupRange>
+    <GroupRange Name="Schlafzimmer" RangeStart="3328" RangeEnd="3583">
+      <GroupAddress Name="Schlafzimmer Licht Schalten" Address="1/5/0" />
+      <GroupAddress Name="Schlafzimmer Licht Status" Address="1/5/1" />
+    </GroupRange>
+    <GroupRange Name="Badezimmer" RangeStart="3584" RangeEnd="3839">
+      <GroupAddress Name="Badezimmer Licht Schalten" Address="1/6/0" />
+      <GroupAddress Name="Badezimmer Licht Status" Address="1/6/1" />
+    </GroupRange>
+    <GroupRange Name="Bad vorne" RangeStart="3840" RangeEnd="4095">
+      <GroupAddress Name="Bad vorne Licht Schalten" Address="1/7/0" />
+      <GroupAddress Name="Bad vorne Licht Status" Address="1/7/1" />
+    </GroupRange>
+  </GroupRange>
+  <GroupRange Name="Beschattung" RangeStart="4096" RangeEnd="6143">
+    <GroupRange Name="Wohnzimmer" RangeStart="4096" RangeEnd="4351">
+      <GroupAddress Name="Wohnzimmer Rollladen links Auf Ab" Address="2/0/0" />
+      <GroupAddress Name="Wohnzimmer Rollladen links Stop" Address="2/0/1" />
+      <GroupAddress Name="Wohnzimmer Rollladen links Position Soll" Address="2/0/2" />
+      <GroupAddress Name="Wohnzimmer Rollladen links Position Status" Address="2/0/3" />
+      <GroupAddress Name="Wohnzimmer Rollladen rechts Auf Ab" Address="2/0/10" />
+      <GroupAddress Name="Wohnzimmer Rollladen rechts Stop" Address="2/0/11" />
+      <GroupAddress Name="Wohnzimmer Rollladen rechts Position Soll" Address="2/0/12" />
+      <GroupAddress Name="Wohnzimmer Rollladen rechts Position Status" Address="2/0/13" />
+    </GroupRange>
+    <GroupRange Name="Arbeitszimmer" RangeStart="4352" RangeEnd="4607">
+      <GroupAddress Name="Arbeitszimmer Rollladen Auf Ab" Address="2/1/0" />
+      <GroupAddress Name="Arbeitszimmer Rollladen Stop" Address="2/1/1" />
+      <GroupAddress Name="Arbeitszimmer Rollladen Position Soll" Address="2/1/2" />
+      <GroupAddress Name="Arbeitszimmer Rollladen Position Status" Address="2/1/3" />
+    </GroupRange>
+    <GroupRange Name="Schlafzimmer" RangeStart="4608" RangeEnd="4863">
+      <GroupAddress Name="Schlafzimmer Rollladen links Auf Ab" Address="2/2/0" />
+      <GroupAddress Name="Schlafzimmer Rollladen links Stop" Address="2/2/1" />
+      <GroupAddress Name="Schlafzimmer Rollladen links Position Soll" Address="2/2/2" />
+      <GroupAddress Name="Schlafzimmer Rollladen links Position Status" Address="2/2/3" />
+      <GroupAddress Name="Schlafzimmer Rollladen rechts Auf Ab" Address="2/2/10" />
+      <GroupAddress Name="Schlafzimmer Rollladen rechts Stop" Address="2/2/11" />
+      <GroupAddress Name="Schlafzimmer Rollladen rechts Position Soll" Address="2/2/12" />
+      <GroupAddress Name="Schlafzimmer Rollladen rechts Position Status" Address="2/2/13" />
+    </GroupRange>
+    <GroupRange Name="Badezimmer" RangeStart="4864" RangeEnd="5119">
+      <GroupAddress Name="Badezimmer Rollladen Auf Ab" Address="2/3/0" />
+      <GroupAddress Name="Badezimmer Rollladen Stop" Address="2/3/1" />
+      <GroupAddress Name="Badezimmer Rollladen Position Soll" Address="2/3/2" />
+      <GroupAddress Name="Badezimmer Rollladen Position Status" Address="2/3/3" />
+    </GroupRange>
+    <GroupRange Name="Markise" RangeStart="5120" RangeEnd="5375">
+      <GroupAddress Name="Markise Auf Ab" Address="2/4/0" />
+      <GroupAddress Name="Markise Stop" Address="2/4/1" />
+      <GroupAddress Name="Markise Position Soll" Address="2/4/2" />
+      <GroupAddress Name="Markise Position Status" Address="2/4/3" />
+      <GroupAddress Name="Markise Gesperrt" Address="2/4/4" />
+    </GroupRange>
+  </GroupRange>
+  <GroupRange Name="Heizung" RangeStart="6144" RangeEnd="8191">
+    <GroupRange Name="Wohnzimmer" RangeStart="6144" RangeEnd="6399">
+      <GroupAddress Name="Wohnzimmer Solltemperatur" Address="3/0/0" />
+      <GroupAddress Name="Wohnzimmer Isttemperatur" Address="3/0/1" />
+      <GroupAddress Name="Wohnzimmer Betriebsmodus" Address="3/0/2" />
+      <GroupAddress Name="Wohnzimmer Ventilstellung" Address="3/0/3" />
+      <GroupAddress Name="Wohnzimmer Fensterstatus Raum" Address="3/0/4" />
+    </GroupRange>
+    <GroupRange Name="Esszimmer" RangeStart="6400" RangeEnd="6655">
+      <GroupAddress Name="Esszimmer Solltemperatur" Address="3/1/0" />
+      <GroupAddress Name="Esszimmer Isttemperatur" Address="3/1/1" />
+      <GroupAddress Name="Esszimmer Betriebsmodus" Address="3/1/2" />
+      <GroupAddress Name="Esszimmer Ventilstellung" Address="3/1/3" />
+      <GroupAddress Name="Esszimmer Fensterstatus Raum" Address="3/1/4" />
+    </GroupRange>
+    <GroupRange Name="Küche" RangeStart="6656" RangeEnd="6911">
+      <GroupAddress Name="Küche Solltemperatur" Address="3/2/0" />
+      <GroupAddress Name="Küche Isttemperatur" Address="3/2/1" />
+      <GroupAddress Name="Küche Betriebsmodus" Address="3/2/2" />
+      <GroupAddress Name="Küche Ventilstellung" Address="3/2/3" />
+      <GroupAddress Name="Küche Fensterstatus Raum" Address="3/2/4" />
+    </GroupRange>
+    <GroupRange Name="Arbeitszimmer" RangeStart="6912" RangeEnd="7167">
+      <GroupAddress Name="Arbeitszimmer Solltemperatur" Address="3/3/0" />
+      <GroupAddress Name="Arbeitszimmer Isttemperatur" Address="3/3/1" />
+      <GroupAddress Name="Arbeitszimmer Betriebsmodus" Address="3/3/2" />
+      <GroupAddress Name="Arbeitszimmer Ventilstellung" Address="3/3/3" />
+      <GroupAddress Name="Arbeitszimmer Fensterstatus Raum" Address="3/3/4" />
+    </GroupRange>
+    <GroupRange Name="Gang" RangeStart="7168" RangeEnd="7423">
+      <GroupAddress Name="Gang Solltemperatur" Address="3/4/0" />
+      <GroupAddress Name="Gang Isttemperatur" Address="3/4/1" />
+      <GroupAddress Name="Gang Betriebsmodus" Address="3/4/2" />
+      <GroupAddress Name="Gang Ventilstellung" Address="3/4/3" />
+      <GroupAddress Name="Gang Fensterstatus Raum" Address="3/4/4" />
+    </GroupRange>
+    <GroupRange Name="Schlafzimmer" RangeStart="7424" RangeEnd="7679">
+      <GroupAddress Name="Schlafzimmer Solltemperatur" Address="3/5/0" />
+      <GroupAddress Name="Schlafzimmer Isttemperatur" Address="3/5/1" />
+      <GroupAddress Name="Schlafzimmer Betriebsmodus" Address="3/5/2" />
+      <GroupAddress Name="Schlafzimmer Ventilstellung" Address="3/5/3" />
+      <GroupAddress Name="Schlafzimmer Fensterstatus Raum" Address="3/5/4" />
+    </GroupRange>
+    <GroupRange Name="Badezimmer" RangeStart="7680" RangeEnd="7935">
+      <GroupAddress Name="Badezimmer Solltemperatur" Address="3/6/0" />
+      <GroupAddress Name="Badezimmer Isttemperatur" Address="3/6/1" />
+      <GroupAddress Name="Badezimmer Betriebsmodus" Address="3/6/2" />
+      <GroupAddress Name="Badezimmer Ventilstellung" Address="3/6/3" />
+      <GroupAddress Name="Badezimmer Fensterstatus Raum" Address="3/6/4" />
+    </GroupRange>
+    <GroupRange Name="Bad vorne" RangeStart="7936" RangeEnd="8191">
+      <GroupAddress Name="Bad vorne Solltemperatur" Address="3/7/0" />
+      <GroupAddress Name="Bad vorne Isttemperatur" Address="3/7/1" />
+      <GroupAddress Name="Bad vorne Betriebsmodus" Address="3/7/2" />
+      <GroupAddress Name="Bad vorne Ventilstellung" Address="3/7/3" />
+      <GroupAddress Name="Bad vorne Fensterstatus Raum" Address="3/7/4" />
+    </GroupRange>
+  </GroupRange>
+  <GroupRange Name="Wetter" RangeStart="8192" RangeEnd="10239">
+    <GroupRange Name="Allgemein" RangeStart="8192" RangeEnd="8447">
+      <GroupAddress Name="Außentemperatur" Address="4/0/0" />
+      <GroupAddress Name="Windgeschwindigkeit" Address="4/0/1" />
+      <GroupAddress Name="Regen" Address="4/0/2" />
+      <GroupAddress Name="Dämmerung" Address="4/0/3" />
+    </GroupRange>
+    <GroupRange Name="Helligkeit" RangeStart="8448" RangeEnd="8703">
+      <GroupAddress Name="Helligkeit Ost" Address="4/1/0" />
+      <GroupAddress Name="Helligkeit Süd" Address="4/1/1" />
+      <GroupAddress Name="Helligkeit West" Address="4/1/2" />
+    </GroupRange>
+    <GroupRange Name="Alarm" RangeStart="8704" RangeEnd="8959">
+      <GroupAddress Name="Windwarnung" Address="4/2/0" />
+      <GroupAddress Name="Windalarm" Address="4/2/1" />
+      <GroupAddress Name="Regenalarm" Address="4/2/2" />
+      <GroupAddress Name="Frostalarm" Address="4/2/3" />
+    </GroupRange>
+    <GroupRange Name="Beschattung" RangeStart="8960" RangeEnd="9215">
+      <GroupAddress Name="Sonne Ost Aktiv" Address="4/3/0" />
+      <GroupAddress Name="Sonne Süd Aktiv" Address="4/3/1" />
+      <GroupAddress Name="Sonne West Aktiv" Address="4/3/2" />
+      <GroupAddress Name="Beschattung Automatik Aktiv" Address="4/3/3" />
+    </GroupRange>
+  </GroupRange>
+  <GroupRange Name="Fenster" RangeStart="10240" RangeEnd="12287">
+    <GroupRange Name="Wohnzimmer" RangeStart="10240" RangeEnd="10495">
+      <GroupAddress Name="Wohnzimmer Fenstergriff 1 Status" Address="5/0/0" />
+      <GroupAddress Name="Wohnzimmer Fenstergriff 2 Status" Address="5/0/1" />
+      <GroupAddress Name="Wohnzimmer Fenstergriff 3 Status" Address="5/0/2" />
+      <GroupAddress Name="Wohnzimmer Fensterstatus Raum" Address="5/0/10" />
+    </GroupRange>
+    <GroupRange Name="Küche" RangeStart="10496" RangeEnd="10751">
+      <GroupAddress Name="Küche Fenstergriff 1 Status" Address="5/1/0" />
+      <GroupAddress Name="Küche Fenstergriff 2 Status" Address="5/1/1" />
+      <GroupAddress Name="Küche Fensterstatus Raum" Address="5/1/10" />
+    </GroupRange>
+    <GroupRange Name="Bad vorne" RangeStart="10752" RangeEnd="11007">
+      <GroupAddress Name="Bad vorne Fenstergriff Status" Address="5/2/0" />
+      <GroupAddress Name="Bad vorne Fensterstatus Raum" Address="5/2/10" />
+    </GroupRange>
+    <GroupRange Name="Arbeitszimmer" RangeStart="11008" RangeEnd="11263">
+      <GroupAddress Name="Arbeitszimmer Fenstergriff 1 Status" Address="5/3/0" />
+      <GroupAddress Name="Arbeitszimmer Fenstergriff 2 Status" Address="5/3/1" />
+      <GroupAddress Name="Arbeitszimmer Fensterstatus Raum" Address="5/3/10" />
+    </GroupRange>
+    <GroupRange Name="Schlafzimmer" RangeStart="11264" RangeEnd="11519">
+      <GroupAddress Name="Schlafzimmer Fenstergriff 1 Status" Address="5/4/0" />
+      <GroupAddress Name="Schlafzimmer Fenstergriff 2 Status" Address="5/4/1" />
+      <GroupAddress Name="Schlafzimmer Fensterstatus Raum" Address="5/4/10" />
+    </GroupRange>
+    <GroupRange Name="Badezimmer" RangeStart="11520" RangeEnd="11775">
+      <GroupAddress Name="Badezimmer Fenstergriff 1 Status" Address="5/5/0" />
+      <GroupAddress Name="Badezimmer Fenstergriff 2 Status" Address="5/5/1" />
+      <GroupAddress Name="Badezimmer Fensterstatus Raum" Address="5/5/10" />
+    </GroupRange>
+  </GroupRange>
+  <GroupRange Name="Präsenz" RangeStart="12288" RangeEnd="14335">
+    <GroupRange Name="Gang" RangeStart="12288" RangeEnd="12543">
+      <GroupAddress Name="Gang Präsenz" Address="6/0/0" />
+      <GroupAddress Name="Gang Bewegung" Address="6/0/1" />
+      <GroupAddress Name="Gang Helligkeit" Address="6/0/2" />
+    </GroupRange>
+  </GroupRange>
+  <GroupRange Name="Szenen" RangeStart="14336" RangeEnd="16383">
+    <GroupRange Name="Allgemein" RangeStart="14336" RangeEnd="14591">
+      <GroupAddress Name="Szene Fernsehen" Address="7/0/0" />
+      <GroupAddress Name="Szene Essen" Address="7/0/1" />
+      <GroupAddress Name="Szene Gute Nacht" Address="7/0/2" />
+      <GroupAddress Name="Szene Haus verlassen" Address="7/0/3" />
+    </GroupRange>
+  </GroupRange>
+  <GroupRange Name="Status" RangeStart="16384" RangeEnd="18431">
+    <GroupRange Name="Allgemein" RangeStart="16384" RangeEnd="16639">
+      <GroupAddress Name="Status Fenster offen gesamt" Address="8/0/0" />
+      <GroupAddress Name="Status Wetterschutz aktiv" Address="8/0/1" />
+      <GroupAddress Name="Status Urlaub aktiv" Address="8/0/2" />
+      <GroupAddress Name="Status Nachtmodus aktiv" Address="8/0/3" />
+      <GroupAddress Name="Status Haus verlassen aktiv" Address="8/0/4" />
+    </GroupRange>
+  </GroupRange>
+  <GroupRange Name="Home Assistant" RangeStart="18432" RangeEnd="20479">
+    <GroupRange Name="Status" RangeStart="18432" RangeEnd="18687">
+      <GroupAddress Name="HA Status Online" Address="9/0/0" />
+      <GroupAddress Name="HA Zentral Anzeige" Address="9/0/1" />
+    </GroupRange>
+  </GroupRange>
+</GroupAddress-Export>
