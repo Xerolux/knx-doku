@@ -1,99 +1,66 @@
 # 01 – KNX-Topologie
 
-## Vorgesehene Linienstruktur
+## Aktueller Aufbau
 
-Für das Wohnhaus wird Bereich 1 mit drei logisch getrennten Linien vorgesehen:
-
-```text
-Bereich 1
-├── Linie 1.1 KNX TP – Innenbereich und Hauptverteilung
-├── Linie 1.2 KNX RF – Funkgeräte
-└── Linie 1.3 KNX TP – Außenbereich / Reserve
-```
-
-Die Linie **1.1** enthält die zentralen REG-Geräte, Innenraumsensoren und Bedienstellen. Die Linie **1.2** ist die KNX-RF-Linie für Fenstergriffe und spätere Funkgeräte. Die Linie **1.3** ist für Außenanlagen, Garage, Gartenhaus, Tor, Außenbeleuchtung oder spätere Erweiterungen reserviert.
-
-## Linienkoppler und Infrastruktur
+Das ETS-Projekt verwendet aktuell eine aktive TP-Linie mit einem automatisch angelegten RF-Segment. Eine zusätzliche TP-Außenlinie bleibt als Zukunftsreserve bestehen.
 
 ```text
-1.1.1   MDT STR-0640.01 Busspannungsversorgung Diagnose
-1.1.2   MDT SCN-IP100.03 IP Router Data Secure
-1.1.3   MDT RF-LK001.02 KNX RF+ Medien-/Linienkoppler zur Linie 1.2
-
-1.3.1   KNX TP Linienkoppler für Außenlinie (bei Ausbau)
-1.3.2   separate KNX Busspannungsversorgung Außenlinie (bei Ausbau)
+0.0 IP Backbone
+└── 1.0 IP Hauptlinie
+    ├── 1.1 TP Hauptlinie
+    │   └── 1.1 RF Segment 1
+    └── 1.3 TP Außen (Reserve)
 ```
 
-Die Außenlinie wird erst bei tatsächlichem Ausbau bestückt. Eine eigene Linie bietet galvanische und telegrammtechnische Trennung und begrenzt Fehler im Außenbereich auf diesen Abschnitt.
+Die Linie **1.1** enthält die aktuell vorhandenen REG-Geräte, Sensoren und Bedienstellen. Der Gira RF Multi/TP Medienkoppler erzeugt in ETS automatisch das RF-Segment unterhalb der TP-Linie. Eine separate Linie 1.2 wird deshalb nicht verwendet.
 
-## Linie 1.1 – Innenbereich und Hauptverteilung
+Die Linie **1.3** bleibt vorerst leer. Wetterstation und andere bereits vorhandene Außengeräte liegen bis zu einem späteren Ausbau weiterhin auf Linie 1.1.
+
+## Aktuell angelegte Geräte
 
 ```text
-1.1.10  MDT SCN-LOG1.02 Logikmodul
-1.1.11  MDT SCN-SAFE.01 Sicherheitsmodul
-1.1.12  MDT SCN-RTC20.01 Schaltuhr
-
-1.1.20  MDT AKS-2416.03 Schaltaktor 24-fach
-1.1.21  MDT AMI-1216.02 Schaltaktor 12-fach mit Strommessung
-1.1.22  MDT AZI-0616.01 Schaltaktor 6-fach mit Wirkleistungsmessung
-1.1.23  MDT JAL-0810M.02 Jalousieaktor 8-fach
-1.1.24  MDT AKH-0800.02 Heizungsaktor 8-fach
-
-1.1.30  MDT AKD-0424V.02 RGBW LED Controller 4 Kanal
-1.1.31  MDT AKD-0424R.02 RGBW LED Controller 4 Kanal REG
-1.1.32  MDT SCN-DALI64.03 DALI Control IP
-
-1.1.40  Gira Wetterstation Pro / Wetterstation
-1.1.41  MDT SCN-P360D4.03 Präsenzmelder Decke
-
-1.1.50  MDT Glastaster Smart II Wohnzimmer
-1.1.51  MDT Glastaster Smart II Esszimmer
-1.1.52  MDT Glastaster Smart II Küche
-1.1.53  MDT Glastaster Smart II Arbeitszimmer
-1.1.54  MDT Glastaster Smart II Gang 1
-1.1.55  MDT Glastaster Smart II Gang 2
-1.1.56  MDT Glastaster Smart II Gang 3
-1.1.57  MDT Glastaster Smart II Schlafzimmer
-1.1.58  MDT Glastaster Smart II Badezimmer
-1.1.59  MDT Glastaster Smart II Bad vorne
+1.1.0   MDT SCN-IP100.03 IP Router Secure
+1.1.1   Enertex KNX PowerSupply 960
+1.1.2   Gira 5114 00 RF Multi/TP Medienkoppler
+1.1.3   MDT AKS-2416.03 Schaltaktor 24-fach
+1.1.4   MDT JAL-0810M.02 Jalousieaktor 8-fach
+1.1.5   MDT AKH-0800.02 Heizungsaktor 8-fach – Gerät 1
+1.1.6   MDT AKH-0800.02 Heizungsaktor 8-fach – Gerät 2
+1.1.7   MDT SCN-RTC20.01 Schaltuhr
+1.1.8   MDT SCN-LOG1.02 Logikmodul
+1.1.9   MDT SCN-SAFE.01 Sicherheitsmodul
+1.1.10  MDT VC-EASY.02 VisuControl Easy II
+1.1.40  Gira 2074 00 Wetterstation Plus
 ```
 
-## Linie 1.2 – KNX RF
+Weitere Geräte werden erst ergänzt, wenn sie tatsächlich vorhanden oder eindeutig festgelegt sind.
 
-```text
-1.2.1   RF Fenstergriff Wohnzimmer 1
-1.2.2   RF Fenstergriff Wohnzimmer 2
-1.2.3   RF Fenstergriff Wohnzimmer 3
-1.2.4   RF Fenstergriff Küche 1
-1.2.5   RF Fenstergriff Küche 2
-1.2.6   RF Fenstergriff Bad vorne
-1.2.7   RF Fenstergriff Arbeitszimmer 1
-1.2.8   RF Fenstergriff Arbeitszimmer 2
-1.2.9   RF Fenstergriff Schlafzimmer 1
-1.2.10  RF Fenstergriff Schlafzimmer 2
-1.2.11  RF Fenstergriff Badezimmer 1
-1.2.12  RF Fenstergriff Badezimmer 2
-```
+## KNX RF
+
+Der Gira 5114 00 verbindet KNX TP und KNX RF. ETS legt dafür automatisch **RF Segment 1** unterhalb der Linie 1.1 an.
+
+RF-Geräte werden später direkt in dieses RF-Segment eingefügt. Ihre konkrete physikalische Adresse wird erst bei der Inbetriebnahme in ETS festgelegt. Eine eigene manuelle Linie 1.2 ist nicht erforderlich.
 
 ## Linie 1.3 – Außenbereich / Reserve
 
-Vorgesehene mögliche Teilnehmer:
+Die Außenlinie wird aktuell nicht bestückt. Sie ist für einen späteren Ausbau vorgesehen, etwa für:
 
 ```text
-1.3.10  Wetterstation außen, falls physikalisch auf Außenlinie umgesetzt
-1.3.20  Außenbeleuchtung / Außenaktor
-1.3.21  Garten- oder Garagenaktor
-1.3.30  Tor- oder Türsteuerung
-1.3.40  Außenbewegungs- oder Präsenzmelder
+- separate Außenaktoren
+- Garage oder Gartenhaus
+- Tor- und Türsteuerung
+- Außenmelder
+- zusätzliche Wetter- oder Umweltsensorik
 ```
 
-Die konkreten Adressen werden erst vergeben, wenn die Geräte feststehen. Außenleitungen müssen entsprechend Überspannungsschutz, Leitungsführung und Potentialausgleich geplant werden.
+Bei tatsächlichem Ausbau benötigt die Linie einen passenden Linienkoppler und eine eigene KNX-Busspannungsversorgung. Außenleitungen müssen zusätzlich hinsichtlich Überspannungsschutz, Leitungsführung und Potentialausgleich geplant werden.
 
 ## Adresskonventionen
 
-- `1.1.x`: Innenbereich, Hauptverteilung und fest verdrahtete TP-Geräte.
-- `1.2.x`: ausschließlich KNX-RF-Teilnehmer.
-- `1.3.x`: Außenbereich, Nebengebäude und spätere Erweiterungen.
-- REG-Geräte erhalten niedrige Adressen, Sensoren und Bedienstellen getrennte Nummernbereiche.
-- Reservebereiche bleiben bewusst frei.
-- Jede TP-Linie benötigt bei tatsächlichem Ausbau eine passende Busspannungsversorgung; Koppler werden entsprechend der ETS-Topologie eingefügt und parametriert.
+- `1.1.0`: Koppler-/Routeradresse des MDT IP-Routers.
+- `1.1.1–1.1.19`: Infrastruktur, REG-Geräte, Aktoren und Systemmodule.
+- `1.1.20–1.1.39`: Reserve für weitere Innenraumsensoren und Bedienstellen.
+- `1.1.40–1.1.59`: Wetter- und Außengeräte, solange keine eigene Außenlinie verwendet wird.
+- `1.3.x`: ausschließlich für den späteren Ausbau der TP-Außenlinie.
+- Physikalische Adressen werden nicht doppelt vergeben.
+- Das ETS-Projekt ist die verbindliche Quelle für die tatsächlich programmierten Adressen.
