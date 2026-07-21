@@ -6,9 +6,9 @@ Das Projekt verwendet den ETS-Stil **3 Ebenen**:
 
 `Hauptgruppe / Mittelgruppe / Untergruppe`
 
-Die Datei [../ets-import/gruppenadressen.xml](../ets-import/gruppenadressen.xml) verwendet das native ETS-/KNX-XML-Format `GroupAddress-Export` und kann direkt in ETS 6 importiert werden. Die DPT-Referenz steht getrennt in [../ets-import/gruppenadressen-planung.csv](../ets-import/gruppenadressen-planung.csv).
+Die Datei [../ets-import/gruppenadressen.xml](../ets-import/gruppenadressen.xml) enthält die bisherige Grundstruktur. Die zusätzliche Datei [../ets-import/gruppenadressen-sicherheit.xml](../ets-import/gruppenadressen-sicherheit.xml) ergänzt die Gruppenadressen für den Gira-Rauchwarnmelder und kann anschließend separat in ETS 6 importiert werden.
 
-Gruppenadressen sind unabhängig von der physikalischen Linie. Geräte auf KNX TP 1.1, KNX RF 1.2 und der optionalen Außenlinie 1.3 können dieselben Gruppenadressen verwenden, sofern ihre Kommunikationsobjekte passend verknüpft sind.
+Gruppenadressen sind unabhängig von der physikalischen Linie. Geräte auf KNX TP, KNX RF und der optionalen Außenlinie können dieselben Gruppenadressen verwenden, sofern ihre Kommunikationsobjekte passend verknüpft sind.
 
 ## Hauptgruppen
 
@@ -24,8 +24,21 @@ Gruppenadressen sind unabhängig von der physikalischen Linie. Geräte auf KNX T
 | 7 | Szenen | Szenenaufrufe |
 | 8 | Status | hausweite Sammelmeldungen |
 | 9 | Home Assistant | optionale Diagnose- und Anzeigeobjekte |
+| 10 | Sicherheit | Rauchalarm und Zustände des Gira KNX-Rauchwarnmoduls |
 
-Die Hauptgruppen 10 bis 15 bleiben als Reserve für Energie, Störungen, Lüftung/Kühlung, Außenanlagen und spätere Erweiterungen frei.
+Die Hauptgruppen 11 bis 15 bleiben als Reserve für Energie, allgemeine Störungen, Lüftung/Kühlung, Außenanlagen und spätere Erweiterungen frei.
+
+## Sicherheit / Rauchwarnmelder
+
+```text
+10/0/0  Rauchalarm
+10/0/1  Rauchwarnmelder Störung
+10/0/2  Rauchwarnmelder Batterie schwach
+10/0/3  Rauchwarnmelder Verschmutzung
+10/0/4  Rauchwarnmelder Testalarm
+```
+
+Die tatsächliche Verknüpfung erfolgt nach dem Einfügen der Gira-Produktdatenbank anhand der dort sichtbaren Kommunikationsobjekte. Nicht vorhandene Objekte bleiben unverknüpft.
 
 ## Konventionen
 
@@ -50,4 +63,4 @@ Zentrale Befehle sind konfliktfrei angelegt:
 - Heizung: eine zentrale **Betriebsart Soll** und eine **Betriebsart Status** mit DPT 20.102.
 - Rollläden: ein zentraler Auf-/Ab-Befehl sowie ein separater Stop-/Schritt-Befehl.
 
-Die vollständige Liste steht in der XML-Importdatei und in [12 – Zentralfunktionen](12_zentralfunktionen.md).
+Die vollständige Liste steht in den XML-Importdateien und in [12 – Zentralfunktionen](12_zentralfunktionen.md).
