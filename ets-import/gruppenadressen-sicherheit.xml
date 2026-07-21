@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<GroupAddress-Export xmlns="http://knx.org/xml/ga-export/01">
+  <GroupRange Name="Sicherheit" RangeStart="20480" RangeEnd="22527">
+    <GroupRange Name="Rauchwarnmelder" RangeStart="20480" RangeEnd="20735">
+      <GroupAddress Name="Rauchalarm" Address="10/0/0" />
+      <GroupAddress Name="Rauchwarnmelder Störung" Address="10/0/1" />
+      <GroupAddress Name="Rauchwarnmelder Batterie schwach" Address="10/0/2" />
+      <GroupAddress Name="Rauchwarnmelder Verschmutzung" Address="10/0/3" />
+      <GroupAddress Name="Rauchwarnmelder Testalarm" Address="10/0/4" />
+    </GroupRange>
+  </GroupRange>
+</GroupAddress-Export>
