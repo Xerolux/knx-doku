@@ -14,7 +14,7 @@ Das ETS-Projekt verwendet aktuell eine aktive TP-Linie mit einem automatisch ang
 
 Die Linie **1.1** enthält die aktuell vorhandenen REG-Geräte, Sensoren und Bedienstellen. Der Gira RF Multi/TP Medienkoppler erzeugt in ETS automatisch das RF-Segment unterhalb der TP-Linie. Eine separate Linie 1.2 wird deshalb nicht verwendet.
 
-Die Linie **1.3** bleibt vorerst leer. Wetterstation und andere bereits vorhandene Außengeräte liegen bis zu einem späteren Ausbau weiterhin auf Linie 1.1.
+Die Linie **1.3** bleibt vorerst leer. Wetterstation, Rauchwarnmelder-KNX-Modul und andere bereits vorhandene Geräte liegen bis zu einem späteren Ausbau weiterhin auf Linie 1.1.
 
 ## Aktuell angelegte Geräte
 
@@ -31,6 +31,7 @@ Die Linie **1.3** bleibt vorerst leer. Wetterstation und andere bereits vorhande
 1.1.9   MDT SCN-SAFE.01 Sicherheitsmodul
 1.1.10  MDT VC-EASY.02 VisuControl Easy II
 1.1.40  Gira 2074 00 Wetterstation Plus
+1.1.41  Gira 2343 00 KNX-Modul für Rauchwarnmelder Dual Q
 ```
 
 Weitere Geräte werden erst ergänzt, wenn sie tatsächlich vorhanden oder eindeutig festgelegt sind.
@@ -60,7 +61,7 @@ Bei tatsächlichem Ausbau benötigt die Linie einen passenden Linienkoppler und 
 - `1.1.0`: Koppler-/Routeradresse des MDT IP-Routers.
 - `1.1.1–1.1.19`: Infrastruktur, REG-Geräte, Aktoren und Systemmodule.
 - `1.1.20–1.1.39`: Reserve für weitere Innenraumsensoren und Bedienstellen.
-- `1.1.40–1.1.59`: Wetter- und Außengeräte, solange keine eigene Außenlinie verwendet wird.
+- `1.1.40–1.1.59`: Wetter-, Sicherheits- und Außengeräte, solange keine eigene Außenlinie verwendet wird.
 - `1.3.x`: ausschließlich für den späteren Ausbau der TP-Außenlinie.
 - Physikalische Adressen werden nicht doppelt vergeben.
 - Das ETS-Projekt ist die verbindliche Quelle für die tatsächlich programmierten Adressen.
