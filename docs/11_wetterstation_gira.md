@@ -1,5 +1,9 @@
 # 11 – Gira Wetterstation und Beschattung
 
+## Aktueller ETS-Stand
+
+Die Gira Wetterstation ist unter `1.1.40` als **Wetterstation Plus** mit der ETS-Applikation **B00D21** angelegt. Die genaue Bestellnummer und der vollständige Programmierstand müssen noch mit dem realen Gerät abgeglichen werden.
+
 ## Ziel
 
 Die Wetterstation ist ein zentrales Schutzgerät. Wetter- und Schutzfunktionen sollen direkt in KNX laufen und nicht von Home Assistant abhängig sein.
@@ -56,4 +60,4 @@ Die Werte sind Startwerte und müssen an die reale Markise und den Montageort an
 
 ## ETS-Hinweis
 
-Die Ausgänge der Wetterstation werden mit Logikmodul und Jalousieaktor verknüpft. Der Wetterschutz muss auch dann funktionieren, wenn Home Assistant ausgeschaltet ist.
+Die Ausgänge der Wetterstation werden mit Logikmodul und Jalousieaktor verknüpft. Der Wetterschutz muss auch dann funktionieren, wenn Home Assistant ausgeschaltet ist. Vor der Freigabe sind die sichtbaren Kommunikationsobjekte der tatsächlich eingesetzten Gira-Applikation B00D21 mit den vorgesehenen DPTs abzugleichen.
