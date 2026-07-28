@@ -1,80 +1,95 @@
 # 10 – MDT Glastaster Smart II Bedienkonzept
 
-## Grundidee
+## Aktueller Gerätebestand
 
-Die Glastaster sollen nicht nur Licht schalten, sondern auch die Rollläden im jeweiligen Raum bedienen.
+Im ETS-Projekt sind die MDT Glastaster II Smart mit Temperatursensor unter `1.1.20` bis `1.1.29` angelegt. Die Geräte `1.1.20` bis `1.1.28` sind programmiert; der vollständige Programmierstand von `1.1.29` muss noch geprüft werden.
 
-Wichtig: Die Glastaster bekommen dafür keine eigenen Rollladen-Gruppenadressen. Sie senden direkt auf die Gruppenadressen der jeweiligen Rollläden.
+Der Taster `1.1.20` ist dem Eingang beziehungsweise Gang zugeordnet und dient aktuell als Referenz für das Bedienkonzept.
 
-## Wohnzimmer
+## Taster 1.1.20 – Zentral Licht
 
-Der Wohnzimmer-Glastaster steuert:
+Die Tasten 1/2 sind als **Zwei-Tastenfunktion – Schalten** parametriert:
 
-- Wohnzimmer Licht
-- Rollladen Wohnzimmer links
-- Rollladen Wohnzimmer rechts
-- Markise
-- Szenen / Reserve
+| Taste | Beschriftung | Sendewert |
+|---|---|---:|
+| links | Ein | 1 |
+| rechts | Aus | 0 |
 
-Vorschlag Tastenbelegung:
+Die Tastenbelegung ist **Ein / Aus**. Beide Tasten verwenden dasselbe Kommunikationsobjekt und dieselbe Gruppenadresse:
 
-| Taste | Kurz drücken | Lang drücken |
-|---|---|---|
-| 1 | Licht Wohnzimmer umschalten | Reserve |
-| 2 | Rollladen links hoch/runter | Stop / Position |
-| 3 | Rollladen rechts hoch/runter | Stop / Position |
-| 4 | Markise aus/ein | Stop / Position |
-| 5 | Szene Fernsehen | Reserve |
-| 6 | Zentral Wohnzimmer | Reserve |
+```text
+1.1.20 Objekt 0  T1/2: Alle Lichter – Schalten Ein/Aus
+    -> 0/4/0 Alle Lichter schalten
+```
 
-## Arbeitszimmer
+Das Objekt `T1/2: Alle Lichter – Status für Anzeige` bleibt zunächst frei. Ein einzelner Statuswert wäre bei mehreren unabhängig geschalteten Lichtkreisen nicht eindeutig. Später kann eine Logik einen definierten Sammelstatus erzeugen, beispielsweise „mindestens ein Licht ist an“.
 
-- Licht Arbeitszimmer
-- Rollladen Arbeitszimmer
+## Zeit und Datum
 
-## Schlafzimmer
+Für die Anzeige wird der kombinierte Datum-/Uhrzeitwert bevorzugt:
 
-- Licht Schlafzimmer
-- Rollladen Schlafzimmer links
-- Rollladen Schlafzimmer rechts
+```text
+0/5/2 Datum/Uhrzeit
+    -> 1.1.20 Objekt 114 Uhrzeit/Datum – aktuelle Werte empfangen
+```
 
-## Badezimmer
+Alternativ kann nur die Uhrzeit verwendet werden:
 
-- Licht Badezimmer
-- Rollladen Badezimmer
+```text
+0/5/0 Uhrzeit
+    -> 1.1.20 Objekt 112 Uhrzeit – aktuellen Wert empfangen
+```
 
-## Esszimmer
+Für die normale Anzeige ist einer der beiden Wege ausreichend. Der Zeitmaster und die genaue Parametrierung sind in [19 – Zeit, Datum, Temperatur und Display](19_zeit_datum_temperatur.md) beschrieben.
 
-- Licht Esszimmer
-- optional Szene Essen
-- keine Beschattung geplant
+## Temperatur
 
-## Küche
+Der Glastaster `1.1.20` besitzt einen internen Temperatursensor. In ETS muss unter **Temperaturmessung / Grundeinstellung** die Messung aktiviert sein. Für die lokale Anzeige wird die interne Temperatur in der Info- beziehungsweise Standbyanzeige ausgewählt.
 
-- Licht Küche
-- optional Szene Küche
-- keine Beschattung geplant
+Soll der Wert auf dem KNX-Bus verfügbar sein, wird das Sendeobjekt der gemessenen Temperatur mit der Isttemperaturadresse des Raumes verbunden. Für Eingang/Gang ist vorgesehen:
 
-## Gang
+```text
+1.1.20 gemessene Temperatur senden
+    -> 3/4/1 Gang Isttemperatur
+```
 
-Drei Glastaster im Gang:
+Vor der endgültigen Verknüpfung ist zu bestätigen, dass `1.1.20` dauerhaft dem Bereich Gang zugeordnet bleibt.
 
-- Ganglicht
-- Zentral Aus
-- Nachtmodus
-- Anwesenheit / Abwesenheit
-- optional alle Rollläden hoch/runter
+## Display-Standby
 
-## ETS-Hinweis
+Empfohlenes Verhalten:
 
-Die Kommunikationsobjekte der Taster werden direkt mit den vorhandenen Gruppenadressen verbunden:
+- Display nach einer festgelegten Zeit in Standby versetzen, beispielsweise nach 20 Sekunden.
+- Standbyanzeige dunkel beziehungsweise Display aus.
+- Der erste Tastendruck weckt nur das Display.
+- Der zweite Tastendruck führt die eigentliche Funktion aus.
+
+Alternativ kann der erste Tastendruck das Display aufwecken und gleichzeitig schalten. Das ist schneller, kann bei einem dunklen Display aber zu unbeabsichtigten Befehlen führen.
+
+## Raumbezogene Funktionen
+
+Die Glastaster sollen je Raum Licht, Beschattung und Statusanzeigen bedienen. Sie erhalten dafür keine zusätzlichen, tastereigenen Gruppenadressen, sondern verwenden die Funktionsadressen des jeweiligen Raumes.
 
 Beispiel Wohnzimmer Rollladen links:
 
 ```text
-Taster Objekt Auf/Ab  -> 2/0/0 Wohnzimmer Rollladen links Auf Ab
-Taster Objekt Stop    -> 2/0/1 Wohnzimmer Rollladen links Stop
+Taster Objekt Auf/Ab   -> 2/0/0 Wohnzimmer Rollladen links Auf Ab
+Taster Objekt Stop     -> 2/0/1 Wohnzimmer Rollladen links Stop
 Taster Objekt Position -> 2/0/2 Wohnzimmer Rollladen links Position Soll
 ```
 
-Dadurch bleiben Aktor, Taster und Visualisierung sauber synchron.
+Dadurch bleiben Aktor, Taster und Visualisierung synchron.
+
+## Empfohlene weitere Zuordnung
+
+| Bereich | Funktionen |
+|---|---|
+| Wohnzimmer | Licht, beide Rollläden, Markise, Szene Fernsehen |
+| Arbeitszimmer | Licht und Rollladen |
+| Schlafzimmer | Licht und beide Rollläden |
+| Badezimmer | Licht und Rollladen |
+| Esszimmer | Licht und optionale Szene Essen |
+| Küche | Licht und optionale Szene Küche |
+| Gang/Eingang | Ganglicht, Zentral Licht, Nachtmodus, Anwesenheit und optional alle Rollläden |
+
+Die konkrete Zuordnung der Adressen `1.1.21` bis `1.1.29` zu den Räumen muss noch aus dem realen Einbau übernommen werden.
