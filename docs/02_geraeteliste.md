@@ -5,11 +5,11 @@
 ### Infrastruktur
 
 - Enertex KNX PowerSupply 960³ – KNX-Busspannungsversorgung mit Diagnose
-- 2 × MDT SCN-IP100.03 – KNX IP Router
+- 2 × MDT SCN-IP100.03 – KNX IP Router; beide unterstützen eine Zeitserverfunktion zum Senden von Datum und Uhrzeit auf den KNX-Bus
 - MDT RF-LK001.02 – KNX RF+ Linienkoppler
 - MDT SCN-LOG1.02 – Logikmodul
 - MDT SCN-SAFE.01 – Sicherheitsmodul
-- MDT SCN-RTC20.01 – 20-Kanal-Schaltuhr
+- MDT SCN-RTC20.01 – 20-Kanal-Schaltuhr; kann Datum und Uhrzeit als Master senden oder als Slave vom Bus übernehmen
 
 ### Aktoren
 
@@ -29,7 +29,8 @@
 
 ### Sensoren und Bedienung
 
-- MDT Glastaster Smart II
+- MDT BE-GT2Tx.01 / Glastaster Smart II, physikalische Adresse 1.1.20 – Bedienung, Display und interner Temperaturfühler
+- weitere MDT Glastaster Smart II
 - MDT SCN-P360D4.03 – Präsenzmelder Decke 360 Grad
 - Gira Wetterstation Pro / 5110 00
 - MDT KNX RF Fenstergriffe
@@ -43,9 +44,15 @@
 
 - EARU DR-30-24 – Netzteil 24 V DC / 1,5 A
 
+## Festlegung Zeitquelle
+
+Für Datum und Uhrzeit wird genau **ein** MDT SCN-IP100.03 als NTP-basierter KNX-Zeitmaster verwendet. Beim zweiten IP-Router wird die Zeitserverfunktion deaktiviert. Die MDT SCN-RTC20.01 wird als Slave betrieben und erhält Datum und Uhrzeit vom Bus. Damit senden keine konkurrierenden Zeitmaster unterschiedliche Werte.
+
 ## Noch zu bestätigen
 
-- Aufgabe und physikalische Adresse beider MDT IP-Router
+- Aufgabe und physikalische Adresse des zweiten MDT IP-Routers
+- welcher IP-Router als alleiniger Zeitmaster eingesetzt wird
+- Raum und endgültige Tastenbelegung des Tasters 1.1.20
 - tatsächliche Belegung des zweiten Heizungsaktors
 - Einbauort der noch nicht montierten Reservekomponenten
 - Verbraucher und Absicherung der 24-V-Versorgung
