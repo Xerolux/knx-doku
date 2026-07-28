@@ -2,45 +2,85 @@
 
 ## Zweck
 
-`gruppenadressen.xml` ist die direkte Importdatei für ETS 6 mit **3-Ebenen-Gruppenadressstil**. Sie verwendet das native KNX-Format `GroupAddress-Export` und enthält die vollständige Hauptgruppen-, Mittelgruppen- und Gruppenadressstruktur.
+Die XML-Dateien sind direkte Importdateien für ETS 6 mit **3-Ebenen-Gruppenadressstil**:
 
-`gruppenadressen-planung.csv` bleibt die technische Referenz mit den vorgesehenen DPTs. Sie ist **keine** ETS-Importdatei.
+| Datei | Inhalt |
+|---|---|
+| `gruppenadressen.xml` | Grundstruktur der Anlage |
+| `gruppenadressen-zentral-zeit.xml` | Zentral Licht sowie Zeit und Datum |
+| `gruppenadressen-sicherheit.xml` | Gira Rauchwarnmelder und Sicherheitsmeldungen |
+
+Die CSV-Dateien bleiben technische Referenzen mit den vorgesehenen DPTs. Sie sind **keine** ETS-Importdateien.
 
 ## Import in ETS 6
 
 1. ETS-Projekt öffnen und den Gruppenadressstil **3 Ebenen** verwenden.
-2. In der Ansicht **Gruppenadressen** den obersten Eintrag rechtsklicken.
-3. **Gruppenadressen importieren** wählen.
-4. `gruppenadressen.xml` auswählen.
-5. Importbericht prüfen.
-6. Anschließend Produktdatenbanken importieren, Geräte in den Linien 1.1, 1.2 und bei Bedarf 1.3 einfügen und Kommunikationsobjekte verknüpfen.
+2. Vor dem Import eine Sicherung des ETS-Projekts erstellen.
+3. In der Ansicht **Gruppenadressen** den obersten Eintrag rechtsklicken.
+4. **Gruppenadressen importieren** wählen.
+5. Zuerst `gruppenadressen.xml` importieren.
+6. Danach `gruppenadressen-zentral-zeit.xml` importieren.
+7. Anschließend `gruppenadressen-sicherheit.xml` importieren.
+8. Importbericht und Behandlung bereits vorhandener Adressen prüfen.
+9. Produktdatenbanken einfügen, Geräte anlegen und Kommunikationsobjekte verknüpfen.
 
 Für XML muss beim Import keine CSV-Zeichenkodierung und kein Trennzeichen ausgewählt werden.
 
-> Vor einem erneuten Import das ETS-Projekt sichern. Bereits vorhandene Gruppenadressen mit identischen Adressen müssen im Importdialog bewusst behandelt werden.
+> Bereits vorhandene Gruppenadressen mit identischen Adressen dürfen nicht versehentlich dupliziert oder umbenannt werden. Im Importdialog ist die vorhandene ETS-Struktur mit der Importdatei abzugleichen.
+
+## Ergänzung Zentral Licht sowie Zeit und Datum
+
+Die Ergänzungsdatei enthält:
+
+```text
+0/4/0  Alle Lichter schalten  DPT 1.001
+0/5/0  Uhrzeit               DPT 10.001
+0/5/1  Datum                 DPT 11.001
+0/5/2  Datum/Uhrzeit         DPT 19.001
+```
+
+Die in ETS sichtbare Adresse `0/5/3 Aktuelle Werte empfangen` wird bewusst nicht importiert. Ihre Funktion ist nicht eindeutig definiert und muss im bestehenden Projekt geprüft werden.
 
 ## Topologie
 
 ```text
-Bereich 1
-├── 1.1 KNX TP – Innenbereich und Hauptverteilung
-├── 1.2 KNX RF – Fenstergriffe und Funkgeräte
-└── 1.3 KNX TP – Außenbereich / Reserve
+0.0 IP Backbone
+└── 1.0 IP Hauptlinie
+    ├── 1.1 TP Hauptlinie
+    │   └── RF Segment 1
+    └── 1.3 TP Außen (Reserve)
 ```
 
-Der MDT RF-LK001.02 verbindet die TP-Linie 1.1 mit der RF-Linie 1.2. RF-Teilnehmer erhalten daher physikalische Adressen `1.2.x`, nicht `1.1.x`. Die Linie 1.3 wird erst bei tatsächlichem Ausbau mit TP-Linienkoppler und eigener Busspannungsversorgung angelegt.
+Der Gira 5114 00 RF Multi/TP Medienkoppler erzeugt in ETS automatisch das RF-Segment unterhalb der Linie 1.1. Eine separate Linie 1.2 wird nicht manuell angelegt. Die Linie 1.3 wird erst bei tatsächlichem Ausbau mit TP-Linienkoppler und eigener Busspannungsversorgung bestückt.
 
 ## Was die XML bewusst nicht erledigt
 
-- **DPTs:** Die vorgesehenen DPTs stehen in `gruppenadressen-planung.csv` und müssen zu den Kommunikationsobjekten der Produktdatenbanken passen.
-- **Physikalische Adressen und Geräte:** Diese werden in ETS nach dem Einfügen der konkreten Produktdatenbanken vergeben.
-- **Verknüpfungen:** Aktor-, Taster- und Sensorobjekte müssen gezielt mit den importierten Gruppenadressen verbunden werden.
-- **Topologieerstellung:** Die Linien 1.1, 1.2 und 1.3 werden in ETS manuell angelegt; die Gruppenadress-XML importiert nur Gruppenadressen.
+- **DPTs:** Die vorgesehenen DPTs stehen in den jeweiligen Planungs-CSV-Dateien und müssen zu den Kommunikationsobjekten passen.
+- **Physikalische Adressen und Geräte:** Diese werden nach dem Einfügen der konkreten Produktdatenbanken in ETS vergeben.
+- **Verknüpfungen:** Aktor-, Taster- und Sensorobjekte müssen gezielt mit den Gruppenadressen verbunden werden.
+- **Topologieerstellung:** Backbone, Hauptlinie, TP-Linie, RF-Segment und Außenreserve werden in ETS angelegt; die XML-Dateien importieren nur Gruppenadressen.
+- **KNX Secure:** Schlüsselbund, Zertifikate und persönliche ETS-Projektdateien werden nicht im öffentlichen Repository gespeichert.
+
+## Wichtige Objektverknüpfungen
+
+```text
+1.1.20 Objekt 0   T1/2 Alle Lichter Schalten
+    -> 0/4/0
+    -> 1.1.3 Objekt 289 Zentralfunktion Schalten EIN/AUS
+
+1.1.31 Objekt 4   Datum/Uhrzeit senden
+    -> 0/5/2
+    -> 1.1.20 Objekt 114 Uhrzeit/Datum empfangen
+```
+
+Bei allen gewünschten Lichtkanälen des MDT AKS-2416.03 muss die Teilnahme an der Zentralfunktion in den Parametern aktiviert sein.
 
 ## Wichtige Konventionen
 
 - Adressen werden nicht wiederverwendet.
+- Eine Gruppenadresse hat genau eine Funktion und einen passenden DPT.
 - Befehle und Rückmeldungen sind getrennt.
 - Gruppenadressen sind medienunabhängig und können von TP-, RF- und IP-Geräten gemeinsam verwendet werden.
 - Schutz- und Grundfunktionen bleiben auch ohne Home Assistant funktionsfähig.
+- Es gibt nur einen aktiven Zeitmaster.
 - Die endgültigen DPTs richten sich immer nach den tatsächlich verwendeten Kommunikationsobjekten.
