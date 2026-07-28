@@ -1,0 +1,5 @@
+Hauptgruppe;Mittelgruppe;Gruppenadresse;Name;DPT;Hinweis
+Zentral;Zentrale Licht;0/4/0;Alle Lichter schalten;1.001;1 = Ein und 0 = Aus über dieselbe Gruppenadresse
+Zentral;Zeit/Datum;0/5/0;Uhrzeit;10.001;Tageszeit als 3-Byte-Wert
+Zentral;Zeit/Datum;0/5/1;Datum;11.001;Datum als 3-Byte-Wert
+Zentral;Zeit/Datum;0/5/2;Datum/Uhrzeit;19.001;Kombinierter 8-Byte-Wert für Glastaster Objekt 114
