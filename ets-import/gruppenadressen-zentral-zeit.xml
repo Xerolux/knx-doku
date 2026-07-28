@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<GroupAddress-Export xmlns="http://knx.org/xml/ga-export/01">
+  <GroupRange Name="Zentral" RangeStart="1" RangeEnd="2047">
+    <GroupRange Name="Zentrale Licht" RangeStart="1024" RangeEnd="1279">
+      <GroupAddress Name="Alle Lichter schalten" Address="0/4/0" />
+    </GroupRange>
+    <GroupRange Name="Zeit/Datum" RangeStart="1280" RangeEnd="1535">
+      <GroupAddress Name="Uhrzeit" Address="0/5/0" />
+      <GroupAddress Name="Datum" Address="0/5/1" />
+      <GroupAddress Name="Datum/Uhrzeit" Address="0/5/2" />
+    </GroupRange>
+  </GroupRange>
+</GroupAddress-Export>
