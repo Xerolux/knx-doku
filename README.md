@@ -41,15 +41,16 @@ Der Gira 5114 00 erzeugt in ETS automatisch das RF-Segment unter Linie 1.1. Die 
 | [docs/07_beschattung_wetter.md](docs/07_beschattung_wetter.md) | Beschattung und Wetterschutz |
 | [docs/08_rf_fenstergriffe.md](docs/08_rf_fenstergriffe.md) | RF-Fenstergriffe |
 | [docs/09_home_assistant.md](docs/09_home_assistant.md) | Rolle von Home Assistant |
-| [docs/10_glastaster_bedienkonzept.md](docs/10_glastaster_bedienkonzept.md) | Bedienkonzept |
+| [docs/10_glastaster_bedienkonzept.md](docs/10_glastaster_bedienkonzept.md) | Bedienkonzept und aktueller Taster 1.1.20 |
 | [docs/11_wetterstation_gira.md](docs/11_wetterstation_gira.md) | Wetterstation |
-| [docs/12_zentralfunktionen.md](docs/12_zentralfunktionen.md) | zentrale Funktionen |
+| [docs/12_zentralfunktionen.md](docs/12_zentralfunktionen.md) | zentrale Funktionen einschließlich Zentral Licht |
 | [docs/13_logikmodul.md](docs/13_logikmodul.md) | KNX-Logiken |
 | [docs/14_schaltschrank.md](docs/14_schaltschrank.md) | Schaltschrankaufbau und Schutzkonzept |
 | [docs/15_stromkreise.md](docs/15_stromkreise.md) | RCD-, LS- und Aktorzuordnung |
 | [docs/16_beschriftung.md](docs/16_beschriftung.md) | Beschriftungsstandard für Geräte, Klemmen und Leitungen |
-| [docs/17_wartung.md](docs/17_wartung.md) | Abnahme, Wartung und offene Punkte |
+| [docs/17_wartung.md](docs/17_wartung.md) | Abnahme, Wartung, MDT SAFE und offene Punkte |
 | [docs/18_rauchwarnmelder_gira.md](docs/18_rauchwarnmelder_gira.md) | Gira 2343 00 und Rauchalarm-Gruppenadressen |
+| [docs/19_zeit_datum_temperatur.md](docs/19_zeit_datum_temperatur.md) | KNX-Zeitserver, Datum, Uhrzeit und Temperaturanzeige |
 
 ## ETS-Importdateien
 
@@ -76,4 +77,4 @@ Die geplante Verteilung besteht aus zwei getrennten RCD-Gruppen mit jeweils bis 
 
 ## Aktueller Status
 
-Die Dokumentation enthält einen belastbaren Planungsstand. Noch zu bestätigen sind insbesondere die tatsächlichen RCD- und LS-Daten, die vollständige Klemmenbelegung, die Belegung des zweiten Heizungsaktors sowie das Mess- und Abnahmeprotokoll.
+Die Zentralfunktion für alle Lichtkreise ist unter `0/4/0` vorgesehen. Als KNX-Zeitquelle wird einer der vorhandenen MDT SCN-IP100.03 eingesetzt; die zweite IP-Schnittstelle und die MDT SCN-RTC20.01 dürfen nicht gleichzeitig als weiterer Zeit-Master senden. Noch zu bestätigen sind insbesondere die tatsächlichen RCD- und LS-Daten, die vollständige Klemmenbelegung, die Belegung des zweiten Heizungsaktors sowie das Mess- und Abnahmeprotokoll.
