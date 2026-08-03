@@ -24,6 +24,22 @@ Die Tastenbelegung ist **Ein / Aus**. Beide Tasten verwenden dasselbe Kommunikat
 
 Das Objekt `T1/2: Alle Lichter – Status für Anzeige` bleibt zunächst frei. Ein einzelner Statuswert wäre bei mehreren unabhängig geschalteten Lichtkreisen nicht eindeutig. Später kann eine Logik einen definierten Sammelstatus erzeugen, beispielsweise „mindestens ein Licht ist an“.
 
+## Taster 1.1.20 – Alle Rollläden
+
+Die Tasten 3/4 sind als **Zwei-Tastenfunktion – Jalousie/Rollladen** mit der Belegung **Ab / Auf** parametriert. Nur dieser Taster verwendet die beiden zentralen Rollladenadressen:
+
+```text
+1.1.20 Objekt 10  T3/4: Alle Rollladen – Jalousie Auf/Ab
+    -> 0/1/0 Alle Rollladen Auf / Ab
+
+1.1.20 Objekt 11  T3/4: Alle Rollladen – Stop/Lamellen Auf/Zu
+    -> 0/1/1 Alle Rollladen Stop / Schritt
+```
+
+Objekt 13 **Status der Jalousie für Anzeige** bleibt frei. Die einzelnen Rollläden können unterschiedliche Positionen besitzen; ohne zusätzliche Logik gibt es daher keinen eindeutigen gemeinsamen Positionsstatus.
+
+Die raumbezogenen Taster werden nicht mit `0/1/0` oder `0/1/1` verbunden. Sie verwenden ausschließlich die individuellen Gruppenadressen des jeweiligen Raums.
+
 ## Zeit und Datum
 
 Für die Anzeige wird der kombinierte Datum-/Uhrzeitwert bevorzugt:
