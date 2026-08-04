@@ -2,26 +2,79 @@
 
 Stand: 04.08.2026
 
-Die Tabellen unterscheiden zwischen geplanter Zuordnung und dem aktuell in ETS sichtbaren Stand. Vor der endgültigen Abnahme ist jede Zuordnung mit der realen Verdrahtung abzugleichen.
+Die Tabellen bilden den aktuell in ETS sichtbaren Stand ab. Vor der endgültigen Abnahme ist jede Zuordnung mit der realen Verdrahtung im Schaltschrank und am Verbraucher abzugleichen.
 
-## Licht
+## Licht – aktueller ETS-Stand
 
-Geplante Kanalzuordnung des Schaltaktors:
+Gerät: MDT Schaltaktor `1.1.3` mit den Kanälen A bis X.
 
-| Kanal | Funktion | Schalten | Status |
-|---|---|---:|---:|
-| A | Wohnzimmer | `1/0/0` | `1/0/1` |
-| B | Esszimmer | `1/1/0` | `1/1/1` |
-| C | Küche | `1/2/0` | `1/2/1` |
-| D | Arbeitszimmer | `1/3/0` | `1/3/1` |
-| E | Gang | `1/4/0` | `1/4/1` |
-| F | Schlafzimmer | `1/5/0` | `1/5/1` |
-| G | Badezimmer | `1/6/0` | `1/6/1` |
-| H | Bad vorne | `1/7/0` | `1/7/1` |
+| Kanal | ETS-Bezeichnung | Schalten | Status | zusätzliche Gruppenfunktion |
+|---|---|---:|---:|---|
+| A | Licht Wohnzimmer | `1/0/0` | `1/0/1` | Zentral Licht über `0/4/0` |
+| B | Licht Arbeitszimmer | `1/3/0` | `1/3/1` | Zentral Licht über `0/4/0` |
+| C | Licht Küche | `1/2/0` | `1/2/1` | Zentral Licht über `0/4/0` |
+| D | Licht Schlafzimmer | `1/5/0` | `1/5/1` | Zentral Licht über `0/4/0` |
+| E | Licht Gang | `1/4/0` | `1/4/1` | zusätzlich `1/4/4 Gang beide Lichter schalten` |
+| F | Licht Neubau / Gang Neubau | `1/4/2` | `1/4/3` | zusätzlich `1/4/4 Gang beide Lichter schalten` |
+| G–X | noch nicht vollständig dokumentiert | – | – | reale Belegung und Zentralteilnahme prüfen |
 
-Im aktuellen ETS-Stand ist am Schaltaktor das Zentralobjekt mit `0/4/0 Alle Lichter schalten` verbunden. Die individuellen Schalt- und Statusobjekte der Kanäle sind noch nicht vollständig mit den oben genannten Gruppenadressen verknüpft. Die Zuordnung darf erst nach Prüfung der tatsächlichen Ausgangsverdrahtung übernommen werden.
+Die früher geplante Reihenfolge A = Wohnzimmer, B = Esszimmer, C = Küche, D = Arbeitszimmer usw. entspricht nicht dem aktuellen ETS-Stand und ist deshalb nicht mehr als verbindliche Kanalbelegung zu verwenden.
 
-Das Terrassenlicht am Glastaster `1.1.27` besitzt derzeit noch keine Gruppenadresse und bleibt offen.
+### Objektzuordnung der bestätigten Kanäle
+
+```text
+Kanal A:
+  Objekt 1 Schalten EIN/AUS -> 1/0/0
+  Objekt 8 Status          -> 1/0/1
+
+Kanal B:
+  Objekt 13 Schalten EIN/AUS -> 1/3/0
+  Objekt 20 Status           -> 1/3/1
+
+Kanal C:
+  Objekt 25 Schalten EIN/AUS -> 1/2/0
+  Objekt 32 Status           -> 1/2/1
+
+Kanal D:
+  Objekt 37 Schalten EIN/AUS -> 1/5/0
+  Objekt 44 Status           -> 1/5/1
+
+Kanal E:
+  Objekt 49 Schalten EIN/AUS -> 1/4/0 und 1/4/4
+  Objekt 56 Status           -> 1/4/1
+
+Kanal F:
+  Objekt 61 Schalten EIN/AUS -> 1/4/2 und 1/4/4
+  Objekt 68 Status           -> 1/4/3
+```
+
+Die Sperrobjekte der Lichtkanäle bleiben frei, solange keine dokumentierte Sperrfunktion vorgesehen ist.
+
+### Gang mit zwei Lichtkreisen
+
+| Gruppenadresse | Funktion |
+|---:|---|
+| `1/4/0` | Ganglicht Kanal E einzeln schalten |
+| `1/4/1` | Status Kanal E |
+| `1/4/2` | Gang Neubau Kanal F einzeln schalten |
+| `1/4/3` | Status Kanal F |
+| `1/4/4` | beide Ganglichter gemeinsam schalten |
+| `1/4/5` | geplanter Sammelstatus aus einer Logik |
+
+Die Statusobjekte der Kanäle E und F werden nicht direkt auf dieselbe Statusadresse gelegt. Der Sammelstatus `1/4/5` wird durch genau eine ODER- oder UND-Logik erzeugt. Details stehen in [21 – Ganglicht und Bewegungsmelder](21_ganglicht_bewegungsmelder.md).
+
+### Zentral Licht
+
+```text
+Schaltaktor Objekt 289 Zentralfunktion – Schalten EIN/AUS
+    -> 0/4/0 Alle Lichter schalten
+```
+
+Bei jedem echten Lichtkanal wird die Teilnahme an der Zentralfunktion aktiviert. Steckdosen, technische Verbraucher und Reservekanäle dürfen nicht unbeabsichtigt teilnehmen.
+
+### Terrassenlicht
+
+Das Terrassenlicht am Glastaster `1.1.27` besitzt weiterhin noch keine bestätigte Gruppenadresse. Erst reale Verdrahtung und Aktorkanal ermitteln, anschließend eine eindeutige Schalt- und Statusadresse zuordnen.
 
 ## Beschattung – aktueller ETS-Stand
 
@@ -30,7 +83,7 @@ Gerät: MDT `JAL-0810M.02` mit Fahrzeitmessung.
 | Kanal | ETS-Bezeichnung | Auf/Ab | Stopp | Position Status | Bemerkung |
 |---|---|---:|---:|---:|---|
 | A | Schlafzimmer Tür / links | `2/2/0` | `2/2/1` | `2/2/3` | reale Zuordnung prüfen |
-| B | Schlafzimmer Fenster / rechts | `2/2/10` | `2/2/11` | `2/2/13` | verbunden |
+| B | Schlafzimmer Fenster / rechts | `2/2/10` | `2/2/11` | `2/2/13` | Statusobjekt aktiviert und verbunden |
 | C | Arbeitszimmer | `2/1/0` | `2/1/1` | `2/1/3` | Statusverknüpfung prüfen |
 | D | Wohnzimmer Fenster / links | `2/0/0` | `2/0/1` | `2/0/3` | Statusverknüpfung prüfen |
 | E | noch ungeklärt | – | – | – | reale Belegung feststellen |
