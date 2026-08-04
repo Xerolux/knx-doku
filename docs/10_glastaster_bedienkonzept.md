@@ -1,95 +1,181 @@
 # 10 – MDT Glastaster Smart II Bedienkonzept
 
+Stand: 04.08.2026
+
 ## Aktueller Gerätebestand
 
-Im ETS-Projekt sind die MDT Glastaster II Smart mit Temperatursensor unter `1.1.20` bis `1.1.29` angelegt. Die Geräte `1.1.20` bis `1.1.28` sind programmiert; der vollständige Programmierstand von `1.1.29` muss noch geprüft werden.
+Im ETS-Projekt sind MDT Glastaster II Smart mit Temperatursensor unter `1.1.20` bis `1.1.29` angelegt. Die Geräte `1.1.20` bis `1.1.28` sind grundsätzlich vorhanden; der vollständige Programmierstand von `1.1.29` muss weiterhin geprüft werden.
 
-Der Taster `1.1.20` ist dem Eingang beziehungsweise Gang zugeordnet und dient aktuell als Referenz für das Bedienkonzept.
+Die konkrete physikalische Adresse aller raumbezogenen Taster ist noch nicht abschließend in der Dokumentation zugeordnet. Deshalb werden nachfolgend nur sichere Zuordnungen und die in ETS sichtbaren Funktionsbelegungen festgehalten.
 
-## Taster 1.1.20 – Zentral Licht
+## Taster 1.1.20 – Eingang/Gang und Zentralfunktionen
 
-Die Tasten 1/2 sind als **Zwei-Tastenfunktion – Schalten** parametriert:
+### Tasten 1/2 – Alle Lichter
 
-| Taste | Beschriftung | Sendewert |
-|---|---|---:|
-| links | Ein | 1 |
-| rechts | Aus | 0 |
+Zwei-Tastenfunktion `Schalten`:
 
-Die Tastenbelegung ist **Ein / Aus**. Beide Tasten verwenden dasselbe Kommunikationsobjekt und dieselbe Gruppenadresse:
+| Taste | Sendewert |
+|---|---:|
+| links | Ein / `1` |
+| rechts | Aus / `0` |
 
 ```text
-1.1.20 Objekt 0  T1/2: Alle Lichter – Schalten Ein/Aus
+Objekt 0 T1/2: Alle Lichter – Schalten Ein/Aus
     -> 0/4/0 Alle Lichter schalten
 ```
 
-Das Objekt `T1/2: Alle Lichter – Status für Anzeige` bleibt zunächst frei. Ein einzelner Statuswert wäre bei mehreren unabhängig geschalteten Lichtkreisen nicht eindeutig. Später kann eine Logik einen definierten Sammelstatus erzeugen, beispielsweise „mindestens ein Licht ist an“.
+Das Statusobjekt bleibt frei, solange keine Logik einen eindeutigen Sammelstatus erzeugt.
+
+### Tasten 3/4 – Alle Rollladen
+
+Zwei-Tastenfunktion `Jalousie/Rollladen`:
+
+```text
+Objekt 10 T3/4: Alle Rollladen – Jalousie Auf/Ab
+    -> 0/1/0 Alle Rollladen Auf / Ab
+
+Objekt 11 T3/4: Alle Rollladen – Stop/Lamellen Auf/Zu
+    -> 0/1/1 Alle Rollladen Stop / Schritt
+```
+
+Ein gemeinsamer Prozentstatus für mehrere unabhängig stehende Rollladen ist nicht eindeutig. Das 1-Byte-Statusobjekt der Zentralfunktion bleibt deshalb zunächst frei.
+
+## Raumbezogene Lichtfunktionen
+
+In ETS sind folgende Schalt- und Statusadressen an den Glastastern sichtbar:
+
+| Raum | Schalten | Status |
+|---|---:|---:|
+| Wohnzimmer | `1/0/0` | `1/0/1` |
+| Küche | `1/2/0` | `1/2/1` |
+| Arbeitszimmer | `1/3/0` | `1/3/1` |
+| Gang | `1/4/0` | `1/4/1` |
+| Schlafzimmer | `1/5/0` | `1/5/1` |
+
+Diese Tasterverknüpfungen allein schalten noch keinen Ausgang. Die zugehörigen Schalt- und Statusobjekte des Schaltaktors müssen nach Prüfung der realen Kanalverdrahtung ebenfalls mit denselben Gruppenadressen verbunden werden.
+
+## Raumbezogene Rollladenfunktionen
+
+### Arbeitszimmer
+
+```text
+T3/4 Auf/Ab  -> 2/1/0
+T3/4 Stopp   -> 2/1/1
+T3/4 Status  -> 2/1/3
+```
+
+### Schlafzimmer
+
+```text
+T3/4 Rollladen Tür / links:
+  Auf/Ab -> 2/2/0
+  Stopp  -> 2/2/1
+  Status -> 2/2/3
+
+T5/6 Rollladen Fenster / rechts:
+  Auf/Ab -> 2/2/10
+  Stopp  -> 2/2/11
+  Status -> 2/2/13
+```
+
+### Terrasse – Taster 1.1.27
+
+```text
+T1/2 Terrassenlicht:
+  Gruppenadresse noch offen
+
+T3/4 Wohnzimmer Rollladen Fenster / links:
+  Auf/Ab -> 2/0/0
+  Stopp  -> 2/0/1
+  Status -> 2/0/3
+
+T5/6 Wohnzimmer Rollladen Tür / rechts:
+  Auf/Ab -> 2/0/10
+  Stopp  -> 2/0/11
+  Status -> 2/0/13
+
+T7/8 Markise:
+  Auf/Ab -> 2/4/0
+  Stopp  -> 2/4/1
+  Status -> 2/4/3
+```
+
+## Anzeige und Beschriftung der Rollladen
+
+Die Gruppenadressennamen werden nicht automatisch als Text auf dem Display dargestellt. Die sichtbare Beschriftung wird in den Parametern des jeweiligen Tastenpaares festgelegt.
+
+Empfohlene Einstellung:
+
+```text
+Zwei-Tastenfunktion: Jalousie/Rollladen
+Bedienfunktion: Lang = Auf/Ab / Kurz = Stopp/Lamellen Auf/Zu
+Funktionsname: über Texteingabe
+Text: z. B. Rollladen Tür, Rollladen Fenster oder Markise
+Tastenbeschriftung: Pfeil Ab / Pfeil Auf passend zur Tastenbelegung
+Statuswert als Text unter Symbol: anzeigen in Prozent
+```
+
+Die Schreibweise wird einheitlich als **Rollladen** verwendet.
+
+Für das dynamische Symbol können getrennte Symbole für folgende Bereiche verwendet werden:
+
+- oben: kleiner als `10 %`
+- Mitte: `10–90 %`
+- unten: größer als `90 %`
+
+Die Prozentanzeige funktioniert nur, wenn das Statusobjekt des Glastasters mit dem 1-Byte-Objekt `Status aktuelle Position` des passenden JAL-Kanals über dieselbe Gruppenadresse verbunden ist.
+
+Bei Rollladenpositionen gilt:
+
+```text
+0 %   = vollständig oben
+100 % = vollständig unten
+```
 
 ## Zeit und Datum
 
-Für die Anzeige wird der kombinierte Datum-/Uhrzeitwert bevorzugt:
+Für die Anzeige wird der kombinierte Datum-/Uhrzeitwert verwendet:
 
 ```text
 0/5/2 Datum/Uhrzeit
-    -> 1.1.20 Objekt 114 Uhrzeit/Datum – aktuelle Werte empfangen
+    -> Objekt 114 Uhrzeit/Datum – aktuelle Werte empfangen
 ```
 
-Alternativ kann nur die Uhrzeit verwendet werden:
-
-```text
-0/5/0 Uhrzeit
-    -> 1.1.20 Objekt 112 Uhrzeit – aktuellen Wert empfangen
-```
-
-Für die normale Anzeige ist einer der beiden Wege ausreichend. Der Zeitmaster und die genaue Parametrierung sind in [19 – Zeit, Datum, Temperatur und Display](19_zeit_datum_temperatur.md) beschrieben.
+Das separate Objekt 112 `Uhrzeit – aktuellen Wert empfangen` kann frei bleiben, wenn der kombinierte 8-Byte-Wert genutzt wird.
 
 ## Temperatur
 
-Der Glastaster `1.1.20` besitzt einen internen Temperatursensor. In ETS muss unter **Temperaturmessung / Grundeinstellung** die Messung aktiviert sein. Für die lokale Anzeige wird die interne Temperatur in der Info- beziehungsweise Standbyanzeige ausgewählt.
+Der Glastaster besitzt einen internen Temperatursensor. In ETS muss die Temperaturmessung aktiviert sein. Soll der Messwert auf dem Bus verfügbar sein, wird Objekt 108 `Temperaturmesswert – Ausgang` mit der Isttemperaturadresse des jeweiligen Raums verbunden.
 
-Soll der Wert auf dem KNX-Bus verfügbar sein, wird das Sendeobjekt der gemessenen Temperatur mit der Isttemperaturadresse des Raumes verbunden. Für Eingang/Gang ist vorgesehen:
+Für den Eingang/Gang ist vorgesehen:
 
 ```text
-1.1.20 gemessene Temperatur senden
-    -> 3/4/1 Gang Isttemperatur
+Temperaturmesswert -> 3/4/1 Gang Isttemperatur
 ```
 
-Vor der endgültigen Verknüpfung ist zu bestätigen, dass `1.1.20` dauerhaft dem Bereich Gang zugeordnet bleibt.
+Die endgültige Verbindung erfolgt erst nach bestätigter Raumzuordnung des jeweiligen Tasters.
 
 ## Display-Standby
 
 Empfohlenes Verhalten:
 
-- Display nach einer festgelegten Zeit in Standby versetzen, beispielsweise nach 20 Sekunden.
-- Standbyanzeige dunkel beziehungsweise Display aus.
-- Der erste Tastendruck weckt nur das Display.
-- Der zweite Tastendruck führt die eigentliche Funktion aus.
+- Display nach einer festgelegten Zeit in Standby versetzen
+- Standbyanzeige dunkel oder Display aus
+- festlegen, ob der erste Tastendruck nur aufweckt oder gleichzeitig die Funktion ausführt
 
-Alternativ kann der erste Tastendruck das Display aufwecken und gleichzeitig schalten. Das ist schneller, kann bei einem dunklen Display aber zu unbeabsichtigten Befehlen führen.
+Die gewählte Bedienlogik muss bei allen Tastern möglichst einheitlich sein.
 
-## Raumbezogene Funktionen
+## Programmierung und Prüfung
 
-Die Glastaster sollen je Raum Licht, Beschattung und Statusanzeigen bedienen. Sie erhalten dafür keine zusätzlichen, tastereigenen Gruppenadressen, sondern verwenden die Funktionsadressen des jeweiligen Raumes.
+Nach Änderungen an Beschriftung, Tastenfunktion oder Kommunikationsobjekten wird der betroffene Glastaster über **Programmieren → Applikationsprogramm** vollständig geladen.
 
-Beispiel Wohnzimmer Rollladen links:
+Danach je Tastenpaar prüfen:
 
-```text
-Taster Objekt Auf/Ab   -> 2/0/0 Wohnzimmer Rollladen links Auf Ab
-Taster Objekt Stop     -> 2/0/1 Wohnzimmer Rollladen links Stop
-Taster Objekt Position -> 2/0/2 Wohnzimmer Rollladen links Position Soll
-```
+1. langer Tastendruck fährt in die richtige Richtung
+2. kurzer Tastendruck stoppt die laufende Fahrt
+3. Funktionsname und Pfeilsymbole stimmen
+4. Positionswert wird nach Fahrtende aktualisiert
+5. obere Endlage zeigt ungefähr `0 %`
+6. untere Endlage zeigt ungefähr `100 %`
 
-Dadurch bleiben Aktor, Taster und Visualisierung synchron.
-
-## Empfohlene weitere Zuordnung
-
-| Bereich | Funktionen |
-|---|---|
-| Wohnzimmer | Licht, beide Rollläden, Markise, Szene Fernsehen |
-| Arbeitszimmer | Licht und Rollladen |
-| Schlafzimmer | Licht und beide Rollläden |
-| Badezimmer | Licht und Rollladen |
-| Esszimmer | Licht und optionale Szene Essen |
-| Küche | Licht und optionale Szene Küche |
-| Gang/Eingang | Ganglicht, Zentral Licht, Nachtmodus, Anwesenheit und optional alle Rollläden |
-
-Die konkrete Zuordnung der Adressen `1.1.21` bis `1.1.29` zu den Räumen muss noch aus dem realen Einbau übernommen werden.
+Die vollständige Inbetriebnahmeanweisung steht in [20 – Rollladen: ETS-Zuordnung, Inbetriebnahme und Prüfung](20_rollladen_inbetriebnahme.md).
