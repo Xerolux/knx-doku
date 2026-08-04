@@ -15,10 +15,8 @@ Gerät: MDT Schaltaktor `1.1.3` mit den Kanälen A bis X.
 | C | Licht Küche | `1/2/0` | `1/2/1` | Zentral Licht über `0/4/0` |
 | D | Licht Schlafzimmer | `1/5/0` | `1/5/1` | Zentral Licht über `0/4/0` |
 | E | Licht Gang | `1/4/0` | `1/4/1` | zusätzlich `1/4/4 Gang beide Lichter schalten` |
-| F | Licht Neubau / Gang Neubau | `1/4/2` | `1/4/3` | zusätzlich `1/4/4 Gang beide Lichter schalten` |
+| F | Licht Gang Neubau | `1/4/2` | `1/4/3` | zusätzlich `1/4/4 Gang beide Lichter schalten` |
 | G–X | noch nicht vollständig dokumentiert | – | – | reale Belegung und Zentralteilnahme prüfen |
-
-Die früher geplante Reihenfolge A = Wohnzimmer, B = Esszimmer, C = Küche, D = Arbeitszimmer usw. entspricht nicht dem aktuellen ETS-Stand und ist deshalb nicht mehr als verbindliche Kanalbelegung zu verwenden.
 
 ### Objektzuordnung der bestätigten Kanäle
 
@@ -80,16 +78,18 @@ Das Terrassenlicht am Glastaster `1.1.27` besitzt weiterhin noch keine bestätig
 
 Gerät: MDT `JAL-0810M.02` mit Fahrzeitmessung.
 
+Die Gruppenadressennamen wurden in ETS einheitlich auf **Fenster** und **Türe** umbenannt. Die Gruppenadressen bleiben unverändert.
+
 | Kanal | ETS-Bezeichnung | Auf/Ab | Stopp | Position Status | Bemerkung |
 |---|---|---:|---:|---:|---|
-| A | Schlafzimmer Tür / links | `2/2/0` | `2/2/1` | `2/2/3` | reale Zuordnung prüfen |
-| B | Schlafzimmer Fenster / rechts | `2/2/10` | `2/2/11` | `2/2/13` | Statusobjekt aktiviert und verbunden |
-| C | Arbeitszimmer | `2/1/0` | `2/1/1` | `2/1/3` | Statusverknüpfung prüfen |
-| D | Wohnzimmer Fenster / links | `2/0/0` | `2/0/1` | `2/0/3` | Statusverknüpfung prüfen |
+| A | Schlafzimmer Rollladen Türe | `2/2/0` | `2/2/1` | `2/2/3` | Statusobjekt aktiviert; Zuordnung prüfen |
+| B | Schlafzimmer Rollladen Fenster | `2/2/10` | `2/2/11` | `2/2/13` | Statusobjekt aktiviert und verbunden |
+| C | Arbeitszimmer Rollladen | `2/1/0` | `2/1/1` | `2/1/3` | Statusverknüpfung prüfen |
+| D | Wohnzimmer Rollladen Fenster | `2/0/0` | `2/0/1` | `2/0/3` | Statusverknüpfung prüfen |
 | E | noch ungeklärt | – | – | – | reale Belegung feststellen |
 | F | Küche | – | – | – | in ETS benannt, noch ohne Gruppenadressen |
 | G | Markise | `2/4/0` | `2/4/1` | `2/4/3` | Statusverknüpfung prüfen |
-| H | Wohnzimmer Tür / rechts | `2/0/10` | `2/0/11` | `2/0/13` | Statusverknüpfung prüfen |
+| H | Wohnzimmer Rollladen Türe | `2/0/10` | `2/0/11` | `2/0/13` | Statusverknüpfung prüfen |
 
 Zentrale Beschattung:
 
