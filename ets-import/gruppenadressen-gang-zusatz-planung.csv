@@ -1,0 +1,7 @@
+Hauptgruppe;Mittelgruppe;Gruppenadresse;Name;DPT;Verwendung
+Licht;Gang;1/4/0;Gang Licht Schalten;1.001;Einzelbefehl Aktorkanal E
+Licht;Gang;1/4/1;Gang Licht Status;1.001;Status Aktorkanal E
+Licht;Gang;1/4/2;Licht Gang Neubau Schalten;1.001;Einzelbefehl Aktorkanal F
+Licht;Gang;1/4/3;Licht Gang Neubau Status;1.001;Status Aktorkanal F
+Licht;Gang;1/4/4;Gang beide Lichter schalten;1.001;Gemeinsamer Befehl fuer Aktorkanal E und F
+Licht;Gang;1/4/5;Gang beide Lichter Status;1.001;Per Logik gebildeter Sammelstatus
