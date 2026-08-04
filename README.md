@@ -37,14 +37,14 @@ Der Gira 5114 00 erzeugt in ETS automatisch das RF-Segment unter Linie 1.1. Eine
 | [docs/02_geraeteliste.md](docs/02_geraeteliste.md) | vorhandene KNX-Hardware und aktueller ETS-Stand |
 | [docs/03_raeume_funktionen.md](docs/03_raeume_funktionen.md) | Räume und Ausbaustufen |
 | [docs/04_gruppenadressen.md](docs/04_gruppenadressen.md) | Adresskonzept und Benennungsregeln |
-| [docs/05_kanalbelegung.md](docs/05_kanalbelegung.md) | Aktorkanäle |
+| [docs/05_kanalbelegung.md](docs/05_kanalbelegung.md) | Aktorkanäle und aktueller JAL-Stand |
 | [docs/06_heizung_fenster.md](docs/06_heizung_fenster.md) | Heizung und Fensterstatus |
-| [docs/07_beschattung_wetter.md](docs/07_beschattung_wetter.md) | Beschattung und Wetterschutz |
+| [docs/07_beschattung_wetter.md](docs/07_beschattung_wetter.md) | Beschattung, Rollladen und Wetterschutz |
 | [docs/08_rf_fenstergriffe.md](docs/08_rf_fenstergriffe.md) | RF-Fenstergriffe |
 | [docs/09_home_assistant.md](docs/09_home_assistant.md) | Rolle von Home Assistant |
-| [docs/10_glastaster_bedienkonzept.md](docs/10_glastaster_bedienkonzept.md) | Bedienkonzept und aktueller Taster 1.1.20 |
+| [docs/10_glastaster_bedienkonzept.md](docs/10_glastaster_bedienkonzept.md) | Bedienkonzept, Beschriftung und Positionsanzeige |
 | [docs/11_wetterstation_gira.md](docs/11_wetterstation_gira.md) | Wetterstation |
-| [docs/12_zentralfunktionen.md](docs/12_zentralfunktionen.md) | zentrale Funktionen einschließlich Zentral Licht |
+| [docs/12_zentralfunktionen.md](docs/12_zentralfunktionen.md) | Zentral Licht und Zentral Rollladen |
 | [docs/13_logikmodul.md](docs/13_logikmodul.md) | KNX-Logiken |
 | [docs/14_schaltschrank.md](docs/14_schaltschrank.md) | Schaltschrankaufbau und Schutzkonzept |
 | [docs/15_stromkreise.md](docs/15_stromkreise.md) | RCD-, LS- und Aktorzuordnung |
@@ -52,6 +52,7 @@ Der Gira 5114 00 erzeugt in ETS automatisch das RF-Segment unter Linie 1.1. Eine
 | [docs/17_wartung.md](docs/17_wartung.md) | Abnahme, Wartung, MDT SAFE und offene Punkte |
 | [docs/18_rauchwarnmelder_gira.md](docs/18_rauchwarnmelder_gira.md) | Gira KNX-Rauchwarnmelder und Alarmadressen |
 | [docs/19_zeit_datum_temperatur.md](docs/19_zeit_datum_temperatur.md) | KNX-Zeitserver, Datum, Uhrzeit, Temperatur und Display |
+| [docs/20_rollladen_inbetriebnahme.md](docs/20_rollladen_inbetriebnahme.md) | JAL-Zuordnung, Fahrzeitmessung, Status und Fehlersuche |
 
 ## ETS-Importdateien
 
@@ -76,4 +77,12 @@ Der Gira 5114 00 erzeugt in ETS automatisch das RF-Segment unter Linie 1.1. Eine
 
 ## Aktueller Status
 
-Die zentrale Lichtsteuerung ist unter `0/4/0 Alle Lichter schalten` angelegt. Der Taster `1.1.20 Eingang` sendet als Zwei-Tastenfunktion Ein und Aus auf diese Adresse; der MDT AKS-2416.03 empfängt sie über sein Zentralobjekt. Die E-Mail- und Zeitserver-Applikation des MDT SCN-IP100.03 ist unter `1.1.31` angelegt und versorgt den Bus über `0/5/0`, `0/5/1` und bevorzugt `0/5/2`. Die MDT Glastaster `1.1.20` bis `1.1.28` sind im ETS-Projekt vorhanden, `1.1.29` und einzelne Gira-Geräte müssen hinsichtlich ihres vollständigen Programmierstands noch geprüft werden.
+Die zentrale Lichtsteuerung ist unter `0/4/0 Alle Lichter schalten` angelegt. Der Taster `1.1.20` sendet Ein und Aus auf diese Adresse; der MDT AKS-2416.03 empfängt sie über sein Zentralobjekt. Die individuellen Lichtkanäle des Schaltaktors müssen noch mit der realen Verdrahtung abgeglichen und mit den Raumadressen verbunden werden.
+
+Die zentrale Rollladensteuerung verwendet `0/1/0` für Auf/Ab und `0/1/1` für Stopp. Am MDT JAL-0810M.02 sind die verwendeten Kanäle A, B, C, D, G und H dokumentiert. Positionsrückmeldungen, vollständige Programmierung und automatische Fahrzeitmessung werden gemäß [docs/20_rollladen_inbetriebnahme.md](docs/20_rollladen_inbetriebnahme.md) abgeschlossen und geprüft.
+
+Die E-Mail- und Zeitserver-Applikation des MDT SCN-IP100.03 ist unter `1.1.31` angelegt und versorgt den Bus über `0/5/0`, `0/5/1` und bevorzugt `0/5/2`. Die MDT Glastaster `1.1.20` bis `1.1.28` sind im ETS-Projekt vorhanden; `1.1.29` und einzelne Gira-Geräte müssen hinsichtlich ihres vollständigen Programmierstands noch geprüft werden.
+
+## Datenschutz und Geheimnisse
+
+Dieses öffentliche Repository enthält keine Passwörter, PINs, Tokens, Schlüsselbunddateien, privaten ETS-Projektdateien oder Fotos und Screenshots der Anlage.
