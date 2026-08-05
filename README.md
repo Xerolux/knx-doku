@@ -35,7 +35,7 @@ Die Gruppenadressen können im nativen XML-Format in ein ETS-Projekt mit **3-Ebe
 | [docs/06_heizung_fenster.md](docs/06_heizung_fenster.md) | Heizung und Fensterstatus |
 | [docs/07_beschattung_wetter.md](docs/07_beschattung_wetter.md) | Beschattung, Rollladen und Wetterschutz |
 | [docs/08_rf_fenstergriffe.md](docs/08_rf_fenstergriffe.md) | RF-Fenstergriffe |
-| [docs/09_home_assistant.md](docs/09_home_assistant.md) | Rolle von Home Assistant |
+| [docs/09_home_assistant.md](docs/09_home_assistant.md) | Rolle, Projektimport und Verbindung von Home Assistant |
 | [docs/10_glastaster_bedienkonzept.md](docs/10_glastaster_bedienkonzept.md) | Bedienkonzept, Beschriftung, Temperatur und Positionsanzeige |
 | [docs/11_wetterstation_gira.md](docs/11_wetterstation_gira.md) | Wetterstation |
 | [docs/12_zentralfunktionen.md](docs/12_zentralfunktionen.md) | Zentral Licht und Zentral Rollladen |
@@ -49,6 +49,23 @@ Die Gruppenadressen können im nativen XML-Format in ein ETS-Projekt mit **3-Ebe
 | [docs/20_rollladen_inbetriebnahme.md](docs/20_rollladen_inbetriebnahme.md) | JAL-Zuordnung, Namenskonvention, Fahrzeitmessung und Status |
 | [docs/21_ganglicht_bewegungsmelder.md](docs/21_ganglicht_bewegungsmelder.md) | beide Ganglichter, Bewegungsmelder und Sammelstatus |
 | [docs/22_programmierstand_ets.md](docs/22_programmierstand_ets.md) | Bedeutung von „Programmieren notwendig“ und Download-Reihenfolge |
+| [docs/23_home_assistant_knx_entities_dashboard.md](docs/23_home_assistant_knx_entities_dashboard.md) | KNX-Entitäten, Gruppenadressen und Lovelace-Dashboard |
+
+## Home Assistant
+
+Die aktuelle Lovelace-Konfiguration liegt unter:
+
+```text
+home-assistant/lovelace_knx_eg.yaml
+```
+
+Sie verwendet `custom:button-card` und enthält genau drei Reiter:
+
+- Licht
+- Rollläden
+- Heizung
+
+Dokumentiert sind sechs Rollladen-/Markisenentitäten, sieben Lichtentitäten und drei vorhandene Klimaentitäten. Die Rollladenkarten zeigen Position und Zustand; die eigentliche Bedienung erfolgt nach dem Anklicken im Dialog **Mehr Informationen**.
 
 ## Aktueller Stand
 
@@ -57,9 +74,9 @@ Die Gruppenadressen können im nativen XML-Format in ein ETS-Projekt mit **3-Ebe
 - Bewegungsmelder `1.1.30`: schaltet beide Ganglichter über `1/4/4`.
 - Gemeinsamer Ganglichtstatus `1/4/5`: noch per eindeutiger ODER- oder UND-Logik zu erzeugen.
 - Jalousieaktor `1.1.4`: Kanäle A, B, C, D, G und H dokumentiert.
-- Rollladen-Namenskonvention: Raum plus `Fenster` oder `Türe`; Adressen bleiben unverändert.
 - Zentral Rollladen: `0/1/0` für Auf/Ab und `0/1/1` für Stopp.
-- Positionsstatus und Fahrzeitmessung werden nach vollständiger Programmierung geprüft.
+- Home Assistant: Licht-, Rollladen- und Markisenentitäten angelegt und Dashboard erstellt.
+- Positionsstatus und Fahrzeitmessung müssen für zuverlässige Prozentwerte vollständig funktionieren.
 - ETS zeigt für geänderte Geräte **Programmieren notwendig**; die betroffenen Geräte sind in Dokument 22 aufgeführt.
 
 ## Planungsprinzip
