@@ -1,0 +1,316 @@
+button_card_templates:
+  base_card:
+    size: 60px
+    show_state: true
+    show_name: true
+    triggers_update: all
+    styles:
+      card:
+        - height: 140px
+        - border-radius: 20px
+        - box-shadow: 0 8px 25px rgba(0,0,0,0.3)
+        - transition: all 0.3s ease
+      name:
+        - color: white
+        - font-weight: bold
+        - font-size: 0.8em
+        - text-shadow: 0 1px 3px rgba(0,0,0,0.3)
+        - white-space: normal
+        - line-height: 1.15
+        - text-align: center
+      state:
+        - color: rgba(255,255,255,0.9)
+        - font-size: 1em
+      icon:
+        - color: white
+        - width: 60px
+        - height: 60px
+        - filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3))
+    tap_action:
+      action: more-info
+      haptic: medium
+    hold_action:
+      action: more-info
+      haptic: light
+
+  title_text:
+    show_state: false
+    show_name: true
+    show_icon: false
+    styles:
+      card:
+        - background: none
+        - box-shadow: none
+        - padding: 0px
+        - height: auto
+      name:
+        - font-size: 1.6em
+        - font-weight: bold
+        - color: var(--primary-text-color)
+        - text-align: left
+        - margin: 0px 0px 10px 0px
+    tap_action:
+      action: none
+
+  card_light:
+    template: base_card
+    icon: mdi:lightbulb
+    state_display: |
+      [[[
+        if (entity.state === 'unavailable') return 'Nicht verfügbar';
+        return entity.state === 'on' ? 'An' : 'Aus';
+      ]]]
+    styles:
+      card:
+        - background: |
+            [[[
+              if (entity.state === 'unavailable')
+                return 'linear-gradient(135deg, #5f6368 0%, #3c4043 100%)';
+              return entity.state === 'on'
+                ? 'linear-gradient(135deg, #FFB347 0%, #FFCC33 50%, #FFD700 100%)'
+                : 'linear-gradient(135deg, #3a4a5c 0%, #2c3e50 100%)';
+            ]]]
+      icon:
+        - color: |
+            [[[
+              return entity.state === 'on' ? '#FFF' : 'rgba(255,255,255,0.5)';
+            ]]]
+    tap_action:
+      action: toggle
+      haptic: medium
+    hold_action:
+      action: more-info
+
+  card_heating:
+    template: base_card
+    icon: mdi:radiator
+    tap_action:
+      action: more-info
+    state_display: |
+      [[[
+        if (entity.state === 'unavailable') return 'Nicht verfügbar';
+        if (entity.state === 'heat') return 'Heizen';
+        if (entity.state === 'cool') return 'Kühlen';
+        if (entity.state === 'auto') return 'Auto';
+        if (entity.state === 'off') return 'Aus';
+        return entity.state;
+      ]]]
+    styles:
+      card:
+        - background: |
+            [[[
+              if (entity.state === 'off' || entity.state === 'unavailable')
+                return 'linear-gradient(135deg, #3a4a5c 0%, #2c3e50 100%)';
+              var current = entity.attributes.current_temperature || 0;
+              var target = entity.attributes.temperature || 0;
+              if (current < target - 1)
+                return 'linear-gradient(135deg, #FF6B35 0%, #FF4500 100%)';
+              if (current >= target)
+                return 'linear-gradient(135deg, #56ab2f 0%, #a8e063 100%)';
+              return 'linear-gradient(135deg, #f6d365 0%, #fda085 100%)';
+            ]]]
+      custom_fields:
+        temp:
+          - position: absolute
+          - bottom: 42px
+          - left: 50%
+          - transform: translateX(-50%)
+          - color: rgba(255,255,255,0.95)
+          - font-size: 1.1em
+          - font-weight: bold
+          - text-shadow: 0 1px 3px rgba(0,0,0,0.4)
+    custom_fields:
+      temp: |
+        [[[
+          var current = entity.attributes.current_temperature;
+          var target = entity.attributes.temperature;
+          if (current && target) return current.toFixed(1) + '° → ' + target + '°';
+          if (current) return current.toFixed(1) + '°';
+          return '';
+        ]]]
+
+  card_shutter:
+    template: base_card
+    tap_action:
+      action: more-info
+    icon: |
+      [[[
+        if (entity.state === 'unavailable') return 'mdi:window-shutter-alert';
+        var pos = entity.attributes.current_position;
+        if (pos === undefined || pos === null) return 'mdi:window-shutter';
+        return Number(pos) >= 95 ? 'mdi:window-shutter-open' : 'mdi:window-shutter';
+      ]]]
+    state_display: |
+      [[[
+        if (entity.state === 'unavailable') return 'Nicht verfügbar';
+        if (entity.state === 'opening') return 'Öffnet …';
+        if (entity.state === 'closing') return 'Schließt …';
+        var pos = entity.attributes.current_position;
+        if (pos === undefined || pos === null) return 'Position unbekannt';
+        if (Number(pos) >= 95) return 'Offen';
+        if (Number(pos) <= 5) return 'Geschlossen';
+        return Number(pos) + ' % offen';
+      ]]]
+    styles:
+      card:
+        - background: |
+            [[[
+              if (entity.state === 'unavailable')
+                return 'linear-gradient(135deg, #5f6368 0%, #3c4043 100%)';
+              var pos = Number(entity.attributes.current_position || 0);
+              if (pos >= 80) return 'linear-gradient(135deg, #74b9ff 0%, #0984e3 100%)';
+              if (pos >= 40) return 'linear-gradient(135deg, #81ecec 0%, #00cec9 100%)';
+              if (pos > 5) return 'linear-gradient(135deg, #636e72 0%, #2d3436 100%)';
+              return 'linear-gradient(135deg, #3a4a5c 0%, #2c3e50 100%)';
+            ]]]
+      icon:
+        - color: |
+            [[[
+              return Number(entity.attributes.current_position || 0) > 50
+                ? '#FFF'
+                : 'rgba(255,255,255,0.6)';
+            ]]]
+
+  card_awning:
+    template: base_card
+    tap_action:
+      action: more-info
+    icon: mdi:awning-outline
+    state_display: |
+      [[[
+        if (entity.state === 'unavailable') return 'Nicht verfügbar';
+        if (entity.state === 'opening') return 'Fährt aus …';
+        if (entity.state === 'closing') return 'Fährt ein …';
+        var pos = entity.attributes.current_position;
+        if (pos === undefined || pos === null) return 'Position unbekannt';
+        var value = Number(pos);
+        if (value <= 5) return 'Eingefahren';
+        if (value >= 95) return 'Ausgefahren';
+        return value + ' % ausgefahren';
+      ]]]
+    styles:
+      card:
+        - background: |
+            [[[
+              if (entity.state === 'unavailable')
+                return 'linear-gradient(135deg, #5f6368 0%, #3c4043 100%)';
+              var pos = Number(entity.attributes.current_position || 0);
+              if (pos >= 80) return 'linear-gradient(135deg, #74b9ff 0%, #0984e3 100%)';
+              if (pos >= 40) return 'linear-gradient(135deg, #81ecec 0%, #00cec9 100%)';
+              if (pos > 5) return 'linear-gradient(135deg, #636e72 0%, #2d3436 100%)';
+              return 'linear-gradient(135deg, #3a4a5c 0%, #2c3e50 100%)';
+            ]]]
+
+views:
+  - title: Licht
+    path: licht
+    icon: mdi:lightbulb-group
+    type: sections
+    max_columns: 4
+    sections:
+      - type: grid
+        cards:
+          - type: custom:button-card
+            template: title_text
+            name: 💡 Lichtsteuerung
+          - type: grid
+            columns: 3
+            square: false
+            cards:
+              - type: custom:button-card
+                template: card_light
+                entity: light.eg_wohnzimmer_licht
+                name: Wohnzimmer
+              - type: custom:button-card
+                template: card_light
+                entity: light.eg_arbeitszimmer_licht
+                name: Arbeitszimmer
+              - type: custom:button-card
+                template: card_light
+                entity: light.eg_kuche_licht
+                name: Küche
+              - type: custom:button-card
+                template: card_light
+                entity: light.eg_schlafzimmer_licht
+                name: Schlafzimmer
+              - type: custom:button-card
+                template: card_light
+                entity: light.eg_gang_licht
+                name: Gang Altbau
+              - type: custom:button-card
+                template: card_light
+                entity: light.eg_gang_neubau_licht
+                name: Gang Neubau
+              - type: custom:button-card
+                template: card_light
+                entity: light.eg_gang_licht_alle
+                name: Gang alle
+                icon: mdi:lightbulb-group
+
+  - title: Rollläden
+    path: rolllaeden
+    icon: mdi:window-shutter
+    type: sections
+    max_columns: 4
+    sections:
+      - type: grid
+        cards:
+          - type: custom:button-card
+            template: title_text
+            name: 🪟 Rollladensteuerung
+          - type: grid
+            columns: 3
+            square: false
+            cards:
+              - type: custom:button-card
+                template: card_shutter
+                entity: cover.eg_wohnzimmer_rollladen_fenster
+                name: Wohnzimmer Fenster
+              - type: custom:button-card
+                template: card_shutter
+                entity: cover.eg_wohnzimmer_rollladen_tur
+                name: Wohnzimmer Tür
+              - type: custom:button-card
+                template: card_shutter
+                entity: cover.eg_arbeitszimmer_rollladen
+                name: Arbeitszimmer
+              - type: custom:button-card
+                template: card_shutter
+                entity: cover.eg_schlafzimmer_rollladen_fenster
+                name: Schlafzimmer Fenster
+              - type: custom:button-card
+                template: card_shutter
+                entity: cover.eg_schlafzimmer_rollladen_tur
+                name: Schlafzimmer Tür
+              - type: custom:button-card
+                template: card_awning
+                entity: cover.eg_markise
+                name: Markise
+
+  - title: Heizung
+    path: heizung
+    icon: mdi:radiator
+    type: sections
+    max_columns: 4
+    sections:
+      - type: grid
+        cards:
+          - type: custom:button-card
+            template: title_text
+            name: 🔥 Heizungssteuerung
+          - type: grid
+            columns: 3
+            square: false
+            cards:
+              - type: custom:button-card
+                template: card_heating
+                entity: climate.heizkorper_omaopa_dusche_1
+                name: Abstellraum
+              - type: custom:button-card
+                template: card_heating
+                entity: climate.heizung_heizung_treppenhaus
+                name: Treppenhaus
+              - type: custom:button-card
+                template: card_heating
+                entity: climate.heizkorper_omaopa_bad
+                name: WC
