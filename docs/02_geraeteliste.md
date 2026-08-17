@@ -34,7 +34,7 @@
 |---:|---|---|
 | 1.1.20 | MDT BE-GT2Tx.01 / Glastaster II Smart mit Temperatursensor | Eingang; Zentral Licht sowie Zeit-/Temperaturanzeige werden eingerichtet |
 | 1.1.21–1.1.28 | MDT Glastaster II Smart mit Temperatursensor | im ETS-Projekt vorhanden und programmiert; Raumzuordnung noch dokumentieren |
-| 1.1.29 | MDT Glastaster II Smart mit Temperatursensor | im ETS-Projekt vorhanden; vollständigen Programmierstand prüfen |
+| 1.1.29 | OpenKNX RaumController | Raumklimaobjekte verbunden und am 17.08.2026 erfolgreich im Gruppenmonitor geprüft; VOC und Helligkeit lieferten beim Test noch `0` |
 | 1.1.30 | MDT Präsenzmelder 360° KLR 4S | im ETS-Projekt vorhanden; genaue Bestellnummer und Raumzuordnung prüfen |
 | 1.1.40 | Gira Wetterstation Plus, ETS-Applikation B00D21 | im ETS-Projekt; vollständigen Programmierstand prüfen |
 | 1.1.41 | Gira KNX Rauchwarnmelder, ETS-Applikation C01602 | Rauchalarm und Störmeldungen |
@@ -66,7 +66,8 @@ Die MDT SCN-RTC20.01 wird für Datum und Uhrzeit als Slave betrieben. Home Assis
 ## Noch zu bestätigen
 
 - Aufgabe und physikalische Adresse des zweiten MDT IP-Routers
-- Raumzuordnung der Glastaster `1.1.21` bis `1.1.29`
+- Raumzuordnung der Glastaster `1.1.21` bis `1.1.28`
+- Einbauort und genaue Hardwarevariante des OpenKNX RaumControllers `1.1.29`
 - genaue Bestellnummer und Raumzuordnung des Präsenzmelders `1.1.30`
 - vollständiger Programmierstand von `1.1.29` und `1.1.40`
 - tatsächliche Belegung des zweiten Heizungsaktors

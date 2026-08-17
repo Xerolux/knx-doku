@@ -19,7 +19,7 @@ Adresse;Gerät;Raum/Funktion;Status/Hinweis
 1.1.26;MDT Glastaster II Smart mit Temperatur;Raum noch zuordnen;im ETS-Projekt programmiert
 1.1.27;MDT Glastaster II Smart mit Temperatur;Raum noch zuordnen;im ETS-Projekt programmiert
 1.1.28;MDT Glastaster II Smart mit Temperatur;Raum noch zuordnen;im ETS-Projekt programmiert
-1.1.29;MDT Glastaster II Smart mit Temperatur;Raum noch zuordnen;Programmierstand prüfen
+1.1.29;OpenKNX RaumController;Einbauort noch zuordnen;Raumklimaobjekte sichtbar, Verknüpfung und Programmierstand prüfen
 1.1.30;MDT Präsenzmelder 360° KLR 4S;Raum noch zuordnen;genaue Bestellnummer und Programmierstand prüfen
 1.1.31;MDT SCN-IP100.03 Zusatzapplikation;E-Mail- und Zeitserverfunktion;programmiert, kann zum selben realen Gerät wie 1.1.0 gehören
 1.1.32-1.1.39;Reserve;weitere Innensensoren und Bedienstellen;erst bei tatsächlichem Gerät vergeben

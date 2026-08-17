@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<GroupAddress-Export xmlns="http://knx.org/xml/ga-export/01">
+  <GroupRange Name="Raumklima" RangeStart="26624" RangeEnd="28671">
+    <GroupRange Name="RaumController 1.1.29" RangeStart="26624" RangeEnd="26879">
+      <GroupAddress Name="RaumController Temperatur" Address="13/0/0" DPTs="DPST-9-1" />
+      <GroupAddress Name="RaumController Luftfeuchte" Address="13/0/1" DPTs="DPST-9-7" />
+      <GroupAddress Name="RaumController Luftdruck" Address="13/0/2" DPTs="DPST-9-6" />
+      <GroupAddress Name="RaumController VOC" Address="13/0/3" DPTs="DPT-9" />
+      <GroupAddress Name="RaumController CO2" Address="13/0/4" DPTs="DPST-9-8" />
+      <GroupAddress Name="RaumController CO2-VOC berechnet" Address="13/0/5" DPTs="DPST-9-8" />
+      <GroupAddress Name="RaumController Helligkeit" Address="13/0/6" DPTs="DPST-9-4" />
+      <GroupAddress Name="RaumController Sensorwerte anfordern" Address="13/0/20" DPTs="DPST-1-16" />
+    </GroupRange>
+  </GroupRange>
+</GroupAddress-Export>

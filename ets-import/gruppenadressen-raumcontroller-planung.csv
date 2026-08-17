@@ -1,0 +1,9 @@
+Hauptgruppe;Mittelgruppe;Gruppenadresse;Name;DPT;Objekt 1.1.29;Hinweis
+Raumklima;RaumController 1.1.29;13/0/0;RaumController Temperatur;9.001;45;Messwert in °C
+Raumklima;RaumController 1.1.29;13/0/1;RaumController Luftfeuchte;9.007;48;Messwert in %
+Raumklima;RaumController 1.1.29;13/0/2;RaumController Luftdruck;9.006;51;Messwert in Pa
+Raumklima;RaumController 1.1.29;13/0/3;RaumController VOC;9;54;Einheitenloser 2-Byte-Float ohne definierten Subtyp
+Raumklima;RaumController 1.1.29;13/0/4;RaumController CO2;9.008;57;Messwert in ppm
+Raumklima;RaumController 1.1.29;13/0/5;RaumController CO2-VOC berechnet;9.008;58;Aus VOC berechneter Wert in ppm und kein echter CO2-Messwert
+Raumklima;RaumController 1.1.29;13/0/6;RaumController Helligkeit;9.004;61;Messwert in Lux
+Raumklima;RaumController 1.1.29;13/0/20;RaumController Sensorwerte anfordern;1.016;43;Optionaler Trigger mit Wert 1 sendet alle Sensorwerte

@@ -32,7 +32,7 @@ Die Linie **1.3** bleibt vorerst leer. Wetterstation, Rauchwarnmelder-KNX-Modul 
 1.1.10  MDT VC-EASY.02 VisuControl Easy II
 1.1.20  MDT Glastaster II Smart mit Temperatursensor – Eingang
 1.1.21–1.1.28  weitere MDT Glastaster II Smart mit Temperatursensor
-1.1.29  MDT Glastaster II Smart – Programmierstand prüfen
+1.1.29  OpenKNX RaumController – Sensorverknüpfung und Programmierstand prüfen
 1.1.30  MDT Präsenzmelder 360° KLR 4S
 1.1.31  MDT SCN-IP100.03 E-Mail- und Zeitserver-Applikation
 1.1.40  Gira Wetterstation Plus – ETS-Applikation B00D21

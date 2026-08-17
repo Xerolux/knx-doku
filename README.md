@@ -8,14 +8,13 @@ Die Gruppenadressen können im nativen XML-Format in ein ETS-Projekt mit **3-Ebe
 
 1. Projekt in ETS anlegen oder öffnen.
 2. In **Gruppenadressen** den obersten Eintrag rechtsklicken und **Gruppenadressen importieren** wählen.
-3. Zuerst [ets-import/gruppenadressen.xml](ets-import/gruppenadressen.xml) importieren.
-4. Danach [ets-import/gruppenadressen-zentral-zeit.xml](ets-import/gruppenadressen-zentral-zeit.xml) für Zentral Licht sowie Zeit und Datum importieren.
-5. Für den Gira-Rauchwarnmelder zusätzlich [ets-import/gruppenadressen-sicherheit.xml](ets-import/gruppenadressen-sicherheit.xml) importieren.
-6. Anschließend Produktdatenbanken einfügen, Geräte anlegen und Kommunikationsobjekte verbinden.
+3. [ets-import/gruppenadressen-komplett.xml](ets-import/gruppenadressen-komplett.xml) importieren.
+4. Importbericht und vorhandene Adressen prüfen.
+5. Anschließend Produktdatenbanken einfügen, Geräte anlegen und Kommunikationsobjekte verbinden.
 
-Die vollständige Importreihenfolge steht in [ets-import/ETS_IMPORT.md](ets-import/ETS_IMPORT.md).
+Die Komplettdatei enthält alle 162 vorgesehenen Gruppenadressen einschließlich der geplanten DPTs. Die bisherigen Einzeldateien dienen nur der modularen Pflege und werden nicht zusätzlich importiert. Einzelheiten stehen in [ets-import/ETS_IMPORT.md](ets-import/ETS_IMPORT.md).
 
-> Die XML-Dateien enthalten ausschließlich Gruppenadressstrukturen. DPTs, physikalische Adressen, Geräte und Objektverknüpfungen werden getrennt gepflegt.
+> Die Komplettdatei enthält Gruppenadressstrukturen und geplante DPTs, aber keine physikalischen Adressen, Geräte oder Objektverknüpfungen.
 
 ## Topologie
 
@@ -52,18 +51,29 @@ Der Gira 5114 00 erzeugt in ETS automatisch das RF-Segment unter Linie 1.1. Eine
 | [docs/17_wartung.md](docs/17_wartung.md) | Abnahme, Wartung, MDT SAFE und offene Punkte |
 | [docs/18_rauchwarnmelder_gira.md](docs/18_rauchwarnmelder_gira.md) | Gira KNX-Rauchwarnmelder und Alarmadressen |
 | [docs/19_zeit_datum_temperatur.md](docs/19_zeit_datum_temperatur.md) | KNX-Zeitserver, Datum, Uhrzeit, Temperatur und Display |
+| [docs/20_openknx_raumcontroller.md](docs/20_openknx_raumcontroller.md) | OpenKNX-Sensorobjekte, ETS-Verknüpfung und Home-Assistant-Konfiguration |
 
 ## ETS-Importdateien
 
 | Datei | Verwendung |
 |---|---|
+| [ets-import/gruppenadressen-komplett.xml](ets-import/gruppenadressen-komplett.xml) | empfohlener Ein-Datei-Import aller 162 Gruppenadressen mit DPTs |
 | [ets-import/gruppenadressen.xml](ets-import/gruppenadressen.xml) | Grundstruktur für ETS 6 |
 | [ets-import/gruppenadressen-zentral-zeit.xml](ets-import/gruppenadressen-zentral-zeit.xml) | Ergänzung für `0/4/0` und `0/5/0` bis `0/5/2` |
 | [ets-import/gruppenadressen-sicherheit.xml](ets-import/gruppenadressen-sicherheit.xml) | Ergänzung für Rauchalarm und Rauchwarnmelderzustände |
+| [ets-import/gruppenadressen-raumcontroller.xml](ets-import/gruppenadressen-raumcontroller.xml) | Ergänzung für die Messwerte des OpenKNX RaumControllers `1.1.29` |
 | [ets-import/gruppenadressen-planung.csv](ets-import/gruppenadressen-planung.csv) | DPT- und Planungsreferenz der Grundstruktur |
 | [ets-import/gruppenadressen-zentral-zeit-planung.csv](ets-import/gruppenadressen-zentral-zeit-planung.csv) | DPT-Referenz für Zentral Licht sowie Zeit und Datum |
+| [ets-import/gruppenadressen-sicherheit-planung.csv](ets-import/gruppenadressen-sicherheit-planung.csv) | DPT-Referenz für Rauchwarnmelder und Sicherheitsmeldungen |
+| [ets-import/gruppenadressen-raumcontroller-planung.csv](ets-import/gruppenadressen-raumcontroller-planung.csv) | DPT- und Objektzuordnung des OpenKNX RaumControllers |
 | [ets-import/physikalische-adressen.csv](ets-import/physikalische-adressen.csv) | Geräte- und Adresscheckliste |
 | [ets-import/ETS_IMPORT.md](ets-import/ETS_IMPORT.md) | Importanleitung, Topologie und Regeln |
+
+## Home Assistant
+
+| Datei | Verwendung |
+|---|---|
+| [home-assistant/knx_raumcontroller.yaml](home-assistant/knx_raumcontroller.yaml) | einbindbare KNX-Sensorliste für den OpenKNX RaumController |
 
 ## Planungsprinzip
 
@@ -76,4 +86,4 @@ Der Gira 5114 00 erzeugt in ETS automatisch das RF-Segment unter Linie 1.1. Eine
 
 ## Aktueller Status
 
-Die zentrale Lichtsteuerung ist unter `0/4/0 Alle Lichter schalten` angelegt. Der Taster `1.1.20 Eingang` sendet als Zwei-Tastenfunktion Ein und Aus auf diese Adresse; der MDT AKS-2416.03 empfängt sie über sein Zentralobjekt. Die E-Mail- und Zeitserver-Applikation des MDT SCN-IP100.03 ist unter `1.1.31` angelegt und versorgt den Bus über `0/5/0`, `0/5/1` und bevorzugt `0/5/2`. Die MDT Glastaster `1.1.20` bis `1.1.28` sind im ETS-Projekt vorhanden, `1.1.29` und einzelne Gira-Geräte müssen hinsichtlich ihres vollständigen Programmierstands noch geprüft werden.
+Die zentrale Lichtsteuerung ist unter `0/4/0 Alle Lichter schalten` angelegt. Der Taster `1.1.20 Eingang` sendet als Zwei-Tastenfunktion Ein und Aus auf diese Adresse; der MDT AKS-2416.03 empfängt sie über sein Zentralobjekt. Die E-Mail- und Zeitserver-Applikation des MDT SCN-IP100.03 ist unter `1.1.31` angelegt und versorgt den Bus über `0/5/0`, `0/5/1` und bevorzugt `0/5/2`. Die MDT Glastaster `1.1.20` bis `1.1.28` sind im ETS-Projekt vorhanden. Für den OpenKNX RaumController `1.1.29` sind die Raumklimaadressen `13/0/0` bis `13/0/6` vorbereitet; die ETS-Verknüpfung und der Programmierstand sind noch zu prüfen.

@@ -2,7 +2,7 @@
 
 ## Aktueller Gerätebestand
 
-Im ETS-Projekt sind die MDT Glastaster II Smart mit Temperatursensor unter `1.1.20` bis `1.1.29` angelegt. Die Geräte `1.1.20` bis `1.1.28` sind programmiert; der vollständige Programmierstand von `1.1.29` muss noch geprüft werden.
+Im ETS-Projekt sind die MDT Glastaster II Smart mit Temperatursensor unter `1.1.20` bis `1.1.28` angelegt und programmiert. Die Adresse `1.1.29` gehört dem OpenKNX RaumController und ist in [20 – OpenKNX RaumController](20_openknx_raumcontroller.md) dokumentiert.
 
 Der Taster `1.1.20` ist dem Eingang beziehungsweise Gang zugeordnet und dient aktuell als Referenz für das Bedienkonzept.
 
@@ -108,4 +108,4 @@ Dadurch bleiben Aktor, Taster und Visualisierung synchron.
 | Küche | Licht und optionale Szene Küche |
 | Gang/Eingang | Ganglicht, Zentral Licht, Nachtmodus, Anwesenheit und optional alle Rollläden |
 
-Die konkrete Zuordnung der Adressen `1.1.21` bis `1.1.29` zu den Räumen muss noch aus dem realen Einbau übernommen werden.
+Die konkrete Zuordnung der Glastaster `1.1.21` bis `1.1.28` zu den Räumen muss noch aus dem realen Einbau übernommen werden.

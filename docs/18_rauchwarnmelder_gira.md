@@ -12,12 +12,24 @@ Das Modul bindet den zugehörigen Rauchwarnmelder an KNX an. Weitere über die V
 ## Geplante Gruppenadressen
 
 ```text
-10/0/0  Rauchalarm
-10/0/1  Rauchwarnmelder Störung
-10/0/2  Rauchwarnmelder Batterie schwach
-10/0/3  Rauchwarnmelder Verschmutzung
-10/0/4  Rauchwarnmelder Testalarm
+10/0/0  Rauchalarm                              DPT 1.002
+10/0/1  Rauchwarnmelder Störung                 DPT 1.002
+10/0/2  Rauchwarnmelder Batterie schwach        DPT 1.002
+10/0/4  Rauchwarnmelder Testalarm auslösen      DPT 1.003
+10/0/5  Rauchwarnmelder Testalarm Status        DPT 1.002
+10/0/6  Rauchwarnmelder Störung Rauchkammer     DPT 1.002
 ```
+
+Eine eigene Meldung nur für „Verschmutzung“ existiert in der Gira-Applikation nicht. Laut Produktdokumentation aktiviert Verschmutzung die allgemeine Störung an Objekt 12. Objekt 16 meldet allgemeiner eine Rauchkammerstörung; deshalb heißt `10/0/6` korrekt **Störung Rauchkammer** und nicht „Verschmutzung“. Die ursprünglich geplante Adresse `10/0/3` wird nicht verwendet, weil ETS sie ohne ausgegebene Ursache wiederholt abgelehnt hat.
+
+| Objekt | Name in der Gira-Applikation | Gruppenadresse |
+|---:|---|---:|
+| 0 | Alarm beziehungsweise Lokaler Alarm | `10/0/0` |
+| 7 | Testalarm | `10/0/4` |
+| 8 | Status Testalarm | `10/0/5` |
+| 12 | Störung | `10/0/1` |
+| 14 | Störung Batterie | `10/0/2` |
+| 16 | Störung Rauchkammer | `10/0/6` |
 
 Nach dem Einfügen der Produktdatenbank werden nur die Gruppenadressen mit tatsächlich vorhandenen und typgleichen Kommunikationsobjekten verbunden. Die Produktdatenbank und die technische Dokumentation des Geräts sind verbindlich.
 
@@ -36,5 +48,6 @@ Entriegelungen von Türen oder andere sicherheitskritische Automatiken dürfen n
 2. Gerät auf Linie 1.1 einfügen und Adresse 1.1.41 vergeben.
 3. Applikationsvariante passend zum vorhandenen Rauchwarnmelder auswählen.
 4. Kommunikationsobjekte mit den vorhandenen Gruppenadressen 10/0/x verbinden.
-5. Alarm, Störung und Testfunktion einzeln prüfen.
-6. Ergebnis und Datum im Wartungsprotokoll dokumentieren.
+5. Alarm, allgemeine Störung, Batterie- und Rauchkammerstörung einzeln prüfen.
+6. Testalarm über `10/0/4` auslösen und die Rückmeldung auf `10/0/5` prüfen.
+7. Ergebnis und Datum im Wartungsprotokoll dokumentieren.

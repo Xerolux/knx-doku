@@ -51,6 +51,12 @@ Verwendete Adressen:
 
 Home Assistant kann `0/4/0 Alle Lichter schalten` optional bedienen. Die Grundfunktion zwischen Taster `1.1.20` und Schaltaktor `1.1.3` funktioniert unabhängig von Home Assistant.
 
+## OpenKNX RaumController
+
+Home Assistant liest die Raumklimawerte des OpenKNX RaumControllers `1.1.29` über `13/0/0` bis `13/0/6`. Die Adressen liegen bewusst in der gemeinsamen Hauptgruppe `13 Raumklima`, damit später auch KNX-Anzeigen, Logiken oder eine Lüftungssteuerung dieselben Werte verwenden können.
+
+Die vollständige Objektzuordnung und die Home-Assistant-YAML-Konfiguration stehen in [20 – OpenKNX RaumController](20_openknx_raumcontroller.md).
+
 ## Empfehlung
 
 In Home Assistant nur Gruppenadressen einbinden, die tatsächlich gebraucht werden. Schreibende Automationen für Schutzfunktionen oder Zeitversorgung dürfen nicht mit den nativen KNX-Mastern konkurrieren. Die ETS bleibt die verbindliche Hauptdokumentation.

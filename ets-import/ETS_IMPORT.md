@@ -6,11 +6,13 @@ Die XML-Dateien sind direkte Importdateien für ETS 6 mit **3-Ebenen-Gruppenadre
 
 | Datei | Inhalt |
 |---|---|
+| `gruppenadressen-komplett.xml` | empfohlener Ein-Datei-Import aller 162 Gruppenadressen mit geplanten DPTs |
 | `gruppenadressen.xml` | Grundstruktur der Anlage |
 | `gruppenadressen-zentral-zeit.xml` | Zentral Licht sowie Zeit und Datum |
 | `gruppenadressen-sicherheit.xml` | Gira Rauchwarnmelder und Sicherheitsmeldungen |
+| `gruppenadressen-raumcontroller.xml` | Messwerte und Anforderung des OpenKNX RaumControllers `1.1.29` |
 
-Die CSV-Dateien bleiben technische Referenzen mit den vorgesehenen DPTs. Sie sind **keine** ETS-Importdateien.
+Die CSV-Dateien bleiben technische Referenzen mit den vorgesehenen DPTs. Sie sind **keine** ETS-Importdateien. Die DPTs sind zusätzlich in `gruppenadressen-komplett.xml` hinterlegt.
 
 ## Import in ETS 6
 
@@ -18,15 +20,17 @@ Die CSV-Dateien bleiben technische Referenzen mit den vorgesehenen DPTs. Sie sin
 2. Vor dem Import eine Sicherung des ETS-Projekts erstellen.
 3. In der Ansicht **Gruppenadressen** den obersten Eintrag rechtsklicken.
 4. **Gruppenadressen importieren** wählen.
-5. Zuerst `gruppenadressen.xml` importieren.
-6. Danach `gruppenadressen-zentral-zeit.xml` importieren.
-7. Anschließend `gruppenadressen-sicherheit.xml` importieren.
-8. Importbericht und Behandlung bereits vorhandener Adressen prüfen.
-9. Produktdatenbanken einfügen, Geräte anlegen und Kommunikationsobjekte verknüpfen.
+5. `gruppenadressen-komplett.xml` importieren.
+6. Importbericht und Behandlung bereits vorhandener Adressen prüfen.
+7. Produktdatenbanken einfügen, Geräte anlegen und Kommunikationsobjekte verknüpfen.
 
 Für XML muss beim Import keine CSV-Zeichenkodierung und kein Trennzeichen ausgewählt werden.
 
 > Bereits vorhandene Gruppenadressen mit identischen Adressen dürfen nicht versehentlich dupliziert oder umbenannt werden. Im Importdialog ist die vorhandene ETS-Struktur mit der Importdatei abzugleichen.
+
+## Alternative: modularer Import
+
+Nur wenn bewusst einzelne Bereiche importiert werden sollen, können stattdessen nacheinander `gruppenadressen.xml`, `gruppenadressen-zentral-zeit.xml`, `gruppenadressen-sicherheit.xml` und `gruppenadressen-raumcontroller.xml` verwendet werden. Komplettdatei und Einzeldateien werden nicht im selben Importlauf kombiniert.
 
 ## Ergänzung Zentral Licht sowie Zeit und Datum
 
@@ -40,6 +44,10 @@ Die Ergänzungsdatei enthält:
 ```
 
 Die in ETS sichtbare Adresse `0/5/3 Aktuelle Werte empfangen` wird bewusst nicht importiert. Ihre Funktion ist nicht eindeutig definiert und muss im bestehenden Projekt geprüft werden.
+
+## Ergänzung OpenKNX RaumController
+
+Die Ergänzungsdatei enthält die sieben Messwerte von `1.1.29` unter `13/0/0` bis `13/0/6` sowie den optionalen Anforderungstrigger `13/0/20`. DPTs und Objektnummern stehen in [gruppenadressen-raumcontroller-planung.csv](gruppenadressen-raumcontroller-planung.csv) und in [20 – OpenKNX RaumController](../docs/20_openknx_raumcontroller.md).
 
 ## Topologie
 
@@ -55,7 +63,7 @@ Der Gira 5114 00 RF Multi/TP Medienkoppler erzeugt in ETS automatisch das RF-Seg
 
 ## Was die XML bewusst nicht erledigt
 
-- **DPTs:** Die vorgesehenen DPTs stehen in den jeweiligen Planungs-CSV-Dateien und müssen zu den Kommunikationsobjekten passen.
+- **DPT-Prüfung:** Die Komplettdatei enthält die vorgesehenen DPTs. Sie müssen trotzdem zu den Kommunikationsobjekten der tatsächlich geladenen Produktdatenbank passen.
 - **Physikalische Adressen und Geräte:** Diese werden nach dem Einfügen der konkreten Produktdatenbanken in ETS vergeben.
 - **Verknüpfungen:** Aktor-, Taster- und Sensorobjekte müssen gezielt mit den Gruppenadressen verbunden werden.
 - **Topologieerstellung:** Backbone, Hauptlinie, TP-Linie, RF-Segment und Außenreserve werden in ETS angelegt; die XML-Dateien importieren nur Gruppenadressen.
@@ -71,6 +79,11 @@ Der Gira 5114 00 RF Multi/TP Medienkoppler erzeugt in ETS automatisch das RF-Seg
 1.1.31 Objekt 4   Datum/Uhrzeit senden
     -> 0/5/2
     -> 1.1.20 Objekt 114 Uhrzeit/Datum empfangen
+    -> 1.1.29 Objekt 4 Uhrzeit/Datum empfangen
+
+1.1.29 Objekte 45/48/51/54/57/58/61 Sensorwerte
+    -> 13/0/0 bis 13/0/6
+    -> Home Assistant sowie spätere KNX-Verbraucher
 ```
 
 Bei allen gewünschten Lichtkanälen des MDT AKS-2416.03 muss die Teilnahme an der Zentralfunktion in den Parametern aktiviert sein.
