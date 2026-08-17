@@ -50,6 +50,14 @@ Für die kombinierte Zeitversorgung:
     -> 1.1.20 Objekt 114 Uhrzeit/Datum – aktuelle Werte empfangen
 ```
 
+Der OpenKNX RaumController empfängt denselben kombinierten Zeitwert:
+
+```text
+1.1.31 Objekt 4 Datum/Uhrzeit senden
+    -> 0/5/2 Datum/Uhrzeit
+    -> 1.1.29 Objekt 4 Uhrzeit/Datum – Eingang
+```
+
 Alternativ kann ausschließlich die Uhrzeit über `0/5/0` mit Objekt 112 des Tasters empfangen werden. Beide Wege gleichzeitig sind für die reine Anzeige nicht notwendig.
 
 ## Temperaturanzeige
@@ -76,3 +84,4 @@ Für eine eindeutige Bedienung wird empfohlen, dass der erste Tastendruck bei au
 3. Bei fehlender Zeit Objekt 53 beziehungsweise die NTP-Einstellungen, Netzwerkzugang, DNS und Gateway prüfen.
 4. Taster `1.1.20` anschließend vollständig programmieren.
 5. Anzeige von Uhrzeit, Datum und interner Temperatur prüfen.
+6. Den Empfang von `0/5/2` am OpenKNX RaumController `1.1.29` prüfen.

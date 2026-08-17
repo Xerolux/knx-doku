@@ -10,6 +10,7 @@ Die Datei [../ets-import/gruppenadressen.xml](../ets-import/gruppenadressen.xml)
 
 - [../ets-import/gruppenadressen-zentral-zeit.xml](../ets-import/gruppenadressen-zentral-zeit.xml) für Zentral Licht sowie Zeit und Datum
 - [../ets-import/gruppenadressen-sicherheit.xml](../ets-import/gruppenadressen-sicherheit.xml) für den Gira-Rauchwarnmelder
+- [../ets-import/gruppenadressen-raumcontroller.xml](../ets-import/gruppenadressen-raumcontroller.xml) für die Messwerte des OpenKNX RaumControllers
 
 Gruppenadressen sind unabhängig von der physikalischen Linie. Geräte auf KNX TP, KNX RF und IP können dieselben Gruppenadressen verwenden, sofern ihre Kommunikationsobjekte und DPTs zueinander passen.
 
@@ -28,8 +29,24 @@ Gruppenadressen sind unabhängig von der physikalischen Linie. Geräte auf KNX T
 | 8 | Status | hausweite Sammelmeldungen |
 | 9 | Home Assistant | optionale Diagnose- und Anzeigeobjekte |
 | 10 | Sicherheit | Rauchalarm und Zustände des Gira KNX-Rauchwarnmoduls |
+| 13 | Raumklima | Raumklimawerte sowie spätere Lüftungs- und Kühlungsfunktionen |
 
-Die Hauptgruppen 11 bis 15 bleiben als Reserve für Energie, allgemeine Störungen, Lüftung/Kühlung, Außenanlagen und spätere Erweiterungen frei.
+Die Hauptgruppen 11, 12, 14 und 15 bleiben als Reserve für Energie, allgemeine Störungen, Außenanlagen und spätere Erweiterungen frei. Hauptgruppe 13 wird für die Raumklimawerte des OpenKNX RaumControllers und spätere Lüftungs- oder Kühlungsfunktionen verwendet.
+
+## Raumklima / OpenKNX RaumController
+
+| Gruppenadresse | Name | DPT | Quelle |
+|---:|---|---:|---|
+| 13/0/0 | RaumController Temperatur | 9.001 | `1.1.29`, Objekt 45 |
+| 13/0/1 | RaumController Luftfeuchte | 9.007 | `1.1.29`, Objekt 48 |
+| 13/0/2 | RaumController Luftdruck | 9.006 | `1.1.29`, Objekt 51 |
+| 13/0/3 | RaumController VOC | 9 | `1.1.29`, Objekt 54 |
+| 13/0/4 | RaumController CO2 | 9.008 | `1.1.29`, Objekt 57 |
+| 13/0/5 | RaumController CO2-VOC berechnet | 9.008 | `1.1.29`, Objekt 58 |
+| 13/0/6 | RaumController Helligkeit | 9.004 | `1.1.29`, Objekt 61 |
+| 13/0/20 | RaumController Sensorwerte anfordern | 1.016 | optional an `1.1.29`, Objekt 43 |
+
+Die Messwertadressen sind nicht Home-Assistant-spezifisch. Home Assistant liest sie zunächst zur Visualisierung und Statistik; spätere KNX-Teilnehmer dürfen dieselben Werte konsumieren. Nur der RaumController schreibt die Messwerte.
 
 ## Zentral Licht
 
@@ -57,11 +74,12 @@ Die in ETS sichtbare Adresse `0/5/3 Aktuelle Werte empfangen` besitzt derzeit ke
 10/0/0  Rauchalarm
 10/0/1  Rauchwarnmelder Störung
 10/0/2  Rauchwarnmelder Batterie schwach
-10/0/3  Rauchwarnmelder Verschmutzung
-10/0/4  Rauchwarnmelder Testalarm
+10/0/4  Rauchwarnmelder Testalarm auslösen
+10/0/5  Rauchwarnmelder Testalarm Status
+10/0/6  Rauchwarnmelder Störung Rauchkammer
 ```
 
-Die tatsächliche Verknüpfung erfolgt anhand der in der Gira-Produktdatenbank sichtbaren Kommunikationsobjekte. Nicht vorhandene Objekte bleiben unverknüpft.
+Die Gira-Applikation besitzt kein separates Objekt nur für Verschmutzung. Dieser Zustand ist Bestandteil der allgemeinen Störung an Objekt 12; Objekt 16 liefert zusätzlich die allgemeinere Rauchkammerstörung. `10/0/3` bleibt wegen des wiederholten ETS-Importkonflikts frei. Die tatsächliche Verknüpfung erfolgt anhand der in der Produktdatenbank sichtbaren Kommunikationsobjekte.
 
 ## Konventionen
 

@@ -2,6 +2,10 @@
 
 Stand: 04.08.2026
 
+## Gerätebestand
+
+Im ETS-Projekt sind die MDT Glastaster II Smart mit Temperatursensor unter `1.1.20` bis `1.1.28` angelegt und programmiert. Die Adresse `1.1.29` gehört dem OpenKNX RaumController und ist in [24 – OpenKNX RaumController](24_openknx_raumcontroller.md) dokumentiert.
+
 ## Grundprinzip
 
 Die MDT Glastaster verwenden dieselben Funktionsadressen wie Aktoren und Visualisierung. Gruppenadressennamen werden nicht automatisch auf dem Display angezeigt; sichtbare Funktionsnamen werden in den Parametern des jeweiligen Tastenpaares als Text hinterlegt.
@@ -123,6 +127,15 @@ Der interne Temperatursensor wird unter **Temperaturmessung → Grundeinstellung
 
 Soll die Temperatur zusätzlich auf den Bus gesendet werden, wird Objekt 108 `Temperaturmesswert` mit der Isttemperaturadresse des jeweiligen Raumes verbunden.
 
+Für Eingang/Gang ist als Temperaturadresse vorgesehen:
+
+```text
+1.1.20 gemessene Temperatur senden
+    -> 3/4/1 Gang Isttemperatur
+```
+
+Vor der endgültigen Verknüpfung ist zu bestätigen, dass `1.1.20` dauerhaft dem Bereich Gang zugeordnet bleibt.
+
 ## Zeit und Datum
 
 ```text
@@ -142,5 +155,34 @@ Prüfen:
 4. Positionswert wird nach Fahrtende aktualisiert.
 5. Obere Endlage zeigt ungefähr `0 %`.
 6. Untere Endlage zeigt ungefähr `100 %`.
+
+## Display-Standby
+
+Empfohlenes Verhalten:
+
+- Display nach einer festgelegten Zeit in Standby versetzen, beispielsweise nach 20 Sekunden.
+- Standbyanzeige dunkel beziehungsweise Display aus.
+- Der erste Tastendruck weckt nur das Display.
+- Der zweite Tastendruck führt die eigentliche Funktion aus.
+
+Alternativ kann der erste Tastendruck das Display aufwecken und gleichzeitig schalten. Das ist schneller, kann bei einem dunklen Display aber zu unbeabsichtigten Befehlen führen.
+
+## Weitere raumbezogene Funktionen
+
+Die Glastaster sollen je Raum Licht, Beschattung und Statusanzeigen bedienen. Sie erhalten dafür keine zusätzlichen, tastereigenen Gruppenadressen, sondern verwenden die Funktionsadressen des jeweiligen Raumes.
+
+## Empfohlene weitere Zuordnung
+
+| Bereich | Funktionen |
+|---|---|
+| Wohnzimmer | Licht, beide Rollläden, Markise, Szene Fernsehen |
+| Arbeitszimmer | Licht und Rollladen |
+| Schlafzimmer | Licht und beide Rollläden |
+| Badezimmer | Licht und Rollladen |
+| Esszimmer | Licht und optionale Szene Essen |
+| Küche | Licht und optionale Szene Küche |
+| Gang/Eingang | Ganglicht, Zentral Licht, Nachtmodus, Anwesenheit und optional alle Rollläden |
+
+Die konkrete Zuordnung der Glastaster `1.1.21` bis `1.1.28` zu den Räumen muss noch aus dem realen Einbau übernommen werden.
 
 Dieses Dokument enthält keine Bilder, Passwörter, PINs oder privaten ETS-Dateien.

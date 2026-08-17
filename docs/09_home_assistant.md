@@ -93,6 +93,12 @@ Das Dashboard verwendet `custom:button-card` und besitzt genau drei Reiter:
 
 Die Rollladenkarten sind reine Anzeigen. Ein Tipp öffnet den Home-Assistant-Dialog **Mehr Informationen**, über den Auf, Ab, Stopp und Position bedient werden.
 
+## OpenKNX RaumController
+
+Home Assistant liest die Raumklimawerte des OpenKNX RaumControllers `1.1.29` über `13/0/0` bis `13/0/6`. Die Adressen liegen bewusst in der gemeinsamen Hauptgruppe `13 Raumklima`, damit später auch KNX-Anzeigen, Logiken oder eine Lüftungssteuerung dieselben Werte verwenden können.
+
+Die vollständige Objektzuordnung und die Home-Assistant-YAML-Konfiguration stehen in [24 – OpenKNX RaumController](24_openknx_raumcontroller.md).
+
 ## Empfehlung
 
 In Home Assistant nur Gruppenadressen einbinden, die tatsächlich gebraucht werden. Schreibende Automationen für Schutzfunktionen oder Zeitversorgung dürfen nicht mit den nativen KNX-Mastern konkurrieren. Die ETS bleibt die verbindliche Hauptdokumentation.

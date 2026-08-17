@@ -1,0 +1,7 @@
+Hauptgruppe;Mittelgruppe;Gruppenadresse;Name;DPT;Hinweis
+Sicherheit;Rauchwarnmelder;10/0/0;Rauchalarm;1.002;Objekt 0 Alarm beziehungsweise lokaler Alarm
+Sicherheit;Rauchwarnmelder;10/0/1;Rauchwarnmelder Störung;1.002;Objekt 12 allgemeine Störmeldung einschließlich Verschmutzung
+Sicherheit;Rauchwarnmelder;10/0/2;Rauchwarnmelder Batterie schwach;1.002;Objekt 14 Störung Batterie
+Sicherheit;Rauchwarnmelder;10/0/4;Rauchwarnmelder Testalarm auslösen;1.003;Objekt 7 Eingang Testalarm
+Sicherheit;Rauchwarnmelder;10/0/5;Rauchwarnmelder Testalarm Status;1.002;Objekt 8 Ausgang Status Testalarm
+Sicherheit;Rauchwarnmelder;10/0/6;Rauchwarnmelder Störung Rauchkammer;1.002;Objekt 16 allgemeine Rauchkammerstörung, 10/0/3 bleibt wegen ETS-Importkonflikt frei

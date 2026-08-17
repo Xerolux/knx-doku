@@ -1,0 +1,42 @@
+- name: "RaumController Temperatur"
+  state_address: "13/0/0"
+  type: temperature
+  sync_state: "expire 60"
+  state_class: measurement
+
+- name: "RaumController Luftfeuchte"
+  state_address: "13/0/1"
+  type: humidity
+  sync_state: "expire 60"
+  state_class: measurement
+
+- name: "RaumController Luftdruck"
+  state_address: "13/0/2"
+  type: pressure_2byte
+  sync_state: "expire 60"
+  state_class: measurement
+
+- name: "RaumController VOC"
+  state_address: "13/0/3"
+  type: 2byte_float
+  sync_state: "expire 60"
+  state_class: measurement
+
+- name: "RaumController CO2"
+  state_address: "13/0/4"
+  type: ppm
+  sync_state: "expire 60"
+  state_class: measurement
+  device_class: carbon_dioxide
+
+- name: "RaumController CO2-VOC berechnet"
+  state_address: "13/0/5"
+  type: ppm
+  sync_state: "expire 60"
+  state_class: measurement
+
+- name: "RaumController Helligkeit"
+  state_address: "13/0/6"
+  type: illuminance
+  sync_state: "expire 60"
+  state_class: measurement

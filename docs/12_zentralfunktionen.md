@@ -100,6 +100,34 @@ Die ältere Planungsadresse `0/0/0 Zentral Aus` beschreibt nur einen einseitigen
 | `0/0/3` | Urlaub | 1.001 | längere Abwesenheit |
 | `0/0/4` | Panik | 1.001 | definierte Notfunktion |
 
+### Aktuelle ETS-Verknüpfung
+
+Der Eingangstaster `1.1.20` ist der einzige Taster, der die Zentraladressen sendet:
+
+```text
+1.1.20 Objekt 10  T3/4 Alle Rollladen – Jalousie Auf/Ab
+    -> 0/1/0
+    -> 1.1.4 Objekt 0 Zentrale Funktion – Rollladen Auf/Ab
+
+1.1.20 Objekt 11  T3/4 Alle Rollladen – Stop/Lamellen Auf/Zu
+    -> 0/1/1
+    -> 1.1.4 Objekt 2 Zentrale Funktion – Stopp
+```
+
+Am Jalousieaktor `1.1.4` bleiben die zentralen Objekte 1 **Lamellenverstellung/Stopp**, 3 **Absolute Position** und 4 **Absolute Lamellenposition** unverknüpft. Objekt 1 ist für Jalousiekanäle mit verstellbaren Lamellen vorgesehen; die zentral zusammengefassten Antriebe sind als Rollläden parametriert.
+
+Die Teilnahme an der Zentralfunktion ist kanalweise festgelegt:
+
+| Aktorkanal | Einstellung `Zentrale Objekte` | Wirkung |
+|---|---|---|
+| A–F | `nur Auf/Ab` | nimmt an Alle Rollläden teil |
+| G – Markise | `nicht aktiv` | reagiert nicht auf Alle Rollläden |
+| H | `nur Auf/Ab` | nimmt an Alle Rollläden teil |
+
+Die raumbezogenen Taster werden später direkt mit den individuellen Kanaladressen unter Hauptgruppe 2 verbunden. Dadurch wirkt die Zentralfunktion nur am Eingangstaster, während jeder andere Taster ausschließlich seine zugeordneten Rollläden beziehungsweise die Markise bedient.
+
+> Stand 3. August 2026: Die Objektverknüpfungen und Kanalparameter sind in ETS gesetzt. Applikationsdownload und Funktionstest sind noch zu bestätigen.
+
 ## Beschattung zentral
 
 | Gruppenadresse | Funktion | DPT | Richtung |

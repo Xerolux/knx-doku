@@ -8,10 +8,13 @@ Die Gruppenadressen können im nativen XML-Format in ein ETS-Projekt mit **3-Ebe
 
 1. Projekt in ETS anlegen oder öffnen.
 2. In **Gruppenadressen** den obersten Eintrag rechtsklicken und **Gruppenadressen importieren** wählen.
-3. Zuerst [ets-import/gruppenadressen.xml](ets-import/gruppenadressen.xml) importieren.
-4. Danach [ets-import/gruppenadressen-zentral-zeit.xml](ets-import/gruppenadressen-zentral-zeit.xml) für Zentral Licht sowie Zeit und Datum importieren.
-5. Für den Gira-Rauchwarnmelder zusätzlich [ets-import/gruppenadressen-sicherheit.xml](ets-import/gruppenadressen-sicherheit.xml) importieren.
-6. Anschließend Produktdatenbanken einfügen, Geräte anlegen und Kommunikationsobjekte verbinden.
+3. [ets-import/gruppenadressen-komplett.xml](ets-import/gruppenadressen-komplett.xml) importieren.
+4. Importbericht und vorhandene Adressen prüfen.
+5. Anschließend Produktdatenbanken einfügen, Geräte anlegen und Kommunikationsobjekte verbinden.
+
+Die Komplettdatei enthält alle 162 vorgesehenen Gruppenadressen einschließlich der geplanten DPTs. Die bisherigen Einzeldateien dienen nur der modularen Pflege und werden nicht zusätzlich importiert. Einzelheiten stehen in [ets-import/ETS_IMPORT.md](ets-import/ETS_IMPORT.md).
+
+> Die Komplettdatei enthält Gruppenadressstrukturen und geplante DPTs, aber keine physikalischen Adressen, Geräte oder Objektverknüpfungen.
 
 ## Topologie
 
@@ -50,6 +53,7 @@ Die Gruppenadressen können im nativen XML-Format in ein ETS-Projekt mit **3-Ebe
 | [docs/21_ganglicht_bewegungsmelder.md](docs/21_ganglicht_bewegungsmelder.md) | beide Ganglichter, Bewegungsmelder und Sammelstatus |
 | [docs/22_programmierstand_ets.md](docs/22_programmierstand_ets.md) | Bedeutung von „Programmieren notwendig“ und Download-Reihenfolge |
 | [docs/23_home_assistant_knx_entities_dashboard.md](docs/23_home_assistant_knx_entities_dashboard.md) | KNX-Entitäten, Gruppenadressen und Lovelace-Dashboard |
+| [docs/24_openknx_raumcontroller.md](docs/24_openknx_raumcontroller.md) | OpenKNX-Sensorobjekte, ETS-Verknüpfung und Home-Assistant-Konfiguration |
 
 ## Home Assistant
 
@@ -76,8 +80,32 @@ Dokumentiert sind sechs Rollladen-/Markisenentitäten, sieben Lichtentitäten un
 - Jalousieaktor `1.1.4`: Kanäle A, B, C, D, G und H dokumentiert.
 - Zentral Rollladen: `0/1/0` für Auf/Ab und `0/1/1` für Stopp.
 - Home Assistant: Licht-, Rollladen- und Markisenentitäten angelegt und Dashboard erstellt.
+- OpenKNX RaumController `1.1.29`: sieben Raumklimaobjekte verbunden und am 17.08.2026 erfolgreich im Gruppenmonitor geprüft; VOC und Helligkeit lieferten beim Test noch `0`.
 - Positionsstatus und Fahrzeitmessung müssen für zuverlässige Prozentwerte vollständig funktionieren.
 - ETS zeigt für geänderte Geräte **Programmieren notwendig**; die betroffenen Geräte sind in Dokument 22 aufgeführt.
+
+## ETS-Importdateien
+
+| Datei | Verwendung |
+|---|---|
+| [ets-import/gruppenadressen-komplett.xml](ets-import/gruppenadressen-komplett.xml) | empfohlener Ein-Datei-Import aller 162 Gruppenadressen mit DPTs |
+| [ets-import/gruppenadressen.xml](ets-import/gruppenadressen.xml) | Grundstruktur für ETS 6 |
+| [ets-import/gruppenadressen-zentral-zeit.xml](ets-import/gruppenadressen-zentral-zeit.xml) | Ergänzung für `0/4/0` und `0/5/0` bis `0/5/2` |
+| [ets-import/gruppenadressen-sicherheit.xml](ets-import/gruppenadressen-sicherheit.xml) | Ergänzung für Rauchalarm und Rauchwarnmelderzustände |
+| [ets-import/gruppenadressen-raumcontroller.xml](ets-import/gruppenadressen-raumcontroller.xml) | Ergänzung für die Messwerte des OpenKNX RaumControllers `1.1.29` |
+| [ets-import/gruppenadressen-planung.csv](ets-import/gruppenadressen-planung.csv) | DPT- und Planungsreferenz der Grundstruktur |
+| [ets-import/gruppenadressen-zentral-zeit-planung.csv](ets-import/gruppenadressen-zentral-zeit-planung.csv) | DPT-Referenz für Zentral Licht sowie Zeit und Datum |
+| [ets-import/gruppenadressen-sicherheit-planung.csv](ets-import/gruppenadressen-sicherheit-planung.csv) | DPT-Referenz für Rauchwarnmelder und Sicherheitsmeldungen |
+| [ets-import/gruppenadressen-raumcontroller-planung.csv](ets-import/gruppenadressen-raumcontroller-planung.csv) | DPT- und Objektzuordnung des OpenKNX RaumControllers |
+| [ets-import/physikalische-adressen.csv](ets-import/physikalische-adressen.csv) | Geräte- und Adresscheckliste |
+| [ets-import/ETS_IMPORT.md](ets-import/ETS_IMPORT.md) | Importanleitung, Topologie und Regeln |
+
+## Home-Assistant-Dateien
+
+| Datei | Verwendung |
+|---|---|
+| [home-assistant/lovelace_knx_eg.yaml](home-assistant/lovelace_knx_eg.yaml) | Lovelace-Dashboard für Licht, Rollläden und Heizung |
+| [home-assistant/knx_raumcontroller.yaml](home-assistant/knx_raumcontroller.yaml) | einbindbare KNX-Sensorliste für den OpenKNX RaumController |
 
 ## Planungsprinzip
 
