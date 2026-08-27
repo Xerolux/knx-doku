@@ -12,6 +12,8 @@ Die Gruppenadressen können im nativen XML-Format in ein ETS-Projekt mit **3-Ebe
 4. Importbericht und vorhandene Adressen prüfen.
 5. Anschließend Produktdatenbanken einfügen, Geräte anlegen und Kommunikationsobjekte verbinden.
 
+Die Wärmepumpe liegt in einer eigenen Datei: [ets-import/gruppenadressen-waermepumpe.xml](ets-import/gruppenadressen-waermepumpe.xml) mit 43 Adressen auf der freien Hauptgruppe `11`. Sie wird zusätzlich zur Komplettdatei importiert, siehe [docs/25_idm_waermepumpe_knx.md](docs/25_idm_waermepumpe_knx.md).
+
 Die Komplettdatei enthält alle 162 vorgesehenen Gruppenadressen einschließlich der geplanten DPTs. Die bisherigen Einzeldateien dienen nur der modularen Pflege und werden nicht zusätzlich importiert. Einzelheiten stehen in [ets-import/ETS_IMPORT.md](ets-import/ETS_IMPORT.md).
 
 > Die Komplettdatei enthält Gruppenadressstrukturen und geplante DPTs, aber keine physikalischen Adressen, Geräte oder Objektverknüpfungen.
@@ -54,6 +56,7 @@ Die Komplettdatei enthält alle 162 vorgesehenen Gruppenadressen einschließlich
 | [docs/22_programmierstand_ets.md](docs/22_programmierstand_ets.md) | Bedeutung von „Programmieren notwendig“ und Download-Reihenfolge |
 | [docs/23_home_assistant_knx_entities_dashboard.md](docs/23_home_assistant_knx_entities_dashboard.md) | KNX-Entitäten, Gruppenadressen und Lovelace-Dashboard |
 | [docs/24_openknx_raumcontroller.md](docs/24_openknx_raumcontroller.md) | OpenKNX-Sensorobjekte, ETS-Verknüpfung und Home-Assistant-Konfiguration |
+| [docs/25_idm_waermepumpe_knx.md](docs/25_idm_waermepumpe_knx.md) | IDM Wärmepumpe auf KNX über Home Assistant, Hauptgruppe 11 |
 
 ## Home Assistant
 
