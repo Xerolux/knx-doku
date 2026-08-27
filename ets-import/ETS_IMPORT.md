@@ -58,7 +58,7 @@ Anders als die übrigen Dateien beschreibt sie deshalb kein Gerät, das in ETS p
 
 Die Adressen leiten sich aus `Basisadresse + IDM-Objektnummer` ab. Basis ist `11/0/0`, weil die Vorgabe der Integration `8/0/0` in dieser Anlage mit `Allgemein` belegt ist. Der Wert muss in Home Assistant identisch eingetragen sein.
 
-Einzelheiten, Schreibrichtungen und die Einschränkung bei Leseanfragen stehen in [25 – IDM Wärmepumpe](../docs/25_idm_waermepumpe_knx.md).
+Einzelheiten, Schreibrichtungen und das Verhalten bei Leseanfragen stehen in [25 – IDM Wärmepumpe](../docs/25_idm_waermepumpe_knx.md).
 
 Die Datei wurde mit `scripts/generate_knx_group_addresses.py` aus dem Integrations-Repository erzeugt:
 

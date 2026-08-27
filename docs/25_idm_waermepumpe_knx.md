@@ -7,6 +7,8 @@ Die IDM Navigator Wärmepumpe wird über Modbus TCP von Home Assistant gelesen. 
 IDM verkauft die KNX-Anbindung des Navigators sonst als **Weinzierl KNX IP BAOS 774**. Die Bridge bildet dessen Kommunikationsobjekte nach — gleiche Objektnummern, gleiche DPTs, gleiche Schreibrichtung —, sodass das Modul nicht beschafft werden muss.
 
 > **Experimentell.** Die Bridge ist bislang nur durch Tests abgesichert und war noch nie an einem echten KNX-Bus. Diese Anlage ist damit der erste Praxistest. Was dabei auffällt, gehört zurück ins Integrations-Repository.
+>
+> Besonders zu prüfen: ob die gesendeten Werte auf dem Taster korrekt dekodiert werden, ob eine Leseanfrage nach einem Neustart tatsächlich beantwortet wird, und ob ein erster Vollexport den Bus stört.
 
 ## Abgrenzung
 
@@ -136,13 +138,15 @@ Besonders nützlich sind dabei:
 7. In Home Assistant die KNX-Bridge aktivieren und als Basisadresse `11/0/0` eintragen.
 8. Telegramme im ETS-Gruppenmonitor prüfen.
 
-## Einschränkung: Leseanfragen
+## Leseanfragen
 
-Die Bridge sendet bei Wertänderung, **antwortet aber nicht auf Leseanfragen** (`GroupValueRead`). Ein Taster, der nach einem Neustart den aktuellen Wert aktiv abfragt, bleibt deshalb leer, bis Home Assistant das nächste Mal von sich aus sendet.
+Ein Taster oder eine Visualisierung, die nach einem Neustart den aktuellen Wert aktiv abfragt, sendet ein `GroupValueRead`. Die Bridge beantwortet das mit dem Wert, den die Wärmepumpe gerade liest — als `GroupValueResponse`, genau wie es das BAOS-Modul tut.
 
-Das BAOS-Modul konnte das. Bis die Bridge nachzieht, hilft in den Optionen der KNX-Bridge das **Intervall für vollständiges Neusenden**: mit zum Beispiel `900` Sekunden werden alle Werte viertelstündlich erneut gesendet, unabhängig von Änderungen.
+Die Option **Auf Leseanfragen antworten** steht in den Bridge-Einstellungen und ist standardmäßig aktiv. Ohne sie bliebe ein solches Gerät leer, bis Home Assistant das nächste Mal von sich aus sendet.
 
-Für die Anzeige auf einem Taster ist das ausreichend. Für eine Logik, die direkt nach dem Buseinschalten einen gültigen Wert braucht, ist es das nicht — solche Logiken sollten bis auf Weiteres nicht von diesen Adressen abhängen.
+Nicht beantwortet werden Objekte ohne Wert: `Fehlerquittierung` ist ein reines Schreibobjekt, und Werte, die der Regler als unbenutzt meldet, werden übersprungen.
+
+Zusätzlich lässt sich in den Bridge-Einstellungen ein **Intervall für vollständiges Neusenden** setzen. Das ist für Geräte gedacht, die gar nicht erst fragen, sondern nur auf gesendete Telegramme reagieren.
 
 ## Home Assistant
 
