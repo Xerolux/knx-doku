@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<GroupAddress-Export xmlns="http://knx.org/xml/ga-export/01">
+  <GroupRange Name="Wärmepumpe" RangeStart="22528" RangeEnd="24575">
+    <GroupRange Name="Objekte 1–230" RangeStart="22528" RangeEnd="22783">
+      <GroupAddress Name="WP Außentemperatur" Address="11/0/1" DPTs="DPST-9-1" />
+      <GroupAddress Name="WP Gemittelte Außentemperatur" Address="11/0/2" DPTs="DPST-9-1" />
+      <GroupAddress Name="WP Interne Meldung" Address="11/0/3" DPTs="DPST-7-1" />
+      <GroupAddress Name="WP Systembetriebsart" Address="11/0/4" DPTs="DPST-5-10" />
+      <GroupAddress Name="WP Wärmespeichertemperatur" Address="11/0/6" DPTs="DPST-9-1" />
+      <GroupAddress Name="WP Trinkwassererwärmer unten" Address="11/0/8" DPTs="DPST-9-1" />
+      <GroupAddress Name="WP Trinkwassererwärmer oben" Address="11/0/9" DPTs="DPST-9-1" />
+      <GroupAddress Name="WP Warmwasser Zapftemperatur" Address="11/0/20" DPTs="DPST-9-1" />
+      <GroupAddress Name="WP Warmwasser Sollwert" Address="11/0/21" DPTs="DPST-9-1" />
+      <GroupAddress Name="WP Wärmepumpen Vorlauftemperatur" Address="11/0/30" DPTs="DPST-9-1" />
+      <GroupAddress Name="WP Wärmepumpen Rücklauftemperatur" Address="11/0/31" DPTs="DPST-9-1" />
+      <GroupAddress Name="WP Wärmequelleneintritt" Address="11/0/33" DPTs="DPST-9-1" />
+      <GroupAddress Name="WP Wärmequellenaustritt" Address="11/0/34" DPTs="DPST-9-1" />
+      <GroupAddress Name="WP Wärmepumpen Betriebsart" Address="11/0/50" DPTs="DPST-7-1" />
+      <GroupAddress Name="WP Heizanforderung" Address="11/0/51" DPTs="DPST-7-1" />
+      <GroupAddress Name="WP Kühlanforderung" Address="11/0/52" DPTs="DPST-7-1" />
+      <GroupAddress Name="WP Warmwasseranforderung" Address="11/0/53" DPTs="DPST-7-1" />
+      <GroupAddress Name="WP Verdichter 1" Address="11/0/60" DPTs="DPST-7-1" />
+      <GroupAddress Name="WP Vorlauftemperatur HK A" Address="11/0/200" DPTs="DPST-9-1" />
+      <GroupAddress Name="WP Vorlauftemperatur HK B" Address="11/0/201" DPTs="DPST-9-1" />
+      <GroupAddress Name="WP Raumtemperatur HK A" Address="11/0/207" DPTs="DPST-9-1" />
+      <GroupAddress Name="WP Raumtemperatur HK B" Address="11/0/208" DPTs="DPST-9-1" />
+      <GroupAddress Name="WP Sollvorlauftemperatur HK A" Address="11/0/214" DPTs="DPST-9-1" />
+      <GroupAddress Name="WP Sollvorlauftemperatur HK B" Address="11/0/215" DPTs="DPST-9-1" />
+      <GroupAddress Name="WP Betriebsart HK A" Address="11/0/222" DPTs="DPST-7-1" />
+      <GroupAddress Name="WP Betriebsart HK B" Address="11/0/223" DPTs="DPST-7-1" />
+      <GroupAddress Name="WP Raumsoll Heizen Normal HK A" Address="11/0/229" DPTs="DPST-9-1" />
+      <GroupAddress Name="WP Raumsoll Heizen Normal HK B" Address="11/0/230" DPTs="DPST-9-1" />
+    </GroupRange>
+    <GroupRange Name="Objekte 292–499" RangeStart="22784" RangeEnd="23039">
+      <GroupAddress Name="WP Aktive Betriebsart HK A" Address="11/1/36" DPTs="DPST-7-1" />
+      <GroupAddress Name="WP Aktive Betriebsart HK B" Address="11/1/37" DPTs="DPST-7-1" />
+      <GroupAddress Name="WP Externe Raumtemperatur HK A" Address="11/1/94" DPTs="DPST-9-1" />
+      <GroupAddress Name="WP Externe Raumtemperatur HK B" Address="11/1/95" DPTs="DPST-9-1" />
+      <GroupAddress Name="WP Externe Außentemperatur (GLT)" Address="11/1/114" DPTs="DPST-9-1" />
+      <GroupAddress Name="WP Externe Feuchte (GLT)" Address="11/1/115" DPTs="DPST-9-7" />
+      <GroupAddress Name="WP Externe Heizanforderung" Address="11/1/124" DPTs="DPST-1-1" />
+      <GroupAddress Name="WP Externe Kühlanforderung" Address="11/1/125" DPTs="DPST-1-1" />
+      <GroupAddress Name="WP Externe WW-Ladeanforderung" Address="11/1/126" DPTs="DPST-1-1" />
+      <GroupAddress Name="WP Wärmemenge Heizen" Address="11/1/144" DPTs="DPST-14-31" />
+      <GroupAddress Name="WP Wärmemenge Kühlen" Address="11/1/145" DPTs="DPST-14-31" />
+      <GroupAddress Name="WP Wärmemenge Warmwasser" Address="11/1/146" DPTs="DPST-14-31" />
+      <GroupAddress Name="WP Thermische Momentanleistung" Address="11/1/164" DPTs="DPST-9-24" />
+      <GroupAddress Name="WP Fehlerquittierung" Address="11/1/243" DPTs="DPST-7-1" />
+    </GroupRange>
+    <GroupRange Name="PV und Batterie" RangeStart="23296" RangeEnd="23551">
+      <GroupAddress Name="WP Elektrische Leistungsaufnahme Wärmepumpe" Address="11/3/229" DPTs="DPST-9-24" />
+    </GroupRange>
+  </GroupRange>
+</GroupAddress-Export>

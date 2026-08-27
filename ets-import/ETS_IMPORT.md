@@ -11,6 +11,7 @@ Die XML-Dateien sind direkte Importdateien für ETS 6 mit **3-Ebenen-Gruppenadre
 | `gruppenadressen-zentral-zeit.xml` | Zentral Licht sowie Zeit und Datum |
 | `gruppenadressen-sicherheit.xml` | Gira Rauchwarnmelder und Sicherheitsmeldungen |
 | `gruppenadressen-raumcontroller.xml` | Messwerte und Anforderung des OpenKNX RaumControllers `1.1.29` |
+| `gruppenadressen-waermepumpe.xml` | IDM Wärmepumpe über die KNX-Bridge von Home Assistant, Hauptgruppe `11` |
 
 Die CSV-Dateien bleiben technische Referenzen mit den vorgesehenen DPTs. Sie sind **keine** ETS-Importdateien. Die DPTs sind zusätzlich in `gruppenadressen-komplett.xml` hinterlegt.
 
@@ -48,6 +49,24 @@ Die in ETS sichtbare Adresse `0/5/3 Aktuelle Werte empfangen` wird bewusst nicht
 ## Ergänzung OpenKNX RaumController
 
 Die Ergänzungsdatei enthält die sieben Messwerte von `1.1.29` unter `13/0/0` bis `13/0/6` sowie den optionalen Anforderungstrigger `13/0/20`. DPTs und Objektnummern stehen in [gruppenadressen-raumcontroller-planung.csv](gruppenadressen-raumcontroller-planung.csv) und in [24 – OpenKNX RaumController](../docs/24_openknx_raumcontroller.md).
+
+## Ergänzung IDM Wärmepumpe
+
+Die Ergänzungsdatei enthält 43 Adressen auf der freien Hauptgruppe `11`. Sie werden nicht von einem KNX-Gerät bedient, sondern von der KNX-Bridge der Integration [idm-heatpump-hass](https://github.com/Xerolux/idm-heatpump-hass) über die KNX-Integration von Home Assistant.
+
+Anders als die übrigen Dateien beschreibt sie deshalb kein Gerät, das in ETS programmiert wird. In ETS werden nur die Adressen angelegt und mit den Anzeige- oder Bedienobjekten der vorhandenen Geräte verbunden.
+
+Die Adressen leiten sich aus `Basisadresse + IDM-Objektnummer` ab. Basis ist `11/0/0`, weil die Vorgabe der Integration `8/0/0` in dieser Anlage mit `Allgemein` belegt ist. Der Wert muss in Home Assistant identisch eingetragen sein.
+
+Einzelheiten, Schreibrichtungen und das Verhalten bei Leseanfragen stehen in [25 – IDM Wärmepumpe](../docs/25_idm_waermepumpe_knx.md).
+
+Die Datei wurde mit `scripts/generate_knx_group_addresses.py` aus dem Integrations-Repository erzeugt:
+
+```bash
+python scripts/generate_knx_group_addresses.py \
+  --base 11/0/0 --profile compact \
+  --output ets-import --basename gruppenadressen-waermepumpe
+```
 
 ## Topologie
 
