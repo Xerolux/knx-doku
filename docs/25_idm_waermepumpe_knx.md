@@ -24,7 +24,7 @@ Die Vorgabe der Integration ist `8/0/0`. Diese Hauptgruppe ist hier bereits mit 
 
 ## Aktueller ETS-Stand
 
-Im ETS-Screenshot vom 29.08.2026 ist Hauptgruppe `11` nicht vorhanden. Sichtbar sind nur die 12 Hauptgruppen `0` bis `10` sowie `13`. Die 43 Adressen dieses Kapitels sind damit ein vorbereiteter, noch nicht importierter Planungsstand. Aus dem Screenshot lässt sich nicht ableiten, ob die KNX-Bridge in Home Assistant bereits aktiviert oder konfiguriert wurde.
+Im ersten ETS-Screenshot vom 29.08.2026 war Hauptgruppe `11` noch nicht vorhanden. Nach dem anschließenden Import ist `11 Wärmepumpe` mit den Mittelgruppen `11/0 Objekte 1–230`, `11/1 Objekte 292–499` und `11/3 PV und Batterie` sichtbar. Damit ist die Gruppenadressstruktur importiert. Der Screenshot zeigt jedoch nicht die 43 Einzeladressen, ihre DPTs oder Verknüpfungen; diese Punkte benötigen einen neuen ETS-Export beziehungsweise eine Detailprüfung. Aus dem Screenshot lässt sich außerdem nicht ableiten, ob die KNX-Bridge in Home Assistant bereits aktiviert oder konfiguriert wurde.
 
 ## Gruppenadressen
 

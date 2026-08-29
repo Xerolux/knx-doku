@@ -11,13 +11,13 @@ Die XML-Dateien sind direkte Importdateien für ETS 6 mit **3-Ebenen-Gruppenadre
 | `gruppenadressen-zentral-zeit.xml` | Zentral Licht sowie Zeit und Datum |
 | `gruppenadressen-sicherheit.xml` | Gira Rauchwarnmelder und Sicherheitsmeldungen |
 | `gruppenadressen-raumcontroller.xml` | Messwerte und Anforderung des OpenKNX RaumControllers `1.1.29` |
-| `gruppenadressen-waermepumpe.xml` | geplanter Zusatzimport von 43 IDM-Wärmepumpen-Adressen über die KNX-Bridge von Home Assistant, Hauptgruppe `11` |
+| `gruppenadressen-waermepumpe.xml` | separater Zusatzimport von 43 IDM-Wärmepumpen-Adressen über die KNX-Bridge von Home Assistant, Hauptgruppe `11` |
 
-Die Basis-Komplettdatei enthält 162 Gruppenadressen. Bei späterer Umsetzung der IDM-KNX-Bridge kommen 43 kollisionsfreie Adressen hinzu; der geplante Gesamtstand umfasst dann 205 Gruppenadressen. Die CSV-Dateien bleiben technische Referenzen mit den vorgesehenen DPTs. Sie sind **keine** ETS-Importdateien. Die DPTs sind in den jeweiligen XML-Dateien hinterlegt.
+Die Basis-Komplettdatei enthält 162 Gruppenadressen. Die zusätzliche Wärmepumpen-Datei enthält 43 kollisionsfreie Adressen; zusammen umfasst der vorgesehene Importstand 205 Gruppenadressen. Die CSV-Dateien bleiben technische Referenzen mit den vorgesehenen DPTs. Sie sind **keine** ETS-Importdateien. Die DPTs sind in den jeweiligen XML-Dateien hinterlegt.
 
 ## Aktueller ETS-Stand
 
-Der ETS-Screenshot vom 29.08.2026 zeigt 12 vorhandene Hauptgruppen: `0` bis `10` sowie `13`. Hauptgruppe `11` ist noch nicht angelegt; `gruppenadressen-waermepumpe.xml` wurde demnach noch nicht importiert. Der Suchordner „Addresses not assigned“ zeigt 117 Einträge. Diese Zahl ist kein Gesamtzähler aller Gruppenadressen und ersetzt keinen ETS-Export.
+Der erste ETS-Screenshot vom 29.08.2026 zeigt 12 vorhandene Hauptgruppen: `0` bis `10` sowie `13`. Nach dem anschließenden Import ist auch Hauptgruppe `11 Wärmepumpe` mit den Mittelgruppen `11/0`, `11/1` und `11/3` sichtbar. Damit ist die Struktur aus `gruppenadressen-waermepumpe.xml` vorhanden. Die 43 Einzeladressen und DPTs sind im Screenshot nicht aufgeklappt; ein neuer ETS-Export bleibt für den vollständigen Ist-Abgleich erforderlich. Der ältere Suchordner „Addresses not assigned“ zeigt 117 Einträge. Diese Zahl ist kein Gesamtzähler aller Gruppenadressen.
 
 ## Import in ETS 6
 

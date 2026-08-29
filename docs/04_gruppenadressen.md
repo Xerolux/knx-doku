@@ -30,10 +30,10 @@ Gruppenadressen sind unabhängig von der physikalischen Linie. Geräte auf KNX T
 | 8 | Status | hausweite Sammelmeldungen | in ETS vorhanden |
 | 9 | Home Assistant | optionale Diagnose- und Anzeigeobjekte | in ETS vorhanden |
 | 10 | Sicherheit | Rauchalarm und Zustände des Gira KNX-Rauchwarnmoduls | in ETS vorhanden |
-| 11 | IDM Wärmepumpe | Werte und freigegebene Sollvorgaben der Home-Assistant-KNX-Bridge | geplant, noch nicht in ETS angelegt |
+| 11 | IDM Wärmepumpe | Werte und freigegebene Sollvorgaben der Home-Assistant-KNX-Bridge | in ETS importiert; Einzeladressen noch zu exportieren und zu prüfen |
 | 13 | Raumklima | Raumklimawerte sowie spätere Lüftungs- und Kühlungsfunktionen | in ETS vorhanden |
 
-Der aktuelle ETS-Screenshot zeigt 12 Hauptgruppen: `0` bis `10` sowie `13`. Hauptgruppe `11` bleibt für die IDM-Wärmepumpe reserviert, ist aber noch nicht importiert. Die Hauptgruppen 12, 14 und 15 bleiben als Reserve für allgemeine Störungen, Außenanlagen und spätere Erweiterungen frei.
+Der erste ETS-Screenshot vom 29.08.2026 zeigte 12 Hauptgruppen: `0` bis `10` sowie `13`. Nach dem anschließenden Import ist zusätzlich Hauptgruppe `11` sichtbar; darunter werden die drei Mittelgruppen `11/0 Objekte 1–230`, `11/1 Objekte 292–499` und `11/3 PV und Batterie` angezeigt. Damit ist die Wärmepumpen-Struktur angelegt. Ob alle 43 Einzeladressen und DPTs vollständig übernommen wurden, muss noch durch Aufklappen der Mittelgruppen oder einen neuen ETS-Export bestätigt werden. Die Hauptgruppen 12, 14 und 15 bleiben als Reserve für allgemeine Störungen, Außenanlagen und spätere Erweiterungen frei.
 
 ## Abgleichstand der Dateien
 
@@ -45,15 +45,19 @@ Der aktuelle ETS-Screenshot zeigt 12 Hauptgruppen: `0` bis `10` sowie `13`. Haup
 | `gruppenadressen-waermepumpe.xml` | 43 | separater Zusatzimport für die IDM-KNX-Bridge |
 | geplanter Gesamtstand | 205 | Basis-Komplettdatei plus Wärmepumpen-Datei; ohne die nicht importierte Altplanung `0/0/0` |
 
-Der Gruppenadress-Screenshot vom 29.08.2026 bestätigt die vorhandenen Hauptgruppen und zeigt im Suchordner 117 Einträge „Addresses not assigned“. Diese Zahl beschreibt den Suchordner, nicht die Gesamtzahl aller Gruppenadressen. Mittelgruppen, einzelne Gruppenadressen, DPTs und Objektverknüpfungen sind im Screenshot nicht sichtbar. Der Geräte-Screenshot desselben Tages zeigt zusätzlich physikalische Teilnehmer und ETS-Statussymbole, aber ebenfalls keine Gruppenadressverknüpfungen.
+Der erste Gruppenadress-Screenshot vom 29.08.2026 bestätigt die damaligen Hauptgruppen und zeigt im Suchordner 117 Einträge „Addresses not assigned“. Diese Zahl beschreibt den Suchordner, nicht die Gesamtzahl aller Gruppenadressen. Der spätere Screenshot bestätigt zusätzlich Hauptgruppe `11` und ihre drei Mittelgruppen, zeigt aber weiterhin keine einzelnen Wärmepumpen-Adressen, DPTs oder Objektverknüpfungen. Der Geräte-Screenshot desselben Tages zeigt zusätzlich physikalische Teilnehmer und ETS-Statussymbole, aber ebenfalls keine Gruppenadressverknüpfungen.
 
 Nach dem Import und der Verknüpfung der Kommunikationsobjekte ist deshalb ein neuer Gruppenadress-Export aus dem ETS-Projekt erforderlich; erst dieser ersetzt die beiden älteren Export-Snapshots als vollständigen Ist-Stand.
 
 Die neu angelegten Glastaster `1.1.32` und `1.1.33` erhalten keine eigenen, gerätebezogenen Adressbereiche. Nach Festlegung von Raum und Bedienfunktion werden ihre Kommunikationsobjekte mit den bereits raum- und funktionsbezogen aufgebauten Gruppenadressen verbunden. Bis dahin bleiben diese Verknüpfungen offen.
 
+## Offener Raum: Abstellkammer
+
+Die Abstellkammer, früher als Dusche bezeichnet, ist ein eigener neunter Raum und nicht das Badezimmer. In den aktuellen Importdateien sind nur acht raumbezogene Mittelgruppen `0` bis `7` vorgesehen; ein separater Gruppenadressblock für die Abstellkammer fehlt. Die bestehenden Badezimmer-Adressen bleiben unverändert. Vor einer Erweiterung müssen Licht, Heizung, Fenster und gegebenenfalls weitere Funktionen der Abstellkammer sowie ein mit dem 3-Ebenen-Stil kompatibler Adressbereich festgelegt werden. Bis dahin werden keine Abstellkammer-Adressen erfunden oder importiert.
+
 ## IDM Wärmepumpe
 
-Die 43 geplanten Wärmepumpen-Adressen liegen unter `11/0/x`, `11/1/x` und `11/3/x`. Ihre Namen, DPTs und Schreibrichtungen sind in [25 – IDM Wärmepumpe über Home Assistant](25_idm_waermepumpe_knx.md) und [gruppenadressen-waermepumpe.csv](../ets-import/gruppenadressen-waermepumpe.csv) dokumentiert. Die Wärmepumpen-Datei wird erst bei Umsetzung der KNX-Bridge zusätzlich zur Basis-Komplettdatei importiert; beide Adressmengen sind kollisionsfrei. Im ETS-Iststand vom 29.08.2026 ist Hauptgruppe `11` noch nicht vorhanden.
+Die 43 vorgesehenen Wärmepumpen-Adressen liegen unter `11/0/x`, `11/1/x` und `11/3/x`. Ihre Namen, DPTs und Schreibrichtungen sind in [25 – IDM Wärmepumpe über Home Assistant](25_idm_waermepumpe_knx.md) und [gruppenadressen-waermepumpe.csv](../ets-import/gruppenadressen-waermepumpe.csv) dokumentiert. Die Wärmepumpen-Datei wurde zusätzlich zur Basisstruktur importiert; beide Adressmengen sind kollisionsfrei. Der aktuelle Screenshot bestätigt Hauptgruppe `11` und ihre drei Mittelgruppen, aber noch nicht jede einzelne Adresse oder Verknüpfung.
 
 ## Raumklima / OpenKNX RaumController
 

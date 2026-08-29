@@ -12,6 +12,9 @@
 | Schlafzimmer | ja | 2 | 2 | ja |
 | Badezimmer | ja | 1 | 2 | ja |
 | Bad vorne | ja | 0 | 1 | ja |
+| Abstellkammer (ehemals Dusche) | offen | offen | offen | Zuordnung offen |
+
+Damit umfasst die Anlage **neun getrennte Räume**. Badezimmer und Abstellkammer sind nicht identisch. Die Abstellkammer fehlt bislang in der raumbezogenen Gruppenadressplanung und darf deshalb nicht mit den Adressen des Badezimmers verknüpft werden. Die vorhandene Home-Assistant-Altentität `climate.heizkorper_omaopa_dusche_1` gehört zur Abstellkammer; ihre endgültige KNX-Zuordnung ist noch zu prüfen.
 
 ## Erste Ausbaustufe
 

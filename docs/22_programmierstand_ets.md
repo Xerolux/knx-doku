@@ -18,7 +18,9 @@ Der Screenshot enthält keine Spaltenüberschriften und keine Kommunikationsobje
 
 ## Sichtbarer Gruppenadressstand
 
-Der Gruppenadress-Screenshot vom 29.08.2026 zeigt 12 Hauptgruppen: `0` bis `10` sowie `13`. Hauptgruppe `11` ist noch nicht angelegt; die vorbereiteten IDM-Wärmepumpen-Adressen sind daher noch nicht importiert. Der Suchordner zeigt 117 Einträge unter „Addresses not assigned“. Einzeladressen, DPTs und konkrete Objektverknüpfungen sind in dieser Ansicht nicht nachprüfbar.
+Der erste Gruppenadress-Screenshot vom 29.08.2026 zeigt 12 Hauptgruppen: `0` bis `10` sowie `13`. Nach dem Import ist zusätzlich Hauptgruppe `11 Wärmepumpe` sichtbar. Der aufgeklappte Bereich zeigt die Mittelgruppen `11/0 Objekte 1–230`, `11/1 Objekte 292–499` und `11/3 PV und Batterie`. Damit ist die Struktur der Wärmepumpen-Importdatei vorhanden. Einzeladressen, DPTs und konkrete Objektverknüpfungen sind in dieser Ansicht nicht nachprüfbar und müssen durch Aufklappen oder einen neuen ETS-Export bestätigt werden. Der ältere Suchordnerstand zeigte 117 Einträge unter „Addresses not assigned“; diese Zahl ist kein Gesamtzähler.
+
+Die Abstellkammer ist ein eigener neunter Raum und nicht das Badezimmer. Für sie fehlt derzeit ein bestätigter Gruppenadressblock sowie die eindeutige Zuordnung von Licht, Heizung und gegebenenfalls weiteren Funktionen.
 
 ## Nach den nächsten Gruppenadressänderungen programmieren
 

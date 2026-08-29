@@ -81,7 +81,7 @@ climate.heizung_heizung_treppenhaus
 climate.heizkorper_omaopa_bad
 ```
 
-Diese drei Entitäten sind nicht Teil der heute neu angelegten KNX-Licht- und Rollladenentitäten. Ihre Namen und Zuordnung werden später bei Bedarf vereinheitlicht.
+`climate.heizkorper_omaopa_dusche_1` gehört zur heutigen Abstellkammer (ehemals Dusche), nicht zum Badezimmer. Im Dashboard wird sie bereits als „Abstellraum“ angezeigt. Diese drei Entitäten sind nicht Teil der heute neu angelegten KNX-Licht- und Rollladenentitäten. Ihre technischen Entity-IDs bleiben bis zu einer kontrollierten Home-Assistant-Migration bestehen; Raumbezeichnungen und KNX-Zuordnung werden separat vereinheitlicht.
 
 ## Lovelace-Dashboard
 

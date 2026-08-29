@@ -44,7 +44,7 @@ L3: LS03, LS06, LS11, LS14
 
 ## Zuordnung zu Aktorkanälen
 
-Die Kanalbelegung des Schaltaktors ist zunächst auf die acht dokumentierten Räume begrenzt. Die Kanäle I bis X bleiben bis zur endgültigen Leitungszuordnung Reserve.
+Die Kanalbelegung des Schaltaktors umfasst derzeit acht bestätigte Raum-Lichtkreise. Die Abstellkammer ist ein separater neunter Raum, ihr Lichtkreis beziehungsweise Aktorkanal ist aber noch nicht bestätigt. Die Kanäle I bis X bleiben bis zur endgültigen Leitungszuordnung Reserve.
 
 | Kanal | Funktion | Schutzorgan |
 |---|---|---|

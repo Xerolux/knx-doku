@@ -11,6 +11,8 @@
 - Badezimmer
 - Bad vorne
 
+Die Abstellkammer ist ein eigener neunter Raum. Ob sie über Fußbodenheizung, einen Heizkörper oder einen anderen Heizkreis versorgt wird, ist in ETS noch nicht eindeutig dokumentiert. Die Home-Assistant-Altentität `climate.heizkorper_omaopa_dusche_1` weist auf die frühere Bezeichnung „Dusche“ hin, ersetzt aber keine bestätigte KNX-Kanal- und Gruppenadresszuordnung.
+
 ## Fenstergriffe KNX RF
 
 | Raum | Anzahl |
