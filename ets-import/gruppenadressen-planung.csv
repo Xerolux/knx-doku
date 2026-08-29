@@ -28,8 +28,6 @@ Licht;Badezimmer;1/6/0;Badezimmer Licht Schalten;1.001
 Licht;Badezimmer;1/6/1;Badezimmer Licht Status;1.001
 Licht;Bad vorne;1/7/0;Bad vorne Licht Schalten;1.001
 Licht;Bad vorne;1/7/1;Bad vorne Licht Status;1.001
-Licht;Abstellkammer;1/7/10;Abstellkammer Licht Schalten;1.001
-Licht;Abstellkammer;1/7/11;Abstellkammer Licht Status;1.001
 Beschattung;Wohnzimmer;2/0/0;Wohnzimmer Rollladen links Auf Ab;1.008
 Beschattung;Wohnzimmer;2/0/1;Wohnzimmer Rollladen links Stop;1.010
 Beschattung;Wohnzimmer;2/0/2;Wohnzimmer Rollladen links Position Soll;5.001

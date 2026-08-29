@@ -6,15 +6,14 @@ Die XML-Dateien sind direkte Importdateien für ETS 6 mit **3-Ebenen-Gruppenadre
 
 | Datei | Inhalt |
 |---|---|
-| `gruppenadressen-komplett.xml` | empfohlener Ein-Datei-Import der 164 Basis-Gruppenadressen mit geplanten DPTs |
+| `gruppenadressen-komplett.xml` | empfohlener Ein-Datei-Import der 162 Basis-Gruppenadressen mit geplanten DPTs |
 | `gruppenadressen.xml` | Grundstruktur der Anlage |
-| `gruppenadressen-abstellkammer.xml` | zwei Abstellkammer-Lichtadressen als Zusatz für Projekte mit bereits importierter älterer Komplettdatei |
 | `gruppenadressen-zentral-zeit.xml` | Zentral Licht sowie Zeit und Datum |
 | `gruppenadressen-sicherheit.xml` | Gira Rauchwarnmelder und Sicherheitsmeldungen |
 | `gruppenadressen-raumcontroller.xml` | Messwerte und Anforderung des OpenKNX RaumControllers `1.1.29` |
 | `gruppenadressen-waermepumpe.xml` | separater Zusatzimport von 43 IDM-Wärmepumpen-Adressen über die KNX-Bridge von Home Assistant, Hauptgruppe `11` |
 
-Die aktuelle Basis-Komplettdatei enthält 164 Gruppenadressen. Die zusätzliche Wärmepumpen-Datei enthält 43 kollisionsfreie Adressen; zusammen umfasst der vorgesehene Importstand 207 Gruppenadressen. Die CSV-Dateien bleiben technische Referenzen mit den vorgesehenen DPTs. Sie sind **keine** ETS-Importdateien. Die DPTs sind in den jeweiligen XML-Dateien hinterlegt.
+Die Basis-Komplettdatei enthält 162 Gruppenadressen. Die zusätzliche Wärmepumpen-Datei enthält 43 kollisionsfreie Adressen; zusammen umfasst der vorgesehene Importstand 205 Gruppenadressen. Die CSV-Dateien bleiben technische Referenzen mit den vorgesehenen DPTs. Sie sind **keine** ETS-Importdateien. Die DPTs sind in den jeweiligen XML-Dateien hinterlegt.
 
 ## Aktueller ETS-Stand
 
@@ -26,7 +25,7 @@ Der erste ETS-Screenshot vom 29.08.2026 zeigt 12 vorhandene Hauptgruppen: `0` bi
 2. Vor dem Import eine Sicherung des ETS-Projekts erstellen.
 3. In der Ansicht **Gruppenadressen** den obersten Eintrag rechtsklicken.
 4. **Gruppenadressen importieren** wählen.
-5. Bei einem neuen Projekt `gruppenadressen-komplett.xml` importieren. Wurde die ältere Komplettdatei bereits importiert, stattdessen nur `gruppenadressen-abstellkammer.xml` ergänzen.
+5. `gruppenadressen-komplett.xml` importieren.
 6. Nur bei Inbetriebnahme der IDM-KNX-Bridge zusätzlich `gruppenadressen-waermepumpe.xml` importieren.
 7. Die jeweiligen Importberichte und die Behandlung bereits vorhandener Adressen prüfen.
 8. Produktdatenbanken einfügen, Geräte anlegen und Kommunikationsobjekte verknüpfen.
@@ -34,17 +33,6 @@ Der erste ETS-Screenshot vom 29.08.2026 zeigt 12 vorhandene Hauptgruppen: `0` bi
 Für XML muss beim Import keine CSV-Zeichenkodierung und kein Trennzeichen ausgewählt werden.
 
 > Bereits vorhandene Gruppenadressen mit identischen Adressen dürfen nicht versehentlich dupliziert oder umbenannt werden. Im Importdialog ist die vorhandene ETS-Struktur mit der Importdatei abzugleichen.
-
-### Zusatzimport Abstellkammer
-
-`gruppenadressen-abstellkammer.xml` ergänzt ausschließlich:
-
-```text
-1/7/10  Abstellkammer Licht Schalten  DPT 1.001
-1/7/11  Abstellkammer Licht Status    DPT 1.001
-```
-
-Vorhandene Gruppenadressen werden nicht gelöscht. Die Datei verwendet absichtlich die bestehende Mittelgruppe `1/7 Bad vorne`, damit der Import die vorhandene Struktur nur ergänzt. Nach dem Import kann diese Mittelgruppe in ETS zur besseren Lesbarkeit in `Bad vorne + Abstellkammer` umbenannt werden.
 
 ## Alternative: modularer Import
 

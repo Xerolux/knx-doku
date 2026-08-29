@@ -179,7 +179,7 @@ Die Glastaster sollen je Raum Licht, Beschattung und Statusanzeigen bedienen. Si
 | Arbeitszimmer | Licht und Rollladen |
 | Schlafzimmer | Licht und beide Rollläden |
 | Badezimmer | Licht und Rollladen |
-| Abstellkammer (ehemals Dusche) | Licht über `1/7/10`, Status über `1/7/11` |
+| Abstellkammer (ehemals Dusche) | Bedienfunktionen und Gruppenadressen noch festlegen |
 | Esszimmer | Licht und optionale Szene Essen |
 | Küche | Licht und optionale Szene Küche |
 | Gang/Eingang | Ganglicht, Zentral Licht, Nachtmodus, Anwesenheit und optional alle Rollläden |
