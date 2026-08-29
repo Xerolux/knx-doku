@@ -22,6 +22,10 @@ Hauptgruppe `11` ist in dieser Anlage frei und wird für die Wärmepumpe verwend
 
 Die Vorgabe der Integration ist `8/0/0`. Diese Hauptgruppe ist hier bereits mit `Allgemein` belegt, deshalb weicht die Anlage bewusst auf `11/0/0` ab. Der Wert wird in Home Assistant unter **Einstellungen → Geräte & Dienste → IDM Heatpump → Konfigurieren → KNX-Bridge** als Basis-Gruppenadresse eingetragen.
 
+## Aktueller ETS-Stand
+
+Im ETS-Screenshot vom 29.08.2026 ist Hauptgruppe `11` nicht vorhanden. Sichtbar sind nur die 12 Hauptgruppen `0` bis `10` sowie `13`. Die 43 Adressen dieses Kapitels sind damit ein vorbereiteter, noch nicht importierter Planungsstand. Aus dem Screenshot lässt sich nicht ableiten, ob die KNX-Bridge in Home Assistant bereits aktiviert oder konfiguriert wurde.
+
 ## Gruppenadressen
 
 Importdatei: [gruppenadressen-waermepumpe.xml](../ets-import/gruppenadressen-waermepumpe.xml), technische Referenz: [gruppenadressen-waermepumpe.csv](../ets-import/gruppenadressen-waermepumpe.csv).

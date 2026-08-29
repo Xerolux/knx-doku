@@ -9,11 +9,11 @@ Die Gruppenadressen können im nativen XML-Format in ein ETS-Projekt mit **3-Ebe
 1. Projekt in ETS anlegen oder öffnen.
 2. In **Gruppenadressen** den obersten Eintrag rechtsklicken und **Gruppenadressen importieren** wählen.
 3. [ets-import/gruppenadressen-komplett.xml](ets-import/gruppenadressen-komplett.xml) importieren.
-4. Für die KNX-Bridge der IDM-Wärmepumpe zusätzlich [ets-import/gruppenadressen-waermepumpe.xml](ets-import/gruppenadressen-waermepumpe.xml) importieren.
-5. Beide Importberichte und vorhandene Adressen prüfen.
+4. Erst bei Inbetriebnahme der KNX-Bridge für die IDM-Wärmepumpe zusätzlich [ets-import/gruppenadressen-waermepumpe.xml](ets-import/gruppenadressen-waermepumpe.xml) importieren.
+5. Die jeweiligen Importberichte und vorhandenen Adressen prüfen.
 6. Anschließend Produktdatenbanken einfügen, Geräte anlegen und Kommunikationsobjekte verbinden.
 
-Die Wärmepumpe liegt in einer eigenen Datei: [ets-import/gruppenadressen-waermepumpe.xml](ets-import/gruppenadressen-waermepumpe.xml) mit 43 Adressen auf der freien Hauptgruppe `11`. Sie wird zusätzlich zur Komplettdatei importiert, siehe [docs/25_idm_waermepumpe_knx.md](docs/25_idm_waermepumpe_knx.md).
+Die Wärmepumpe liegt in einer eigenen Datei: [ets-import/gruppenadressen-waermepumpe.xml](ets-import/gruppenadressen-waermepumpe.xml) mit 43 geplanten Adressen auf der freien Hauptgruppe `11`. Sie wird bei Umsetzung der KNX-Bridge zusätzlich zur Komplettdatei importiert, siehe [docs/25_idm_waermepumpe_knx.md](docs/25_idm_waermepumpe_knx.md).
 
 Die Komplettdatei enthält 162 vorgesehene Basis-Gruppenadressen einschließlich der geplanten DPTs. Zusammen mit den 43 separat gepflegten Wärmepumpen-Adressen umfasst der geplante Importstand 205 Gruppenadressen. Die bisherigen Basis-Einzeldateien dienen nur der modularen Pflege und werden nicht zusätzlich importiert. Einzelheiten stehen in [ets-import/ETS_IMPORT.md](ets-import/ETS_IMPORT.md).
 
@@ -87,6 +87,8 @@ Dokumentiert sind sechs Rollladen-/Markisenentitäten, sieben Lichtentitäten un
 - OpenKNX RaumController `1.1.29`: sieben Raumklimaobjekte verbunden und am 17.08.2026 erfolgreich im Gruppenmonitor geprüft; VOC und Helligkeit lieferten beim Test noch `0`.
 - Glastaster `1.1.32` und `1.1.33`: im ETS-Projekt angelegt; Raum, Funktion und Gruppenadressverknüpfungen sind noch festzulegen.
 - Wetterstation `1.1.40`: im ETS-Screenshot vom 29.08.2026 ohne grüne Statushäkchen; Applikation, Parameter und Gruppenadressverknüpfungen prüfen.
+- Gruppenadress-Iststand vom 29.08.2026: 12 Hauptgruppen (`0` bis `10` sowie `13`); Hauptgruppe `11` und damit die Wärmepumpen-Adressen sind noch nicht importiert.
+- Der ETS-Suchordner zeigt 117 Einträge unter „Addresses not assigned“. Diese Zahl ist kein Gesamtzähler aller angelegten Gruppenadressen.
 - Positionsstatus und Fahrzeitmessung müssen für zuverlässige Prozentwerte vollständig funktionieren.
 - ETS zeigt für geänderte Geräte **Programmieren notwendig**; die betroffenen Geräte sind in Dokument 22 aufgeführt.
 

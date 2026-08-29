@@ -16,6 +16,10 @@ ETS zeigt ein Gerät unter **Programmieren notwendig**, wenn seit dem letzten Do
 
 Der Screenshot enthält keine Spaltenüberschriften und keine Kommunikationsobjekte. Die Symbole werden deshalb nur als sichtbarer ETS-Status dokumentiert, nicht als Nachweis einer vollständigen oder funktionierenden Gruppenadressverknüpfung.
 
+## Sichtbarer Gruppenadressstand
+
+Der Gruppenadress-Screenshot vom 29.08.2026 zeigt 12 Hauptgruppen: `0` bis `10` sowie `13`. Hauptgruppe `11` ist noch nicht angelegt; die vorbereiteten IDM-Wärmepumpen-Adressen sind daher noch nicht importiert. Der Suchordner zeigt 117 Einträge unter „Addresses not assigned“. Einzeladressen, DPTs und konkrete Objektverknüpfungen sind in dieser Ansicht nicht nachprüfbar.
+
 ## Nach den nächsten Gruppenadressänderungen programmieren
 
 | Physikalische Adresse | Gerät | Grund |

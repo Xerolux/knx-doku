@@ -11,9 +11,13 @@ Die XML-Dateien sind direkte Importdateien für ETS 6 mit **3-Ebenen-Gruppenadre
 | `gruppenadressen-zentral-zeit.xml` | Zentral Licht sowie Zeit und Datum |
 | `gruppenadressen-sicherheit.xml` | Gira Rauchwarnmelder und Sicherheitsmeldungen |
 | `gruppenadressen-raumcontroller.xml` | Messwerte und Anforderung des OpenKNX RaumControllers `1.1.29` |
-| `gruppenadressen-waermepumpe.xml` | zusätzlicher Import von 43 IDM-Wärmepumpen-Adressen über die KNX-Bridge von Home Assistant, Hauptgruppe `11` |
+| `gruppenadressen-waermepumpe.xml` | geplanter Zusatzimport von 43 IDM-Wärmepumpen-Adressen über die KNX-Bridge von Home Assistant, Hauptgruppe `11` |
 
-Die beiden empfohlenen XML-Importdateien umfassen zusammen 205 kollisionsfreie Gruppenadressen. Die CSV-Dateien bleiben technische Referenzen mit den vorgesehenen DPTs. Sie sind **keine** ETS-Importdateien. Die DPTs sind in den jeweiligen XML-Dateien hinterlegt.
+Die Basis-Komplettdatei enthält 162 Gruppenadressen. Bei späterer Umsetzung der IDM-KNX-Bridge kommen 43 kollisionsfreie Adressen hinzu; der geplante Gesamtstand umfasst dann 205 Gruppenadressen. Die CSV-Dateien bleiben technische Referenzen mit den vorgesehenen DPTs. Sie sind **keine** ETS-Importdateien. Die DPTs sind in den jeweiligen XML-Dateien hinterlegt.
+
+## Aktueller ETS-Stand
+
+Der ETS-Screenshot vom 29.08.2026 zeigt 12 vorhandene Hauptgruppen: `0` bis `10` sowie `13`. Hauptgruppe `11` ist noch nicht angelegt; `gruppenadressen-waermepumpe.xml` wurde demnach noch nicht importiert. Der Suchordner „Addresses not assigned“ zeigt 117 Einträge. Diese Zahl ist kein Gesamtzähler aller Gruppenadressen und ersetzt keinen ETS-Export.
 
 ## Import in ETS 6
 
@@ -22,8 +26,8 @@ Die beiden empfohlenen XML-Importdateien umfassen zusammen 205 kollisionsfreie G
 3. In der Ansicht **Gruppenadressen** den obersten Eintrag rechtsklicken.
 4. **Gruppenadressen importieren** wählen.
 5. `gruppenadressen-komplett.xml` importieren.
-6. Für die IDM-KNX-Bridge zusätzlich `gruppenadressen-waermepumpe.xml` importieren.
-7. Beide Importberichte und die Behandlung bereits vorhandener Adressen prüfen.
+6. Nur bei Inbetriebnahme der IDM-KNX-Bridge zusätzlich `gruppenadressen-waermepumpe.xml` importieren.
+7. Die jeweiligen Importberichte und die Behandlung bereits vorhandener Adressen prüfen.
 8. Produktdatenbanken einfügen, Geräte anlegen und Kommunikationsobjekte verknüpfen.
 
 Für XML muss beim Import keine CSV-Zeichenkodierung und kein Trennzeichen ausgewählt werden.
