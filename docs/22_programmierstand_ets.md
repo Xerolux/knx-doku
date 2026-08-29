@@ -1,20 +1,29 @@
 # 22 – Aktueller ETS-Programmierstand
 
-Stand: 04.08.2026
+Stand: 29.08.2026
 
 ## Bedeutung „Programmieren notwendig“
 
 ETS zeigt ein Gerät unter **Programmieren notwendig**, wenn seit dem letzten Download Parameter, Kommunikationsobjekte, Verknüpfungen oder relevante Applikationsdaten geändert wurden. Die Anzeige bedeutet nicht automatisch einen Gerätefehler.
 
-## Nach den aktuellen Änderungen vollständig programmieren
+## Sichtbarer Stand im ETS-Screenshot
+
+| Physikalische Adresse | Sichtbarer Status am 29.08.2026 | Folgerung |
+|---:|---|---|
+| `1.1.10`, `1.1.20–1.1.31`, `1.1.41` | in allen fünf sichtbaren Statusspalten grüne Häkchen | kein pauschaler Download allein aufgrund des Screenshots; Funktionen und Telegramme trotzdem prüfen |
+| `1.1.32`, `1.1.33` | in den fünf sichtbaren Statusspalten Striche | Raum, Bedienfunktion, Parameter und Gruppenadressverknüpfungen festlegen, danach vollständig programmieren |
+| `1.1.40` | in den fünf sichtbaren Statusspalten Striche | Applikation, Parameter, Wetter-Gruppenadressen und Programmierstand prüfen |
+
+Der Screenshot enthält keine Spaltenüberschriften und keine Kommunikationsobjekte. Die Symbole werden deshalb nur als sichtbarer ETS-Status dokumentiert, nicht als Nachweis einer vollständigen oder funktionierenden Gruppenadressverknüpfung.
+
+## Nach den nächsten Gruppenadressänderungen programmieren
 
 | Physikalische Adresse | Gerät | Grund |
 |---:|---|---|
-| `1.1.3` | MDT Schaltaktor | Einzeladressen der Lichtkanäle, beide Ganglichter und Zentral Licht |
-| `1.1.4` | MDT JAL-0810M.02 | Rollladenstatus, Zentralobjekte und Kanalparameter |
-| `1.1.20` | MDT Glastaster Eingang | Zentral Licht und Zentral Rollladen |
-| betroffene Taster `1.1.21–1.1.28` | MDT Glastaster | Licht-, Rollladen-, Status- und Displayänderungen |
-| `1.1.30` | Gang Bewegungsmelder | Ausgang `1/4/4`, Nachlaufzeiten und Helligkeitssteuerung |
+| `1.1.32`, `1.1.33` | MDT Glastaster | nach Festlegung von Raum, Bedienfunktion und den dazugehörigen Gruppenadressen |
+| `1.1.40` | Gira Wetterstation Plus | nach Prüfung beziehungsweise Zuordnung der Wetterobjekte und Gruppenadressen |
+| jeweils betroffene Taster `1.1.20–1.1.33` | MDT Glastaster | nur wenn Parameter, Licht-, Rollladen-, Status-, Display- oder Wärmepumpen-Verknüpfungen tatsächlich geändert werden |
+| jeweils betroffene Aktoren und Sensoren | KNX-Teilnehmer | nur wenn deren Parameter oder Kommunikationsobjektverknüpfungen geändert werden |
 | `1.1.8` | MDT Logikmodul | erst nach Umsetzung des gemeinsamen Ganglichtstatus `1/4/5` |
 
 Geräte, an denen keine Parameter oder Verknüpfungen geändert wurden, müssen nicht allein wegen ihrer Position in einer Geräteübersicht erneut programmiert werden.
@@ -29,14 +38,15 @@ Blockiert das MDT SCN-SAFE.01 den ETS-Zugriff, wird für geplante Arbeiten die z
 
 ## Empfohlene Reihenfolge
 
-1. Schaltaktor `1.1.3` vollständig programmieren.
-2. Jalousieaktor `1.1.4` vollständig programmieren.
-3. Bewegungsmelder `1.1.30` vollständig programmieren.
-4. Betroffene Glastaster vollständig programmieren.
-5. Nach Einrichtung des Sammelstatus das Logikmodul `1.1.8` programmieren.
-6. Im Gruppenmonitor alle Befehle und Rückmeldungen prüfen.
-7. Fahrzeitmessung der verwendeten Rollladenkanäle starten.
-8. ETS-Projekt anschließend lokal mit Datum sichern.
+1. Raum und Bedienfunktion der Glastaster `1.1.32` und `1.1.33` festlegen.
+2. Kommunikationsobjekte mit den bestehenden raum- und funktionsbezogenen Gruppenadressen verbinden.
+3. Wärmepumpen-Adressen nur an passende Anzeige- oder Bedienobjekte mit identischem DPT anbinden.
+4. Die betroffenen Glastaster und weitere tatsächlich geänderte Teilnehmer vollständig programmieren.
+5. Wetterstation `1.1.40` nach Prüfung von Applikation, Parametern und Verknüpfungen programmieren.
+6. Nach Einrichtung des Sammelstatus das Logikmodul `1.1.8` programmieren.
+7. Im Gruppenmonitor alle Befehle und Rückmeldungen prüfen.
+8. Gruppenadressen neu aus ETS exportieren und die älteren Repository-Snapshots ersetzen.
+9. ETS-Projekt anschließend lokal mit Datum sichern.
 
 ## Funktionsprüfung
 

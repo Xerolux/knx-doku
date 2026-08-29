@@ -35,6 +35,8 @@ Die Linie **1.3** bleibt vorerst leer. Wetterstation, Rauchwarnmelder-KNX-Modul 
 1.1.29  OpenKNX RaumController – Sensorverknüpfung und Programmierstand prüfen
 1.1.30  MDT Präsenzmelder 360° KLR 4S
 1.1.31  MDT SCN-IP100.03 E-Mail- und Zeitserver-Applikation
+1.1.32  MDT Glastaster II Smart mit Temperatursensor – Raum/Funktion offen
+1.1.33  MDT Glastaster II Smart mit Temperatursensor – Raum/Funktion offen
 1.1.40  Gira Wetterstation Plus – ETS-Applikation B00D21
 1.1.41  Gira KNX Rauchwarnmelder – ETS-Applikation C01602
 ```
@@ -65,10 +67,12 @@ Bei tatsächlichem Ausbau benötigt die Linie einen passenden Linienkoppler und 
 
 - `1.1.0`: Router-Applikation des MDT IP-Routers.
 - `1.1.1–1.1.19`: Infrastruktur, REG-Geräte, Aktoren und Systemmodule.
-- `1.1.20–1.1.30`: Innenraumsensoren und Bedienstellen.
+- `1.1.20–1.1.30` sowie `1.1.32–1.1.33`: Innenraumsensoren und Bedienstellen.
 - `1.1.31`: festgelegte Zusatzapplikation für E-Mail und NTP-Zeitserver.
-- `1.1.32–1.1.39`: Reserve für weitere Innenraumsensoren und Bedienstellen.
+- `1.1.34–1.1.39`: Reserve für weitere Innenraumsensoren und Bedienstellen.
 - `1.1.40–1.1.59`: Wetter-, Sicherheits- und Außengeräte, solange keine eigene Außenlinie verwendet wird.
 - `1.3.x`: ausschließlich für den späteren Ausbau der TP-Außenlinie.
 - Physikalische Adressen werden nicht doppelt vergeben.
 - Das ETS-Projekt ist die verbindliche Quelle für die tatsächlich programmierten Adressen.
+
+Der ETS-Screenshot vom 29.08.2026 bestätigt die angelegten Teilnehmer `1.1.10`, `1.1.20` bis `1.1.33`, `1.1.40` und `1.1.41`. Er zeigt keine Kommunikationsobjekte oder Gruppenadressverknüpfungen; diese werden deshalb getrennt dokumentiert und im ETS-Projekt geprüft.

@@ -9,12 +9,13 @@ Die Gruppenadressen können im nativen XML-Format in ein ETS-Projekt mit **3-Ebe
 1. Projekt in ETS anlegen oder öffnen.
 2. In **Gruppenadressen** den obersten Eintrag rechtsklicken und **Gruppenadressen importieren** wählen.
 3. [ets-import/gruppenadressen-komplett.xml](ets-import/gruppenadressen-komplett.xml) importieren.
-4. Importbericht und vorhandene Adressen prüfen.
-5. Anschließend Produktdatenbanken einfügen, Geräte anlegen und Kommunikationsobjekte verbinden.
+4. Für die KNX-Bridge der IDM-Wärmepumpe zusätzlich [ets-import/gruppenadressen-waermepumpe.xml](ets-import/gruppenadressen-waermepumpe.xml) importieren.
+5. Beide Importberichte und vorhandene Adressen prüfen.
+6. Anschließend Produktdatenbanken einfügen, Geräte anlegen und Kommunikationsobjekte verbinden.
 
 Die Wärmepumpe liegt in einer eigenen Datei: [ets-import/gruppenadressen-waermepumpe.xml](ets-import/gruppenadressen-waermepumpe.xml) mit 43 Adressen auf der freien Hauptgruppe `11`. Sie wird zusätzlich zur Komplettdatei importiert, siehe [docs/25_idm_waermepumpe_knx.md](docs/25_idm_waermepumpe_knx.md).
 
-Die Komplettdatei enthält alle 162 vorgesehenen Gruppenadressen einschließlich der geplanten DPTs. Die bisherigen Einzeldateien dienen nur der modularen Pflege und werden nicht zusätzlich importiert. Einzelheiten stehen in [ets-import/ETS_IMPORT.md](ets-import/ETS_IMPORT.md).
+Die Komplettdatei enthält 162 vorgesehene Basis-Gruppenadressen einschließlich der geplanten DPTs. Zusammen mit den 43 separat gepflegten Wärmepumpen-Adressen umfasst der geplante Importstand 205 Gruppenadressen. Die bisherigen Basis-Einzeldateien dienen nur der modularen Pflege und werden nicht zusätzlich importiert. Einzelheiten stehen in [ets-import/ETS_IMPORT.md](ets-import/ETS_IMPORT.md).
 
 > Die Komplettdatei enthält Gruppenadressstrukturen und geplante DPTs, aber keine physikalischen Adressen, Geräte oder Objektverknüpfungen.
 
@@ -84,6 +85,8 @@ Dokumentiert sind sechs Rollladen-/Markisenentitäten, sieben Lichtentitäten un
 - Zentral Rollladen: `0/1/0` für Auf/Ab und `0/1/1` für Stopp.
 - Home Assistant: Licht-, Rollladen- und Markisenentitäten angelegt und Dashboard erstellt.
 - OpenKNX RaumController `1.1.29`: sieben Raumklimaobjekte verbunden und am 17.08.2026 erfolgreich im Gruppenmonitor geprüft; VOC und Helligkeit lieferten beim Test noch `0`.
+- Glastaster `1.1.32` und `1.1.33`: im ETS-Projekt angelegt; Raum, Funktion und Gruppenadressverknüpfungen sind noch festzulegen.
+- Wetterstation `1.1.40`: im ETS-Screenshot vom 29.08.2026 ohne grüne Statushäkchen; Applikation, Parameter und Gruppenadressverknüpfungen prüfen.
 - Positionsstatus und Fahrzeitmessung müssen für zuverlässige Prozentwerte vollständig funktionieren.
 - ETS zeigt für geänderte Geräte **Programmieren notwendig**; die betroffenen Geräte sind in Dokument 22 aufgeführt.
 
@@ -96,10 +99,12 @@ Dokumentiert sind sechs Rollladen-/Markisenentitäten, sieben Lichtentitäten un
 | [ets-import/gruppenadressen-zentral-zeit.xml](ets-import/gruppenadressen-zentral-zeit.xml) | Ergänzung für `0/4/0` und `0/5/0` bis `0/5/2` |
 | [ets-import/gruppenadressen-sicherheit.xml](ets-import/gruppenadressen-sicherheit.xml) | Ergänzung für Rauchalarm und Rauchwarnmelderzustände |
 | [ets-import/gruppenadressen-raumcontroller.xml](ets-import/gruppenadressen-raumcontroller.xml) | Ergänzung für die Messwerte des OpenKNX RaumControllers `1.1.29` |
+| [ets-import/gruppenadressen-waermepumpe.xml](ets-import/gruppenadressen-waermepumpe.xml) | zusätzlicher Import von 43 IDM-Wärmepumpen-Adressen in Hauptgruppe `11` |
 | [ets-import/gruppenadressen-planung.csv](ets-import/gruppenadressen-planung.csv) | DPT- und Planungsreferenz der Grundstruktur |
 | [ets-import/gruppenadressen-zentral-zeit-planung.csv](ets-import/gruppenadressen-zentral-zeit-planung.csv) | DPT-Referenz für Zentral Licht sowie Zeit und Datum |
 | [ets-import/gruppenadressen-sicherheit-planung.csv](ets-import/gruppenadressen-sicherheit-planung.csv) | DPT-Referenz für Rauchwarnmelder und Sicherheitsmeldungen |
 | [ets-import/gruppenadressen-raumcontroller-planung.csv](ets-import/gruppenadressen-raumcontroller-planung.csv) | DPT- und Objektzuordnung des OpenKNX RaumControllers |
+| [ets-import/gruppenadressen-waermepumpe.csv](ets-import/gruppenadressen-waermepumpe.csv) | DPT-, Objekt- und Richtungsreferenz der IDM-Wärmepumpen-Adressen |
 | [ets-import/physikalische-adressen.csv](ets-import/physikalische-adressen.csv) | Geräte- und Adresscheckliste |
 | [ets-import/ETS_IMPORT.md](ets-import/ETS_IMPORT.md) | Importanleitung, Topologie und Regeln |
 

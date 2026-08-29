@@ -6,14 +6,14 @@ Die XML-Dateien sind direkte Importdateien für ETS 6 mit **3-Ebenen-Gruppenadre
 
 | Datei | Inhalt |
 |---|---|
-| `gruppenadressen-komplett.xml` | empfohlener Ein-Datei-Import aller 162 Gruppenadressen mit geplanten DPTs |
+| `gruppenadressen-komplett.xml` | empfohlener Ein-Datei-Import der 162 Basis-Gruppenadressen mit geplanten DPTs |
 | `gruppenadressen.xml` | Grundstruktur der Anlage |
 | `gruppenadressen-zentral-zeit.xml` | Zentral Licht sowie Zeit und Datum |
 | `gruppenadressen-sicherheit.xml` | Gira Rauchwarnmelder und Sicherheitsmeldungen |
 | `gruppenadressen-raumcontroller.xml` | Messwerte und Anforderung des OpenKNX RaumControllers `1.1.29` |
-| `gruppenadressen-waermepumpe.xml` | IDM Wärmepumpe über die KNX-Bridge von Home Assistant, Hauptgruppe `11` |
+| `gruppenadressen-waermepumpe.xml` | zusätzlicher Import von 43 IDM-Wärmepumpen-Adressen über die KNX-Bridge von Home Assistant, Hauptgruppe `11` |
 
-Die CSV-Dateien bleiben technische Referenzen mit den vorgesehenen DPTs. Sie sind **keine** ETS-Importdateien. Die DPTs sind zusätzlich in `gruppenadressen-komplett.xml` hinterlegt.
+Die beiden empfohlenen XML-Importdateien umfassen zusammen 205 kollisionsfreie Gruppenadressen. Die CSV-Dateien bleiben technische Referenzen mit den vorgesehenen DPTs. Sie sind **keine** ETS-Importdateien. Die DPTs sind in den jeweiligen XML-Dateien hinterlegt.
 
 ## Import in ETS 6
 
@@ -22,8 +22,9 @@ Die CSV-Dateien bleiben technische Referenzen mit den vorgesehenen DPTs. Sie sin
 3. In der Ansicht **Gruppenadressen** den obersten Eintrag rechtsklicken.
 4. **Gruppenadressen importieren** wählen.
 5. `gruppenadressen-komplett.xml` importieren.
-6. Importbericht und Behandlung bereits vorhandener Adressen prüfen.
-7. Produktdatenbanken einfügen, Geräte anlegen und Kommunikationsobjekte verknüpfen.
+6. Für die IDM-KNX-Bridge zusätzlich `gruppenadressen-waermepumpe.xml` importieren.
+7. Beide Importberichte und die Behandlung bereits vorhandener Adressen prüfen.
+8. Produktdatenbanken einfügen, Geräte anlegen und Kommunikationsobjekte verknüpfen.
 
 Für XML muss beim Import keine CSV-Zeichenkodierung und kein Trennzeichen ausgewählt werden.
 
@@ -31,7 +32,7 @@ Für XML muss beim Import keine CSV-Zeichenkodierung und kein Trennzeichen ausge
 
 ## Alternative: modularer Import
 
-Nur wenn bewusst einzelne Bereiche importiert werden sollen, können stattdessen nacheinander `gruppenadressen.xml`, `gruppenadressen-zentral-zeit.xml`, `gruppenadressen-sicherheit.xml` und `gruppenadressen-raumcontroller.xml` verwendet werden. Komplettdatei und Einzeldateien werden nicht im selben Importlauf kombiniert.
+Nur wenn bewusst einzelne Basisbereiche importiert werden sollen, können statt `gruppenadressen-komplett.xml` nacheinander `gruppenadressen.xml`, `gruppenadressen-zentral-zeit.xml`, `gruppenadressen-sicherheit.xml` und `gruppenadressen-raumcontroller.xml` verwendet werden. Komplettdatei und Basis-Einzeldateien werden nicht im selben Importlauf kombiniert. Die Wärmepumpen-Datei bleibt davon unabhängig und wird bei Nutzung der KNX-Bridge zusätzlich importiert.
 
 ## Ergänzung Zentral Licht sowie Zeit und Datum
 

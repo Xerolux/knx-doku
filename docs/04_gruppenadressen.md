@@ -11,6 +11,7 @@ Die Datei [../ets-import/gruppenadressen.xml](../ets-import/gruppenadressen.xml)
 - [../ets-import/gruppenadressen-zentral-zeit.xml](../ets-import/gruppenadressen-zentral-zeit.xml) für Zentral Licht sowie Zeit und Datum
 - [../ets-import/gruppenadressen-sicherheit.xml](../ets-import/gruppenadressen-sicherheit.xml) für den Gira-Rauchwarnmelder
 - [../ets-import/gruppenadressen-raumcontroller.xml](../ets-import/gruppenadressen-raumcontroller.xml) für die Messwerte des OpenKNX RaumControllers
+- [../ets-import/gruppenadressen-waermepumpe.xml](../ets-import/gruppenadressen-waermepumpe.xml) für die KNX-Bridge der IDM-Wärmepumpe
 
 Gruppenadressen sind unabhängig von der physikalischen Linie. Geräte auf KNX TP, KNX RF und IP können dieselben Gruppenadressen verwenden, sofern ihre Kommunikationsobjekte und DPTs zueinander passen.
 
@@ -29,9 +30,28 @@ Gruppenadressen sind unabhängig von der physikalischen Linie. Geräte auf KNX T
 | 8 | Status | hausweite Sammelmeldungen |
 | 9 | Home Assistant | optionale Diagnose- und Anzeigeobjekte |
 | 10 | Sicherheit | Rauchalarm und Zustände des Gira KNX-Rauchwarnmoduls |
+| 11 | IDM Wärmepumpe | Werte und freigegebene Sollvorgaben der Home-Assistant-KNX-Bridge |
 | 13 | Raumklima | Raumklimawerte sowie spätere Lüftungs- und Kühlungsfunktionen |
 
-Die Hauptgruppen 11, 12, 14 und 15 bleiben als Reserve für Energie, allgemeine Störungen, Außenanlagen und spätere Erweiterungen frei. Hauptgruppe 13 wird für die Raumklimawerte des OpenKNX RaumControllers und spätere Lüftungs- oder Kühlungsfunktionen verwendet.
+Die Hauptgruppen 12, 14 und 15 bleiben als Reserve für allgemeine Störungen, Außenanlagen und spätere Erweiterungen frei. Hauptgruppe 11 ist für die IDM-Wärmepumpe belegt; Hauptgruppe 13 wird für die Raumklimawerte des OpenKNX RaumControllers und spätere Lüftungs- oder Kühlungsfunktionen verwendet.
+
+## Abgleichstand der Dateien
+
+| Datenbestand | Gruppenadressen | Bedeutung |
+|---|---:|---|
+| `export.xml` | 144 | älterer ETS-XML-Export der Grundstruktur |
+| `gruppenadressen-ETS6-4-1.csv` | 145 | älterer ETS-CSV-Export; enthält zusätzlich die Altplanung `0/0/0 Zentral Aus` |
+| `gruppenadressen-komplett.xml` | 162 | vorgesehene Basisstruktur einschließlich Zentralfunktionen, Zeit/Datum, Sicherheit und RaumController |
+| `gruppenadressen-waermepumpe.xml` | 43 | separater Zusatzimport für die IDM-KNX-Bridge |
+| geplanter Gesamtstand | 205 | Basis-Komplettdatei plus Wärmepumpen-Datei; ohne die nicht importierte Altplanung `0/0/0` |
+
+Der Geräte-Screenshot vom 29.08.2026 zeigt physikalische Teilnehmer und ETS-Statussymbole, aber keine Gruppenadressverknüpfungen. Nach dem Import und der Verknüpfung der Kommunikationsobjekte ist deshalb ein neuer Gruppenadress-Export aus dem ETS-Projekt erforderlich; erst dieser ersetzt die beiden älteren Export-Snapshots als Ist-Stand.
+
+Die neu angelegten Glastaster `1.1.32` und `1.1.33` erhalten keine eigenen, gerätebezogenen Adressbereiche. Nach Festlegung von Raum und Bedienfunktion werden ihre Kommunikationsobjekte mit den bereits raum- und funktionsbezogen aufgebauten Gruppenadressen verbunden. Bis dahin bleiben diese Verknüpfungen offen.
+
+## IDM Wärmepumpe
+
+Die 43 Wärmepumpen-Adressen liegen unter `11/0/x`, `11/1/x` und `11/3/x`. Ihre Namen, DPTs und Schreibrichtungen sind in [25 – IDM Wärmepumpe über Home Assistant](25_idm_waermepumpe_knx.md) und [gruppenadressen-waermepumpe.csv](../ets-import/gruppenadressen-waermepumpe.csv) dokumentiert. Die Wärmepumpen-Datei wird zusätzlich zur Basis-Komplettdatei importiert; beide Adressmengen sind kollisionsfrei.
 
 ## Raumklima / OpenKNX RaumController
 

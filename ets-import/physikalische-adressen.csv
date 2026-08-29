@@ -20,11 +20,13 @@ Adresse;Gerät;Raum/Funktion;Status/Hinweis
 1.1.27;MDT Glastaster II Smart mit Temperatur;Raum noch zuordnen;im ETS-Projekt programmiert
 1.1.28;MDT Glastaster II Smart mit Temperatur;Raum noch zuordnen;im ETS-Projekt programmiert
 1.1.29;OpenKNX RaumController;Einbauort noch zuordnen;Raumklimaobjekte sichtbar, Verknüpfung und Programmierstand prüfen
-1.1.30;MDT Präsenzmelder 360° KLR 4S;Raum noch zuordnen;genaue Bestellnummer und Programmierstand prüfen
+1.1.30;MDT Präsenzmelder 360° KLR 4S;Raum noch zuordnen;Screenshot 29.08.2026 mit grünen Statushäkchen, genaue Bestellnummer und Funktion prüfen
 1.1.31;MDT SCN-IP100.03 Zusatzapplikation;E-Mail- und Zeitserverfunktion;programmiert, kann zum selben realen Gerät wie 1.1.0 gehören
-1.1.32-1.1.39;Reserve;weitere Innensensoren und Bedienstellen;erst bei tatsächlichem Gerät vergeben
-1.1.40;Gira Wetterstation Plus;ETS-Applikation B00D21;vollständigen Programmierstand prüfen
-1.1.41;Gira KNX Rauchwarnmelder;ETS-Applikation C01602;Rauchalarm und Störmeldungen
+1.1.32;MDT Glastaster II Smart mit Temperatur;Raum und Funktion noch zuordnen;im ETS-Projekt angelegt, Screenshot 29.08.2026 ohne grüne Statushäkchen, Gruppenadressen offen
+1.1.33;MDT Glastaster II Smart mit Temperatur;Raum und Funktion noch zuordnen;im ETS-Projekt angelegt, Screenshot 29.08.2026 ohne grüne Statushäkchen, Gruppenadressen offen
+1.1.34-1.1.39;Reserve;weitere Innensensoren und Bedienstellen;erst bei tatsächlichem Gerät vergeben
+1.1.40;Gira Wetterstation Plus;ETS-Applikation B00D21;Screenshot 29.08.2026 ohne grüne Statushäkchen, vollständigen Programmier- und Verknüpfungsstand prüfen
+1.1.41;Gira KNX Rauchwarnmelder;ETS-Applikation C01602;Screenshot 29.08.2026 mit grünen Statushäkchen, Rauchalarm und Störmeldungen dokumentiert
 1.1.42-1.1.59;Reserve;weitere Sensoren und Außengeräte;erst bei tatsächlichem Gerät vergeben
 RF Segment 1;KNX RF Geräte;Fenstergriffe und Funkgeräte;Adressen direkt durch ETS festlegen
 1.3.x;Reserve;TP Außenlinie;aktuell vollständig unbestückt
