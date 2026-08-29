@@ -20,7 +20,7 @@ Der Screenshot enthält keine Spaltenüberschriften und keine Kommunikationsobje
 
 Der erste Gruppenadress-Screenshot vom 29.08.2026 zeigt 12 Hauptgruppen: `0` bis `10` sowie `13`. Nach dem Import ist zusätzlich Hauptgruppe `11 Wärmepumpe` sichtbar. Der aufgeklappte Bereich zeigt die Mittelgruppen `11/0 Objekte 1–230`, `11/1 Objekte 292–499` und `11/3 PV und Batterie`. Damit ist die Struktur der Wärmepumpen-Importdatei vorhanden. Einzeladressen, DPTs und konkrete Objektverknüpfungen sind in dieser Ansicht nicht nachprüfbar und müssen durch Aufklappen oder einen neuen ETS-Export bestätigt werden. Der ältere Suchordnerstand zeigte 117 Einträge unter „Addresses not assigned“; diese Zahl ist kein Gesamtzähler.
 
-Die Abstellkammer ist ein eigener neunter Raum und nicht das Badezimmer. Für sie fehlt derzeit ein bestätigter Gruppenadressblock sowie die eindeutige Zuordnung von Licht, Heizung und gegebenenfalls weiteren Funktionen.
+Die Abstellkammer ist ein eigener neunter Raum und nicht das Badezimmer. Für sie sind ausschließlich `1/7/10 Abstellkammer Licht Schalten` und `1/7/11 Abstellkammer Licht Status` vorgesehen. Die beiden Adressen müssen noch über `gruppenadressen-abstellkammer.xml` importiert und anschließend mit dem bestätigten Taster- und Aktorkanal verknüpft werden.
 
 ## Nach den nächsten Gruppenadressänderungen programmieren
 

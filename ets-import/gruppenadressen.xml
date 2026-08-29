@@ -54,6 +54,8 @@
     <GroupRange Name="Bad vorne" RangeStart="3840" RangeEnd="4095">
       <GroupAddress Name="Bad vorne Licht Schalten" Address="1/7/0" />
       <GroupAddress Name="Bad vorne Licht Status" Address="1/7/1" />
+      <GroupAddress Name="Abstellkammer Licht Schalten" Address="1/7/10" />
+      <GroupAddress Name="Abstellkammer Licht Status" Address="1/7/11" />
     </GroupRange>
   </GroupRange>
   <GroupRange Name="Beschattung" RangeStart="4096" RangeEnd="6143">

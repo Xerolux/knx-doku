@@ -41,9 +41,10 @@ Der erste ETS-Screenshot vom 29.08.2026 zeigte 12 Hauptgruppen: `0` bis `10` sow
 |---|---:|---|
 | `export.xml` | 144 | älterer ETS-XML-Export der Grundstruktur |
 | `gruppenadressen-ETS6-4-1.csv` | 145 | älterer ETS-CSV-Export; enthält zusätzlich die Altplanung `0/0/0 Zentral Aus` |
-| `gruppenadressen-komplett.xml` | 162 | vorgesehene Basisstruktur einschließlich Zentralfunktionen, Zeit/Datum, Sicherheit und RaumController |
+| `gruppenadressen-komplett.xml` | 164 | vorgesehene Basisstruktur einschließlich Abstellkammer-Licht, Zentralfunktionen, Zeit/Datum, Sicherheit und RaumController |
+| `gruppenadressen-abstellkammer.xml` | 2 | einmaliger Zusatzimport für bereits mit der älteren Komplettdatei angelegte ETS-Projekte |
 | `gruppenadressen-waermepumpe.xml` | 43 | separater Zusatzimport für die IDM-KNX-Bridge |
-| geplanter Gesamtstand | 205 | Basis-Komplettdatei plus Wärmepumpen-Datei; ohne die nicht importierte Altplanung `0/0/0` |
+| geplanter Gesamtstand | 207 | aktuelle Basis-Komplettdatei plus Wärmepumpen-Datei; ohne die nicht importierte Altplanung `0/0/0` |
 
 Der erste Gruppenadress-Screenshot vom 29.08.2026 bestätigt die damaligen Hauptgruppen und zeigt im Suchordner 117 Einträge „Addresses not assigned“. Diese Zahl beschreibt den Suchordner, nicht die Gesamtzahl aller Gruppenadressen. Der spätere Screenshot bestätigt zusätzlich Hauptgruppe `11` und ihre drei Mittelgruppen, zeigt aber weiterhin keine einzelnen Wärmepumpen-Adressen, DPTs oder Objektverknüpfungen. Der Geräte-Screenshot desselben Tages zeigt zusätzlich physikalische Teilnehmer und ETS-Statussymbole, aber ebenfalls keine Gruppenadressverknüpfungen.
 
@@ -51,9 +52,16 @@ Nach dem Import und der Verknüpfung der Kommunikationsobjekte ist deshalb ein n
 
 Die neu angelegten Glastaster `1.1.32` und `1.1.33` erhalten keine eigenen, gerätebezogenen Adressbereiche. Nach Festlegung von Raum und Bedienfunktion werden ihre Kommunikationsobjekte mit den bereits raum- und funktionsbezogen aufgebauten Gruppenadressen verbunden. Bis dahin bleiben diese Verknüpfungen offen.
 
-## Offener Raum: Abstellkammer
+## Abstellkammer
 
-Die Abstellkammer, früher als Dusche bezeichnet, ist ein eigener neunter Raum und nicht das Badezimmer. In den aktuellen Importdateien sind nur acht raumbezogene Mittelgruppen `0` bis `7` vorgesehen; ein separater Gruppenadressblock für die Abstellkammer fehlt. Die bestehenden Badezimmer-Adressen bleiben unverändert. Vor einer Erweiterung müssen Licht, Heizung, Fenster und gegebenenfalls weitere Funktionen der Abstellkammer sowie ein mit dem 3-Ebenen-Stil kompatibler Adressbereich festgelegt werden. Bis dahin werden keine Abstellkammer-Adressen erfunden oder importiert.
+Die Abstellkammer, früher als Dusche bezeichnet, ist ein eigener neunter Raum und nicht das Badezimmer. Sie besitzt nur eine Lichtfunktion. Da beim 3-Ebenen-Stil die acht Mittelgruppen `0` bis `7` bereits verwendet werden, nutzt sie innerhalb von `1/7 Bad vorne` den freien Untergruppenblock `10–19`:
+
+| Gruppenadresse | Name | DPT |
+|---:|---|---:|
+| `1/7/10` | Abstellkammer Licht Schalten | 1.001 |
+| `1/7/11` | Abstellkammer Licht Status | 1.001 |
+
+Die bestehenden Adressen des Badezimmers und von Bad vorne bleiben unverändert. Für ein ETS-Projekt, in das bereits die ältere Komplettdatei importiert wurde, wird nur [gruppenadressen-abstellkammer.xml](../ets-import/gruppenadressen-abstellkammer.xml) zusätzlich importiert. Die aktuelle `gruppenadressen-komplett.xml` enthält die beiden Adressen bereits und darf dann nicht nochmals zusätzlich importiert werden.
 
 ## IDM Wärmepumpe
 
