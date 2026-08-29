@@ -260,6 +260,12 @@
       <GroupAddress Name="Rauchwarnmelder Störung Rauchkammer" Address="10/0/6" DPTs="DPST-1-2" />
     </GroupRange>
   </GroupRange>
+  <GroupRange Name="Licht Erweiterung" RangeStart="24576" RangeEnd="26623">
+    <GroupRange Name="Abstellkammer" RangeStart="24576" RangeEnd="24831">
+      <GroupAddress Name="Abstellkammer Licht Schalten" Address="12/0/0" DPTs="DPST-1-1" />
+      <GroupAddress Name="Abstellkammer Licht Status" Address="12/0/1" DPTs="DPST-1-1" />
+    </GroupRange>
+  </GroupRange>
   <GroupRange Name="Raumklima" RangeStart="26624" RangeEnd="28671">
     <GroupRange Name="RaumController 1.1.29" RangeStart="26624" RangeEnd="26879">
       <GroupAddress Name="RaumController Temperatur" Address="13/0/0" DPTs="DPST-9-1" />

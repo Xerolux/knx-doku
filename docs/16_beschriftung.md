@@ -86,7 +86,7 @@ KNX-AKH1-08  Bad vorne
 KNX-AKH2-01 bis KNX-AKH2-08  Reserve / vor Ort zu erfassen
 ```
 
-Die Abstellkammer ist ein eigener neunter Raum. Vor einer Beschriftung müssen ihr tatsächlicher Heizkreis und der verwendete Kanal ermittelt werden; sie darf nicht als Synonym für Badezimmer beschriftet werden.
+Die Abstellkammer ist ein eigener neunter Raum, besitzt aber keine KNX-Heizungsfunktion. Es wird deshalb kein Heizungsaktorkanal für sie beschriftet; nur der tatsächliche Licht-Aktorkanal muss noch ermittelt werden. Sie darf weder als Badezimmer noch als Bad vorne beschriftet werden.
 
 ## Klemmen
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<GroupAddress-Export xmlns="http://knx.org/xml/ga-export/01">
+  <GroupRange Name="Licht Erweiterung" RangeStart="24576" RangeEnd="26623">
+    <GroupRange Name="Abstellkammer" RangeStart="24576" RangeEnd="24831">
+      <GroupAddress Name="Abstellkammer Licht Schalten" Address="12/0/0" DPTs="DPST-1-1" />
+      <GroupAddress Name="Abstellkammer Licht Status" Address="12/0/1" DPTs="DPST-1-1" />
+    </GroupRange>
+  </GroupRange>
+</GroupAddress-Export>

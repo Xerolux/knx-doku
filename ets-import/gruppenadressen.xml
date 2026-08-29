@@ -242,4 +242,10 @@
       <GroupAddress Name="HA Zentral Anzeige" Address="9/0/1" />
     </GroupRange>
   </GroupRange>
+  <GroupRange Name="Licht Erweiterung" RangeStart="24576" RangeEnd="26623">
+    <GroupRange Name="Abstellkammer" RangeStart="24576" RangeEnd="24831">
+      <GroupAddress Name="Abstellkammer Licht Schalten" Address="12/0/0" />
+      <GroupAddress Name="Abstellkammer Licht Status" Address="12/0/1" />
+    </GroupRange>
+  </GroupRange>
 </GroupAddress-Export>

@@ -121,4 +121,4 @@ Bei den verwendeten Rollladenkanälen ist `Zentrale Objekte = nur Auf/Ab` einges
 | 7 | Badezimmer |
 | 8 | Bad vorne |
 
-Die Abstellkammer ist ein zusätzlicher neunter Raum. Ihr Heizkreis beziehungsweise Aktorkanal ist noch vor Ort und in ETS zu ermitteln; sie wird nicht einem der acht vorhandenen Raumkanäle zugeschlagen.
+Die Abstellkammer ist ein zusätzlicher neunter Raum, besitzt aber keine KNX-Heizungsfunktion und wird keinem Heizungsaktorkanal zugeordnet.
