@@ -55,7 +55,7 @@ Ein gemeinsamer Prozentstatus bleibt frei, weil mehrere Rollladen unterschiedlic
 | Arbeitszimmer | `1/3/0` | `1/3/1` |
 | Gang Licht 1 | `1/4/0` | `1/4/1` |
 | Gang Licht 2 | `1/4/2` | `1/4/3` |
-| Gang beide | `1/4/4` | `1/4/5` erst nach Logik |
+| Gang beide | `1/4/4` | `1/4/5` aus ODER-Logik `1.1.8`, F1 |
 | Schlafzimmer | `1/5/0` | `1/5/1` |
 
 ## Raumbezogene Rollladenfunktionen

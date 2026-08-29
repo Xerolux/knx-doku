@@ -8,14 +8,14 @@ Die Gruppenadressen können im nativen XML-Format in ein ETS-Projekt mit **3-Ebe
 
 1. Projekt in ETS anlegen oder öffnen.
 2. In **Gruppenadressen** den obersten Eintrag rechtsklicken und **Gruppenadressen importieren** wählen.
-3. Bei einem neuen Projekt [ets-import/gruppenadressen-komplett.xml](ets-import/gruppenadressen-komplett.xml) importieren. Ist die ältere Komplettdatei bereits im Projekt, für die Abstellkammer nur [ets-import/gruppenadressen-abstellkammer.xml](ets-import/gruppenadressen-abstellkammer.xml) ergänzen.
+3. Bei einem neuen Projekt [ets-import/gruppenadressen-komplett.xml](ets-import/gruppenadressen-komplett.xml) importieren. Ist eine ältere Komplettdatei bereits im Projekt, nur die benötigte, vorher geprüfte Ergänzungs- oder Reparaturdatei importieren.
 4. Erst bei Inbetriebnahme der KNX-Bridge für die IDM-Wärmepumpe zusätzlich [ets-import/gruppenadressen-waermepumpe.xml](ets-import/gruppenadressen-waermepumpe.xml) importieren.
 5. Die jeweiligen Importberichte und vorhandenen Adressen prüfen.
 6. Anschließend Produktdatenbanken einfügen, Geräte anlegen und Kommunikationsobjekte verbinden.
 
 Die Wärmepumpe liegt in einer eigenen Datei: [ets-import/gruppenadressen-waermepumpe.xml](ets-import/gruppenadressen-waermepumpe.xml) mit 43 Adressen auf Hauptgruppe `11`. Die Struktur wurde inzwischen zusätzlich zur Basisstruktur in ETS importiert; Einzeladressen, DPTs und Verknüpfungen müssen noch per Detailansicht oder ETS-Export bestätigt werden. Siehe [docs/25_idm_waermepumpe_knx.md](docs/25_idm_waermepumpe_knx.md).
 
-Die Komplettdatei enthält 164 vorgesehene Basis-Gruppenadressen einschließlich der zwei Abstellkammer-Lichtadressen und der geplanten DPTs. Zusammen mit den 43 separat gepflegten Wärmepumpen-Adressen umfasst der geplante Importstand 207 Gruppenadressen. Die bisherigen Basis-Einzeldateien dienen nur der modularen Pflege und werden nicht zusätzlich importiert. Einzelheiten stehen in [ets-import/ETS_IMPORT.md](ets-import/ETS_IMPORT.md).
+Die Komplettdatei enthält 174 vorgesehene Basis-Gruppenadressen einschließlich der sechs Gang-Adressen, der zwei Abstellkammer-Lichtadressen, der sechs SCN-SAFE-Adressen und der getrennten Rauchwarnmelder-Planung. Zusammen mit den 43 separat gepflegten Wärmepumpen-Adressen umfasst der geplante Importstand 217 Gruppenadressen. Die bisherigen Basis-Einzeldateien dienen nur der modularen Pflege und werden nicht zusätzlich importiert. Einzelheiten stehen in [ets-import/ETS_IMPORT.md](ets-import/ETS_IMPORT.md).
 
 > Die Komplettdatei enthält Gruppenadressstrukturen und geplante DPTs, aber keine physikalischen Adressen, Geräte oder Objektverknüpfungen.
 
@@ -58,6 +58,7 @@ Die Komplettdatei enthält 164 vorgesehene Basis-Gruppenadressen einschließlich
 | [docs/23_home_assistant_knx_entities_dashboard.md](docs/23_home_assistant_knx_entities_dashboard.md) | KNX-Entitäten, Gruppenadressen und Lovelace-Dashboard |
 | [docs/24_openknx_raumcontroller.md](docs/24_openknx_raumcontroller.md) | OpenKNX-Sensorobjekte, ETS-Verknüpfung und Home-Assistant-Konfiguration |
 | [docs/25_idm_waermepumpe_knx.md](docs/25_idm_waermepumpe_knx.md) | IDM Wärmepumpe auf KNX über Home Assistant, Hauptgruppe 11 |
+| [docs/26_scn_safe_adressreparatur.md](docs/26_scn_safe_adressreparatur.md) | SCN-SAFE-Zuordnung, Adresskollision vom 29.08.2026 und Reparaturverfahren |
 
 ## Home Assistant
 
@@ -80,7 +81,7 @@ Dokumentiert sind sechs Rollladen-/Markisenentitäten, sieben Lichtentitäten un
 - Schaltaktor `1.1.3`: bestätigte Lichtkanäle A bis F dokumentiert.
 - Gang: zwei getrennte Lichtkreise mit Einzeladressen und gemeinsamer Adresse `1/4/4`.
 - Bewegungsmelder `1.1.30`: schaltet beide Ganglichter über `1/4/4`.
-- Gemeinsamer Ganglichtstatus `1/4/5`: noch per eindeutiger ODER- oder UND-Logik zu erzeugen.
+- Gemeinsamer Ganglichtstatus `1/4/5`: ODER-Logik in Funktion F1 des Logikmoduls `1.1.8` parametriert und verknüpft; Download und Busprüfung stehen noch aus.
 - Jalousieaktor `1.1.4`: Kanäle A, B, C, D, G und H dokumentiert.
 - Zentral Rollladen: `0/1/0` für Auf/Ab und `0/1/1` für Stopp.
 - Home Assistant: Licht-, Rollladen- und Markisenentitäten angelegt und Dashboard erstellt.
@@ -88,6 +89,7 @@ Dokumentiert sind sechs Rollladen-/Markisenentitäten, sieben Lichtentitäten un
 - Glastaster `1.1.32` und `1.1.33`: im ETS-Projekt angelegt; Raum, Funktion und Gruppenadressverknüpfungen sind noch festzulegen.
 - Wetterstation `1.1.40`: im ETS-Screenshot vom 29.08.2026 ohne grüne Statushäkchen; Applikation, Parameter und Gruppenadressverknüpfungen prüfen.
 - Gruppenadress-Iststand vom 29.08.2026 nach dem Zusatzimport: Hauptgruppen `0` bis `11` sowie `13`; unter `11 Wärmepumpe` sind die Mittelgruppen `11/0`, `11/1` und `11/3` sichtbar. Die 43 Einzeladressen und DPTs sind noch durch einen ETS-Export zu bestätigen.
+- Sicherheitsbereich: MDT SCN-SAFE liegt ausschließlich unter `10/0`; die noch nicht in Betrieb genommene Rauchwarnmelder-Planung liegt ausschließlich unter `10/1`. Die versehentliche Namenskollision wurde repariert und als Vorfall dokumentiert.
 - Raumstand: neun getrennte Räume. Die Abstellkammer ist weder Badezimmer noch Bad vorne und erhält ausschließlich `12/0/0` und `12/0/1` unter `12 Licht Erweiterung`.
 - Der ETS-Suchordner zeigt 117 Einträge unter „Addresses not assigned“. Diese Zahl ist kein Gesamtzähler aller angelegten Gruppenadressen.
 - Positionsstatus und Fahrzeitmessung müssen für zuverlässige Prozentwerte vollständig funktionieren.
@@ -97,11 +99,12 @@ Dokumentiert sind sechs Rollladen-/Markisenentitäten, sieben Lichtentitäten un
 
 | Datei | Verwendung |
 |---|---|
-| [ets-import/gruppenadressen-komplett.xml](ets-import/gruppenadressen-komplett.xml) | empfohlener Ein-Datei-Import aller 164 Basis-Gruppenadressen mit DPTs |
+| [ets-import/gruppenadressen-komplett.xml](ets-import/gruppenadressen-komplett.xml) | empfohlener Ein-Datei-Import aller 174 Basis-Gruppenadressen mit DPTs |
 | [ets-import/gruppenadressen.xml](ets-import/gruppenadressen.xml) | Grundstruktur für ETS 6 |
 | [ets-import/gruppenadressen-abstellkammer.xml](ets-import/gruppenadressen-abstellkammer.xml) | einmaliger Zusatzimport für `12 Licht Erweiterung / 12/0 Abstellkammer` |
 | [ets-import/gruppenadressen-zentral-zeit.xml](ets-import/gruppenadressen-zentral-zeit.xml) | Ergänzung für `0/4/0` und `0/5/0` bis `0/5/2` |
-| [ets-import/gruppenadressen-sicherheit.xml](ets-import/gruppenadressen-sicherheit.xml) | Ergänzung für Rauchalarm und Rauchwarnmelderzustände |
+| [ets-import/gruppenadressen-sicherheit.xml](ets-import/gruppenadressen-sicherheit.xml) | SCN-SAFE auf `10/0` und getrennte Rauchwarnmelder-Planung auf `10/1` |
+| [ets-import/gruppenadressen-reparatur-safe-rauchwarnmelder.xml](ets-import/gruppenadressen-reparatur-safe-rauchwarnmelder.xml) | einmalige Reparaturdatei nach der Adresskollision vom 29.08.2026 |
 | [ets-import/gruppenadressen-raumcontroller.xml](ets-import/gruppenadressen-raumcontroller.xml) | Ergänzung für die Messwerte des OpenKNX RaumControllers `1.1.29` |
 | [ets-import/gruppenadressen-waermepumpe.xml](ets-import/gruppenadressen-waermepumpe.xml) | zusätzlicher Import von 43 IDM-Wärmepumpen-Adressen in Hauptgruppe `11` |
 | [ets-import/gruppenadressen-planung.csv](ets-import/gruppenadressen-planung.csv) | DPT- und Planungsreferenz der Grundstruktur |
@@ -111,6 +114,8 @@ Dokumentiert sind sechs Rollladen-/Markisenentitäten, sieben Lichtentitäten un
 | [ets-import/gruppenadressen-waermepumpe.csv](ets-import/gruppenadressen-waermepumpe.csv) | DPT-, Objekt- und Richtungsreferenz der IDM-Wärmepumpen-Adressen |
 | [ets-import/physikalische-adressen.csv](ets-import/physikalische-adressen.csv) | Geräte- und Adresscheckliste |
 | [ets-import/ETS_IMPORT.md](ets-import/ETS_IMPORT.md) | Importanleitung, Topologie und Regeln |
+
+Die Importdateien werden lokal und bei jedem relevanten GitHub-Push mit [scripts/validate-group-addresses.ps1](scripts/validate-group-addresses.ps1) auf doppelte Adressen, Namens-/DPT-Konflikte und die feste Trennung von SCN-SAFE und Rauchwarnmelder geprüft.
 
 ## Home-Assistant-Dateien
 

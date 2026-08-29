@@ -22,6 +22,10 @@ Licht;Arbeitszimmer;1/3/0;Arbeitszimmer Licht Schalten;1.001
 Licht;Arbeitszimmer;1/3/1;Arbeitszimmer Licht Status;1.001
 Licht;Gang;1/4/0;Gang Licht Schalten;1.001
 Licht;Gang;1/4/1;Gang Licht Status;1.001
+Licht;Gang;1/4/2;Licht Gang Neubau Schalten;1.001
+Licht;Gang;1/4/3;Licht Gang Neubau Status;1.001
+Licht;Gang;1/4/4;Gang beide Lichter schalten;1.001
+Licht;Gang;1/4/5;Gang beide Lichter Status;1.001
 Licht;Schlafzimmer;1/5/0;Schlafzimmer Licht Schalten;1.001
 Licht;Schlafzimmer;1/5/1;Schlafzimmer Licht Status;1.001
 Licht;Badezimmer;1/6/0;Badezimmer Licht Schalten;1.001

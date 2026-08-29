@@ -9,7 +9,7 @@ Das Projekt verwendet den ETS-Stil **3 Ebenen**:
 Die Datei [../ets-import/gruppenadressen.xml](../ets-import/gruppenadressen.xml) enthält die Grundstruktur. Ergänzungen werden getrennt gepflegt:
 
 - [../ets-import/gruppenadressen-zentral-zeit.xml](../ets-import/gruppenadressen-zentral-zeit.xml) für Zentral Licht sowie Zeit und Datum
-- [../ets-import/gruppenadressen-sicherheit.xml](../ets-import/gruppenadressen-sicherheit.xml) für den Gira-Rauchwarnmelder
+- [../ets-import/gruppenadressen-sicherheit.xml](../ets-import/gruppenadressen-sicherheit.xml) für MDT SCN-SAFE und die getrennte Gira-Rauchwarnmelder-Planung
 - [../ets-import/gruppenadressen-raumcontroller.xml](../ets-import/gruppenadressen-raumcontroller.xml) für die Messwerte des OpenKNX RaumControllers
 - [../ets-import/gruppenadressen-waermepumpe.xml](../ets-import/gruppenadressen-waermepumpe.xml) für die KNX-Bridge der IDM-Wärmepumpe
 
@@ -29,12 +29,12 @@ Gruppenadressen sind unabhängig von der physikalischen Linie. Geräte auf KNX T
 | 7 | Szenen | Szenenaufrufe | in ETS vorhanden |
 | 8 | Status | hausweite Sammelmeldungen | in ETS vorhanden |
 | 9 | Home Assistant | optionale Diagnose- und Anzeigeobjekte | in ETS vorhanden |
-| 10 | Sicherheit | Rauchalarm und Zustände des Gira KNX-Rauchwarnmoduls | in ETS vorhanden |
+| 10 | Sicherheit | `10/0` MDT SCN-SAFE; `10/1` Rauchwarnmelder-Planung | SCN-SAFE verbunden; Rauchwarnmelder noch nicht in Betrieb genommen |
 | 11 | IDM Wärmepumpe | Werte und freigegebene Sollvorgaben der Home-Assistant-KNX-Bridge | in ETS importiert; Einzeladressen noch zu exportieren und zu prüfen |
-| 12 | Licht Erweiterung | Abstellkammer Licht Schalten und Status | Zusatzimport vorbereitet, noch nicht in ETS bestätigt |
+| 12 | Licht Erweiterung | Abstellkammer Licht Schalten und Status | in ETS vorhanden und mit Aktorkanal H verknüpft |
 | 13 | Raumklima | Raumklimawerte sowie spätere Lüftungs- und Kühlungsfunktionen | in ETS vorhanden |
 
-Der erste ETS-Screenshot vom 29.08.2026 zeigte 12 Hauptgruppen: `0` bis `10` sowie `13`. Nach dem anschließenden Import ist zusätzlich Hauptgruppe `11` sichtbar; darunter werden die drei Mittelgruppen `11/0 Objekte 1–230`, `11/1 Objekte 292–499` und `11/3 PV und Batterie` angezeigt. Damit ist die Wärmepumpen-Struktur angelegt. Ob alle 43 Einzeladressen und DPTs vollständig übernommen wurden, muss noch durch Aufklappen der Mittelgruppen oder einen neuen ETS-Export bestätigt werden. Hauptgruppe `12` wird nun für die notwendige Licht-Erweiterung der Abstellkammer verwendet; die Hauptgruppen 14 und 15 bleiben als Reserve frei.
+Der erste ETS-Screenshot vom 29.08.2026 zeigte 12 Hauptgruppen: `0` bis `10` sowie `13`. Nach den anschließenden Importen ist zusätzlich Hauptgruppe `11` sichtbar; darunter werden die drei Mittelgruppen `11/0 Objekte 1–230`, `11/1 Objekte 292–499` und `11/3 PV und Batterie` angezeigt. Damit ist die Wärmepumpen-Struktur angelegt. Ob alle 43 Einzeladressen und DPTs vollständig übernommen wurden, muss noch durch Aufklappen der Mittelgruppen oder einen neuen ETS-Export bestätigt werden. Die Kommunikationsobjekte des Aktorkanals H bestätigen außerdem `12/0/0` und `12/0/1` aus Hauptgruppe `12 Licht Erweiterung`. Die Hauptgruppen 14 und 15 bleiben als Reserve frei.
 
 ## Abgleichstand der Dateien
 
@@ -42,16 +42,29 @@ Der erste ETS-Screenshot vom 29.08.2026 zeigte 12 Hauptgruppen: `0` bis `10` sow
 |---|---:|---|
 | `export.xml` | 144 | älterer ETS-XML-Export der Grundstruktur |
 | `gruppenadressen-ETS6-4-1.csv` | 145 | älterer ETS-CSV-Export; enthält zusätzlich die Altplanung `0/0/0 Zentral Aus` |
-| `gruppenadressen-komplett.xml` | 164 | vorgesehene Basisstruktur einschließlich Licht-Erweiterung, Zentralfunktionen, Zeit/Datum, Sicherheit und RaumController |
+| `gruppenadressen-komplett.xml` | 174 | vorgesehene Basisstruktur einschließlich aller sechs Gang-Adressen, Licht-Erweiterung, Zentralfunktionen, Zeit/Datum, SCN-SAFE, Rauchwarnmelder-Planung und RaumController |
 | `gruppenadressen-abstellkammer.xml` | 2 | einmaliger Zusatzimport für bereits mit der älteren Komplettdatei angelegte ETS-Projekte |
 | `gruppenadressen-waermepumpe.xml` | 43 | separater Zusatzimport für die IDM-KNX-Bridge |
-| geplanter Gesamtstand | 207 | aktuelle Basis-Komplettdatei plus Wärmepumpen-Datei; ohne die nicht importierte Altplanung `0/0/0` |
+| geplanter Gesamtstand | 217 | aktuelle Basis-Komplettdatei plus Wärmepumpen-Datei; ohne die nicht importierte Altplanung `0/0/0` |
 
 Der erste Gruppenadress-Screenshot vom 29.08.2026 bestätigt die damaligen Hauptgruppen und zeigt im Suchordner 117 Einträge „Addresses not assigned“. Diese Zahl beschreibt den Suchordner, nicht die Gesamtzahl aller Gruppenadressen. Der spätere Screenshot bestätigt zusätzlich Hauptgruppe `11` und ihre drei Mittelgruppen, zeigt aber weiterhin keine einzelnen Wärmepumpen-Adressen, DPTs oder Objektverknüpfungen. Der Geräte-Screenshot desselben Tages zeigt zusätzlich physikalische Teilnehmer und ETS-Statussymbole, aber ebenfalls keine Gruppenadressverknüpfungen.
 
 Nach dem Import und der Verknüpfung der Kommunikationsobjekte ist deshalb ein neuer Gruppenadress-Export aus dem ETS-Projekt erforderlich; erst dieser ersetzt die beiden älteren Export-Snapshots als vollständigen Ist-Stand.
 
 Die neu angelegten Glastaster `1.1.32` und `1.1.33` erhalten keine eigenen, gerätebezogenen Adressbereiche. Nach Festlegung von Raum und Bedienfunktion werden ihre Kommunikationsobjekte mit den bereits raum- und funktionsbezogen aufgebauten Gruppenadressen verbunden. Bis dahin bleiben diese Verknüpfungen offen.
+
+## Ganglicht mit zwei Lichtkreisen
+
+| Gruppenadresse | Name | DPT | Erzeuger beziehungsweise Empfänger |
+|---:|---|---:|---|
+| `1/4/0` | Gang Licht Schalten | 1.001 | Schaltobjekt Kanal E |
+| `1/4/1` | Gang Licht Status | 1.001 | Statusobjekt Kanal E; Eingang 1 der Logik |
+| `1/4/2` | Licht Gang Neubau Schalten | 1.001 | Schaltobjekt Kanal F |
+| `1/4/3` | Licht Gang Neubau Status | 1.001 | Statusobjekt Kanal F; Eingang 2 der Logik |
+| `1/4/4` | Gang beide Lichter schalten | 1.001 | gemeinsamer Befehl an Kanal E und F |
+| `1/4/5` | Gang beide Lichter Status | 1.001 | ODER-Ausgang des Logikmoduls `1.1.8`, Funktion F1 |
+
+Die Statusobjekte der beiden Aktorkanäle schreiben ausschließlich auf `1/4/1` beziehungsweise `1/4/3`. Nur das Logikmodul schreibt und beantwortet Leseanfragen auf `1/4/5`.
 
 ## Licht-Erweiterung Abstellkammer
 
@@ -103,18 +116,25 @@ Für den MDT Glastaster II Smart wird bevorzugt `0/5/2` mit seinem kombinierten 
 
 Die in ETS sichtbare Adresse `0/5/3 Aktuelle Werte empfangen` besitzt derzeit keine eindeutig definierte Funktion. Sie wird nicht in die Importdatei übernommen. Vor dem Löschen muss geprüft werden, ob sie mit einem Objekt verbunden ist.
 
-## Sicherheit / Rauchwarnmelder
+## Sicherheit / SCN-SAFE und Rauchwarnmelder
 
 ```text
-10/0/0  Rauchalarm
-10/0/1  Rauchwarnmelder Störung
-10/0/2  Rauchwarnmelder Batterie schwach
-10/0/4  Rauchwarnmelder Testalarm auslösen
-10/0/5  Rauchwarnmelder Testalarm Status
-10/0/6  Rauchwarnmelder Störung Rauchkammer
+10/0/0  Sicherheitsmodus Status                 DPT 1.011
+10/0/1  Sicherheitsmodus Alarm                  DPT 1.005
+10/0/2  Sicherheitsmodul In Betrieb             DPT 1.011
+10/0/3  Sicherheitsmodus Befehl Passwort        DPT 16.000
+10/0/4  Sicherheitsmodus Alarm quittieren       DPT 1.001
+10/0/5  Sicherheitsmodus Aktivieren              DPT 1.001
+
+10/1/0  Rauchalarm                              DPT 1.002
+10/1/1  Rauchwarnmelder Störung                 DPT 1.002
+10/1/2  Rauchwarnmelder Batterie schwach        DPT 1.002
+10/1/4  Rauchwarnmelder Testalarm auslösen      DPT 1.003
+10/1/5  Rauchwarnmelder Testalarm Status        DPT 1.002
+10/1/6  Rauchwarnmelder Störung Rauchkammer     DPT 1.002
 ```
 
-Die Gira-Applikation besitzt kein separates Objekt nur für Verschmutzung. Dieser Zustand ist Bestandteil der allgemeinen Störung an Objekt 12; Objekt 16 liefert zusätzlich die allgemeinere Rauchkammerstörung. `10/0/3` bleibt wegen des wiederholten ETS-Importkonflikts frei. Die tatsächliche Verknüpfung erfolgt anhand der in der Produktdatenbank sichtbaren Kommunikationsobjekte.
+Die Adressbereiche dürfen nicht vermischt werden: `10/0` gehört ausschließlich zum vorhandenen MDT SCN-SAFE `1.1.9`; `10/1` ist ausschließlich die noch nicht in Betrieb genommene Rauchwarnmelder-Planung. Die SCN-SAFE-DPTs stammen aus der offiziellen MDT-Produktdatenbank. Objekt 227 (`10/0/5`) ist als wiederherzustellende Aktivieren/Deaktivieren-Verbindung geplant und muss in ETS noch bestätigt werden. Einzelheiten zur Kollision und Reparatur stehen in [26 – SCN-SAFE-Adressreparatur](26_scn_safe_adressreparatur.md).
 
 ## Konventionen
 

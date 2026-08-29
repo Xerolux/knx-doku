@@ -1,6 +1,6 @@
 # 17 – Abnahme, Wartung und offene Punkte
 
-Stand: 04.08.2026
+Stand: 29.08.2026
 
 ## Vor der Inbetriebnahme
 
@@ -27,6 +27,8 @@ Vorgehen bei einer geplanten Programmierung:
 4. Nach Abschluss kontrollieren, dass die Schutzfunktion wieder aktiv ist.
 
 Die Freigabe darf nur für geplante Arbeiten genutzt werden. Ein dauerhaft deaktivierter Schutz widerspricht dem Zweck des Sicherheitsmoduls.
+
+Die Gruppenadressen des Sicherheitsmoduls liegen ausschließlich unter `10/0`; Rauchwarnmelder-Planung liegt unter `10/1`. Vor jedem Gruppenadressimport wird `scripts/validate-group-addresses.ps1` ausgeführt. Der dokumentierte Vorfall, die wiederhergestellten Objekte 227 bis 231 und die ETS-Nacharbeit stehen in [26 – SCN-SAFE-Adressreparatur](26_scn_safe_adressreparatur.md).
 
 ## Zentrale Lichtfunktion prüfen
 

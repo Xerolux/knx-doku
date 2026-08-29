@@ -69,7 +69,7 @@ Die Statusadresse `1/4/5 Gang beide Lichter Status` darf nicht direkt von beiden
 
 Damit bedeutet `1`: Mindestens eines der beiden Ganglichter ist eingeschaltet.
 
-Solange die Logik nicht eingerichtet und programmiert ist, kann die gemeinsame Lichtentität zwar schalten, ihr Status ist jedoch nicht zuverlässig.
+Die Logik ist in Funktion F1 des MDT Logikmoduls `1.1.8` parametriert und mit `1/4/1`, `1/4/3` und `1/4/5` verbunden. Das Ausgangsobjekt besitzt das Lese-Flag und kann nach dem Gerätedownload Leseanfragen von Home Assistant beantworten. Bis zur erfolgreichen Programmierung und Busprüfung bleibt der Status der gemeinsamen Lichtentität noch unbestätigt.
 
 ## Heizung im Dashboard
 
@@ -159,11 +159,11 @@ cover.eg_markise
 1. Jedes Licht einzeln schalten.
 2. Rückmeldung nach Bedienung am KNX-Taster prüfen.
 3. Beide Ganglichter über `light.eg_gang_licht_alle` schalten.
-4. Gemeinsamen Status erst nach Programmierung der ODER-Logik bewerten.
+4. Nach Programmierung der ODER-Logik prüfen, dass der gemeinsame Status bei mindestens einem eingeschalteten Ganglicht aktiv ist.
 
 ## Offene Punkte
 
-- Sammelstatus `1/4/5` per ODER-Logik erzeugen und programmieren
+- Logikmodul `1.1.8` programmieren und Antwort auf `GroupValueRead 1/4/5` prüfen
 - weitere Lichtkanäle und Räume in Home Assistant ergänzen, sobald sie in ETS bestätigt sind
 - Heizungskreise des aktuellen KNX-Projekts als Klimaentitäten anlegen
 - Bereiche und Gerätenamen in Home Assistant endgültig vereinheitlichen

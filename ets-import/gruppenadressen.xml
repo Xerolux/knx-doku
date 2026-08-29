@@ -42,6 +42,10 @@
     <GroupRange Name="Gang" RangeStart="3072" RangeEnd="3327">
       <GroupAddress Name="Gang Licht Schalten" Address="1/4/0" />
       <GroupAddress Name="Gang Licht Status" Address="1/4/1" />
+      <GroupAddress Name="Licht Gang Neubau Schalten" Address="1/4/2" />
+      <GroupAddress Name="Licht Gang Neubau Status" Address="1/4/3" />
+      <GroupAddress Name="Gang beide Lichter schalten" Address="1/4/4" />
+      <GroupAddress Name="Gang beide Lichter Status" Address="1/4/5" />
     </GroupRange>
     <GroupRange Name="Schlafzimmer" RangeStart="3328" RangeEnd="3583">
       <GroupAddress Name="Schlafzimmer Licht Schalten" Address="1/5/0" />

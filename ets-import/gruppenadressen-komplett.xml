@@ -50,6 +50,10 @@
     <GroupRange Name="Gang" RangeStart="3072" RangeEnd="3327">
       <GroupAddress Name="Gang Licht Schalten" Address="1/4/0" DPTs="DPST-1-1" />
       <GroupAddress Name="Gang Licht Status" Address="1/4/1" DPTs="DPST-1-1" />
+      <GroupAddress Name="Licht Gang Neubau Schalten" Address="1/4/2" DPTs="DPST-1-1" />
+      <GroupAddress Name="Licht Gang Neubau Status" Address="1/4/3" DPTs="DPST-1-1" />
+      <GroupAddress Name="Gang beide Lichter schalten" Address="1/4/4" DPTs="DPST-1-1" />
+      <GroupAddress Name="Gang beide Lichter Status" Address="1/4/5" DPTs="DPST-1-1" />
     </GroupRange>
     <GroupRange Name="Schlafzimmer" RangeStart="3328" RangeEnd="3583">
       <GroupAddress Name="Schlafzimmer Licht Schalten" Address="1/5/0" DPTs="DPST-1-1" />
@@ -251,13 +255,21 @@
     </GroupRange>
   </GroupRange>
   <GroupRange Name="Sicherheit" RangeStart="20480" RangeEnd="22527">
-    <GroupRange Name="Rauchwarnmelder" RangeStart="20480" RangeEnd="20735">
-      <GroupAddress Name="Rauchalarm" Address="10/0/0" DPTs="DPST-1-2" />
-      <GroupAddress Name="Rauchwarnmelder Störung" Address="10/0/1" DPTs="DPST-1-2" />
-      <GroupAddress Name="Rauchwarnmelder Batterie schwach" Address="10/0/2" DPTs="DPST-1-2" />
-      <GroupAddress Name="Rauchwarnmelder Testalarm auslösen" Address="10/0/4" DPTs="DPST-1-3" />
-      <GroupAddress Name="Rauchwarnmelder Testalarm Status" Address="10/0/5" DPTs="DPST-1-2" />
-      <GroupAddress Name="Rauchwarnmelder Störung Rauchkammer" Address="10/0/6" DPTs="DPST-1-2" />
+    <GroupRange Name="SCN-SAFE" RangeStart="20480" RangeEnd="20735">
+      <GroupAddress Name="Sicherheitsmodus Status" Address="10/0/0" DPTs="DPST-1-11" />
+      <GroupAddress Name="Sicherheitsmodus Alarm" Address="10/0/1" DPTs="DPST-1-5" />
+      <GroupAddress Name="Sicherheitsmodul In Betrieb" Address="10/0/2" DPTs="DPST-1-11" />
+      <GroupAddress Name="Sicherheitsmodus Befehl Passwort" Address="10/0/3" DPTs="DPST-16-0" />
+      <GroupAddress Name="Sicherheitsmodus Alarm quittieren" Address="10/0/4" DPTs="DPST-1-1" />
+      <GroupAddress Name="Sicherheitsmodus Aktivieren" Address="10/0/5" DPTs="DPST-1-1" />
+    </GroupRange>
+    <GroupRange Name="Rauchwarnmelder" RangeStart="20736" RangeEnd="20991">
+      <GroupAddress Name="Rauchalarm" Address="10/1/0" DPTs="DPST-1-2" />
+      <GroupAddress Name="Rauchwarnmelder Störung" Address="10/1/1" DPTs="DPST-1-2" />
+      <GroupAddress Name="Rauchwarnmelder Batterie schwach" Address="10/1/2" DPTs="DPST-1-2" />
+      <GroupAddress Name="Rauchwarnmelder Testalarm auslösen" Address="10/1/4" DPTs="DPST-1-3" />
+      <GroupAddress Name="Rauchwarnmelder Testalarm Status" Address="10/1/5" DPTs="DPST-1-2" />
+      <GroupAddress Name="Rauchwarnmelder Störung Rauchkammer" Address="10/1/6" DPTs="DPST-1-2" />
     </GroupRange>
   </GroupRange>
   <GroupRange Name="Licht Erweiterung" RangeStart="24576" RangeEnd="26623">

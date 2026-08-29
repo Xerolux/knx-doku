@@ -38,7 +38,7 @@
 | 1.1.30 | MDT Präsenzmelder 360° KLR 4S | im ETS-Projekt vorhanden; Screenshot vom 29.08.2026 mit grünen Statushäkchen, genaue Bestellnummer und Raumzuordnung prüfen |
 | 1.1.32–1.1.33 | MDT Glastaster II Smart mit Temperatursensor | im ETS-Projekt angelegt, im Screenshot vom 29.08.2026 ohne grüne Statushäkchen; Raum, Funktion und Gruppenadressverknüpfungen offen |
 | 1.1.40 | Gira Wetterstation Plus, ETS-Applikation B00D21 | im ETS-Projekt; im Screenshot vom 29.08.2026 ohne grüne Statushäkchen, vollständigen Programmier- und Verknüpfungsstand prüfen |
-| 1.1.41 | Gira KNX Rauchwarnmelder, ETS-Applikation C01602 | Screenshot vom 29.08.2026 mit grünen Statushäkchen; Rauchalarm und Störmeldungen dokumentiert |
+| 1.1.41 | Reserve/ETS-Platzhalter für Gira KNX Rauchwarnmelder, Applikation C01602 | noch kein vorhandenes oder in Betrieb genommenes KNX-Gerät bestätigt; Gruppenadressen unter `10/1` sind reine Planung |
 
 Zusätzlich sind MDT KNX RF Fenstergriffe vorgesehen beziehungsweise vorhanden.
 

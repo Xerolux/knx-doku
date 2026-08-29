@@ -1,0 +1,27 @@
+name: Gruppenadressen prüfen
+
+on:
+  push:
+    paths:
+      - 'ets-import/**'
+      - 'scripts/validate-group-addresses.ps1'
+      - '.github/workflows/validate-group-addresses.yml'
+  pull_request:
+    paths:
+      - 'ets-import/**'
+      - 'scripts/validate-group-addresses.ps1'
+      - '.github/workflows/validate-group-addresses.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Gruppenadressen validieren
+        shell: pwsh
+        run: ./scripts/validate-group-addresses.ps1

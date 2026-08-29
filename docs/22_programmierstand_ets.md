@@ -10,7 +10,8 @@ ETS zeigt ein Gerät unter **Programmieren notwendig**, wenn seit dem letzten Do
 
 | Physikalische Adresse | Sichtbarer Status am 29.08.2026 | Folgerung |
 |---:|---|---|
-| `1.1.10`, `1.1.20–1.1.31`, `1.1.41` | in allen fünf sichtbaren Statusspalten grüne Häkchen | kein pauschaler Download allein aufgrund des Screenshots; Funktionen und Telegramme trotzdem prüfen |
+| `1.1.10`, `1.1.20–1.1.31` | in allen fünf sichtbaren Statusspalten grüne Häkchen | kein pauschaler Download allein aufgrund des Screenshots; Funktionen und Telegramme trotzdem prüfen |
+| `1.1.41` | ETS-Eintrag im Screenshot sichtbar | nur Planung/Platzhalter; kein reales oder in Betrieb genommenes Rauchwarnmelder-KNX-Gerät bestätigt |
 | `1.1.32`, `1.1.33` | in den fünf sichtbaren Statusspalten Striche | Raum, Bedienfunktion, Parameter und Gruppenadressverknüpfungen festlegen, danach vollständig programmieren |
 | `1.1.40` | in den fünf sichtbaren Statusspalten Striche | Applikation, Parameter, Wetter-Gruppenadressen und Programmierstand prüfen |
 
@@ -20,7 +21,9 @@ Der Screenshot enthält keine Spaltenüberschriften und keine Kommunikationsobje
 
 Der erste Gruppenadress-Screenshot vom 29.08.2026 zeigt 12 Hauptgruppen: `0` bis `10` sowie `13`. Nach dem Import ist zusätzlich Hauptgruppe `11 Wärmepumpe` sichtbar. Der aufgeklappte Bereich zeigt die Mittelgruppen `11/0 Objekte 1–230`, `11/1 Objekte 292–499` und `11/3 PV und Batterie`. Damit ist die Struktur der Wärmepumpen-Importdatei vorhanden. Einzeladressen, DPTs und konkrete Objektverknüpfungen sind in dieser Ansicht nicht nachprüfbar und müssen durch Aufklappen oder einen neuen ETS-Export bestätigt werden. Der ältere Suchordnerstand zeigte 117 Einträge unter „Addresses not assigned“; diese Zahl ist kein Gesamtzähler.
 
-Die Abstellkammer ist ein eigener neunter Raum und weder das Badezimmer noch Bad vorne. Für sie sind ausschließlich `12/0/0 Abstellkammer Licht Schalten` und `12/0/1 Abstellkammer Licht Status` vorgesehen. Die beiden Adressen müssen noch über `gruppenadressen-abstellkammer.xml` importiert und anschließend mit dem bestätigten Taster- und Aktorkanal verknüpft werden.
+Die Abstellkammer ist ein eigener neunter Raum und weder das Badezimmer noch Bad vorne. Für sie sind ausschließlich `12/0/0 Abstellkammer Licht Schalten` und `12/0/1 Abstellkammer Licht Status` vorgesehen. Beide Adressen sind mit Kanal H des Schaltaktors `1.1.3` verbunden: Objekt 85 schaltet über `12/0/0`, Objekt 92 meldet den Status über `12/0/1`. Eine Tasterzuordnung ist noch zu bestätigen.
+
+Der gemeinsame Ganglichtstatus ist in Funktion F1 des Logikmoduls `1.1.8` als ODER aus `1/4/1` und `1/4/3` angelegt. Ausgang ist `1/4/5`; dessen Objekt 9 besitzt DPT 1.001 sowie die Flags Kommunikation, Lesen und Übertragen. Die ETS-Projektierung ist bestätigt, Download und Busprüfung sind noch offen.
 
 ## Nach den nächsten Gruppenadressänderungen programmieren
 
@@ -30,7 +33,8 @@ Die Abstellkammer ist ein eigener neunter Raum und weder das Badezimmer noch Bad
 | `1.1.40` | Gira Wetterstation Plus | nach Prüfung beziehungsweise Zuordnung der Wetterobjekte und Gruppenadressen |
 | jeweils betroffene Taster `1.1.20–1.1.33` | MDT Glastaster | nur wenn Parameter, Licht-, Rollladen-, Status-, Display- oder Wärmepumpen-Verknüpfungen tatsächlich geändert werden |
 | jeweils betroffene Aktoren und Sensoren | KNX-Teilnehmer | nur wenn deren Parameter oder Kommunikationsobjektverknüpfungen geändert werden |
-| `1.1.8` | MDT Logikmodul | erst nach Umsetzung des gemeinsamen Ganglichtstatus `1/4/5` |
+| `1.1.8` | MDT Logikmodul | F1 für den gemeinsamen Ganglichtstatus ist angelegt; vollständig programmieren und prüfen |
+| `1.1.3` | MDT Schaltaktor | programmieren, falls die bestätigten Gang- oder Abstellkammer-Verknüpfungen noch nicht auf das Gerät geladen wurden |
 
 Geräte, an denen keine Parameter oder Verknüpfungen geändert wurden, müssen nicht allein wegen ihrer Position in einer Geräteübersicht erneut programmiert werden.
 
@@ -40,7 +44,9 @@ Die RF+-Fenstergriffe `1.1.11` bis `1.1.19` werden nur programmiert, wenn deren 
 
 ## Sicherheitsmodul
 
-Blockiert das MDT SCN-SAFE.01 den ETS-Zugriff, wird für geplante Arbeiten die zeitlich begrenzte Programmierfreigabe am Gerät aktiviert. Nach Abschluss ist zu kontrollieren, dass der Schutzbetrieb wieder aktiv ist.
+Die Objektverknüpfungen des MDT SCN-SAFE.01 wurden nach der Adressreparatur für Objekt 0 und 228 bis 231 bestätigt. Ein Gruppenmonitor-Test zeigte eine Antwort von `1.1.9` auf `10/0/0`; der Sicherheitsmodus war dabei aktiv. Objekt 227 `Aktivieren` besitzt in der aktuellen Ansicht noch keine bestätigte Verknüpfung. Dafür ist `10/0/5 Sicherheitsmodus Aktivieren` vorgesehen und in ETS gezielt zuzuordnen.
+
+Blockiert das MDT SCN-SAFE.01 den ETS-Zugriff, wird für geplante Arbeiten die zeitlich begrenzte Programmierfreigabe am Gerät aktiviert. Nach Abschluss ist zu kontrollieren, dass der Schutzbetrieb wieder aktiv ist. Das Repository enthält kein Passwort und keine Bus-Telegrammwerte für das Passwortobjekt.
 
 ## Empfohlene Reihenfolge
 
@@ -49,7 +55,7 @@ Blockiert das MDT SCN-SAFE.01 den ETS-Zugriff, wird für geplante Arbeiten die z
 3. Wärmepumpen-Adressen nur an passende Anzeige- oder Bedienobjekte mit identischem DPT anbinden.
 4. Die betroffenen Glastaster und weitere tatsächlich geänderte Teilnehmer vollständig programmieren.
 5. Wetterstation `1.1.40` nach Prüfung von Applikation, Parametern und Verknüpfungen programmieren.
-6. Nach Einrichtung des Sammelstatus das Logikmodul `1.1.8` programmieren.
+6. Das Logikmodul `1.1.8` mit der eingerichteten F1-ODER-Logik vollständig programmieren.
 7. Im Gruppenmonitor alle Befehle und Rückmeldungen prüfen.
 8. Gruppenadressen neu aus ETS exportieren und die älteren Repository-Snapshots ersetzen.
 9. ETS-Projekt anschließend lokal mit Datum sichern.
@@ -58,6 +64,7 @@ Blockiert das MDT SCN-SAFE.01 den ETS-Zugriff, wird für geplante Arbeiten die z
 
 - Einzellicht je Raum
 - beide Ganglichter über `1/4/4`
+- ODER-Sammelstatus über `1/4/5`, einschließlich Antwort auf eine Leseanfrage
 - Bewegungsmelder mit 3 Minuten Nachlaufzeit am Tag und 1 Minute in der Nacht
 - Zentral Licht über `0/4/0`
 - Einzelbedienung aller Rollladen

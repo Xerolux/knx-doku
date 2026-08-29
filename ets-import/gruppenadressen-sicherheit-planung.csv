@@ -1,7 +1,13 @@
 Hauptgruppe;Mittelgruppe;Gruppenadresse;Name;DPT;Hinweis
-Sicherheit;Rauchwarnmelder;10/0/0;Rauchalarm;1.002;Objekt 0 Alarm beziehungsweise lokaler Alarm
-Sicherheit;Rauchwarnmelder;10/0/1;Rauchwarnmelder Störung;1.002;Objekt 12 allgemeine Störmeldung einschließlich Verschmutzung
-Sicherheit;Rauchwarnmelder;10/0/2;Rauchwarnmelder Batterie schwach;1.002;Objekt 14 Störung Batterie
-Sicherheit;Rauchwarnmelder;10/0/4;Rauchwarnmelder Testalarm auslösen;1.003;Objekt 7 Eingang Testalarm
-Sicherheit;Rauchwarnmelder;10/0/5;Rauchwarnmelder Testalarm Status;1.002;Objekt 8 Ausgang Status Testalarm
-Sicherheit;Rauchwarnmelder;10/0/6;Rauchwarnmelder Störung Rauchkammer;1.002;Objekt 16 allgemeine Rauchkammerstörung, 10/0/3 bleibt wegen ETS-Importkonflikt frei
+Sicherheit;SCN-SAFE;10/0/0;Sicherheitsmodus Status;1.011;Objekt 230 Status, in ETS verbunden und im Gruppenmonitor bestätigt
+Sicherheit;SCN-SAFE;10/0/1;Sicherheitsmodus Alarm;1.005;Objekt 231 Alarm, in ETS verbunden
+Sicherheit;SCN-SAFE;10/0/2;Sicherheitsmodul In Betrieb;1.011;Objekt 0 In Betrieb, in ETS verbunden
+Sicherheit;SCN-SAFE;10/0/3;Sicherheitsmodus Befehl Passwort;16.000;Objekt 229 Befehl/Passwort, 14 Byte, in ETS verbunden, kein Passwort im Repository
+Sicherheit;SCN-SAFE;10/0/4;Sicherheitsmodus Alarm quittieren;1.001;Objekt 228 Alarm quittieren, in ETS verbunden
+Sicherheit;SCN-SAFE;10/0/5;Sicherheitsmodus Aktivieren;1.001;Objekt 227 Aktivieren, Gruppenadresse wiederhergestellt, Objektverknüpfung in ETS noch prüfen
+Sicherheit;Rauchwarnmelder;10/1/0;Rauchalarm;1.002;Planung für Objekt 0 Alarm beziehungsweise lokaler Alarm, noch kein in Betrieb genommenes Gerät
+Sicherheit;Rauchwarnmelder;10/1/1;Rauchwarnmelder Störung;1.002;Planung für Objekt 12 allgemeine Störmeldung einschließlich Verschmutzung
+Sicherheit;Rauchwarnmelder;10/1/2;Rauchwarnmelder Batterie schwach;1.002;Planung für Objekt 14 Störung Batterie
+Sicherheit;Rauchwarnmelder;10/1/4;Rauchwarnmelder Testalarm auslösen;1.003;Planung für Objekt 7 Eingang Testalarm
+Sicherheit;Rauchwarnmelder;10/1/5;Rauchwarnmelder Testalarm Status;1.002;Planung für Objekt 8 Ausgang Status Testalarm
+Sicherheit;Rauchwarnmelder;10/1/6;Rauchwarnmelder Störung Rauchkammer;1.002;Planung für Objekt 16 allgemeine Rauchkammerstörung

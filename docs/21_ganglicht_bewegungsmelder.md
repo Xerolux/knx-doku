@@ -1,6 +1,6 @@
 # 21 – Ganglicht und Bewegungsmelder
 
-Stand: 04.08.2026
+Stand: 29.08.2026
 
 ## Ziel
 
@@ -13,6 +13,7 @@ Im Gang sind zwei getrennte Lichtkreise vorhanden. Beide bleiben einzeln bedienb
 | MDT Schaltaktor `1.1.3` | schaltet die beiden Gang-Lichtkreise auf Kanal E und F |
 | Präsenz-/Bewegungsmelder `1.1.30` | Automatik für beide Ganglichter |
 | MDT Glastaster im Gang | manuelle Einzel- oder Gruppenbedienung |
+| MDT Logikmodul `1.1.8` | erzeugt in Funktion F1 den gemeinsamen ODER-Status |
 
 Die genaue Bestellnummer des Präsenzmelders wird noch anhand des eingebauten Geräts bestätigt. In ETS sind vier aktive Sensorbereiche und bis zu vier Lichtkanäle sichtbar.
 
@@ -25,7 +26,7 @@ Die genaue Bestellnummer des Präsenzmelders wird noch anhand des eingebauten Ge
 | `1/4/2` | Licht Gang Neubau Schalten | 1.001 | einzelner Lichtkreis auf Aktorkanal F |
 | `1/4/3` | Licht Gang Neubau Status | 1.001 | Rückmeldung von Aktorkanal F |
 | `1/4/4` | Gang beide Lichter schalten | 1.001 | gemeinsamer Schaltbefehl für E und F |
-| `1/4/5` | Gang beide Lichter Status | 1.001 | geplanter, per Logik gebildeter Sammelstatus |
+| `1/4/5` | Gang beide Lichter Status | 1.001 | ODER-Sammelstatus aus `1/4/1` und `1/4/3` |
 
 Die Adressen `1/4/4` und `1/4/5` liegen innerhalb der bereits vorhandenen Mittelgruppe `1/4 Gang`. Eine zusätzliche Mittelgruppe ist nicht erforderlich und wegen des Limits von acht Mittelgruppen unter der Hauptgruppe `1 Licht` auch nicht möglich.
 
@@ -59,14 +60,26 @@ Ein Schaltobjekt darf mehrere Gruppenadressen besitzen. Dadurch können beide Li
 
 Die beiden Statusobjekte `1/4/1` und `1/4/3` werden **nicht direkt gemeinsam** auf dieselbe Statusadresse gelegt. Zwei Aktorkanäle würden sonst unabhängig auf dieselbe Gruppenadresse schreiben und der angezeigte Zustand wäre nicht eindeutig.
 
-Der Sammelstatus `1/4/5` wird durch genau eine Logik erzeugt. Empfohlen ist die Bedeutung:
+Der Sammelstatus `1/4/5` wird durch genau eine ODER-Logik erzeugt:
 
 ```text
 1/4/1 ODER 1/4/3
     -> 1/4/5 Gang beide Lichter Status
 ```
 
-Damit bedeutet `1` auf `1/4/5`: Mindestens eines der beiden Ganglichter ist eingeschaltet. Alternativ kann eine UND-Logik verwendet werden, wenn `1` ausschließlich „beide Lichter sind eingeschaltet“ bedeuten soll. Die gewählte Bedeutung muss im Logiknamen eindeutig beschrieben werden.
+Damit bedeutet `1` auf `1/4/5`: Mindestens eines der beiden Ganglichter ist eingeschaltet.
+
+Die Umsetzung ist in Funktion F1 des MDT Logikmoduls `1.1.8` angelegt:
+
+```text
+Objekt 0  Logik Eingang 1 -> 1/4/1
+Objekt 1  Logik Eingang 2 -> 1/4/3
+Objekt 9  Logik Ausgang   -> 1/4/5
+```
+
+F1 verwendet `Logikgatter / Inverter`, `Logikgatter, 8 Eingänge mit Sperre`, Logikfunktion `ODER`, zwei normale externe Eingänge und einen normalen Ausgang vom Typ `Ein/Aus`. Eingänge 3–8, Sperre, Filter, Verzögerung und zyklisches Senden sind deaktiviert. Gesendet wird bei Änderung des Ausgangs. Beide Eingänge werden nach Reset abgefragt; der Ausgang sendet erst, wenn beide Eingänge gültig sind.
+
+Am Ausgangsobjekt 9 sind **Kommunikation, Lesen und Übertragen** aktiv; Schreiben und Aktualisieren sind aus. Der Datentyp ist `1.001 Schalten`. Damit beantwortet ausschließlich das Logikmodul Leseanfragen auf `1/4/5`.
 
 Der gemeinsame Status kann anschließend mit dem Statusobjekt eines Glastasters und bei Bedarf mit dem Status-Eingang des Präsenzmelders verbunden werden.
 
@@ -80,7 +93,7 @@ Der gemeinsame Status kann anschließend mit dem Statusobjekt eines Glastasters 
 | 3 | Externer Taster kurz | derzeit frei |
 | 4 | Externer Taster lang | derzeit frei |
 | 5 | Externe Bewegung / Slave | derzeit frei |
-| 6 | Status Aktorkanal | frei lassen, bis `1/4/5` per Logik erzeugt wird |
+| 6 | Status Aktorkanal | kann nach erfolgreicher Busprüfung mit `1/4/5` verbunden werden, falls die Melderlogik ihn benötigt |
 | 7 | Bewegungserkennung sperren | derzeit frei |
 | 8 | Zwangsführung | derzeit frei |
 | 11 | Dunkel schalten | derzeit frei |
@@ -201,7 +214,7 @@ Tasterobjekt Schalten
     -> 1/4/4 Gang beide Lichter schalten
 ```
 
-Die Statusanzeige wird erst verbunden, wenn `1/4/5 Gang beide Lichter Status` durch eine Logik eindeutig erzeugt wird:
+Nach erfolgreicher Programmierung und Busprüfung kann die Statusanzeige verbunden werden:
 
 ```text
 1/4/5 Gang beide Lichter Status
@@ -215,7 +228,7 @@ Nach Abschluss der Verknüpfungen vollständig programmieren:
 1. Schaltaktor `1.1.3`
 2. Präsenz-/Bewegungsmelder `1.1.30`
 3. betroffene Glastaster
-4. Logikgerät beziehungsweise Glastaster mit der Sammelstatuslogik
+4. Logikmodul `1.1.8`
 
 Bei blockiertem ETS-Zugriff wird am MDT SCN-SAFE.01 vorübergehend die zeitlich begrenzte Programmierfreigabe aktiviert. Passwörter, Schlüssel und private ETS-Projektdateien gehören nicht in dieses Repository.
 
@@ -228,13 +241,14 @@ Bei blockiertem ETS-Zugriff wird am MDT SCN-SAFE.01 vorübergehend die zeitlich 
 5. Ohne weitere Bewegung muss nach 3 Minuten am Tag beziehungsweise 1 Minute in der Nacht `0` gesendet werden.
 6. Helligkeitsabhängigkeit zunächst bei ausreichend dunkler Umgebung prüfen; für einen reinen Funktionstest vorübergehend helligkeitsunabhängig parametrieren.
 7. Manuelle Bedienung und Rückfall aus dem Handbetrieb testen.
-8. Nach Einrichtung der Logik prüfen, dass `1/4/5` der festgelegten ODER- oder UND-Bedeutung entspricht.
-9. Nach Busspannungswiederkehr Tag/Nacht, Status und Automatik erneut prüfen.
+8. Prüfen, dass `1/4/5` bei mindestens einem eingeschalteten Ganglicht `1` und nur bei beiden ausgeschalteten Ganglichtern `0` liefert.
+9. Eine `GroupValueRead`-Anfrage auf `1/4/5` senden und die Antwort des Logikmoduls `1.1.8` kontrollieren.
+10. Nach Busspannungswiederkehr Tag/Nacht, Status und Automatik erneut prüfen.
 
 ## Offene Punkte
 
 - genaue Bestellnummer des Präsenzmelders bestätigen
-- `1/4/5` als ODER- oder UND-Sammelstatus festlegen und Logik programmieren
+- Logikmodul `1.1.8` vollständig programmieren und ODER-Sammelstatus im Gruppenmonitor prüfen
 - Tag/Nacht-Polarität ändern und Objekt 90 mit `0/0/2` verbinden
 - rote Blink-LED deaktivieren, sofern nicht benötigt
 - Luxschwelle im realen Betrieb optimieren

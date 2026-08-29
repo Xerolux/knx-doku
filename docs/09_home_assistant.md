@@ -75,7 +75,7 @@ Kurzüberblick:
 - sieben Lichtentitäten einschließlich beider Ganglichter
 - drei vorhandene Klimaentitäten aus dem Altbestand im Dashboard
 - gemeinsamer Gang-Schaltbefehl über `1/4/4`
-- geplanter gemeinsamer Gang-Status über `1/4/5`
+- gemeinsamer Gang-Status über `1/4/5`; ODER-Logik in ETS angelegt, Download und Busprüfung noch offen
 
 ## Lovelace
 

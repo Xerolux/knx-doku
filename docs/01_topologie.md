@@ -14,7 +14,7 @@ Das ETS-Projekt verwendet aktuell eine aktive TP-Linie mit einem automatisch ang
 
 Die Linie **1.1** enthält die vorhandenen REG-Geräte, Sensoren und Bedienstellen. Der Gira RF Multi/TP Medienkoppler erzeugt in ETS automatisch das RF-Segment unterhalb der TP-Linie. Eine separate Linie 1.2 wird deshalb nicht verwendet.
 
-Die Linie **1.3** bleibt vorerst leer. Wetterstation, Rauchwarnmelder-KNX-Modul und andere bereits vorhandene Geräte liegen bis zu einem späteren Ausbau weiterhin auf Linie 1.1.
+Die Linie **1.3** bleibt vorerst leer. Die Wetterstation und andere bereits vorhandene Geräte liegen bis zu einem späteren Ausbau weiterhin auf Linie 1.1. Für den Rauchwarnmelder existiert in ETS nur eine Planung beziehungsweise ein Platzhalter; ein reales KNX-Gerät wurde noch nicht bestätigt.
 
 ## Aktuell angelegte Geräte
 
@@ -38,7 +38,7 @@ Die Linie **1.3** bleibt vorerst leer. Wetterstation, Rauchwarnmelder-KNX-Modul 
 1.1.32  MDT Glastaster II Smart mit Temperatursensor – Raum/Funktion offen
 1.1.33  MDT Glastaster II Smart mit Temperatursensor – Raum/Funktion offen
 1.1.40  Gira Wetterstation Plus – ETS-Applikation B00D21
-1.1.41  Gira KNX Rauchwarnmelder – ETS-Applikation C01602
+1.1.41  Reserve/ETS-Platzhalter für Gira KNX Rauchwarnmelder – noch nicht in Betrieb genommen
 ```
 
 Die Adresse `1.1.31` gehört zur zusätzlichen E-Mail- und Zeitserver-Applikation eines vorhandenen MDT SCN-IP100.03. Diese Applikation besitzt eine eigene physikalische Adresse, obwohl sie auf demselben realen Gerät wie die Router-Applikation laufen kann.
@@ -75,4 +75,4 @@ Bei tatsächlichem Ausbau benötigt die Linie einen passenden Linienkoppler und 
 - Physikalische Adressen werden nicht doppelt vergeben.
 - Das ETS-Projekt ist die verbindliche Quelle für die tatsächlich programmierten Adressen.
 
-Der ETS-Screenshot vom 29.08.2026 bestätigt die angelegten Teilnehmer `1.1.10`, `1.1.20` bis `1.1.33`, `1.1.40` und `1.1.41`. Er zeigt keine Kommunikationsobjekte oder Gruppenadressverknüpfungen; diese werden deshalb getrennt dokumentiert und im ETS-Projekt geprüft.
+Der ETS-Screenshot vom 29.08.2026 zeigt die angelegten Einträge `1.1.10`, `1.1.20` bis `1.1.33`, `1.1.40` und `1.1.41`. Der Eintrag `1.1.41` ist kein Nachweis eines vorhandenen oder programmierten Rauchwarnmelder-Geräts; derzeit gilt er nur als ETS-Planung. Kommunikationsobjekte und Gruppenadressverknüpfungen werden deshalb getrennt dokumentiert und im ETS-Projekt geprüft.
