@@ -32,7 +32,7 @@ Der gemeinsame Ganglichtstatus ist in Funktion F1 des Logikmoduls `1.1.8` als OD
 |---:|---|---|
 | `1.1.32`, `1.1.33` | MDT Glastaster | nach Festlegung von Raum, Bedienfunktion und den dazugehörigen Gruppenadressen |
 | `1.1.40` | Gira Wetterstation Plus | nach Prüfung beziehungsweise Zuordnung der Wetterobjekte und Gruppenadressen |
-| `1.1.22` | MDT Glastaster Küche | Statuswerte für Feuchte/CO2 konfigurieren und verbinden; kein passender direkter DPT für VOC in der MDT-Statuswertauswahl; danach programmieren und prüfen |
+| `1.1.22` | MDT Glastaster Küche | Statuswerte für Feuchte/echtes CO2 verbinden; optional CO2-VOC-Äquivalent auf Statuswert 3; Roh-VOC hat keinen passenden MDT-DPT; danach programmieren und prüfen |
 | jeweils betroffene Taster `1.1.20–1.1.33` | MDT Glastaster | nur wenn Parameter, Licht-, Rollladen-, Status-, Display- oder Wärmepumpen-Verknüpfungen tatsächlich geändert werden |
 | jeweils betroffene Aktoren und Sensoren | KNX-Teilnehmer | nur wenn deren Parameter oder Kommunikationsobjektverknüpfungen geändert werden |
 | `1.1.8` | MDT Logikmodul | F1 für den gemeinsamen Ganglichtstatus ist angelegt; vollständig programmieren und prüfen |

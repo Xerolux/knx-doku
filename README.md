@@ -86,7 +86,7 @@ Dokumentiert sind sechs Rollladen-/Markisenentitäten, sieben Lichtentitäten un
 - Zentral Rollladen: `0/1/0` für Auf/Ab und `0/1/1` für Stopp.
 - Home Assistant: Licht-, Rollladen- und Markisenentitäten angelegt und Dashboard erstellt.
 - OpenKNX RaumController `1.1.29`: sieben Raumklimaobjekte verbunden und am 17.08.2026 erfolgreich im Gruppenmonitor geprüft; VOC und Helligkeit lieferten beim Test noch `0`.
-- Küchen-Glastaster `1.1.22`: ETS-Screenshots bestätigen Raumzuordnung und Statusanzeige-Parameter. Feuchte und CO2 sind direkt darstellbar; der generische VOC-DPT passt zu keinem auswählbaren numerischen MDT-Statuswert.
+- Küchen-Glastaster `1.1.22`: ETS-Screenshots bestätigen Raumzuordnung und Statusanzeige-Parameter. Feuchte und echtes CO2 sind direkt darstellbar; optional ist das berechnete CO2-VOC-Äquivalent anzeigbar. Der rohe VOC-DPT passt zu keinem auswählbaren numerischen MDT-Statuswert.
 - Glastaster `1.1.32` und `1.1.33`: im ETS-Projekt angelegt; Raum, Funktion und Gruppenadressverknüpfungen sind noch festzulegen.
 - Wetterstation `1.1.40`: im ETS-Screenshot vom 29.08.2026 ohne grüne Statushäkchen; Applikation, Parameter und Gruppenadressverknüpfungen prüfen.
 - Gruppenadress-Iststand vom 29.08.2026 nach dem Zusatzimport: Hauptgruppen `0` bis `11` sowie `13`; unter `11 Wärmepumpe` sind die Mittelgruppen `11/0`, `11/1` und `11/3` sichtbar. Die 43 Einzeladressen und DPTs sind noch durch einen ETS-Export zu bestätigen.
