@@ -33,7 +33,7 @@
 | Adresse | Gerät | Aktueller Stand |
 |---:|---|---|
 | 1.1.20 | MDT BE-GT2Tx.01 / Glastaster II Smart mit Temperatursensor | Eingang; Zentral Licht sowie Zeit-/Temperaturanzeige werden eingerichtet |
-| 1.1.21–1.1.28 | MDT Glastaster II Smart mit Temperatursensor | im ETS-Projekt vorhanden; Screenshot vom 29.08.2026 mit grünen Statushäkchen, Raumzuordnung noch dokumentieren |
+| 1.1.21–1.1.28 | MDT Glastaster II Smart mit Temperatursensor | im ETS-Projekt vorhanden; `1.1.22` ist laut ETS-Screenshot vom 25.09.2026 der Küchen-Glastaster; übrige Raumzuordnungen noch dokumentieren |
 | 1.1.29 | OpenKNX RaumController | Raumklimaobjekte verbunden und am 17.08.2026 erfolgreich im Gruppenmonitor geprüft; VOC und Helligkeit lieferten beim Test noch `0` |
 | 1.1.30 | MDT Präsenzmelder 360° KLR 4S | im ETS-Projekt vorhanden; Screenshot vom 29.08.2026 mit grünen Statushäkchen, genaue Bestellnummer und Raumzuordnung prüfen |
 | 1.1.32–1.1.33 | MDT Glastaster II Smart mit Temperatursensor | im ETS-Projekt angelegt, im Screenshot vom 29.08.2026 ohne grüne Statushäkchen; Raum, Funktion und Gruppenadressverknüpfungen offen |
@@ -67,7 +67,7 @@ Die MDT SCN-RTC20.01 wird für Datum und Uhrzeit als Slave betrieben. Home Assis
 ## Noch zu bestätigen
 
 - Aufgabe und physikalische Adresse des zweiten MDT IP-Routers
-- Raumzuordnung der Glastaster `1.1.21` bis `1.1.28`
+- Raumzuordnung der Glastaster `1.1.21` bis `1.1.28` (außer `1.1.22` Küche)
 - Raum-, Bedienfunktions- und Gruppenadresszuordnung der Glastaster `1.1.32` und `1.1.33`
 - Einbauort und genaue Hardwarevariante des OpenKNX RaumControllers `1.1.29`
 - genaue Bestellnummer und Raumzuordnung des Präsenzmelders `1.1.30`

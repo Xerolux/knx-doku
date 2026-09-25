@@ -15,7 +15,7 @@ Die Gruppenadressen können im nativen XML-Format in ein ETS-Projekt mit **3-Ebe
 
 Die Wärmepumpe liegt in einer eigenen Datei: [ets-import/gruppenadressen-waermepumpe.xml](ets-import/gruppenadressen-waermepumpe.xml) mit 43 Adressen auf Hauptgruppe `11`. Die Struktur wurde inzwischen zusätzlich zur Basisstruktur in ETS importiert; Einzeladressen, DPTs und Verknüpfungen müssen noch per Detailansicht oder ETS-Export bestätigt werden. Siehe [docs/25_idm_waermepumpe_knx.md](docs/25_idm_waermepumpe_knx.md).
 
-Die Komplettdatei enthält 174 vorgesehene Basis-Gruppenadressen einschließlich der sechs Gang-Adressen, der zwei Abstellkammer-Lichtadressen, der sechs SCN-SAFE-Adressen und der getrennten Rauchwarnmelder-Planung. Zusammen mit den 43 separat gepflegten Wärmepumpen-Adressen umfasst der geplante Importstand 217 Gruppenadressen. Die bisherigen Basis-Einzeldateien dienen nur der modularen Pflege und werden nicht zusätzlich importiert. Einzelheiten stehen in [ets-import/ETS_IMPORT.md](ets-import/ETS_IMPORT.md).
+Die Komplettdatei enthält 175 vorgesehene Basis-Gruppenadressen einschließlich der sechs Gang-Adressen, der zwei Abstellkammer-Lichtadressen, der sechs SCN-SAFE-Adressen, der getrennten Rauchwarnmelder-Planung und des Küchen-Glastaster-VOC-Textes. Zusammen mit den 43 separat gepflegten Wärmepumpen-Adressen umfasst der geplante Importstand 218 Gruppenadressen. Die bisherigen Basis-Einzeldateien dienen nur der modularen Pflege und werden nicht zusätzlich importiert. Einzelheiten stehen in [ets-import/ETS_IMPORT.md](ets-import/ETS_IMPORT.md).
 
 > Die Komplettdatei enthält Gruppenadressstrukturen und geplante DPTs, aber keine physikalischen Adressen, Geräte oder Objektverknüpfungen.
 
@@ -86,6 +86,7 @@ Dokumentiert sind sechs Rollladen-/Markisenentitäten, sieben Lichtentitäten un
 - Zentral Rollladen: `0/1/0` für Auf/Ab und `0/1/1` für Stopp.
 - Home Assistant: Licht-, Rollladen- und Markisenentitäten angelegt und Dashboard erstellt.
 - OpenKNX RaumController `1.1.29`: sieben Raumklimaobjekte verbunden und am 17.08.2026 erfolgreich im Gruppenmonitor geprüft; VOC und Helligkeit lieferten beim Test noch `0`.
+- Küchen-Glastaster `1.1.22`: ETS-Screenshot vom 25.09.2026 bestätigt Raumzuordnung und verfügbare Statusobjekte. Feuchte, CO2 und VOC-Textanzeige sind dokumentiert; ETS-Parameter, Gruppenverknüpfung, HA-Textautomation und Download sind noch auszuführen.
 - Glastaster `1.1.32` und `1.1.33`: im ETS-Projekt angelegt; Raum, Funktion und Gruppenadressverknüpfungen sind noch festzulegen.
 - Wetterstation `1.1.40`: im ETS-Screenshot vom 29.08.2026 ohne grüne Statushäkchen; Applikation, Parameter und Gruppenadressverknüpfungen prüfen.
 - Gruppenadress-Iststand vom 29.08.2026 nach dem Zusatzimport: Hauptgruppen `0` bis `11` sowie `13`; unter `11 Wärmepumpe` sind die Mittelgruppen `11/0`, `11/1` und `11/3` sichtbar. Die 43 Einzeladressen und DPTs sind noch durch einen ETS-Export zu bestätigen.
@@ -99,7 +100,7 @@ Dokumentiert sind sechs Rollladen-/Markisenentitäten, sieben Lichtentitäten un
 
 | Datei | Verwendung |
 |---|---|
-| [ets-import/gruppenadressen-komplett.xml](ets-import/gruppenadressen-komplett.xml) | empfohlener Ein-Datei-Import aller 174 Basis-Gruppenadressen mit DPTs |
+| [ets-import/gruppenadressen-komplett.xml](ets-import/gruppenadressen-komplett.xml) | empfohlener Ein-Datei-Import aller 175 Basis-Gruppenadressen mit DPTs |
 | [ets-import/gruppenadressen.xml](ets-import/gruppenadressen.xml) | Grundstruktur für ETS 6 |
 | [ets-import/gruppenadressen-abstellkammer.xml](ets-import/gruppenadressen-abstellkammer.xml) | einmaliger Zusatzimport für `12 Licht Erweiterung / 12/0 Abstellkammer` |
 | [ets-import/gruppenadressen-zentral-zeit.xml](ets-import/gruppenadressen-zentral-zeit.xml) | Ergänzung für `0/4/0` und `0/5/0` bis `0/5/2` |

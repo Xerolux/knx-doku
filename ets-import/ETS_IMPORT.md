@@ -6,16 +6,16 @@ Die XML-Dateien sind direkte Importdateien für ETS 6 mit **3-Ebenen-Gruppenadre
 
 | Datei | Inhalt |
 |---|---|
-| `gruppenadressen-komplett.xml` | empfohlener Ein-Datei-Import der 174 Basis-Gruppenadressen mit geplanten DPTs |
+| `gruppenadressen-komplett.xml` | empfohlener Ein-Datei-Import der 175 Basis-Gruppenadressen mit geplanten DPTs |
 | `gruppenadressen.xml` | Grundstruktur der Anlage |
 | `gruppenadressen-abstellkammer.xml` | Hauptgruppe `12 Licht Erweiterung` mit zwei Lichtadressen für die Abstellkammer |
 | `gruppenadressen-zentral-zeit.xml` | Zentral Licht sowie Zeit und Datum |
 | `gruppenadressen-sicherheit.xml` | MDT SCN-SAFE auf `10/0` und getrennte Rauchwarnmelder-Planung auf `10/1` |
 | `gruppenadressen-reparatur-safe-rauchwarnmelder.xml` | einmalige Reparaturdatei für den Adresskonflikt vom 29.08.2026 |
-| `gruppenadressen-raumcontroller.xml` | Messwerte und Anforderung des OpenKNX RaumControllers `1.1.29` |
+| `gruppenadressen-raumcontroller.xml` | Messwerte und Anforderung des OpenKNX RaumControllers `1.1.29` sowie die Küchen-VOC-Textanzeige |
 | `gruppenadressen-waermepumpe.xml` | separater Zusatzimport von 43 IDM-Wärmepumpen-Adressen über die KNX-Bridge von Home Assistant, Hauptgruppe `11` |
 
-Die aktuelle Basis-Komplettdatei enthält 174 Gruppenadressen. Die zusätzliche Wärmepumpen-Datei enthält 43 kollisionsfreie Adressen; zusammen umfasst der vorgesehene Importstand 217 Gruppenadressen. Die CSV-Dateien bleiben technische Referenzen mit den vorgesehenen DPTs. Sie sind **keine** ETS-Importdateien. Die DPTs sind in den jeweiligen XML-Dateien hinterlegt.
+Die aktuelle Basis-Komplettdatei enthält 175 Gruppenadressen. Die zusätzliche Wärmepumpen-Datei enthält 43 kollisionsfreie Adressen; zusammen umfasst der vorgesehene Importstand 218 Gruppenadressen. Die CSV-Dateien bleiben technische Referenzen mit den vorgesehenen DPTs. Sie sind **keine** ETS-Importdateien. Die DPTs sind in den jeweiligen XML-Dateien hinterlegt.
 
 ## Aktueller ETS-Stand
 

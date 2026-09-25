@@ -163,7 +163,7 @@ Nicht in das öffentliche GitHub-Repository gehören:
 - vollständige Leitungs- und Klemmenzuordnung
 - Funktion und physikalische Adresse des zweiten MDT IP-Routers
 - tatsächliche Belegung des zweiten Heizungsaktors
-- Raumzuordnung der Glastaster `1.1.21` bis `1.1.28`
+- Raumzuordnung der Glastaster `1.1.21` bis `1.1.28` (außer `1.1.22` Küche)
 - Einbauort und genaue Hardwarevariante des OpenKNX RaumControllers `1.1.29`
 - genaue Bestellnummer und Raumzuordnung des Präsenzmelders `1.1.30`
 - Zuordnung der weiteren Kanäle I bis X des Schaltaktors

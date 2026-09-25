@@ -167,6 +167,75 @@ Empfohlenes Verhalten:
 
 Alternativ kann der erste Tastendruck das Display aufwecken und gleichzeitig schalten. Das ist schneller, kann bei einem dunklen Display aber zu unbeabsichtigten Befehlen führen.
 
+## Küchen-Raumklima am Glastaster 1.1.22
+
+Der ETS-Screenshot vom 25.09.2026 ordnet `1.1.22` dem Raum Küche zu. Ziel ist, Luftfeuchte, VOC und echtes CO2 in der Standby-Infoanzeige darzustellen. Die Wertelemente werden nacheinander angezeigt; der Wechsel erfolgt gemäß Parameter **Standbyanzeige nach … wechseln**. Das MDT-Handbuch erlaubt bis zu vier Status-Elemente. Für Statuswert 1–3 kann der Taster DPT 9.007 (Feuchte) und DPT 9.008 (ppm) empfangen. Die Kommunikationsobjekte 122–124 erscheinen erst, wenn die Statuswerte in den Parametern aktiviert sind.
+
+### ETS-Gruppenadressen
+
+Die Messwertadressen des RaumControllers bleiben reine Leseadressen. Für VOC wird zusätzlich ein Textwert aus Home Assistant verwendet, weil `13/0/3` als generischer 2-Byte-Float ohne Subtyp dokumentiert ist und nicht direkt einem unterstützten, passend beschrifteten MDT-Statuswert-DPT entspricht.
+
+| Tasterobjekt `1.1.22` | Gruppenadresse | DPT | Anzeige |
+|---|---:|---:|---|
+| 122 Statuswert 1 | `13/0/1` RaumController Luftfeuchte | 9.007 | Luftfeuchte in % |
+| 123 Statuswert 2 | `13/0/4` RaumController CO2 | 9.008 | CO2 in ppm |
+| 121 Statustext 2 | `13/0/7` Küche Glastaster VOC Statustext | 16.000 | VOC-Text aus Home Assistant |
+
+`13/0/7` ist als neue Gruppenadresse in der Raumklima-Mittelgruppe vorgesehen. Sie überträgt ausschließlich den für die Anzeige formatierten VOC-Text; der OpenKNX RaumController bleibt alleiniger Schreiber auf seinen Messwertadressen `13/0/0` bis `13/0/6`. `13/0/5` ist der aus VOC berechnete Vergleichswert und darf nicht als echtes CO2 angezeigt werden.
+
+### ETS-Parameter und Verknüpfung
+
+1. Im ETS-Projekt Gerät `1.1.22` **Küche** öffnen und die Applikation **MDT Glastaster II Smart mit Temperatursensor** auswählen.
+2. Unter **Parameter → Betrieb/Anzeige → Infoanzeige** **Statuswert 1 und Statuswert 2** aktivieren. Danach sollten die Kommunikationsobjekte 122 und 123 in der Objektliste erscheinen. Objekt 124 nur bei Bedarf für Statuswert 3 aktivieren.
+3. Statuswert 1 auf DPT 9.007 / relative Luftfeuchte (%) und Statuswert 2 auf DPT 9.008 / Konzentration (ppm) einstellen.
+4. Unter **Standbyanzeige** drei Statuselemente aktivieren: `Statuswert 1`, `Statuswert 2` und `Statustext 2`. Eine Wechselzeit festlegen und als Tages- und Nachtanzeige einstellen.
+5. In der ETS-Gruppenadressansicht die Objekte mit `13/0/1`, `13/0/4` und `13/0/7` verbinden. DPTs müssen übereinstimmen. `13/0/3` nicht direkt auf Statuswert 3 legen.
+6. Für `13/0/7` DPT 16.000 auswählen und beim Taster Objekt 121 **Statustext 2** verbinden.
+7. Nach Prüfung der Verknüpfungen den Taster `1.1.22` über **Programmieren → Applikationsprogramm** laden. Der ETS-Gruppenmonitor soll die ankommenden Werte und den Text auf den jeweiligen Adressen zeigen.
+
+Die ETS-Menübezeichnungen können je nach Produktdatenbank-Version leicht abweichen. Maßgeblich sind die Objektfunktion und der DPT in der geladenen Applikation. Das MDT-Handbuch beschreibt bis zu vier wechselnde Infoanzeige-Statuselemente sowie die Objekte 122–124 mit DPT-Auswahl.
+
+### VOC-Text über Home Assistant senden
+
+Die Home-Assistant-KNX-Integration kann DPT-16-Text senden. Die Textadresse muss auf DPT 16.000 eingestellt sein. Im bestehenden `knx:`-Block wird ergänzt:
+
+```yaml
+knx:
+  notify:
+    - name: "Küche Glastaster VOC"
+      address: "13/0/7"
+      type: string
+```
+
+Den `notify:`-Eintrag in die vorhandene `knx:`-Konfiguration integrieren, keinen zweiten `knx:`-Schlüssel anlegen. Anschließend eine Automation anlegen, die bei Änderung des VOC-Sensors den Statustext aktualisiert. Die erzeugte Notify-Entity-ID in Home Assistant prüfen und im Beispiel bei Bedarf anpassen:
+
+```yaml
+alias: Küche Glastaster VOC-Anzeige aktualisieren
+triggers:
+  - trigger: state
+    entity_id: sensor.raumcontroller_voc
+conditions:
+  - condition: template
+    value_template: "{{ is_number(states('sensor.raumcontroller_voc')) }}"
+actions:
+  - action: notify.send_message
+    target:
+      entity_id: notify.kuche_glastaster_voc
+    data:
+      message: "VOC {{ states('sensor.raumcontroller_voc') | float | round(0) }}"
+mode: restart
+```
+
+Die Entity-ID `sensor.raumcontroller_voc` kann je nach HA-Installation abweichen. Home Assistant sendet nur den formatierten Anzeigetext auf `13/0/7`; es schreibt nicht auf den VOC-Messwert `13/0/3` zurück.
+
+### Prüfung und Status
+
+- Nach Parameteraktivierung erscheinen Statuswert-Objekte 122–124.
+- Im Gruppenmonitor kommen plausible Werte auf `13/0/1` und `13/0/4` an; `13/0/7` erhält einen kurzen VOC-Text.
+- Die Infoanzeige wechselt zwischen Feuchte, CO2 und VOC-Text. Bei deaktiviertem Standby ist die Messwertanzeige nicht dauerhaft sichtbar.
+- VOC kann am RaumController vorerst `0` melden (letzter dokumentierter Bustest vom 17.08.2026); erst einen plausiblen Messwert als funktional bewerten.
+- Die Änderung bleibt **geplant**, bis Parameter, Verknüpfungen, Download und Anzeige am realen Taster bestätigt sind.
+
 ## Weitere raumbezogene Funktionen
 
 Die Glastaster sollen je Raum Licht, Beschattung und Statusanzeigen bedienen. Sie erhalten dafür keine zusätzlichen, tastereigenen Gruppenadressen, sondern verwenden die Funktionsadressen des jeweiligen Raumes.
@@ -184,6 +253,6 @@ Die Glastaster sollen je Raum Licht, Beschattung und Statusanzeigen bedienen. Si
 | Küche | Licht und optionale Szene Küche |
 | Gang/Eingang | Ganglicht, Zentral Licht, Nachtmodus, Anwesenheit und optional alle Rollläden |
 
-Die konkrete Zuordnung der Glastaster `1.1.21` bis `1.1.28` zu den Räumen muss noch aus dem realen Einbau übernommen werden.
+Die konkrete Zuordnung der Glastaster `1.1.21` bis `1.1.28` muss – außer `1.1.22` Küche – noch aus dem realen Einbau übernommen werden.
 
 Dieses Dokument enthält keine Bilder, Passwörter, PINs oder privaten ETS-Dateien.
