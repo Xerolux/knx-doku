@@ -109,6 +109,10 @@ knx:
 
 Existieren bereits KNX-Sensoren, müssen die neuen Listeneinträge mit der vorhandenen Sensorliste zusammengeführt werden; ein zweiter `knx:`-Schlüssel darf nicht angelegt werden.
 
+Danach in Home Assistant die Konfiguration prüfen und die KNX-Integration beziehungsweise Home Assistant neu laden/neustarten, sodass die Sensoren angelegt werden. Die KNX-Integration liest die Adressen beim Start und nach längerer Telegrammpause aktiv aus; der RaumController bleibt der Schreiber der Messwerte. Entitäten prüfen: `sensor.raumcontroller_temperatur`, `sensor.raumcontroller_luftfeuchte`, `sensor.raumcontroller_luftdruck`, `sensor.raumcontroller_voc`, `sensor.raumcontroller_co2`, `sensor.raumcontroller_co2_voc_berechnet` und `sensor.raumcontroller_helligkeit`. Bereits vergebene oder angepasste Entity-IDs können abweichen.
+
+Die View **Raumklima** mit den sieben Sensor-Kacheln ist im Dashboard unter [lovelace_knx_eg.yaml](../home-assistant/lovelace_knx_eg.yaml) vorbereitet. Die YAML-Konfiguration muss in das verwendete Dashboard übernommen oder dort manuell nachgebaut werden. Anschließend im Reiter **Raumklima** die Messwerte prüfen. Beim letzten dokumentierten ETS-Bustest war rohes VOC `0`; ein Nullwert sollte daher mit dem aktuellen Sensorbetrieb verglichen werden.
+
 ## Bustest vom 17.08.2026
 
 Der Trigger auf `13/0/20` wurde im ETS-Gruppenmonitor erfolgreich gesendet. Der RaumController antwortete auf allen sieben Messwertadressen:

@@ -314,3 +314,44 @@ views:
                 template: card_heating
                 entity: climate.heizkorper_omaopa_bad
                 name: WC
+
+  - title: Raumklima
+    path: raumklima
+    icon: mdi:air-filter
+    type: sections
+    max_columns: 4
+    sections:
+      - type: grid
+        cards:
+          - type: markdown
+            content: >-
+              ## Raumklima – OpenKNX RaumController
+
+              **CO₂-VOC berechnet** ist ein aus VOC abgeleiteter Vergleichswert,
+              kein echter CO₂-Messwert. Der rohe VOC-Wert wird ohne festgelegte
+              physikalische Einheit angezeigt.
+          - type: grid
+            columns: 3
+            square: false
+            cards:
+              - type: tile
+                entity: sensor.raumcontroller_temperatur
+                name: Temperatur
+              - type: tile
+                entity: sensor.raumcontroller_luftfeuchte
+                name: Feuchte
+              - type: tile
+                entity: sensor.raumcontroller_luftdruck
+                name: Luftdruck
+              - type: tile
+                entity: sensor.raumcontroller_voc
+                name: VOC roh
+              - type: tile
+                entity: sensor.raumcontroller_co2
+                name: CO₂ echt
+              - type: tile
+                entity: sensor.raumcontroller_co2_voc_berechnet
+                name: CO₂-VOC berechnet
+              - type: tile
+                entity: sensor.raumcontroller_helligkeit
+                name: Helligkeit

@@ -97,11 +97,20 @@ Voraussetzung ist die über HACS installierte Custom Card:
 custom:button-card
 ```
 
-Das Dashboard enthält genau drei Reiter:
+Das Dashboard enthält vier Reiter:
 
 1. Licht
 2. Rollläden
 3. Heizung
+4. Raumklima
+
+### Raumklima OpenKNX RaumController
+
+Ein vierter Reiter **Raumklima** ist in `home-assistant/lovelace_knx_eg.yaml` vorbereitet. Er zeigt Temperatur, Luftfeuchte, Luftdruck, rohes VOC, echtes CO₂, berechnetes CO₂-VOC und Helligkeit als HA-Kacheln. Die Einheiten werden von den KNX-Sensortypen geliefert. Der rohe VOC-Wert hat wegen des generischen DPT 9 keine festgelegte physikalische Einheit; CO₂-VOC wird ausdrücklich als berechneter Vergleichswert gekennzeichnet.
+
+Die View benötigt die sieben Sensor-Entitäten aus `home-assistant/knx_raumcontroller.yaml`. Die KNX-Sensorliste muss im vorhandenen `knx:`-Block eingebunden sein; Details und Beispiel stehen in [24 – OpenKNX RaumController](24_openknx_raumcontroller.md#home-assistant). Entity-IDs vor dem Aktivieren in **Einstellungen → Geräte & Dienste → Entitäten** mit den tatsächlich angelegten IDs vergleichen.
+
+Die YAML-Datei im Repository ist eine Dashboard-Konfiguration zum Übernehmen. Sie aktualisiert die laufende Home-Assistant-Instanz nicht automatisch.
 
 ### Gestaltung
 
