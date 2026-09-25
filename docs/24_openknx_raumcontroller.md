@@ -25,7 +25,7 @@ Die im ETS-Screenshot sichtbaren Sensorobjekte entsprechen der OpenKNX-Nummerier
 
 `CO2-VOC` ist ein aus dem VOC-Signal berechneter Wert. Er darf nicht mit dem echten CO2-Messwert von Objekt 57 gleichgesetzt werden.
 
-Laut ETS-Screenshot vom 25.09.2026 ist `1.1.22` der Glastaster in der Küche. Feuchte und echtes CO2 lassen sich direkt auf seine Statuswertobjekte legen. Der rohe VOC-Messwert `13/0/3` ist als generischer DPT 9 dokumentiert; der Taster bietet dafür keinen passenden Statuswert-DPT. Als optionale Alternative lässt sich `13/0/5 CO2-VOC berechnet` (DPT 9.008) anzeigen. Dieser Wert ist ein aus VOC berechnetes CO2-Äquivalent, kein echtes CO2 und kein Roh-VOC. Die vollständige Anleitung steht in [10 – MDT Glastaster Smart II Bedienkonzept](10_glastaster_bedienkonzept.md#küchen-raumklima-am-glastaster-1122).
+Die ETS-Screenshots vom 25.09.2026 belegen, dass der Küchen-Glastaster `1.1.22` alle drei geeigneten Werte anzeigt: Feuchte `13/0/1` auf Statuswert 1, berechnetes `CO2-VOC` `13/0/5` auf Statuswert 2 und echtes `CO2` `13/0/4` auf Statuswert 3. Der rohe VOC-Messwert `13/0/3` ist als generischer DPT 9 dokumentiert; der Taster bietet dafür keinen passenden Statuswert-DPT. `13/0/5` ist ein aus VOC berechnetes CO2-Äquivalent, kein echtes CO2 und kein Roh-VOC. Die vollständige Anleitung steht in [10 – MDT Glastaster Smart II Bedienkonzept](10_glastaster_bedienkonzept.md#küchen-raumklima-am-glastaster-1122). Der ETS-Screenshot belegt die Parametrierung, nicht aber den Download zum physischen Taster oder den Funktionstest dort.
 
 ## Weitere sichtbare Objekte
 

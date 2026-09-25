@@ -13,10 +13,10 @@ ETS zeigt ein Gerät unter **Programmieren notwendig**, wenn seit dem letzten Do
 | `1.1.10`, `1.1.20–1.1.31` | in allen fünf sichtbaren Statusspalten grüne Häkchen | kein pauschaler Download allein aufgrund des Screenshots; Funktionen und Telegramme trotzdem prüfen |
 | `1.1.41` | ETS-Eintrag im Screenshot sichtbar | nur Planung/Platzhalter; kein reales oder in Betrieb genommenes Rauchwarnmelder-KNX-Gerät bestätigt |
 | `1.1.32`, `1.1.33` | in den fünf sichtbaren Statusspalten Striche | Raum, Bedienfunktion, Parameter und Gruppenadressverknüpfungen festlegen, danach vollständig programmieren |
-| `1.1.22` | ETS-Screenshot vom 25.09.2026 zeigt Küche und die Kommunikationsobjekte, aber keinen Programmiernachweis für die neue Anzeige | Statuswerte, Anzeigetext und Gruppenadressen gemäß Dokument 10 konfigurieren; anschließend vollständig programmieren und am Gerät prüfen |
+| `1.1.22` | ETS-Screenshots vom 25.09.2026 belegen Infoanzeige-Parameter und Gruppenadressverknüpfungen: Objekt 122 Feuchte → `13/0/1`, Objekt 123 berechnetes CO2-VOC → `13/0/5`, Objekt 124 echtes CO2 → `13/0/4`; kein Nachweis, dass die Applikation bereits geladen oder am Gerät geprüft wurde | Applikationsprogramm laden und die rotierende Anzeige am Taster prüfen |
 | `1.1.40` | in den fünf sichtbaren Statusspalten Striche | Applikation, Parameter, Wetter-Gruppenadressen und Programmierstand prüfen |
 
-Der Screenshot enthält keine Spaltenüberschriften und keine Kommunikationsobjekte. Die Symbole werden deshalb nur als sichtbarer ETS-Status dokumentiert, nicht als Nachweis einer vollständigen oder funktionierenden Gruppenadressverknüpfung.
+Der allgemeine Geräte- und Programmierstatus-Screenshot vom 29.08.2026 enthält keine Spaltenüberschriften und keine Kommunikationsobjekte. Seine Symbole werden deshalb nur als sichtbarer ETS-Status dokumentiert, nicht als Nachweis einer vollständigen oder funktionierenden Gruppenadressverknüpfung. Für `1.1.22` liegen zusätzlich die am 25.09.2026 aufgenommenen Parameter- und Kommunikationsobjekt-Screenshots vor.
 
 ## Sichtbarer Gruppenadressstand
 
@@ -32,7 +32,7 @@ Der gemeinsame Ganglichtstatus ist in Funktion F1 des Logikmoduls `1.1.8` als OD
 |---:|---|---|
 | `1.1.32`, `1.1.33` | MDT Glastaster | nach Festlegung von Raum, Bedienfunktion und den dazugehörigen Gruppenadressen |
 | `1.1.40` | Gira Wetterstation Plus | nach Prüfung beziehungsweise Zuordnung der Wetterobjekte und Gruppenadressen |
-| `1.1.22` | MDT Glastaster Küche | Statuswerte für Feuchte/echtes CO2 verbinden; optional CO2-VOC-Äquivalent auf Statuswert 3; Roh-VOC hat keinen passenden MDT-DPT; danach programmieren und prüfen |
+| `1.1.22` | MDT Glastaster Küche | ETS-Parametrierung und Verbindungen für Feuchte, berechnetes CO2-VOC und echtes CO2 sind laut Screenshot gesetzt; Download und Anzeige am realen Taster noch prüfen |
 | jeweils betroffene Taster `1.1.20–1.1.33` | MDT Glastaster | nur wenn Parameter, Licht-, Rollladen-, Status-, Display- oder Wärmepumpen-Verknüpfungen tatsächlich geändert werden |
 | jeweils betroffene Aktoren und Sensoren | KNX-Teilnehmer | nur wenn deren Parameter oder Kommunikationsobjektverknüpfungen geändert werden |
 | `1.1.8` | MDT Logikmodul | F1 für den gemeinsamen Ganglichtstatus ist angelegt; vollständig programmieren und prüfen |
