@@ -64,7 +64,19 @@ Alternativ kann ausschließlich die Uhrzeit über `0/5/0` mit Objekt 112 des Tas
 
 Der interne Temperatursensor muss unter **Temperaturmessung / Grundeinstellung** aktiviert sein. Für die Anzeige wird in der Info- oder Standbyanzeige die interne Raumtemperatur ausgewählt.
 
-Soll der Messwert zusätzlich auf dem KNX-Bus verfügbar sein, wird das Sendeobjekt der gemessenen Temperatur mit der Isttemperatur-Gruppenadresse des Raumes verbunden. Wenn `1.1.20` dem Eingang beziehungsweise Gang zugeordnet bleibt, ist dafür `3/4/1 Gang Isttemperatur` vorgesehen.
+Soll der Messwert zusätzlich auf dem KNX-Bus verfügbar sein, wird das Sendeobjekt der gemessenen Temperatur mit der Isttemperatur-Gruppenadresse des Raumes verbunden. Der ETS-Screenshot vom 25.09.2026 zeigt beim Glastaster `1.1.21 Eingang Gang` die Verbindung Objekt 108 `Temperaturmesswert` → `3/4/1 Gang Isttemperatur` (2 Byte, Temperatur/DPT 9.001). Applikationsdownload und Busprüfung sind noch nicht bestätigt.
+
+Für Home Assistant kann unter **Einstellungen → Geräte & Dienste → KNX** ein KNX-Sensor mit Gruppenadresse `3/4/1` und Typ `temperature` erstellt werden. Alternativ ist folgende YAML-Konfiguration möglich:
+
+```yaml
+knx:
+  sensor:
+    - name: "Temperatur Eingang Gang"
+      state_address: "3/4/1"
+      type: temperature
+```
+
+Nach Änderung der YAML-Konfiguration Home Assistant neu starten. Die HA-Entität und ihr Live-Wert sind noch nicht geprüft.
 
 ## Display ausschalten und aufwecken
 

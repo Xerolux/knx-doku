@@ -127,14 +127,14 @@ Der interne Temperatursensor wird unter **Temperaturmessung → Grundeinstellung
 
 Soll die Temperatur zusätzlich auf den Bus gesendet werden, wird Objekt 108 `Temperaturmesswert` mit der Isttemperaturadresse des jeweiligen Raumes verbunden.
 
-Für Eingang/Gang ist als Temperaturadresse vorgesehen:
+Für den Glastaster `1.1.21 Eingang Gang` zeigt der ETS-Screenshot vom 25.09.2026 die Verknüpfung:
 
 ```text
-1.1.20 gemessene Temperatur senden
+1.1.21 Objekt 108 Temperaturmesswert
     -> 3/4/1 Gang Isttemperatur
 ```
 
-Vor der endgültigen Verknüpfung ist zu bestätigen, dass `1.1.20` dauerhaft dem Bereich Gang zugeordnet bleibt.
+Die Gruppenadresse ist als DPT 9.001 (Temperatur, 2 Byte) angelegt. Der Screenshot belegt die Verknüpfung im ETS-Projekt; Applikationsdownload und Telegrammprüfung am Bus sind damit noch nicht bestätigt. Für Home Assistant kann ein KNX-Sensor mit `state_address: "3/4/1"` und `type: temperature` angelegt werden. Die HA-Entität und ihr Live-Wert sind noch nicht geprüft.
 
 ## Zeit und Datum
 
