@@ -169,36 +169,35 @@ Alternativ kann der erste Tastendruck das Display aufwecken und gleichzeitig sch
 
 ## Küchen-Raumklima am Glastaster 1.1.22
 
-Der ETS-Screenshot vom 25.09.2026 ordnet `1.1.22` dem Raum Küche zu. Ziel ist, Luftfeuchte, VOC und echtes CO2 in der Standby-Infoanzeige darzustellen. Die Wertelemente werden nacheinander angezeigt; der Wechsel erfolgt gemäß Parameter **Standbyanzeige nach … wechseln**. Das MDT-Handbuch erlaubt bis zu vier Status-Elemente. Für Statuswert 1–3 kann der Taster DPT 9.007 (Feuchte) und DPT 9.008 (ppm) empfangen. Die Kommunikationsobjekte 122–124 erscheinen erst, wenn die Statuswerte in den Parametern aktiviert sind.
+Der ETS-Screenshot vom 25.09.2026 ordnet `1.1.22` dem Raum Küche zu. Feuchte und echtes CO2 können direkt in der Standby-Infoanzeige dargestellt werden; für VOC ist noch kein kompatibler Anzeigepfad festgelegt. Die Wertelemente wechseln gemäß Parameter **Standbyanzeige nach … wechseln**. Das MDT-Handbuch erlaubt bis zu vier Status-Elemente. Die Kommunikationsobjekte 122–124 erscheinen erst, wenn die jeweiligen Statuswerte in den Parametern aktiviert sind.
 
 ### ETS-Gruppenadressen
 
-Die Messwertadressen des RaumControllers bleiben reine Leseadressen. Feuchte, CO2 und VOC werden direkt als KNX-Statuswerte empfangen; für VOC wird am MDT-Taster eine benutzerdefinierte Einheit gesetzt.
+Die Messwertadressen des RaumControllers bleiben reine Leseadressen. Feuchte und CO2 werden direkt als KNX-Statuswerte empfangen. VOC bleibt auf `13/0/3` unverändert; der Taster bietet für diesen generischen DPT 9 derzeit keinen passenden Statuswerttyp.
 
 | Tasterobjekt `1.1.22` | Gruppenadresse | DPT | Anzeige |
 |---|---:|---:|---|
 | 122 Statuswert 1 | `13/0/1` RaumController Luftfeuchte | 9.007 | Luftfeuchte in % |
 | 123 Statuswert 2 | `13/0/4` RaumController CO2 | 9.008 | CO2 in ppm |
-| 124 Statuswert 3 | `13/0/3` RaumController VOC | DPT 9.005 Anzeige / KNX-DPT 9 generisch | VOC als 2-Byte-Float, Anzeigeeinheit `VOC` |
-
-Alle KNX-DPTs 9.xxx verwenden dasselbe 2-Byte-Float-Encoding. Da die MDT-Statuswertauswahl keinen generischen DPT 9 anbietet, wird Statuswert 3 auf DPT 9.005 gesetzt und die automatisch angebotene Einheit mit `VOC` überschrieben. Objekt 124 ist ausschließlich Empfänger; der RaumController bleibt alleiniger Sender auf `13/0/3`. `13/0/5` ist der aus VOC berechnete Vergleichswert und darf nicht als echtes CO2 angezeigt werden.
+Der Glastaster bietet bei Statuswerten nur fest definierte DPTs. **DPT 9.005 ist Geschwindigkeit (m/s)** und ist kein passender DPT für VOC. Eine benutzerdefinierte Einheitenbeschriftung ändert die DPT-Bedeutung nicht. Deshalb wird `13/0/3` hier nicht mit einem numerischen Statuswertobjekt des Tasters verbunden. `13/0/5` ist der aus VOC berechnete Vergleichswert und darf nicht als echtes CO2 angezeigt werden.
 
 ### ETS-Parameter und Verknüpfung
 
 1. Prüfen, ob die bestehenden Gruppenadressen `13/0/1`, `13/0/3` und `13/0/4` im ETS-Projekt vorhanden sind. Falls nicht, die Ergänzungsdatei [gruppenadressen-raumcontroller.xml](../ets-import/gruppenadressen-raumcontroller.xml) über **Gruppenadressen → Importieren** einlesen und den Importbericht prüfen.
 2. Im ETS-Projekt Gerät `1.1.22 Küche` öffnen und **Parameter → Bedienen / Anzeige → Infoanzeige** wählen.
-3. Im unteren Parameterblock **Statuswert 1** auf DPT 9.007 (Feuchte), **Statuswert 2** auf DPT 9.008 (Raumluftqualität/CO2) und **Statuswert 3** auf DPT 9.005 stellen. Für die Einheiten `%`, `ppm` und `VOC` eintragen; als **Beschreibung für Messwert** `Feuchte`, `CO2` und `VOC` eintragen. Danach sollten die Kommunikationsobjekte 122–124 erscheinen.
-4. Oben bei **Standbyanzeige** **einzeln im Wechsel** wählen. Um Uhrzeit plus alle drei gewünschten Messwerte anzuzeigen, **Statuselement 1** auf `Uhrzeit`, **Statuselement 2** auf `Statuswert 1`, **Statuselement 3** auf `Statuswert 2` und **Statuselement 4** auf `Statuswert 3` stellen. So rotieren Uhrzeit, Feuchte, CO2 und VOC durch die vier Plätze. Eine Wechselzeit festlegen, zum Beispiel 5 Sekunden. **Standbyanzeige bei Nacht** kann auf **Verhalten wie Tag** bleiben.
-5. In der ETS-Gruppenadressansicht die Objekte 122, 123 und 124 mit `13/0/1`, `13/0/4` und `13/0/3` verbinden. Die Gruppenadresse `13/0/3` ist als generischer 2-Byte-Float angelegt. DPT 9.005 am empfangenden Anzeigeobjekt verwendet dieselbe Telegrammcodierung; das Objekt sendet nicht auf diese Adresse.
-6. Nach Prüfung der Verknüpfungen den Taster `1.1.22` über **Programmieren → Applikationsprogramm** laden. Der ETS-Gruppenmonitor soll die ankommenden Werte auf den drei Messwertadressen zeigen.
+3. Im unteren Parameterblock **Statuswert 1** auf DPT 9.007 (Feuchte) und **Statuswert 2** auf DPT 9.008 (Raumluftqualität/CO2) stellen. Für die Einheiten `%` und `ppm` und als **Beschreibung für Messwert** `Feuchte` und `CO2` eintragen. Statuswert 3 **nicht aktiv** lassen. Danach sollten die Kommunikationsobjekte 122 und 123 erscheinen.
+4. Oben bei **Standbyanzeige** **einzeln im Wechsel** wählen. Für Uhrzeit, Feuchte und CO2 **Statuselement 1** auf `Uhrzeit`, **Statuselement 2** auf `Statuswert 1`, **Statuselement 3** auf `Statuswert 2` stellen; **Statuselement 4** bleibt nicht aktiv. Eine Wechselzeit festlegen, zum Beispiel 5 Sekunden. **Standbyanzeige bei Nacht** kann auf **Verhalten wie Tag** bleiben.
+5. In der ETS-Gruppenadressansicht die Objekte 122 und 123 mit `13/0/1` und `13/0/4` verbinden. `13/0/3` nicht mit einem Statuswertobjekt verbinden: die MDT-Auswahlliste enthält keinen passenden generischen VOC-DPT.
+6. Nach Prüfung der Verknüpfungen den Taster `1.1.22` über **Programmieren → Applikationsprogramm** laden. Der ETS-Gruppenmonitor soll die Feuchte auf `13/0/1` und CO2 auf `13/0/4` zeigen.
 
 Die ETS-Menübezeichnungen können je nach Produktdatenbank-Version leicht abweichen. Maßgeblich sind die Objektfunktion und der DPT in der geladenen Applikation. Das MDT-Handbuch beschreibt bis zu vier wechselnde Infoanzeige-Statuselemente sowie die Objekte 122–124 mit DPT-Auswahl.
 
 ### Prüfung und Status
 
-- Nach Parameteraktivierung erscheinen Statuswert-Objekte 122–124.
-- Im Gruppenmonitor kommen plausible Werte auf `13/0/1`, `13/0/3` und `13/0/4` an.
-- Die Infoanzeige wechselt zwischen Uhrzeit, Feuchte, CO2 und VOC. Bei deaktiviertem Standby ist die Messwertanzeige nicht dauerhaft sichtbar.
+- Nach Parameteraktivierung erscheinen Statuswert-Objekte 122 und 123.
+- Im Gruppenmonitor kommen plausible Werte auf `13/0/1` und `13/0/4` an.
+- Die Infoanzeige wechselt zwischen Uhrzeit, Feuchte und CO2. Bei deaktiviertem Standby ist die Messwertanzeige nicht dauerhaft sichtbar.
+- VOC ist mit den auswählbaren MDT-Statuswert-DPTs nicht direkt darstellbar; dafür wäre ein eigener, korrekt typisierter Anzeigeweg erforderlich.
 - VOC kann am RaumController vorerst `0` melden (letzter dokumentierter Bustest vom 17.08.2026); erst einen plausiblen Messwert als funktional bewerten.
 - Die Änderung bleibt **geplant**, bis Parameter, Verknüpfungen, Download und Anzeige am realen Taster bestätigt sind.
 
