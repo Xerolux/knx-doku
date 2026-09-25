@@ -100,7 +100,7 @@ knx:
 
 Home Assistant liest die Werte beim Start beziehungsweise nach längerer Funkstille aktiv. Der RaumController bleibt der einzige Schreiber auf den Messwertadressen.
 
-Die Sensorliste liegt zusätzlich als direkt einbindbare Datei unter [knx_raumcontroller.yaml](../home-assistant/knx_raumcontroller.yaml). Sie wird beispielsweise nach `/config/knx_raumcontroller.yaml` kopiert und im vorhandenen KNX-Block eingebunden:
+Als alternative Konfiguration für eine HA-Instanz ohne bereits vorhandene RaumController-Sensoren liegt die Sensorliste unter [knx_raumcontroller.yaml](../home-assistant/knx_raumcontroller.yaml). Sie kann nach `/config/knx_raumcontroller.yaml` kopiert und im vorhandenen KNX-Block eingebunden werden:
 
 ```yaml
 knx:
@@ -109,9 +109,9 @@ knx:
 
 Existieren bereits KNX-Sensoren, müssen die neuen Listeneinträge mit der vorhandenen Sensorliste zusammengeführt werden; ein zweiter `knx:`-Schlüssel darf nicht angelegt werden.
 
-Danach in Home Assistant die Konfiguration prüfen und die KNX-Integration beziehungsweise Home Assistant neu laden/neustarten, sodass die Sensoren angelegt werden. Die KNX-Integration liest die Adressen beim Start und nach längerer Telegrammpause aktiv aus; der RaumController bleibt der Schreiber der Messwerte. Entitäten prüfen: `sensor.raumcontroller_temperatur`, `sensor.raumcontroller_luftfeuchte`, `sensor.raumcontroller_luftdruck`, `sensor.raumcontroller_voc`, `sensor.raumcontroller_co2`, `sensor.raumcontroller_co2_voc_berechnet` und `sensor.raumcontroller_helligkeit`. Bereits vergebene oder angepasste Entity-IDs können abweichen.
+Die Live-Prüfung am 25.09.2026 zeigt, dass die Sensoren in Home Assistant bereits als KNX-Entitäten angelegt sind; die oben genannte Datei ist daher nur eine alternative Konfigurationsvorlage und soll nicht zusätzlich eingebunden werden, wenn dieselben Werte schon existieren. Die aktuellen Entity-IDs und Momentwerte stehen in [23 – Home Assistant Dashboard](23_home_assistant_knx_entities_dashboard.md#raumklima-openknx-raumcontroller).
 
-Die View **Raumklima** mit den sieben Sensor-Kacheln ist im Dashboard unter [lovelace_knx_eg.yaml](../home-assistant/lovelace_knx_eg.yaml) vorbereitet. Die YAML-Konfiguration muss in das verwendete Dashboard übernommen oder dort manuell nachgebaut werden. Anschließend im Reiter **Raumklima** die Messwerte prüfen. Beim letzten dokumentierten ETS-Bustest war rohes VOC `0`; ein Nullwert sollte daher mit dem aktuellen Sensorbetrieb verglichen werden.
+Die Karte **Küche – Raumklima** wurde im bestehenden Dashboard **Übersicht → IOT** gespeichert. Sie liest alle sieben Werte ausschließlich aus Home Assistant; es wurden keine KNX-Schreibtelegramme oder Aktorsteuerungen ausgelöst. Für den Prüfzeitpunkt: Temperatur 25,4 °C, Feuchte 36,48 %, VOC roh 50,0 (generischer DPT 9 ohne Einheit), berechnetes CO2-VOC 500,16 ppm, echtes CO2 656,0 ppm, Luftdruck 95.928 Pa und Helligkeit 0,0 lx. Diese Momentwerte sind keine Sollwerte. Rohes VOC und Helligkeit sollten bei anhaltend 0 anhand der Sensorbestückung und realen Messbedingungen weiter beobachtet werden.
 
 ## Bustest vom 17.08.2026
 

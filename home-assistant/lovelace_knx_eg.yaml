@@ -335,23 +335,23 @@ views:
             square: false
             cards:
               - type: tile
-                entity: sensor.raumcontroller_temperatur
+                entity: sensor.eg_kuche_raumsensor_temperatur
                 name: Temperatur
               - type: tile
-                entity: sensor.raumcontroller_luftfeuchte
+                entity: sensor.eg_kuche_raumcontroller_luftfeuchte
                 name: Feuchte
               - type: tile
-                entity: sensor.raumcontroller_luftdruck
+                entity: sensor.eg_kuche_raumcontroller_luftdruck
                 name: Luftdruck
               - type: tile
-                entity: sensor.raumcontroller_voc
+                entity: sensor.eg_kuche_raumcontroller_voc
                 name: VOC roh
               - type: tile
-                entity: sensor.raumcontroller_co2
+                entity: sensor.eg_kuche_raumcontroller_co2
                 name: CO₂ echt
               - type: tile
-                entity: sensor.raumcontroller_co2_voc_berechnet
-                name: CO₂-VOC berechnet
+                entity: sensor.eg_kuche_raumcontroller_co2_voc_berechnet
+                name: Berechneter CO2 VOC
               - type: tile
-                entity: sensor.raumcontroller_helligkeit
+                entity: sensor.eg_kuche_raumcontroller_helligkeit
                 name: Helligkeit

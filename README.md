@@ -84,7 +84,7 @@ Dokumentiert sind sechs Rollladen-/Markisenentitäten, sieben Lichtentitäten un
 - Gemeinsamer Ganglichtstatus `1/4/5`: ODER-Logik in Funktion F1 des Logikmoduls `1.1.8` parametriert und verknüpft; Download und Busprüfung stehen noch aus.
 - Jalousieaktor `1.1.4`: Kanäle A, B, C, D, G und H dokumentiert.
 - Zentral Rollladen: `0/1/0` für Auf/Ab und `0/1/1` für Stopp.
-- Home Assistant: Licht-, Rollladen- und Markisenentitäten angelegt und Dashboard erstellt.
+- Home Assistant: Licht-, Rollladen- und Markisenentitäten angelegt; Live-Dashboard `Übersicht → IOT` zeigt jetzt die sieben Raumklimawerte der Küche. Live-IDs und geprüfte Momentwerte stehen in Dokument 23.
 - OpenKNX RaumController `1.1.29`: sieben Raumklimaobjekte verbunden und am 17.08.2026 erfolgreich im Gruppenmonitor geprüft; VOC und Helligkeit lieferten beim Test noch `0`.
 - Küchen-Glastaster `1.1.22`: ETS-Screenshots vom 25.09.2026 belegen die Anzeige-Parameter und Gruppenadressverknüpfungen für Feuchte (`13/0/1`), berechnetes CO2-VOC (`13/0/5`) und echtes CO2 (`13/0/4`). Der rohe VOC-DPT passt zu keinem auswählbaren numerischen MDT-Statuswert. Download und Anzeige am physischen Taster sind noch nicht bestätigt.
 - Glastaster `1.1.32` und `1.1.33`: im ETS-Projekt angelegt; Raum, Funktion und Gruppenadressverknüpfungen sind noch festzulegen.

@@ -85,7 +85,7 @@ climate.heizkorper_omaopa_bad
 
 ## Lovelace-Dashboard
 
-Die aktuelle Dashboard-Datei liegt unter:
+Die im Repository versionierte YAML-Vorlage für das EG-Dashboard liegt unter:
 
 ```text
 home-assistant/lovelace_knx_eg.yaml
@@ -97,7 +97,7 @@ Voraussetzung ist die über HACS installierte Custom Card:
 custom:button-card
 ```
 
-Das Dashboard enthält vier Reiter:
+Diese YAML-Vorlage enthält vier Reiter:
 
 1. Licht
 2. Rollläden
@@ -106,11 +106,19 @@ Das Dashboard enthält vier Reiter:
 
 ### Raumklima OpenKNX RaumController
 
-Ein vierter Reiter **Raumklima** ist in `home-assistant/lovelace_knx_eg.yaml` vorbereitet. Er zeigt Temperatur, Luftfeuchte, Luftdruck, rohes VOC, echtes CO₂, berechnetes CO₂-VOC und Helligkeit als HA-Kacheln. Die Einheiten werden von den KNX-Sensortypen geliefert. Der rohe VOC-Wert hat wegen des generischen DPT 9 keine festgelegte physikalische Einheit; CO₂-VOC wird ausdrücklich als berechneter Vergleichswert gekennzeichnet.
+Im Live-Dashboard **Übersicht → IOT** wurde am 25.09.2026 die Karte **Küche – Raumklima** ergänzt. Sie zeigt Temperatur, Feuchte, rohes VOC, berechnetes CO2-VOC, echtes CO2, Luftdruck und Helligkeit. Die geprüften HA-Entitäten sind:
 
-Die View benötigt die sieben Sensor-Entitäten aus `home-assistant/knx_raumcontroller.yaml`. Die KNX-Sensorliste muss im vorhandenen `knx:`-Block eingebunden sein; Details und Beispiel stehen in [24 – OpenKNX RaumController](24_openknx_raumcontroller.md#home-assistant). Entity-IDs vor dem Aktivieren in **Einstellungen → Geräte & Dienste → Entitäten** mit den tatsächlich angelegten IDs vergleichen.
+| Messwert | HA-Entität | Livewert bei Prüfung |
+|---|---|---:|
+| Temperatur | `sensor.eg_kuche_raumsensor_temperatur` | 25,4 °C |
+| Feuchte | `sensor.eg_kuche_raumcontroller_luftfeuchte` | 36,48 % |
+| VOC roh | `sensor.eg_kuche_raumcontroller_voc` | 50,0, generischer DPT 9 ohne Einheit |
+| CO2-VOC berechnet | `sensor.eg_kuche_raumcontroller_co2_voc_berechnet` | 500,16 ppm |
+| echtes CO2 | `sensor.eg_kuche_raumcontroller_co2` | 656,0 ppm |
+| Luftdruck | `sensor.eg_kuche_raumcontroller_luftdruck` | 95.928 Pa |
+| Helligkeit | `sensor.eg_kuche_raumcontroller_helligkeit` | 0,0 lx |
 
-Die YAML-Datei im Repository ist eine Dashboard-Konfiguration zum Übernehmen. Sie aktualisiert die laufende Home-Assistant-Instanz nicht automatisch.
+Dies sind Momentaufnahmen des Live-Tests, keine Sollwerte. Der rohe VOC-Wert hat wegen des generischen DPT 9 keine festgelegte physikalische Einheit; CO2-VOC ist ausdrücklich ein berechneter Vergleichswert und kein echtes CO2. Die gespeicherte Dashboard-Karte verwendet die Entity-IDs aus der Tabelle. `home-assistant/lovelace_knx_eg.yaml` enthält dieselbe Raumklima-Ansicht als alternative YAML-Dashboard-Vorlage; es ist nicht die UI-gespeicherte Live-Übersicht.
 
 ### Gestaltung
 
