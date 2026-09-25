@@ -185,13 +185,14 @@ Die Messwertadressen des RaumControllers bleiben reine Leseadressen. Für VOC wi
 
 ### ETS-Parameter und Verknüpfung
 
-1. Im ETS-Projekt Gerät `1.1.22` **Küche** öffnen und die Applikation **MDT Glastaster II Smart mit Temperatursensor** auswählen.
-2. Unter **Parameter → Betrieb/Anzeige → Infoanzeige** **Statuswert 1 und Statuswert 2** aktivieren. Danach sollten die Kommunikationsobjekte 122 und 123 in der Objektliste erscheinen. Objekt 124 nur bei Bedarf für Statuswert 3 aktivieren.
-3. Statuswert 1 auf DPT 9.007 / relative Luftfeuchte (%) und Statuswert 2 auf DPT 9.008 / Konzentration (ppm) einstellen.
-4. Unter **Standbyanzeige** drei Statuselemente aktivieren: `Statuswert 1`, `Statuswert 2` und `Statustext 2`. Eine Wechselzeit festlegen und als Tages- und Nachtanzeige einstellen.
-5. In der ETS-Gruppenadressansicht die Objekte mit `13/0/1`, `13/0/4` und `13/0/7` verbinden. DPTs müssen übereinstimmen. `13/0/3` nicht direkt auf Statuswert 3 legen.
-6. Für `13/0/7` DPT 16.000 auswählen und beim Taster Objekt 121 **Statustext 2** verbinden.
-7. Nach Prüfung der Verknüpfungen den Taster `1.1.22` über **Programmieren → Applikationsprogramm** laden. Der ETS-Gruppenmonitor soll die ankommenden Werte und den Text auf den jeweiligen Adressen zeigen.
+1. Prüfen, ob `13/0/7 Küche Glastaster VOC Statustext` bereits existiert. Falls nicht, im vorhandenen ETS-Projekt die Ergänzungsdatei [gruppenadressen-raumcontroller.xml](../ets-import/gruppenadressen-raumcontroller.xml) über **Gruppenadressen → Importieren** einlesen und den Importbericht prüfen. Bestehende Gruppenadressen nicht löschen.
+2. Im ETS-Projekt Gerät `1.1.22` **Küche** öffnen und die Applikation **MDT Glastaster II Smart mit Temperatursensor** auswählen.
+3. Unter **Parameter → Betrieb/Anzeige → Infoanzeige** **Statuswert 1 und Statuswert 2** aktivieren. Danach sollten die Kommunikationsobjekte 122 und 123 in der Objektliste erscheinen. Objekt 124 nur bei Bedarf für Statuswert 3 aktivieren.
+4. Statuswert 1 auf DPT 9.007 / relative Luftfeuchte (%) und Statuswert 2 auf DPT 9.008 / Konzentration (ppm) einstellen.
+5. Unter **Standbyanzeige** drei Statuselemente aktivieren: `Statuswert 1`, `Statuswert 2` und `Statustext 2`. Eine Wechselzeit festlegen und als Tages- und Nachtanzeige einstellen.
+6. In der ETS-Gruppenadressansicht die Objekte mit `13/0/1`, `13/0/4` und `13/0/7` verbinden. DPTs müssen übereinstimmen. `13/0/3` nicht direkt auf Statuswert 3 legen.
+7. Für `13/0/7` DPT 16.000 auswählen und beim Taster Objekt 121 **Statustext 2** verbinden.
+8. Nach Prüfung der Verknüpfungen den Taster `1.1.22` über **Programmieren → Applikationsprogramm** laden. Der ETS-Gruppenmonitor soll die ankommenden Werte und den Text auf den jeweiligen Adressen zeigen.
 
 Die ETS-Menübezeichnungen können je nach Produktdatenbank-Version leicht abweichen. Maßgeblich sind die Objektfunktion und der DPT in der geladenen Applikation. Das MDT-Handbuch beschreibt bis zu vier wechselnde Infoanzeige-Statuselemente sowie die Objekte 122–124 mit DPT-Auswahl.
 
