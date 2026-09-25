@@ -42,10 +42,10 @@ Der erste ETS-Screenshot vom 29.08.2026 zeigte 12 Hauptgruppen: `0` bis `10` sow
 |---|---:|---|
 | `export.xml` | 144 | älterer ETS-XML-Export der Grundstruktur |
 | `gruppenadressen-ETS6-4-1.csv` | 145 | älterer ETS-CSV-Export; enthält zusätzlich die Altplanung `0/0/0 Zentral Aus` |
-| `gruppenadressen-komplett.xml` | 175 | vorgesehene Basisstruktur einschließlich aller sechs Gang-Adressen, Licht-Erweiterung, Zentralfunktionen, Zeit/Datum, SCN-SAFE, Rauchwarnmelder-Planung, RaumController und Küchen-VOC-Anzeigetext |
+| `gruppenadressen-komplett.xml` | 174 | vorgesehene Basisstruktur einschließlich aller sechs Gang-Adressen, Licht-Erweiterung, Zentralfunktionen, Zeit/Datum, SCN-SAFE, Rauchwarnmelder-Planung und RaumController |
 | `gruppenadressen-abstellkammer.xml` | 2 | einmaliger Zusatzimport für bereits mit der älteren Komplettdatei angelegte ETS-Projekte |
 | `gruppenadressen-waermepumpe.xml` | 43 | separater Zusatzimport für die IDM-KNX-Bridge |
-| geplanter Gesamtstand | 218 | aktuelle Basis-Komplettdatei plus Wärmepumpen-Datei; ohne die nicht importierte Altplanung `0/0/0` |
+| geplanter Gesamtstand | 217 | aktuelle Basis-Komplettdatei plus Wärmepumpen-Datei; ohne die nicht importierte Altplanung `0/0/0` |
 
 Der erste Gruppenadress-Screenshot vom 29.08.2026 bestätigt die damaligen Hauptgruppen und zeigt im Suchordner 117 Einträge „Addresses not assigned“. Diese Zahl beschreibt den Suchordner, nicht die Gesamtzahl aller Gruppenadressen. Der spätere Screenshot bestätigt zusätzlich Hauptgruppe `11` und ihre drei Mittelgruppen, zeigt aber weiterhin keine einzelnen Wärmepumpen-Adressen, DPTs oder Objektverknüpfungen. Der Geräte-Screenshot desselben Tages zeigt zusätzlich physikalische Teilnehmer und ETS-Statussymbole, aber ebenfalls keine Gruppenadressverknüpfungen.
 
@@ -92,7 +92,6 @@ Die 43 vorgesehenen Wärmepumpen-Adressen liegen unter `11/0/x`, `11/1/x` und `1
 | 13/0/4 | RaumController CO2 | 9.008 | `1.1.29`, Objekt 57 |
 | 13/0/5 | RaumController CO2-VOC berechnet | 9.008 | `1.1.29`, Objekt 58 |
 | 13/0/6 | RaumController Helligkeit | 9.004 | `1.1.29`, Objekt 61 |
-| 13/0/7 | Küche Glastaster VOC Statustext | 16.000 | Home Assistant -> `1.1.22`, Objekt 121 |
 | 13/0/20 | RaumController Sensorwerte anfordern | 1.016 | optional an `1.1.29`, Objekt 43 |
 
 Die Messwertadressen sind nicht Home-Assistant-spezifisch. Home Assistant liest sie zunächst zur Visualisierung und Statistik; spätere KNX-Teilnehmer dürfen dieselben Werte konsumieren. Nur der RaumController schreibt die Messwerte.

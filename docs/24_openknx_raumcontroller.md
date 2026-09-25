@@ -21,12 +21,11 @@ Die im ETS-Screenshot sichtbaren Sensorobjekte entsprechen der OpenKNX-Nummerier
 | 57 | CO2 | `13/0/4` | 9.008 | ppm | Home Assistant und spätere Lüftungslogik |
 | 58 | CO2-VOC | `13/0/5` | 9.008 | ppm | aus VOC berechneter Vergleichswert |
 | 61 | Helligkeit | `13/0/6` | 9.004 | lx | Home Assistant und spätere Lichtlogik |
-| – | VOC-Textanzeige Küche | `13/0/7` | 16.000 | Text | Home Assistant formatiert VOC für Glastaster `1.1.22`, Objekt 121; kein Sensor-Ausgang des RaumControllers |
 | 43 | Sensorwerte anfordern | `13/0/20` | 1.016 | Trigger | optional: Wert `1` fordert alle Messwerte an |
 
 `CO2-VOC` ist ein aus dem VOC-Signal berechneter Wert. Er darf nicht mit dem echten CO2-Messwert von Objekt 57 gleichgesetzt werden.
 
-Laut ETS-Screenshot vom 25.09.2026 ist `1.1.22` der Glastaster in der Küche. Feuchte und echtes CO2 werden direkt auf seine numerischen Statuswertobjekte gelegt. VOC hat am RaumController nur DPT 9 ohne Subtyp; deshalb wird der VOC-Messwert in Home Assistant als DPT-16-Text auf der zusätzlichen Anzeigeadresse `13/0/7` ausgegeben. Die vollständige ETS- und Home-Assistant-Anleitung steht in [10 – MDT Glastaster Smart II Bedienkonzept](10_glastaster_bedienkonzept.md#küchen-raumklima-am-glastaster-1122).
+Laut ETS-Screenshot vom 25.09.2026 ist `1.1.22` der Glastaster in der Küche. Feuchte, CO2 und VOC werden direkt auf seine drei Statuswertobjekte gelegt. Für VOC wird DPT 9.005 am MDT-Empfangsobjekt mit der benutzerdefinierten Einheit `VOC` verwendet; die Gruppenadresse des Sensors bleibt generischer DPT 9. Die vollständige Anleitung steht in [10 – MDT Glastaster Smart II Bedienkonzept](10_glastaster_bedienkonzept.md#küchen-raumklima-am-glastaster-1122).
 
 ## Weitere sichtbare Objekte
 

@@ -173,66 +173,32 @@ Der ETS-Screenshot vom 25.09.2026 ordnet `1.1.22` dem Raum Küche zu. Ziel ist, 
 
 ### ETS-Gruppenadressen
 
-Die Messwertadressen des RaumControllers bleiben reine Leseadressen. Für VOC wird zusätzlich ein Textwert aus Home Assistant verwendet, weil `13/0/3` als generischer 2-Byte-Float ohne Subtyp dokumentiert ist und nicht direkt einem unterstützten, passend beschrifteten MDT-Statuswert-DPT entspricht.
+Die Messwertadressen des RaumControllers bleiben reine Leseadressen. Feuchte, CO2 und VOC werden direkt als KNX-Statuswerte empfangen; für VOC wird am MDT-Taster eine benutzerdefinierte Einheit gesetzt.
 
 | Tasterobjekt `1.1.22` | Gruppenadresse | DPT | Anzeige |
 |---|---:|---:|---|
 | 122 Statuswert 1 | `13/0/1` RaumController Luftfeuchte | 9.007 | Luftfeuchte in % |
 | 123 Statuswert 2 | `13/0/4` RaumController CO2 | 9.008 | CO2 in ppm |
-| 121 Statustext 2 | `13/0/7` Küche Glastaster VOC Statustext | 16.000 | VOC-Text aus Home Assistant |
+| 124 Statuswert 3 | `13/0/3` RaumController VOC | DPT 9.005 Anzeige / KNX-DPT 9 generisch | VOC als 2-Byte-Float, Anzeigeeinheit `VOC` |
 
-`13/0/7` ist als neue Gruppenadresse in der Raumklima-Mittelgruppe vorgesehen. Sie überträgt ausschließlich den für die Anzeige formatierten VOC-Text; der OpenKNX RaumController bleibt alleiniger Schreiber auf seinen Messwertadressen `13/0/0` bis `13/0/6`. `13/0/5` ist der aus VOC berechnete Vergleichswert und darf nicht als echtes CO2 angezeigt werden.
+Alle KNX-DPTs 9.xxx verwenden dasselbe 2-Byte-Float-Encoding. Da die MDT-Statuswertauswahl keinen generischen DPT 9 anbietet, wird Statuswert 3 auf DPT 9.005 gesetzt und die automatisch angebotene Einheit mit `VOC` überschrieben. Objekt 124 ist ausschließlich Empfänger; der RaumController bleibt alleiniger Sender auf `13/0/3`. `13/0/5` ist der aus VOC berechnete Vergleichswert und darf nicht als echtes CO2 angezeigt werden.
 
 ### ETS-Parameter und Verknüpfung
 
-1. Prüfen, ob `13/0/7 Küche Glastaster VOC Statustext` bereits existiert. Falls nicht, im vorhandenen ETS-Projekt die Ergänzungsdatei [gruppenadressen-raumcontroller.xml](../ets-import/gruppenadressen-raumcontroller.xml) über **Gruppenadressen → Importieren** einlesen und den Importbericht prüfen. Bestehende Gruppenadressen nicht löschen.
+1. Prüfen, ob die bestehenden Gruppenadressen `13/0/1`, `13/0/3` und `13/0/4` im ETS-Projekt vorhanden sind. Falls nicht, die Ergänzungsdatei [gruppenadressen-raumcontroller.xml](../ets-import/gruppenadressen-raumcontroller.xml) über **Gruppenadressen → Importieren** einlesen und den Importbericht prüfen.
 2. Im ETS-Projekt Gerät `1.1.22 Küche` öffnen und **Parameter → Bedienen / Anzeige → Infoanzeige** wählen.
-3. Im unteren Parameterblock **Statuswert 1** auf DPT 9.007 (Feuchte) und **Statuswert 2** auf DPT 9.008 (Raumluftqualität/CO2) setzen. In **Text für die Einheit** `%` beziehungsweise `ppm` eintragen; bei CO2 auf alle drei Buchstaben `ppm` achten. Als **Beschreibung für Messwert** kurze Beschriftungen wie `Feuchte` und `CO2` eintragen. Die Beschreibungen dürfen bis zu 15 Bytes lang sein. Statuswert 3 kann nicht aktiv bleiben. Danach sollten in der Objektliste die Kommunikationsobjekte 122 und 123 erscheinen.
-4. Oben bei **Standbyanzeige** **einzeln im Wechsel** wählen. Um Uhrzeit plus alle drei gewünschten Messwerte anzuzeigen, **Statuselement 1** auf `Uhrzeit`, **Statuselement 2** auf `Statustext 2`, **Statuselement 3** auf `Statuswert 1` und **Statuselement 4** auf `Statuswert 2` stellen. So rotieren Uhrzeit, VOC-Text, Feuchte und CO2 durch die vier Plätze. Eine Wechselzeit festlegen, zum Beispiel 5 Sekunden. **Standbyanzeige bei Nacht** kann auf **Verhalten wie Tag** bleiben.
-5. In der ETS-Gruppenadressansicht die Objekte 122 und 123 mit `13/0/1` und `13/0/4` verbinden. DPTs müssen übereinstimmen. `13/0/3` nicht direkt auf ein numerisches Statuswertobjekt legen.
-6. `13/0/7` auf DPT 16.000 einstellen und beim Taster Objekt 121 **Statustext 2** verbinden.
-7. Nach Prüfung der Verknüpfungen den Taster `1.1.22` über **Programmieren → Applikationsprogramm** laden. Der ETS-Gruppenmonitor soll die ankommenden Werte und den Text auf den jeweiligen Adressen zeigen.
+3. Im unteren Parameterblock **Statuswert 1** auf DPT 9.007 (Feuchte), **Statuswert 2** auf DPT 9.008 (Raumluftqualität/CO2) und **Statuswert 3** auf DPT 9.005 stellen. Für die Einheiten `%`, `ppm` und `VOC` eintragen; als **Beschreibung für Messwert** `Feuchte`, `CO2` und `VOC` eintragen. Danach sollten die Kommunikationsobjekte 122–124 erscheinen.
+4. Oben bei **Standbyanzeige** **einzeln im Wechsel** wählen. Um Uhrzeit plus alle drei gewünschten Messwerte anzuzeigen, **Statuselement 1** auf `Uhrzeit`, **Statuselement 2** auf `Statuswert 1`, **Statuselement 3** auf `Statuswert 2` und **Statuselement 4** auf `Statuswert 3` stellen. So rotieren Uhrzeit, Feuchte, CO2 und VOC durch die vier Plätze. Eine Wechselzeit festlegen, zum Beispiel 5 Sekunden. **Standbyanzeige bei Nacht** kann auf **Verhalten wie Tag** bleiben.
+5. In der ETS-Gruppenadressansicht die Objekte 122, 123 und 124 mit `13/0/1`, `13/0/4` und `13/0/3` verbinden. Die Gruppenadresse `13/0/3` ist als generischer 2-Byte-Float angelegt. DPT 9.005 am empfangenden Anzeigeobjekt verwendet dieselbe Telegrammcodierung; das Objekt sendet nicht auf diese Adresse.
+6. Nach Prüfung der Verknüpfungen den Taster `1.1.22` über **Programmieren → Applikationsprogramm** laden. Der ETS-Gruppenmonitor soll die ankommenden Werte auf den drei Messwertadressen zeigen.
 
 Die ETS-Menübezeichnungen können je nach Produktdatenbank-Version leicht abweichen. Maßgeblich sind die Objektfunktion und der DPT in der geladenen Applikation. Das MDT-Handbuch beschreibt bis zu vier wechselnde Infoanzeige-Statuselemente sowie die Objekte 122–124 mit DPT-Auswahl.
-
-### VOC-Text über Home Assistant senden
-
-Die Home-Assistant-KNX-Integration kann DPT-16-Text senden. Die Textadresse muss auf DPT 16.000 eingestellt sein. Im bestehenden `knx:`-Block wird ergänzt:
-
-```yaml
-knx:
-  notify:
-    - name: "Küche Glastaster VOC"
-      address: "13/0/7"
-      type: string
-```
-
-Den `notify:`-Eintrag in die vorhandene `knx:`-Konfiguration integrieren, keinen zweiten `knx:`-Schlüssel anlegen. Anschließend eine Automation anlegen, die bei Änderung des VOC-Sensors den Statustext aktualisiert. Die erzeugte Notify-Entity-ID in Home Assistant prüfen und im Beispiel bei Bedarf anpassen:
-
-```yaml
-alias: Küche Glastaster VOC-Anzeige aktualisieren
-triggers:
-  - trigger: state
-    entity_id: sensor.raumcontroller_voc
-conditions:
-  - condition: template
-    value_template: "{{ is_number(states('sensor.raumcontroller_voc')) }}"
-actions:
-  - action: notify.send_message
-    target:
-      entity_id: notify.kuche_glastaster_voc
-    data:
-      message: "VOC {{ states('sensor.raumcontroller_voc') | float | round(0) }}"
-mode: restart
-```
-
-Die Entity-ID `sensor.raumcontroller_voc` kann je nach HA-Installation abweichen. Home Assistant sendet nur den formatierten Anzeigetext auf `13/0/7`; es schreibt nicht auf den VOC-Messwert `13/0/3` zurück.
 
 ### Prüfung und Status
 
 - Nach Parameteraktivierung erscheinen Statuswert-Objekte 122–124.
-- Im Gruppenmonitor kommen plausible Werte auf `13/0/1` und `13/0/4` an; `13/0/7` erhält einen kurzen VOC-Text.
-- Die Infoanzeige wechselt zwischen Feuchte, CO2 und VOC-Text. Bei deaktiviertem Standby ist die Messwertanzeige nicht dauerhaft sichtbar.
+- Im Gruppenmonitor kommen plausible Werte auf `13/0/1`, `13/0/3` und `13/0/4` an.
+- Die Infoanzeige wechselt zwischen Uhrzeit, Feuchte, CO2 und VOC. Bei deaktiviertem Standby ist die Messwertanzeige nicht dauerhaft sichtbar.
 - VOC kann am RaumController vorerst `0` melden (letzter dokumentierter Bustest vom 17.08.2026); erst einen plausiblen Messwert als funktional bewerten.
 - Die Änderung bleibt **geplant**, bis Parameter, Verknüpfungen, Download und Anzeige am realen Taster bestätigt sind.
 

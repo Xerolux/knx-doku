@@ -6,5 +6,4 @@ Raumklima;RaumController 1.1.29;13/0/3;RaumController VOC;9;54;Einheitenloser 2-
 Raumklima;RaumController 1.1.29;13/0/4;RaumController CO2;9.008;57;Messwert in ppm
 Raumklima;RaumController 1.1.29;13/0/5;RaumController CO2-VOC berechnet;9.008;58;Aus VOC berechneter Wert in ppm und kein echter CO2-Messwert
 Raumklima;RaumController 1.1.29;13/0/6;RaumController Helligkeit;9.004;61;Messwert in Lux
-Raumklima;Anzeige Küche;13/0/7;Küche Glastaster VOC Statustext;16.000;1.1.22 Objekt 121;DPT-16-Text aus Home Assistant für die VOC-Statusanzeige
 Raumklima;RaumController 1.1.29;13/0/20;RaumController Sensorwerte anfordern;1.016;43;Optionaler Trigger mit Wert 1 sendet alle Sensorwerte
