@@ -1,6 +1,6 @@
 # 12 – Zentralfunktionen
 
-Stand: 04.08.2026
+Stand: 03.10.2026
 
 ## Zentral Licht – aktueller Stand
 
@@ -74,7 +74,7 @@ JAL Objekt 2 Stopp
 
 Objekt 1 wird nur für Jalousiekanäle mit Lamellen benötigt. Der vorhandene Aufbau verwendet Rollladenkanäle; der zentrale Stopp wird deshalb über Objekt 2 ausgeführt.
 
-Bei A, B, C, D, G und H ist der Kanalparameter **Zentrale Objekte** auf **nur Auf/Ab** zu stellen. Kanal E und F werden erst nach Klärung der tatsächlichen Funktion freigegeben.
+Bei A, B, C, D, E und H ist der Kanalparameter **Zentrale Objekte** auf **nur Auf/Ab** zu stellen. G (Markise) bleibt **nicht aktiv**. E ist laut Screenshot vom 03.10.2026 als Bad benannt; die Zentralteilnahme ist noch zu prüfen und einzurichten. F (Küche) bleibt hinsichtlich realer Funktion und Verknüpfung zu prüfen.
 
 ### Test
 
@@ -120,7 +120,9 @@ Die Teilnahme an der Zentralfunktion ist kanalweise festgelegt:
 
 | Aktorkanal | Einstellung `Zentrale Objekte` | Wirkung |
 |---|---|---|
-| A–F | `nur Auf/Ab` | nimmt an Alle Rollläden teil |
+| A–D | `nur Auf/Ab` | dokumentierte Zentralteilnahme |
+| E – Bad | `nur Auf/Ab` | Soll: zusätzlich in Alle Rollläden aufnehmen; noch zu bestätigen |
+| F – Küche | `nur Auf/Ab` laut früherer Doku | reale Funktion und Teilnahme erneut prüfen |
 | G – Markise | `nicht aktiv` | reagiert nicht auf Alle Rollläden |
 | H | `nur Auf/Ab` | nimmt an Alle Rollläden teil |
 

@@ -1,6 +1,6 @@
 # 10 – MDT Glastaster Smart II Bedienkonzept
 
-Stand: 04.08.2026
+Stand: 03.10.2026
 
 ## Gerätebestand
 
@@ -59,6 +59,10 @@ Ein gemeinsamer Prozentstatus bleibt frei, weil mehrere Rollladen unterschiedlic
 | Schlafzimmer | `1/5/0` | `1/5/1` |
 
 ## Raumbezogene Rollladenfunktionen
+
+### Badezimmer
+
+T3/4 `Rolladen Bad`: Objekt 10 → `2/3/0`, Objekt 11 → `2/3/1`, Objekt 13 → `2/3/3`. Am JAL Kanal E sind die Gegenstellen 139, 141 und 148. Die nachgereichten Screenshots vom 03.10.2026 bestätigen diese Verknüpfungen am Taster und am JAL; die physikalische Tasteradresse ist nicht sichtbar. Die vollständige Anleitung einschließlich Zentralteilnahme steht in [20 – Rollladen](20_rollladen_inbetriebnahme.md#ets-anleitung).
 
 ### Arbeitszimmer
 

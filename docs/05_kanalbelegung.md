@@ -1,6 +1,6 @@
 # 05 – Kanalbelegung
 
-Stand: 29.08.2026
+Stand: 03.10.2026
 
 Die Tabellen bilden den aktuell in ETS sichtbaren Stand ab. Vor der endgültigen Abnahme ist jede Zuordnung mit der realen Verdrahtung im Schaltschrank und am Verbraucher abzugleichen.
 
@@ -96,7 +96,7 @@ Die Gruppenadressennamen wurden in ETS einheitlich auf **Fenster** und **Türe**
 | B | Schlafzimmer Rollladen Fenster | `2/2/10` | `2/2/11` | `2/2/13` | Statusobjekt aktiviert und verbunden |
 | C | Arbeitszimmer Rollladen | `2/1/0` | `2/1/1` | `2/1/3` | Statusverknüpfung prüfen |
 | D | Wohnzimmer Rollladen Fenster | `2/0/0` | `2/0/1` | `2/0/3` | Statusverknüpfung prüfen |
-| E | noch ungeklärt | – | – | – | reale Belegung feststellen |
+| E | Badezimmer Rollladen | `2/3/0` | `2/3/1` | `2/3/3` | ETS-Bezeichnung und Verknüpfungen am 03.10.2026 bestätigt; Download und Test offen |
 | F | Küche | – | – | – | in ETS benannt, noch ohne Gruppenadressen |
 | G | Markise | `2/4/0` | `2/4/1` | `2/4/3` | Statusverknüpfung prüfen |
 | H | Wohnzimmer Rollladen Türe | `2/0/10` | `2/0/11` | `2/0/13` | Statusverknüpfung prüfen |
@@ -116,7 +116,7 @@ Objekt 1 Lamellenverstellung/Stopp -> frei
 Objekt 2 Stopp                     -> 0/1/1
 ```
 
-Bei den verwendeten Rollladenkanälen ist `Zentrale Objekte = nur Auf/Ab` eingestellt. Details zur Inbetriebnahme, Positionsrückmeldung und Fahrzeitmessung stehen in [20 – Rollladen: ETS-Zuordnung, Inbetriebnahme und Prüfung](20_rollladen_inbetriebnahme.md).
+Für A, B, C, D, E und H ist `Zentrale Objekte = nur Auf/Ab` vorgesehen; G (Markise) bleibt `nicht aktiv`. Die Einzelverknüpfungen von E sind bestätigt; die Zentralteilnahme bleibt zu prüfen. Details zur Inbetriebnahme, Positionsrückmeldung und Fahrzeitmessung stehen in [20 – Rollladen: ETS-Zuordnung, Inbetriebnahme und Prüfung](20_rollladen_inbetriebnahme.md).
 
 ## Heizung
 

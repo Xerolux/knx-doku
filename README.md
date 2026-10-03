@@ -82,7 +82,7 @@ Dokumentiert sind sechs Rollladen-/Markisenentitäten, sieben Lichtentitäten un
 - Gang: zwei getrennte Lichtkreise mit Einzeladressen und gemeinsamer Adresse `1/4/4`.
 - Bewegungsmelder `1.1.30`: schaltet beide Ganglichter über `1/4/4`.
 - Gemeinsamer Ganglichtstatus `1/4/5`: ODER-Logik in Funktion F1 des Logikmoduls `1.1.8` parametriert und verknüpft; Download und Busprüfung stehen noch aus.
-- Jalousieaktor `1.1.4`: Kanäle A, B, C, D, G und H dokumentiert.
+- Jalousieaktor `1.1.4`: Kanal E ist laut Screenshot vom 03.10.2026 als Bad benannt. [ETS-Anleitung für Bad und die Aufnahme in „Alle Rollläden“](docs/20_rollladen_inbetriebnahme.md#ets-anleitung): Taster 10/11/13 ↔ JAL 139/141/148 über `2/3/0`, `2/3/1`, `2/3/3`; Zentralteilnahme E aktivieren. Die nachgereichten Screenshots bestätigen die Verknüpfungen. Zentralparameter, Download und Bustest stehen noch aus.
 - Zentral Rollladen: `0/1/0` für Auf/Ab und `0/1/1` für Stopp.
 - Home Assistant: Licht-, Rollladen- und Markisenentitäten angelegt; Live-Dashboard `Übersicht → IOT` zeigt jetzt die sieben Raumklimawerte der Küche. Live-IDs und geprüfte Momentwerte stehen in Dokument 23.
 - OpenKNX RaumController `1.1.29`: sieben Raumklimaobjekte verbunden und am 17.08.2026 erfolgreich im Gruppenmonitor geprüft; VOC und Helligkeit lieferten beim Test noch `0`.

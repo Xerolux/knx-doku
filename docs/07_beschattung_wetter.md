@@ -1,6 +1,6 @@
 # 07 – Beschattung und Wetter
 
-Stand: 04.08.2026
+Stand: 03.10.2026
 
 ## Geräte
 
@@ -16,7 +16,7 @@ Stand: 04.08.2026
 | B | Schlafzimmer Fenster / rechts | `2/2/10` | `2/2/11` | `2/2/13` |
 | C | Arbeitszimmer | `2/1/0` | `2/1/1` | `2/1/3` |
 | D | Wohnzimmer Fenster / links | `2/0/0` | `2/0/1` | `2/0/3` |
-| E | noch ungeklärt | – | – | – |
+| E | Badezimmer Rollladen (ETS-Verknüpfung bestätigt) | `2/3/0` | `2/3/1` | `2/3/3` |
 | F | Küche, noch ohne Zuordnung | – | – | – |
 | G | Markise | `2/4/0` | `2/4/1` | `2/4/3` |
 | H | Wohnzimmer Tür / rechts | `2/0/10` | `2/0/11` | `2/0/13` |
@@ -33,7 +33,7 @@ JAL Objekt 2 Stopp -> 0/1/1 Alle Rollladen Stop / Schritt
 
 Objekt 1 ist für Jalousien mit Lamellen vorgesehen. Für die vorhandenen Rollladenkanäle wird der zentrale Stopp über Objekt 2 ausgeführt.
 
-Bei jedem verwendeten Kanal ist `Zentrale Objekte = nur Auf/Ab` eingestellt. Die Auswahl legt fest, dass der Kanal auf zentrale Auf- und Ab-Befehle reagiert. Der separate zentrale Stoppbefehl bleibt auf Objekt 2.
+Für A, B, C, D, E und H ist `Zentrale Objekte = nur Auf/Ab` vorgesehen; G (Markise) bleibt `nicht aktiv`. Die Einzelverknüpfungen von E sind bestätigt; die Zentralteilnahme bleibt zu prüfen. Die Auswahl legt fest, dass der Kanal auf zentrale Auf- und Ab-Befehle reagiert. Der separate zentrale Stoppbefehl bleibt auf Objekt 2.
 
 ## Status und Prozentanzeige
 
@@ -54,7 +54,7 @@ Damit gilt:
 
 ## Fahrzeitmessung
 
-Für A, B, C, D, G und H ist die automatische Fahrzeitmessung vorgesehen. Nach einem vollständigen Applikationsdownload des JAL wird die Messung je Kanal einzeln gestartet:
+Für A, B, C, D, E, G und H ist die automatische Fahrzeitmessung vorgesehen. Nach einem vollständigen Applikationsdownload des JAL wird die Messung je Kanal einzeln gestartet:
 
 1. Kanal am Aktor auswählen.
 2. Auf- und Ab-Taste gleichzeitig drücken und halten.
