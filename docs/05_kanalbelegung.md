@@ -120,6 +120,8 @@ Für A, B, C, D, E und H ist `Zentrale Objekte = nur Auf/Ab` vorgesehen; G (Mark
 
 ## Heizung
 
+Die folgende Raumfolge ist die bisherige Planungszuordnung. Der Screenshot vom 03.10.2026 zeigt am Heizungsaktor `1.1.5` Kanal A als `Kanal nicht aktiv`; eine reale Ausgangszuordnung oder aktive Regelung ist damit nicht bestätigt. Details und offene Schritte stehen in [06 – Heizung und Fenster](06_heizung_fenster.md#kanal-a-noch-deaktiviert).
+
 | Kanal | Raum |
 |---|---|
 | 1 | Wohnzimmer |

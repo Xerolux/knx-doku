@@ -78,6 +78,8 @@ Dokumentiert sind sechs Rollladen-/Markisenentitäten, sieben Lichtentitäten un
 
 ## Aktueller Stand
 
+- Heizungsaktor `1.1.5`: Screenshots vom 03.10.2026 zeigen 230-V-Antriebswahl, 2-Rohr-System/Heizen und Kanal A deaktiviert. Betriebsartauswahl und allgemeine Parameter sind in [06 – Heizung und Fenster](docs/06_heizung_fenster.md#heizungsaktor-115-screenshotstand-vom-03102026) dokumentiert; Regelungsweg, reale Zuordnung, Download und Funktionstest sind offen.
+
 - Schaltaktor `1.1.3`: bestätigte Lichtkanäle A bis F dokumentiert.
 - Gang: zwei getrennte Lichtkreise mit Einzeladressen und gemeinsamer Adresse `1/4/4`.
 - Bewegungsmelder `1.1.30`: schaltet beide Ganglichter über `1/4/4`.

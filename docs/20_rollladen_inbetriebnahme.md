@@ -162,3 +162,7 @@ Der Aktor-Screenshot zeigt Kanal E `Bad`: Objekt 139 Auf/Ab, 141 Stopp, 146 Abso
 - nach erfolgreicher Prüfung ETS-Projekt und Gruppenadress-Export sichern
 
 Dieses öffentliche Dokument enthält keine ETS-Projektdateien, Schlüsselbunddateien, Passwörter, PINs, Fotos oder Screenshots.
+
+### Nachgereichter Zentralparameter-Ausschnitt
+
+Der weitere Screenshot vom 03.10.2026 zeigt `Zentrale Objekte = nur Auf/Ab`, automatische Beschattung `nicht aktiv` und bei Busspannungsausfall sowie -wiederkehr jeweils `keine Aktion`. Geräte- und Kanalüberschrift fehlen im Ausschnitt. Falls er zu JAL Kanal E gehört, entspricht die Einstellung der vorgesehenen Zentralteilnahme des Bad-Rollladens; die Zuordnung zu E ist noch eindeutig zu bestätigen. Download und Funktionstest sind weiterhin nicht belegt.

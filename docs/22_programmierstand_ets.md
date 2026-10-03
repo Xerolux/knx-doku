@@ -1,6 +1,6 @@
 # 22 – Aktueller ETS-Programmierstand
 
-Stand: 25.09.2026
+Stand: 03.10.2026
 
 ## Bedeutung „Programmieren notwendig“
 
@@ -25,6 +25,11 @@ Der erste Gruppenadress-Screenshot vom 29.08.2026 zeigt 12 Hauptgruppen: `0` bis
 Die Abstellkammer ist ein eigener neunter Raum und weder das Badezimmer noch Bad vorne. Für sie sind ausschließlich `12/0/0 Abstellkammer Licht Schalten` und `12/0/1 Abstellkammer Licht Status` vorgesehen. Beide Adressen sind mit Kanal H des Schaltaktors `1.1.3` verbunden: Objekt 85 schaltet über `12/0/0`, Objekt 92 meldet den Status über `12/0/1`. Eine Tasterzuordnung ist noch zu bestätigen.
 
 Der gemeinsame Ganglichtstatus ist in Funktion F1 des Logikmoduls `1.1.8` als ODER aus `1/4/1` und `1/4/3` angelegt. Ausgang ist `1/4/5`; dessen Objekt 9 besitzt DPT 1.001 sowie die Flags Kommunikation, Lesen und Übertragen. Die ETS-Projektierung ist bestätigt, Download und Busprüfung sind noch offen.
+
+## Ergänzende Screenshots vom 03.10.2026
+
+- Bad-Rollladen: Einzelverknüpfungen am Bad-Taster und JAL Kanal E sind bestätigt; Download und Bustest bleiben offen. Der spätere Parameterausschnitt zeigt `Zentrale Objekte = nur Auf/Ab`, aber ohne sichtbare Geräte-/Kanalüberschrift. Er bestätigt deshalb noch nicht eindeutig die Einstellung an Kanal E.
+- Heizungsaktor `1.1.5`: Kanal A ist in ETS deaktiviert; die Auswahl einer aktiven Betriebsart ist noch offen. Eigenschaftenstatus `Unbekannt` und historisches Programmierdatum belegen keine aktuelle Inbetriebnahme. Allgemeine Einstellungen stehen in [06 – Heizung und Fenster](06_heizung_fenster.md#heizungsaktor-115-screenshotstand-vom-03102026).
 
 ## Nach den nächsten Gruppenadressänderungen programmieren
 
