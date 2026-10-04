@@ -121,3 +121,7 @@ BAD-HK / LS12 / 07
 ```
 
 Beide Leitungsenden sind zu kennzeichnen. Handschriftliche Provisorien werden vor der Abnahme durch dauerhafte Beschriftungen ersetzt.
+
+## Aktualisierung Heizungsaktor-Zuordnung vom 04.10.2026
+
+Die bisherige Beschriftungsliste KNX-AKH1-01 bis -08 und die pauschale Reservezuordnung von AKH2 sind historischer Planungsstand. Sie entsprechen nicht den neuen ETS-Kanalnamen. Vor einer Beschriftungsänderung reale Verdrahtung prüfen und die aktuelle Tabelle in [05 – Kanalbelegung](05_kanalbelegung.md#heizung) verwenden. Ein Austausch realer Beschriftungen ist nicht bestätigt.

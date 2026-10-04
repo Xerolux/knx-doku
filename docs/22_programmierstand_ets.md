@@ -1,6 +1,6 @@
 # 22 – Aktueller ETS-Programmierstand
 
-Stand: 03.10.2026
+Stand: 04.10.2026
 
 ## Bedeutung „Programmieren notwendig“
 
@@ -30,6 +30,12 @@ Der gemeinsame Ganglichtstatus ist in Funktion F1 des Logikmoduls `1.1.8` als OD
 
 - Bad-Rollladen: Einzelverknüpfungen am Bad-Taster und JAL Kanal E sind bestätigt; Download und Bustest bleiben offen. Der spätere Parameterausschnitt zeigt `Zentrale Objekte = nur Auf/Ab`, aber ohne sichtbare Geräte-/Kanalüberschrift. Er bestätigt deshalb noch nicht eindeutig die Einstellung an Kanal E.
 - Heizungsaktor `1.1.5`: Kanal A ist in ETS deaktiviert; die Auswahl einer aktiven Betriebsart ist noch offen. Eigenschaftenstatus `Unbekannt` und historisches Programmierdatum belegen keine aktuelle Inbetriebnahme. Allgemeine Einstellungen stehen in [06 – Heizung und Fenster](06_heizung_fenster.md#heizungsaktor-115-screenshotstand-vom-03102026).
+
+## Heizungsprojektierung vom 04.10.2026
+
+Die aktuellen Kanalnamen und Reglerobjekte von `1.1.5` und `1.1.6` sind sichtbar. Der Nutzer meldet die besprochenen Aktorverknüpfungen als gesetzt; Objekt 130 → `3/0/2` ist zusätzlich als Tabelle belegt. Küche und Wohnzimmer sind getrennte Regelzonen. Die Temperaturgeber-Verknüpfungen Objekt 108 → `3/2/1` (Küche) und → `3/0/1` (Wohnzimmer) sind in nachgereichten Screenshots bestätigt. Zyklische Sendeintervalle, weitere Raumgeber und aktuelle Downloads sind nicht bestätigt.
+
+Nach Kontrolle der Projektierung `1.1.5`, `1.1.6` und alle tatsächlich geänderten Temperaturgeber programmieren. Historische Downloaddaten und ETS-Status `Unbekannt` bestätigen keine laufende Regelung. Details: [06 – Heizung und Fenster](06_heizung_fenster.md#fbh-projektierung-vom-04102026).
 
 ## Nach den nächsten Gruppenadressänderungen programmieren
 

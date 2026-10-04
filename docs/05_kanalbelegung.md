@@ -120,17 +120,20 @@ Für A, B, C, D, E und H ist `Zentrale Objekte = nur Auf/Ab` vorgesehen; G (Mark
 
 ## Heizung
 
-Die folgende Raumfolge ist die bisherige Planungszuordnung. Der Screenshot vom 03.10.2026 zeigt am Heizungsaktor `1.1.5` Kanal A als `Kanal nicht aktiv`; eine reale Ausgangszuordnung oder aktive Regelung ist damit nicht bestätigt. Details und offene Schritte stehen in [06 – Heizung und Fenster](06_heizung_fenster.md#kanal-a-noch-deaktiviert).
+Stand: 04.10.2026. Die neue ETS-Kanalbenennung ersetzt die frühere pauschale Raumfolge 1–8. Reale Ausgangsverdrahtung und Funktion bleiben zu prüfen.
 
-| Kanal | Raum |
-|---|---|
-| 1 | Wohnzimmer |
-| 2 | Esszimmer |
-| 3 | Küche |
-| 4 | Arbeitszimmer |
-| 5 | Gang |
-| 6 | Schlafzimmer |
-| 7 | Badezimmer |
-| 8 | Bad vorne |
+| Aktor | Kanal | ETS-Bezeichnung | Regelzone |
+|---|---|---|---|
+| `1.1.5` | A | Badezimmer | Badezimmer |
+| `1.1.5` | B | Schlafzimmer Fenster | Schlafzimmer |
+| `1.1.5` | C | Schlafzimmer Wand | Schlafzimmer |
+| `1.1.5` | D | Gang | Gang |
+| `1.1.5` | E | Arbeitszimmer Wand | Arbeitszimmer |
+| `1.1.5` | F | Arbeitszimmer Fenster | Arbeitszimmer |
+| `1.1.5` | G | Wohnzimmer Küche Mitte | Wohnzimmer laut gemeldeter Verknüpfung; Heizkreisverlauf prüfen |
+| `1.1.5` | H | Wohnzimmer Mitte | Wohnzimmer |
+| `1.1.6` | A | Wohnzimmer Fenster | Wohnzimmer |
+| `1.1.6` | B | Küche | Küche, getrennt vom Wohnzimmer |
+| `1.1.6` | C–H | nicht bestätigt | vor Ort erfassen |
 
-Die Abstellkammer ist ein zusätzlicher neunter Raum, besitzt aber keine KNX-Heizungsfunktion und wird keinem Heizungsaktorkanal zugeordnet.
+Objektnummern, Gruppenadressen, COSMO CTS230N und Nachweisstatus stehen in [06 – Heizung und Fenster](06_heizung_fenster.md#fbh-projektierung-vom-04102026). Für Esszimmer und Bad vorne ist in diesen Screenshots kein eigener Ausgang bestätigt. Die Abstellkammer besitzt keine geplante KNX-Heizungsfunktion.

@@ -78,7 +78,7 @@ Dokumentiert sind sechs Rollladen-/Markisenentitäten, sieben Lichtentitäten un
 
 ## Aktueller Stand
 
-- Heizungsaktor `1.1.5`: Screenshots vom 03.10.2026 zeigen 230-V-Antriebswahl, 2-Rohr-System/Heizen und Kanal A deaktiviert. Betriebsartauswahl und allgemeine Parameter sind in [06 – Heizung und Fenster](docs/06_heizung_fenster.md#heizungsaktor-115-screenshotstand-vom-03102026) dokumentiert; Regelungsweg, reale Zuordnung, Download und Funktionstest sind offen.
+- Heizungsaktoren `1.1.5` und `1.1.6`: [FBH-Projektierung vom 04.10.2026](docs/06_heizung_fenster.md#fbh-projektierung-vom-04102026) mit aktueller Kanalzuordnung, COSMO CTS230N (230 V / NC), Reglerparametern und gemeldeten Aktorverknüpfungen dokumentiert. Küche und Wohnzimmer getrennt; Temperaturgeber auf `3/2/1` bzw. `3/0/1` im Screenshot bestätigt. Weitere Temperaturgeber, Sendeintervalle, Download und Bustests offen.
 
 - Schaltaktor `1.1.3`: bestätigte Lichtkanäle A bis F dokumentiert.
 - Gang: zwei getrennte Lichtkreise mit Einzeladressen und gemeinsamer Adresse `1/4/4`.
