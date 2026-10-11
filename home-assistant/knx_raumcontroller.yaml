@@ -1,3 +1,5 @@
+# YAML-Alternative zur UI-Konfiguration; nicht zusätzlich importieren.
+# Küche: Raumcontroller 1.1.34, Bad: 1.1.35, Treppenhaus-PM: 1.1.29.
 - name: "RaumController Temperatur"
   state_address: "13/0/0"
   type: temperature
@@ -37,6 +39,96 @@
 
 - name: "RaumController Helligkeit"
   state_address: "13/0/6"
+  type: illuminance
+  sync_state: "expire 60"
+  state_class: measurement
+
+
+# Aktueller ETS-Stand: Bad 1.1.35 und Treppenhaus PM 1.1.29.
+# Nur als YAML-Alternative verwenden: vorhandene UI-Sensoren nicht doppelt anlegen.
+
+- name: "EG Bad Raumcontroller Temperatur"
+  state_address: "13/1/0"
+  type: temperature
+  sync_state: "expire 60"
+  state_class: measurement
+
+- name: "EG Bad Raumcontroller Luftfeuchte"
+  state_address: "13/1/1"
+  type: humidity
+  sync_state: "expire 60"
+  state_class: measurement
+
+- name: "EG Bad Raumcontroller Luftdruck"
+  state_address: "13/1/2"
+  type: pressure_2byte
+  sync_state: "expire 60"
+  state_class: measurement
+
+- name: "EG Bad Raumcontroller VOC"
+  state_address: "13/1/3"
+  type: 2byte_float
+  sync_state: "expire 60"
+  state_class: measurement
+
+- name: "EG Bad Raumcontroller CO₂"
+  state_address: "13/1/4"
+  type: ppm
+  sync_state: "expire 60"
+  state_class: measurement
+  device_class: carbon_dioxide
+
+- name: "EG Bad Raumcontroller CO₂-VOC berechnet"
+  state_address: "13/1/5"
+  type: ppm
+  sync_state: "expire 60"
+  state_class: measurement
+
+- name: "EG Bad Raumcontroller Helligkeit"
+  state_address: "13/1/6"
+  type: illuminance
+  sync_state: "expire 60"
+  state_class: measurement
+
+- name: "Treppenhaus PM Temperatur"
+  state_address: "13/2/0"
+  type: temperature
+  sync_state: "expire 60"
+  state_class: measurement
+
+- name: "Treppenhaus PM Luftfeuchte"
+  state_address: "13/2/1"
+  type: humidity
+  sync_state: "expire 60"
+  state_class: measurement
+
+- name: "Treppenhaus PM Luftdruck"
+  state_address: "13/2/2"
+  type: pressure_2byte
+  sync_state: "expire 60"
+  state_class: measurement
+
+- name: "Treppenhaus PM VOC"
+  state_address: "13/2/3"
+  type: 2byte_float
+  sync_state: "expire 60"
+  state_class: measurement
+
+- name: "Treppenhaus PM CO₂"
+  state_address: "13/2/4"
+  type: ppm
+  sync_state: "expire 60"
+  state_class: measurement
+  device_class: carbon_dioxide
+
+- name: "Treppenhaus PM CO₂-VOC berechnet"
+  state_address: "13/2/5"
+  type: ppm
+  sync_state: "expire 60"
+  state_class: measurement
+
+- name: "Treppenhaus PM Helligkeit"
+  state_address: "13/2/6"
   type: illuminance
   sync_state: "expire 60"
   state_class: measurement

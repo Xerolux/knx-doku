@@ -1,5 +1,60 @@
 # 24 – OpenKNX RaumController
 
+## Änderung vom 11.10.2026: Küche, Bad und Präsenzmelder
+
+Die folgenden Änderungen wurden direkt im geöffneten ETS-Projekt vorgenommen und anhand der Kommunikationsobjekte und Gruppenadressansicht geprüft. Ein Gerätedownload und eine Gruppenmonitorprüfung sind noch nicht erfolgt. Die nachfolgenden älteren Abschnitte dokumentieren den bisherigen Stand mit Quelle `1.1.29`; sie sind keine aktuelle Zuordnung der Küchenmesswerte.
+
+| Quelle | Messwertadressen | Aktueller Stand im ETS-Projekt |
+|---|---|---|
+| `1.1.34` Raumcontroller Küche | `13/0/0` bis `13/0/6` | Sensorobjekte verbunden; Anforderung KO 43 auf `13/0/20` |
+| `1.1.35` Raumcontroller Bad | `13/1/0` bis `13/1/6` | Eigene Mittelgruppe angelegt und Sensorobjekte verbunden |
+| `1.1.29` PM Treppenhaus | `13/2/0` bis `13/2/6` | Eigene Mittelgruppe angelegt; alte Küchenmesswertverknüpfungen und `13/0/20` entfernt |
+
+In jeder Mittelgruppe gilt dieselbe Reihenfolge: Temperatur (KO 45, Unteradresse 0), Luftfeuchte (KO 48, 1), Luftdruck (KO 51, 2), rohes VOC (KO 54, 3), echtes CO2 (KO 57, 4), berechnetes CO2-VOC (KO 58, 5) und Helligkeit (KO 61, 6). Die Mittelgruppe `13/0` heißt jetzt `Küche Raumcontroller 1.1.34`.
+
+Am Küchen-MDT `1.1.22` wurden die vorhandenen Empfangsverknüpfungen bestätigt: KO 122 auf `13/0/1`, KO 123 auf `13/0/5`, KO 124 auf `13/0/4`.
+
+Am Bad-MDT `1.1.32` wurden drei Statuswerte aktiviert und verbunden:
+
+| MDT-Objekt | Anzeige | Gruppenadresse | DPT |
+|---:|---|---|---|
+| 122 | Feuchte, % | `13/1/1` | 9.007 |
+| 123 | CO2-VOC, ppm | `13/1/5` | 9.008 |
+| 124 | CO2, ppm | `13/1/4` | 9.008 |
+
+Die Bad-Infoanzeige wechselt zwischen Uhrzeit und diesen drei Statuswerten. Die bestehende Temperaturverknüpfung KO 108 auf `3/6/1` wurde beibehalten. Rohes VOC bleibt ein eigener generischer DPT-9-Messwert und wurde nicht als CO2 oder anderer unpassender Datentyp auf die MDT-Anzeige gelegt.
+
+**PM vorerst ohne Lichtsteuerung:** Der Nutzer hat bestätigt, dass das Treppenhauslicht noch nicht existiert und der PM zunächst nichts schalten soll. Bei `1.1.29` wurden deshalb KO 133 von `1/2/0 Küche Licht Schalten` und KO 125 von `1/2/1 Küche Licht Status` getrennt. Die ETS-Objektansicht bestätigt leere Lichtverknüpfungen; Datum/Uhrzeit und die eigenen Messwertadressen `13/2/0–6` bleiben verbunden. Die bestehenden Lichtzuordnungen der Küche und des Bads wurden nicht umgestellt. Diese Änderung ist noch nicht in das physische Gerät geladen.
+
+### Präsenzsteuerung Küche und Bad
+
+Auf ausdrücklichen Nutzerwunsch wurde PM-Kanal 1 in beiden Raumcontrollern aktiviert. Die eingebauten Helligkeitssensoren werden verwendet; Präsenz und Bewegung werden ausgewertet (HF-Sensor und PIR). Die vorhandene Hardwarekonfiguration ist HLK LD2420, analoger PIR und VEML7700 für Helligkeit.
+
+| Raumcontroller | KO 133 Schalten 1 | KO 125 Aktorstatus |
+|---|---|---|
+| `1.1.34` Küche | `1/2/0 Küche Licht Schalten` | `1/2/1 Küche Licht Status` |
+| `1.1.35` Bad | `1/6/0 Badezimmer Licht Schalten` | `1/6/1 Badezimmer Licht Status` |
+
+Die Tagesphase verwendet automatisches Ein- und Ausschalten, eine Einschaltschwelle von 50 Lux und eine Nachlaufzeit von 1 Minute. Ausgang 1 sendet EIN (1) und AUS (0); Ausgang 2 ist inaktiv. Die vorhandenen Werte für HF-Reichweite und Empfindlichkeit wurden nicht geändert. Messwertverknüpfungen bleiben bestehen.
+
+Die Applikationsdownloads für Küche und Bad wurden versucht, beide von ETS als fehlgeschlagen gemeldet. Für Küche lautet der Detailfehler `Verbindung verweigert von 1.1.34`. Deshalb ist die neue Lichtsteuerung bislang nur im ETS-Projekt bestätigt; ein erfolgreicher Gerätedownload und ein realer Präsenz-/Lichttest fehlen.
+### Home Assistant live eingebunden und geprüft
+
+Am 11.10.2026 wurden die vorhandenen sieben Küchen-Sensoren auf `13/0/0–6` beibehalten und dem Bereich Küche zugeordnet. Ihre Entitäts-IDs und damit Dashboard- und Historienreferenzen bleiben bestehen. Je sieben neue Sensoren wurden über die KNX-Integration für Bad (`13/1/0–6`) und Treppenhaus (`13/2/0–6`) angelegt und ihren Bereichen zugeordnet. Die Raumklima-Ansicht im EG-Dashboard enthält nun alle drei Räume. Es gibt pro Messwertadresse genau eine KNX-Sensorentität.
+
+| Raum | Entitäts-IDs | Live-Nachweis |
+|---|---|---|
+| Küche | `sensor.eg_kuche_raumsensor_temperatur` und die vorhandenen `sensor.eg_kuche_raumcontroller_*` | Alle sieben Sensoren haben Werte; Quelle ist ausdrücklich `1.1.34` |
+| Bad | `sensor.eg_bad_raumcontroller_*` | Alle sieben Sensoren haben Werte; Quelle ist ausdrücklich `1.1.35` |
+| Treppenhaus | `sensor.treppenhaus_pm_*` | Alle sieben Sensoren angelegt; bislang `unknown`, keine Antwort auf den neuen Adressen |
+
+Der Live-Test hat ausschließlich Messwertadressen gelesen (`knx.read`); keine Licht-, Heizungs- oder Rollladen-Schalttelegramme wurden gesendet. Beispiele der Prüfung: Küche ungefähr 25,7 °C und 47,6 %; Bad ungefähr 24,8 °C und 50,2 %. Werte ändern sich mit der Messung. Roh-VOC bleibt ohne erfundene Einheit; echtes CO2 und berechnetes CO2-VOC bleiben getrennt. Neue Sensoren sind als Messwerte eingerichtet, echtes CO2 zusätzlich mit Geräteklasse `carbon_dioxide`.
+
+Die neuen Messwerttelegramme von `1.1.34` und `1.1.35` sind damit live bestätigt, obwohl die zuvor hier dokumentierten eigenen ETS-Downloadversuche fehlgeschlagen waren. Das beweist die aktuellen Sensorquellen, aber noch nicht die Funktion der Präsenz-Lichtsteuerung oder die Anzeige am physischen MDT-Taster. Treppenhaus benötigt weiterhin die wirksame Umstellung des Geräts auf `13/2/0–6`.
+
+Vorherige Konfiguration, neue Sensorzuordnungen und Live-Ergebnis wurden außerhalb des Git-Repositories lokal gesichert. Zugangstoken und private Sicherungsdateien werden nicht veröffentlicht.
+
+**Noch offen:** Treppenhaus-Messwerttelegramme, Funktion der Präsenz-Lichtsteuerung und Anzeigen am Gerät sowie Aktualisierung der ETS-Exportdateien. Die vorhandenen Importdateien bilden weiterhin den früheren Stand ab. Bereits per HA-Oberfläche angelegte Sensoren nicht zusätzlich über YAML importieren.
 ## Ziel
 
 Der OpenKNX RaumController `1.1.29` stellt seine Raumklimawerte zuerst für Home Assistant bereit. Die Werte liegen auf allgemeinen KNX-Gruppenadressen und können später ohne Doppelbelegung auch von Anzeige-, Logik- oder Lüftungsgeräten verwendet werden.

@@ -59,6 +59,7 @@ Die Komplettdatei enthält 174 vorgesehene Basis-Gruppenadressen einschließlich
 | [docs/24_openknx_raumcontroller.md](docs/24_openknx_raumcontroller.md) | OpenKNX-Sensorobjekte, ETS-Verknüpfung und Home-Assistant-Konfiguration |
 | [docs/25_idm_waermepumpe_knx.md](docs/25_idm_waermepumpe_knx.md) | IDM Wärmepumpe auf KNX über Home Assistant, Hauptgruppe 11 |
 | [docs/26_scn_safe_adressreparatur.md](docs/26_scn_safe_adressreparatur.md) | SCN-SAFE-Zuordnung, Adresskollision vom 29.08.2026 und Reparaturverfahren |
+| [docs/27_fbh_mdt_raumregelung.md](docs/27_fbh_mdt_raumregelung.md) | live eingerichtete MDT-FBH-Bedienung, HA-Regler und offene Pumpenfrage |
 
 ## Home Assistant
 

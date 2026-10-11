@@ -1,5 +1,11 @@
 # 25 – IDM Wärmepumpe über Home Assistant
 
+## Live-Prüfung vom 11.10.2026
+
+In HA war IDM Heatpump 0.21.0-b4 geladen. Die KNX-Brücke ist aktiviert, Befehlempfang eingeschaltet, Senden und Antworten auf Leseanfragen ausgeschaltet. Die zuvor ausgelesene Konfiguration enthielt Basis `8/0/0` und die Objektgruppe `energy`. Das weicht von der unten beschriebenen ETS-Planung mit Hauptgruppe 11 ab; die Planung ist daher nicht als wirksame Live-Konfiguration zu verstehen. Die Basis und Objektgruppen wurden in diesem Durchlauf nicht geändert. Der aktivierte Empfang allein belegt keinen nutzbaren Heizkreis-D-Anforderungseingang.
+
+Die Weiterleitung des Gang-MDT-Raumwerts an den externen Raumwert von D und der Küchen-Raumcontrollerfeuchte an IDM wurde separat geprüft. Diese HA-Weiterleitung ist von der KNX-Brücke zu unterscheiden. Die KNX-Brücke bildet die bereitgestellten Kommunikationsobjekte ab; sie ergänzt keine undokumentierte Pumpenanforderung. Anschlussplan, bestätigter Stand und verbleibende Fragen stehen in [27 – MDT-Raumregelung und IDM](27_fbh_mdt_raumregelung.md). Die folgenden älteren Abschnitte bleiben als Planungs- und Importstand erhalten.
+
 ## Ziel
 
 Die IDM Navigator Wärmepumpe wird über Modbus TCP von Home Assistant gelesen. Die KNX-Bridge der Integration [idm-heatpump-hass](https://github.com/Xerolux/idm-heatpump-hass) legt diese Werte zusätzlich auf den KNX-Bus, damit Glastaster, Visualisierung und Logikmodul sie ohne Home-Assistant-Umweg anzeigen und teilweise auch setzen können.

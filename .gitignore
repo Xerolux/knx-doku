@@ -13,3 +13,6 @@
 Thumbs.db
 .vscode/
 .idea/
+
+# Private conversation attachments: photos, plans and documents
+.codex-remote-attachments/
