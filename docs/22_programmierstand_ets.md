@@ -53,7 +53,7 @@ Geräte, an denen keine Parameter oder Verknüpfungen geändert wurden, müssen 
 
 ## RF-Fenstergriffe
 
-Die RF+-Fenstergriffe `1.1.11` bis `1.1.19` werden nur programmiert, wenn deren Parameter, Gruppenadressen oder Secure-Zuordnung tatsächlich geändert wurden. Batteriebetriebene RF-Geräte müssen für eine Übertragung gegebenenfalls aufgeweckt beziehungsweise in den Programmiermodus versetzt werden.
+Am 15.10.2026 wurden bei allen elf RF+-Fenstergriffen `1.1.11–1.1.19`, `1.1.39` und `1.1.42` Objekt 2 (Fensterstellung) und Objekt 3 (Kippstellung) mit eigenen Gruppenadressen verbunden. Diese neue Projektierung muss noch in die Griffe geladen werden. Koppler-/Routertabellen, HA-Tunnelzuordnung und aktueller Secure-Schlüsselbund sind abzugleichen. Die vorherigen erfolgreichen Downloads der beiden Badgriffe bestätigen noch nicht den Download dieser neuen Verknüpfungen. Batteriegeräte unmittelbar vor dem Applikationsdownload in den Programmiermodus versetzen. Vollständige Zuordnung und Prüfschritte: [08 – RF-Fenstergriffe](08_rf_fenstergriffe.md).
 
 ## Sicherheitsmodul
 

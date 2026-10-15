@@ -6,6 +6,8 @@ Die Tabellen bilden den aktuell in ETS sichtbaren Stand ab. Vor der endgültigen
 
 ## Licht – aktueller ETS-Stand
 
+Ergänzung vom 14.10.2026: Der separate Schaltaktor `1.1.36 Bad vorne`, Kanal A (KO 0), ist mit `1/7/0 Bad vorne Licht Schalten` verbunden; KO 7 sendet auf `1/7/1 Bad vorne Licht Status`. Der Taster `1.1.38 Licht Bad vorne` sendet mit Wippe A+B (KO 0) auf `1/7/0`, A = EIN und B = AUS. Details und Downloadnachweise stehen im [ETS-Protokoll](28_ets_bad_vorne_pm_2026-10-14.md).
+
 Gerät: MDT Schaltaktor `1.1.3` mit den Kanälen A bis X.
 
 | Kanal | ETS-Bezeichnung | Schalten | Status | zusätzliche Gruppenfunktion |

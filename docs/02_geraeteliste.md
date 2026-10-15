@@ -20,6 +20,7 @@
 - MDT JAL-0810M.02 – Jalousieaktor 8-fach, `1.1.4`
 - 2 × MDT AKH-0800.02 – Heizungsaktor 8-fach, `1.1.5` und `1.1.6`
 - MDT RF-AKK2UP.01 – KNX RF+ Schaltaktor 2-fach UP
+- `1.1.36 Bad vorne` – einkanaliger Schaltaktor; Kanal A auf `1/7/0`, Status auf `1/7/1` am 14.10.2026 verknüpft; siehe [ETS-Protokoll](28_ets_bad_vorne_pm_2026-10-14.md).
 
 ### Lichtreserve
 
@@ -37,10 +38,11 @@
 | 1.1.29 | OpenKNX RaumController | Raumklimaobjekte verbunden und am 17.08.2026 erfolgreich im Gruppenmonitor geprüft; VOC und Helligkeit lieferten beim Test noch `0` |
 | 1.1.30 | MDT Präsenzmelder 360° KLR 4S | im ETS-Projekt vorhanden; Screenshot vom 29.08.2026 mit grünen Statushäkchen, genaue Bestellnummer und Raumzuordnung prüfen |
 | 1.1.32–1.1.33 | MDT Glastaster II Smart mit Temperatursensor | im ETS-Projekt angelegt, im Screenshot vom 29.08.2026 ohne grüne Statushäkchen; Raum, Funktion und Gruppenadressverknüpfungen offen |
+| 1.1.38 | Licht Bad vorne, Taster mit Wippen A+B und C+D | Wippe A+B schaltet `1.1.36` über `1/7/0`; A = EIN, B = AUS; am 14.10.2026 in ETS verknüpft |
 | 1.1.40 | Gira Wetterstation Plus, ETS-Applikation B00D21 | im ETS-Projekt; im Screenshot vom 29.08.2026 ohne grüne Statushäkchen, vollständigen Programmier- und Verknüpfungsstand prüfen |
 | 1.1.41 | Reserve/ETS-Platzhalter für Gira KNX Rauchwarnmelder, Applikation C01602 | noch kein vorhandenes oder in Betrieb genommenes KNX-Gerät bestätigt; Gruppenadressen unter `10/1` sind reine Planung |
 
-Zusätzlich sind MDT KNX RF Fenstergriffe vorgesehen beziehungsweise vorhanden.
+Bestätigt sind elf MDT KNX RF+ Fenstergriffe, Secure, im RF Segment 1: `1.1.11–1.1.19`, `1.1.39` und `1.1.42`. Die am 15.10.2026 gesetzten Status-/Kippverknüpfungen, HA-Zuordnung und noch offenen Inbetriebnahmeschritte stehen in [08 – RF-Fenstergriffe](08_rf_fenstergriffe.md).
 
 ### Visualisierung
 

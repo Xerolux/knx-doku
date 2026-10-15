@@ -1,5 +1,9 @@
 # 24 – OpenKNX RaumController
 
+## Änderung vom 14.10.2026: HF-Erfassungsbereich
+
+Die maximale HF-Reichweite wurde im ETS-Projekt für Küche (`1.1.34`) von 5,95 auf 3,15 m und für Bad (`1.1.35`) von 5,95 auf 2,45 m reduziert. Anlass ist die vom Nutzer gemeldete Erfassung von Bewegungen im Vorgarten. Downloadnachweise und offene Funktionstests stehen im [ETS-Protokoll vom 14.10.2026](28_ets_bad_vorne_pm_2026-10-14.md). Die frühere Aussage, die Reichweiten seien unverändert, beschreibt den Stand vom 11.10.2026.
+
 ## Änderung vom 11.10.2026: Küche, Bad und Präsenzmelder
 
 Die folgenden Änderungen wurden direkt im geöffneten ETS-Projekt vorgenommen und anhand der Kommunikationsobjekte und Gruppenadressansicht geprüft. Ein Gerätedownload und eine Gruppenmonitorprüfung sind noch nicht erfolgt. Die nachfolgenden älteren Abschnitte dokumentieren den bisherigen Stand mit Quelle `1.1.29`; sie sind keine aktuelle Zuordnung der Küchenmesswerte.

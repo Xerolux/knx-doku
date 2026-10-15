@@ -1,6 +1,12 @@
 # ETS projects and backups contain installation-specific data and secrets
 *.knxproj
 *.knxproj.backup
+*.knxkeys
+secrets.yaml
+.env
+.env.*
+*.pem
+*.key
 *.bak
 
 # Local exports and temporary archives

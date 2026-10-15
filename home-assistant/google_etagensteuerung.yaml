@@ -1,0 +1,190 @@
+# Google Assistant: feste Etagenlisten, 14.10.2026
+# Keine Markise, Garage, Garagentor, Freisitz oder Pool-Abdeckung in Sammelzielen.
+# Neue unbekannte Geraete werden nicht automatisch aufgenommen.
+template:
+  - light:
+      - name: "Erdgeschoss Lichter"
+        unique_id: google_erdgeschoss_lichter
+        state: "{{ expand([\"light.eg_wohnzimmer_licht\",\"light.eg_arbeitszimmer_licht\",\"light.eg_kuche_licht\",\"light.eg_schlafzimmer_licht\",\"light.eg_gang_licht\",\"light.eg_gang_neubau_licht\",\"light.eg_bad_vorne_licht\"]) | selectattr('state', 'eq', 'on') | list | count > 0 }}"
+        availability: "{{ expand([\"light.eg_wohnzimmer_licht\",\"light.eg_arbeitszimmer_licht\",\"light.eg_kuche_licht\",\"light.eg_schlafzimmer_licht\",\"light.eg_gang_licht\",\"light.eg_gang_neubau_licht\",\"light.eg_bad_vorne_licht\"]) | rejectattr('state', 'in', ['unavailable', 'unknown']) | list | count > 0 }}"
+        turn_on:
+          - action: homeassistant.turn_on
+            target:
+              entity_id: ["light.eg_wohnzimmer_licht","light.eg_arbeitszimmer_licht","light.eg_kuche_licht","light.eg_schlafzimmer_licht","light.eg_gang_licht","light.eg_gang_neubau_licht","light.eg_bad_vorne_licht"]
+        turn_off:
+          - action: homeassistant.turn_off
+            target:
+              entity_id: ["light.eg_wohnzimmer_licht","light.eg_arbeitszimmer_licht","light.eg_kuche_licht","light.eg_schlafzimmer_licht","light.eg_gang_licht","light.eg_gang_neubau_licht","light.eg_bad_vorne_licht"]
+      - name: "Obergeschoss Lichter"
+        unique_id: google_obergeschoss_lichter
+        state: "{{ expand([\"switch.licht_gang_gang\",\"switch.licht_schlafzimmer\",\"switch.licht_dusche\",\"switch.licht_esszimmer\",\"switch.licht_kuche\",\"switch.licht_melina\",\"switch.licht_wohnzimmer\",\"switch.licht_bad\",\"switch.licht_arbeitszimmer\"]) | selectattr('state', 'eq', 'on') | list | count > 0 }}"
+        availability: "{{ expand([\"switch.licht_gang_gang\",\"switch.licht_schlafzimmer\",\"switch.licht_dusche\",\"switch.licht_esszimmer\",\"switch.licht_kuche\",\"switch.licht_melina\",\"switch.licht_wohnzimmer\",\"switch.licht_bad\",\"switch.licht_arbeitszimmer\"]) | rejectattr('state', 'in', ['unavailable', 'unknown']) | list | count > 0 }}"
+        turn_on:
+          - action: homeassistant.turn_on
+            target:
+              entity_id: ["switch.licht_gang_gang","switch.licht_schlafzimmer","switch.licht_dusche","switch.licht_esszimmer","switch.licht_kuche","switch.licht_melina","switch.licht_wohnzimmer","switch.licht_bad","switch.licht_arbeitszimmer"]
+        turn_off:
+          - action: homeassistant.turn_off
+            target:
+              entity_id: ["switch.licht_gang_gang","switch.licht_schlafzimmer","switch.licht_dusche","switch.licht_esszimmer","switch.licht_kuche","switch.licht_melina","switch.licht_wohnzimmer","switch.licht_bad","switch.licht_arbeitszimmer"]
+      - name: "Dachgeschoss Lichter"
+        unique_id: google_dachgeschoss_lichter
+        state: "{{ expand([\"switch.licht_wendeltreppe\",\"switch.licht_tizian\"]) | selectattr('state', 'eq', 'on') | list | count > 0 }}"
+        availability: "{{ expand([\"switch.licht_wendeltreppe\",\"switch.licht_tizian\"]) | rejectattr('state', 'in', ['unavailable', 'unknown']) | list | count > 0 }}"
+        turn_on:
+          - action: homeassistant.turn_on
+            target:
+              entity_id: ["switch.licht_wendeltreppe","switch.licht_tizian"]
+        turn_off:
+          - action: homeassistant.turn_off
+            target:
+              entity_id: ["switch.licht_wendeltreppe","switch.licht_tizian"]
+  - cover:
+      - name: "Erdgeschoss Rollläden"
+        unique_id: google_erdgeschoss_rollladen
+        device_class: shutter
+        state: "{{ 'open' if expand([\"cover.eg_wohnzimmer_rollladen_fenster\",\"cover.eg_wohnzimmer_rollladen_tur\",\"cover.eg_arbeitszimmer_rollladen\",\"cover.eg_schlafzimmer_rollladen_tur\",\"cover.eg_schlafzimmer_rollladen_fenster\"]) | selectattr('state', 'in', ['open', 'opening', 'closing']) | list | count > 0 else 'closed' }}"
+        availability: "{{ expand([\"cover.eg_wohnzimmer_rollladen_fenster\",\"cover.eg_wohnzimmer_rollladen_tur\",\"cover.eg_arbeitszimmer_rollladen\",\"cover.eg_schlafzimmer_rollladen_tur\",\"cover.eg_schlafzimmer_rollladen_fenster\"]) | rejectattr('state', 'in', ['unavailable', 'unknown']) | list | count > 0 }}"
+        open_cover:
+          - action: cover.open_cover
+            target:
+              entity_id: ["cover.eg_wohnzimmer_rollladen_fenster","cover.eg_wohnzimmer_rollladen_tur","cover.eg_arbeitszimmer_rollladen","cover.eg_schlafzimmer_rollladen_tur","cover.eg_schlafzimmer_rollladen_fenster"]
+        close_cover:
+          - action: cover.close_cover
+            target:
+              entity_id: ["cover.eg_wohnzimmer_rollladen_fenster","cover.eg_wohnzimmer_rollladen_tur","cover.eg_arbeitszimmer_rollladen","cover.eg_schlafzimmer_rollladen_tur","cover.eg_schlafzimmer_rollladen_fenster"]
+        stop_cover:
+          - action: cover.stop_cover
+            target:
+              entity_id: ["cover.eg_wohnzimmer_rollladen_fenster","cover.eg_wohnzimmer_rollladen_tur","cover.eg_arbeitszimmer_rollladen","cover.eg_schlafzimmer_rollladen_tur","cover.eg_schlafzimmer_rollladen_fenster"]
+      - name: "Obergeschoss Rollläden"
+        unique_id: google_obergeschoss_rollladen
+        device_class: shutter
+        state: "{{ 'open' if expand([\"cover.rolladen_schlafzimmer\",\"cover.rolladen_wohnzimmer\",\"cover.rolladen_wohnzimmerture\",\"cover.rolladen_melina\",\"cover.rolladen_dusche\",\"cover.rolladen_arbeitszimmer\"]) | selectattr('state', 'in', ['open', 'opening', 'closing']) | list | count > 0 else 'closed' }}"
+        availability: "{{ expand([\"cover.rolladen_schlafzimmer\",\"cover.rolladen_wohnzimmer\",\"cover.rolladen_wohnzimmerture\",\"cover.rolladen_melina\",\"cover.rolladen_dusche\",\"cover.rolladen_arbeitszimmer\"]) | rejectattr('state', 'in', ['unavailable', 'unknown']) | list | count > 0 }}"
+        open_cover:
+          - action: cover.open_cover
+            target:
+              entity_id: ["cover.rolladen_schlafzimmer","cover.rolladen_wohnzimmer","cover.rolladen_wohnzimmerture","cover.rolladen_melina","cover.rolladen_dusche","cover.rolladen_arbeitszimmer"]
+        close_cover:
+          - action: cover.close_cover
+            target:
+              entity_id: ["cover.rolladen_schlafzimmer","cover.rolladen_wohnzimmer","cover.rolladen_wohnzimmerture","cover.rolladen_melina","cover.rolladen_dusche","cover.rolladen_arbeitszimmer"]
+        stop_cover:
+          - action: cover.stop_cover
+            target:
+              entity_id: ["cover.rolladen_schlafzimmer","cover.rolladen_wohnzimmer","cover.rolladen_wohnzimmerture","cover.rolladen_melina","cover.rolladen_dusche","cover.rolladen_arbeitszimmer"]
+      - name: "Dachgeschoss Rollläden"
+        unique_id: google_dachgeschoss_rollladen
+        device_class: shutter
+        state: "{{ 'open' if expand([\"cover.rolladen_wendeltreppe\"]) | selectattr('state', 'in', ['open', 'opening', 'closing']) | list | count > 0 else 'closed' }}"
+        availability: "{{ expand([\"cover.rolladen_wendeltreppe\"]) | rejectattr('state', 'in', ['unavailable', 'unknown']) | list | count > 0 }}"
+        open_cover:
+          - action: cover.open_cover
+            target:
+              entity_id: ["cover.rolladen_wendeltreppe"]
+        close_cover:
+          - action: cover.close_cover
+            target:
+              entity_id: ["cover.rolladen_wendeltreppe"]
+        stop_cover:
+          - action: cover.stop_cover
+            target:
+              entity_id: ["cover.rolladen_wendeltreppe"]
+script:
+  google_einzeln_markise_erdgeschoss_auf:
+    alias: "Markise Erdgeschoss öffnen"
+    description: "Nur dieses Einzelgeraet; kein Etagen- oder Sammelziel."
+    mode: single
+    sequence:
+      - action: cover.open_cover
+        target:
+          entity_id: cover.eg_markise
+  google_einzeln_markise_erdgeschoss_zu:
+    alias: "Markise Erdgeschoss schließen"
+    description: "Nur dieses Einzelgeraet; kein Etagen- oder Sammelziel."
+    mode: single
+    sequence:
+      - action: cover.close_cover
+        target:
+          entity_id: cover.eg_markise
+  google_einzeln_markise_erdgeschoss_stop:
+    alias: "Markise Erdgeschoss stoppen"
+    description: "Nur dieses Einzelgeraet; kein Etagen- oder Sammelziel."
+    mode: single
+    sequence:
+      - action: cover.stop_cover
+        target:
+          entity_id: cover.eg_markise
+  google_einzeln_markise_obergeschoss_auf:
+    alias: "Markise Obergeschoss öffnen"
+    description: "Nur dieses Einzelgeraet; kein Etagen- oder Sammelziel."
+    mode: single
+    sequence:
+      - action: cover.open_cover
+        target:
+          entity_id: cover.markiese
+  google_einzeln_markise_obergeschoss_zu:
+    alias: "Markise Obergeschoss schließen"
+    description: "Nur dieses Einzelgeraet; kein Etagen- oder Sammelziel."
+    mode: single
+    sequence:
+      - action: cover.close_cover
+        target:
+          entity_id: cover.markiese
+  google_einzeln_markise_obergeschoss_stop:
+    alias: "Markise Obergeschoss stoppen"
+    description: "Nur dieses Einzelgeraet; kein Etagen- oder Sammelziel."
+    mode: single
+    sequence:
+      - action: cover.stop_cover
+        target:
+          entity_id: cover.markiese
+  google_einzeln_freisitz_auf:
+    alias: "Freisitz öffnen"
+    description: "Nur dieses Einzelgeraet; kein Etagen- oder Sammelziel."
+    mode: single
+    sequence:
+      - action: cover.open_cover
+        target:
+          entity_id: cover.rolladen_oma_schlafzimmer
+  google_einzeln_freisitz_zu:
+    alias: "Freisitz schließen"
+    description: "Nur dieses Einzelgeraet; kein Etagen- oder Sammelziel."
+    mode: single
+    sequence:
+      - action: cover.close_cover
+        target:
+          entity_id: cover.rolladen_oma_schlafzimmer
+  google_einzeln_freisitz_stop:
+    alias: "Freisitz stoppen"
+    description: "Nur dieses Einzelgeraet; kein Etagen- oder Sammelziel."
+    mode: single
+    sequence:
+      - action: cover.stop_cover
+        target:
+          entity_id: cover.rolladen_oma_schlafzimmer
+  google_einzeln_garage_mitte_auf:
+    alias: "Garage Mitte öffnen"
+    description: "Nur dieses Einzelgeraet; kein Etagen- oder Sammelziel."
+    mode: single
+    sequence:
+      - action: cover.open_cover
+        target:
+          entity_id: cover.hmip_broll_2_0036a0c99cc6c4
+  google_einzeln_garage_mitte_zu:
+    alias: "Garage Mitte schließen"
+    description: "Nur dieses Einzelgeraet; kein Etagen- oder Sammelziel."
+    mode: single
+    sequence:
+      - action: cover.close_cover
+        target:
+          entity_id: cover.hmip_broll_2_0036a0c99cc6c4
+  google_einzeln_garage_mitte_stop:
+    alias: "Garage Mitte stoppen"
+    description: "Nur dieses Einzelgeraet; kein Etagen- oder Sammelziel."
+    mode: single
+    sequence:
+      - action: cover.stop_cover
+        target:
+          entity_id: cover.hmip_broll_2_0036a0c99cc6c4

@@ -1,0 +1,218 @@
+  - title: Fenster
+    path: fenster
+    icon: mdi:window-open-variant
+    type: sections
+    max_columns: 4
+    sections:
+      - type: grid
+        column_span: 2
+        cards:
+          - type: custom:button-card
+            template: title_text
+            name: 🪟 Fenster & Türen
+          - type: grid
+            columns: 3
+            square: false
+            cards:
+              - type: custom:button-card
+                template: base_card
+                entity: sensor.eg_fenster_kuche_links_klein_stellung
+                name: "Küche links klein"
+                tap_action:
+                  action: more-info
+                styles:
+                  card:
+                    - background: |
+                        [[[
+                          const s = entity?.state;
+                          if (s === 'Geschlossen') return 'linear-gradient(135deg, #3a4a5c, #2c3e50)';
+                          if (s === 'Gekippt') return 'linear-gradient(135deg, #b7791f, #975a16)';
+                          if (s === 'Offen') return 'linear-gradient(135deg, #c53030, #9b2c2c)';
+                          return 'linear-gradient(135deg, #5f6368, #3c4043)';
+                        ]]]
+                state_display: |
+                  [[[ return ['Geschlossen', 'Gekippt', 'Offen'].includes(entity?.state) ? entity.state : 'Unbekannt'; ]]]
+              - type: custom:button-card
+                template: base_card
+                entity: sensor.eg_fenster_kuche_rechts_gross_stellung
+                name: "Küche rechts groß"
+                tap_action:
+                  action: more-info
+                styles:
+                  card:
+                    - background: |
+                        [[[
+                          const s = entity?.state;
+                          if (s === 'Geschlossen') return 'linear-gradient(135deg, #3a4a5c, #2c3e50)';
+                          if (s === 'Gekippt') return 'linear-gradient(135deg, #b7791f, #975a16)';
+                          if (s === 'Offen') return 'linear-gradient(135deg, #c53030, #9b2c2c)';
+                          return 'linear-gradient(135deg, #5f6368, #3c4043)';
+                        ]]]
+                state_display: |
+                  [[[ return ['Geschlossen', 'Gekippt', 'Offen'].includes(entity?.state) ? entity.state : 'Unbekannt'; ]]]
+              - type: custom:button-card
+                template: base_card
+                entity: sensor.eg_fenster_wohnzimmer_links_klein_stellung
+                name: "Wohnzimmer links klein"
+                tap_action:
+                  action: more-info
+                styles:
+                  card:
+                    - background: |
+                        [[[
+                          const s = entity?.state;
+                          if (s === 'Geschlossen') return 'linear-gradient(135deg, #3a4a5c, #2c3e50)';
+                          if (s === 'Gekippt') return 'linear-gradient(135deg, #b7791f, #975a16)';
+                          if (s === 'Offen') return 'linear-gradient(135deg, #c53030, #9b2c2c)';
+                          return 'linear-gradient(135deg, #5f6368, #3c4043)';
+                        ]]]
+                state_display: |
+                  [[[ return ['Geschlossen', 'Gekippt', 'Offen'].includes(entity?.state) ? entity.state : 'Unbekannt'; ]]]
+              - type: custom:button-card
+                template: base_card
+                entity: sensor.eg_fenster_wohnzimmer_rechts_gross_stellung
+                name: "Wohnzimmer rechts groß"
+                tap_action:
+                  action: more-info
+                styles:
+                  card:
+                    - background: |
+                        [[[
+                          const s = entity?.state;
+                          if (s === 'Geschlossen') return 'linear-gradient(135deg, #3a4a5c, #2c3e50)';
+                          if (s === 'Gekippt') return 'linear-gradient(135deg, #b7791f, #975a16)';
+                          if (s === 'Offen') return 'linear-gradient(135deg, #c53030, #9b2c2c)';
+                          return 'linear-gradient(135deg, #5f6368, #3c4043)';
+                        ]]]
+                state_display: |
+                  [[[ return ['Geschlossen', 'Gekippt', 'Offen'].includes(entity?.state) ? entity.state : 'Unbekannt'; ]]]
+              - type: custom:button-card
+                template: base_card
+                entity: sensor.eg_fenster_arbeitszimmer_links_klein_stellung
+                name: "Arbeitszimmer links klein"
+                tap_action:
+                  action: more-info
+                styles:
+                  card:
+                    - background: |
+                        [[[
+                          const s = entity?.state;
+                          if (s === 'Geschlossen') return 'linear-gradient(135deg, #3a4a5c, #2c3e50)';
+                          if (s === 'Gekippt') return 'linear-gradient(135deg, #b7791f, #975a16)';
+                          if (s === 'Offen') return 'linear-gradient(135deg, #c53030, #9b2c2c)';
+                          return 'linear-gradient(135deg, #5f6368, #3c4043)';
+                        ]]]
+                state_display: |
+                  [[[ return ['Geschlossen', 'Gekippt', 'Offen'].includes(entity?.state) ? entity.state : 'Unbekannt'; ]]]
+              - type: custom:button-card
+                template: base_card
+                entity: sensor.eg_fenster_arbeitszimmer_rechts_gross_stellung
+                name: "Arbeitszimmer rechts groß"
+                tap_action:
+                  action: more-info
+                styles:
+                  card:
+                    - background: |
+                        [[[
+                          const s = entity?.state;
+                          if (s === 'Geschlossen') return 'linear-gradient(135deg, #3a4a5c, #2c3e50)';
+                          if (s === 'Gekippt') return 'linear-gradient(135deg, #b7791f, #975a16)';
+                          if (s === 'Offen') return 'linear-gradient(135deg, #c53030, #9b2c2c)';
+                          return 'linear-gradient(135deg, #5f6368, #3c4043)';
+                        ]]]
+                state_display: |
+                  [[[ return ['Geschlossen', 'Gekippt', 'Offen'].includes(entity?.state) ? entity.state : 'Unbekannt'; ]]]
+              - type: custom:button-card
+                template: base_card
+                entity: sensor.eg_fenster_schlafzimmer_rechts_gross_stellung
+                name: "Schlafzimmer rechts groß"
+                tap_action:
+                  action: more-info
+                styles:
+                  card:
+                    - background: |
+                        [[[
+                          const s = entity?.state;
+                          if (s === 'Geschlossen') return 'linear-gradient(135deg, #3a4a5c, #2c3e50)';
+                          if (s === 'Gekippt') return 'linear-gradient(135deg, #b7791f, #975a16)';
+                          if (s === 'Offen') return 'linear-gradient(135deg, #c53030, #9b2c2c)';
+                          return 'linear-gradient(135deg, #5f6368, #3c4043)';
+                        ]]]
+                state_display: |
+                  [[[ return ['Geschlossen', 'Gekippt', 'Offen'].includes(entity?.state) ? entity.state : 'Unbekannt'; ]]]
+              - type: custom:button-card
+                template: base_card
+                entity: sensor.eg_fenster_schlafzimmer_tur_stellung
+                name: "Schlafzimmer Tür"
+                tap_action:
+                  action: more-info
+                styles:
+                  card:
+                    - background: |
+                        [[[
+                          const s = entity?.state;
+                          if (s === 'Geschlossen') return 'linear-gradient(135deg, #3a4a5c, #2c3e50)';
+                          if (s === 'Gekippt') return 'linear-gradient(135deg, #b7791f, #975a16)';
+                          if (s === 'Offen') return 'linear-gradient(135deg, #c53030, #9b2c2c)';
+                          return 'linear-gradient(135deg, #5f6368, #3c4043)';
+                        ]]]
+                state_display: |
+                  [[[ return ['Geschlossen', 'Gekippt', 'Offen'].includes(entity?.state) ? entity.state : 'Unbekannt'; ]]]
+              - type: custom:button-card
+                template: base_card
+                entity: sensor.eg_fenster_wohnzimmer_tur_stellung
+                name: "Wohnzimmer Tür"
+                tap_action:
+                  action: more-info
+                styles:
+                  card:
+                    - background: |
+                        [[[
+                          const s = entity?.state;
+                          if (s === 'Geschlossen') return 'linear-gradient(135deg, #3a4a5c, #2c3e50)';
+                          if (s === 'Gekippt') return 'linear-gradient(135deg, #b7791f, #975a16)';
+                          if (s === 'Offen') return 'linear-gradient(135deg, #c53030, #9b2c2c)';
+                          return 'linear-gradient(135deg, #5f6368, #3c4043)';
+                        ]]]
+                state_display: |
+                  [[[ return ['Geschlossen', 'Gekippt', 'Offen'].includes(entity?.state) ? entity.state : 'Unbekannt'; ]]]
+              - type: custom:button-card
+                template: base_card
+                entity: sensor.eg_fenster_bad_links_stellung
+                name: "Bad links"
+                tap_action:
+                  action: more-info
+                styles:
+                  card:
+                    - background: |
+                        [[[
+                          const s = entity?.state;
+                          if (s === 'Geschlossen') return 'linear-gradient(135deg, #3a4a5c, #2c3e50)';
+                          if (s === 'Gekippt') return 'linear-gradient(135deg, #b7791f, #975a16)';
+                          if (s === 'Offen') return 'linear-gradient(135deg, #c53030, #9b2c2c)';
+                          return 'linear-gradient(135deg, #5f6368, #3c4043)';
+                        ]]]
+                state_display: |
+                  [[[ return ['Geschlossen', 'Gekippt', 'Offen'].includes(entity?.state) ? entity.state : 'Unbekannt'; ]]]
+              - type: custom:button-card
+                template: base_card
+                entity: sensor.eg_fenster_bad_rechts_stellung
+                name: "Bad rechts"
+                tap_action:
+                  action: more-info
+                styles:
+                  card:
+                    - background: |
+                        [[[
+                          const s = entity?.state;
+                          if (s === 'Geschlossen') return 'linear-gradient(135deg, #3a4a5c, #2c3e50)';
+                          if (s === 'Gekippt') return 'linear-gradient(135deg, #b7791f, #975a16)';
+                          if (s === 'Offen') return 'linear-gradient(135deg, #c53030, #9b2c2c)';
+                          return 'linear-gradient(135deg, #5f6368, #3c4043)';
+                        ]]]
+                state_display: |
+                  [[[ return ['Geschlossen', 'Gekippt', 'Offen'].includes(entity?.state) ? entity.state : 'Unbekannt'; ]]]
+            card_mod:
+              style: >-
+                :host { --grid-card-column-count: 3 !important; }
+                @media (max-width: 600px) { :host { --grid-card-column-count: 2 !important; } }

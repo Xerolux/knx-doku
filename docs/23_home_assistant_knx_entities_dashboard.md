@@ -55,6 +55,9 @@ Entitätstyp in Home Assistant: **Leuchte**. Helligkeit, Farbtemperatur und Farb
 | `light.eg_gang_licht` | Gang Altbau | `1/4/0` | `1/4/1` |
 | `light.eg_gang_neubau_licht` | Gang Neubau | `1/4/2` | `1/4/3` |
 | `light.eg_gang_licht_alle` | beide Ganglichter | `1/4/4` | `1/4/5` |
+| `light.eg_bad_vorne_licht` | EG Bad vorne Licht | `1/7/0` | `1/7/1` |
+
+Ergänzung vom 14.10.2026: `light.eg_bad_vorne_licht` wurde live über das KNX-Panel angelegt, dem Gerät `EG Bad vorne` und Bereich `Bad vorne` zugeordnet und als Karte „Bad vorne“ in EG → Licht ergänzt. Gespeicherte Gruppenadressen und verfügbarer Zustand `Aus` wurden geprüft. Details stehen im [ETS-/HA-Protokoll](28_ets_bad_vorne_pm_2026-10-14.md).
 
 ### Beide Ganglichter
 
@@ -97,12 +100,19 @@ Voraussetzung ist die über HACS installierte Custom Card:
 custom:button-card
 ```
 
-Diese YAML-Vorlage enthält vier Reiter:
+Diese YAML-Vorlage enthält fünf Reiter:
 
 1. Licht
 2. Rollläden
 3. Heizung
 4. Raumklima
+5. Fenster
+
+### EG-Fenstergriffe, Stand 15.10.2026
+
+Elf MDT RF+-Griffe sind als eigene Geräte mit je zwei empfangenden KNX-Binärsensoren vorbereitet und live geladen. Der neue Reiter **EG → Fenster** enthält elf Stellungsanzeigen mit „Geschlossen“, „Gekippt“, „Offen“ oder „Unbekannt“. Die Anzeige verwendet bestätigte eingehende Telegramme des jeweiligen Griffs, damit initiale Rohwerte nicht fälschlich „Geschlossen“ ergeben. Die vorhandene OG-Ansicht wurde nur als Gestaltungsreferenz gelesen.
+
+Paket: [knx_fenstergriffe_eg.yaml](../home-assistant/knx_fenstergriffe_eg.yaml). Einzelne ergänzende Ansicht: [lovelace_fenster_eg_view.yaml](../home-assistant/lovelace_fenster_eg_view.yaml). Adressliste, tatsächlicher Projektierungsstand und noch offene Downloads/Secure-Inbetriebnahme: [RF-Fenstergriffe](08_rf_fenstergriffe.md).
 
 ### Raumklima OpenKNX RaumController
 

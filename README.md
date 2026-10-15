@@ -60,6 +60,8 @@ Die Komplettdatei enthält 174 vorgesehene Basis-Gruppenadressen einschließlich
 | [docs/25_idm_waermepumpe_knx.md](docs/25_idm_waermepumpe_knx.md) | IDM Wärmepumpe auf KNX über Home Assistant, Hauptgruppe 11 |
 | [docs/26_scn_safe_adressreparatur.md](docs/26_scn_safe_adressreparatur.md) | SCN-SAFE-Zuordnung, Adresskollision vom 29.08.2026 und Reparaturverfahren |
 | [docs/27_fbh_mdt_raumregelung.md](docs/27_fbh_mdt_raumregelung.md) | live eingerichtete MDT-FBH-Bedienung, HA-Regler und offene Pumpenfrage |
+| [docs/28_ets_bad_vorne_pm_2026-10-14.md](docs/28_ets_bad_vorne_pm_2026-10-14.md) | ETS-Protokoll Lichtverknüpfung Bad vorne und reduzierte HF-Reichweiten Küche/Bad |
+| [docs/29_google_assistant_etagensteuerung.md](docs/29_google_assistant_etagensteuerung.md) | Google-Etagenziele für Licht/Rollläden und separate Einzelbefehle für Sondergeräte |
 
 ## Home Assistant
 
@@ -126,7 +128,9 @@ Die Importdateien werden lokal und bei jedem relevanten GitHub-Push mit [scripts
 
 | Datei | Verwendung |
 |---|---|
-| [home-assistant/lovelace_knx_eg.yaml](home-assistant/lovelace_knx_eg.yaml) | Lovelace-Dashboard für Licht, Rollläden und Heizung |
+| [home-assistant/lovelace_knx_eg.yaml](home-assistant/lovelace_knx_eg.yaml) | Lovelace-Dashboard für Licht, Rollläden, Heizung, Raumklima und Fenster |
+| [home-assistant/knx_fenstergriffe_eg.yaml](home-assistant/knx_fenstergriffe_eg.yaml) | Live geladenes Paket für elf MDT-Fenstergriffe; ETS-Download und Secure-Abgleich noch offen |
+| [home-assistant/lovelace_fenster_eg_view.yaml](home-assistant/lovelace_fenster_eg_view.yaml) | Ergänzender EG-Fensterreiter mit bestätigten Stellungsanzeigen |
 | [home-assistant/knx_raumcontroller.yaml](home-assistant/knx_raumcontroller.yaml) | einbindbare KNX-Sensorliste für den OpenKNX RaumController |
 
 ## Planungsprinzip
