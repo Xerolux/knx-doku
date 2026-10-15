@@ -44,4 +44,3 @@ assert all(c["tap_action"]["action"] == "more-info" for c in cards)
 full = yaml.safe_load((root / "home-assistant/lovelace_knx_eg.yaml").read_text(encoding="utf-8"))
 assert [v["path"] for v in full["views"]] == ["licht", "rolllaeden", "heizung", "raumklima", "fenster"]
 print("OK: 11 Griffe, 22 eindeutige Empfangsadressen, 99 Zustandskombinationen, Telegrammfilter und 11 Anzeigekarten.")
-
