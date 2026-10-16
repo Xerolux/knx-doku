@@ -1,5 +1,7 @@
 # 10 – MDT Glastaster Smart II Bedienkonzept
 
+Nachtrag 16.10.2026: Die tägliche Displayumschaltung um 20:00 Uhr auf Nacht und 07:30 Uhr auf Tag ist in [31 – Display-Zeitsteuerung](31_glastaster_display_nacht.md) dokumentiert. Sie verwendet die eigene Gruppenadresse `0/5/4`.
+
 Stand: 03.10.2026
 
 ## Gerätebestand

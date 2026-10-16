@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<GroupAddress-Export xmlns="http://knx.org/xml/ga-export/01">
+  <GroupRange Name="Zentral" RangeStart="1" RangeEnd="2047">
+    <GroupRange Name="Zeit/Datum" RangeStart="1280" RangeEnd="1535">
+      <GroupAddress Name="Displays Tag/Nacht (Tag=1)" Address="0/5/4" />
+    </GroupRange>
+  </GroupRange>
+</GroupAddress-Export>

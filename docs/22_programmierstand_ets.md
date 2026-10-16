@@ -1,6 +1,30 @@
 # 22 – Aktueller ETS-Programmierstand
 
-Stand: 04.10.2026
+Nachtrag EG-Markise 16.10.: korrigierter Wind-/Regenschutz ausschließlich Kanal G mit Alarmrichtung Ab, Rücknahme keine Aktion, Überwachung je 3 Minuten. Nach fehlgeschlagenem Assistentenversuch meldete der Nutzer einen eigenen JAL-Download; der neueste erfolgreiche Applikationsdownload wurde danach in ETS bestätigt. Verlauf und offene physische Alarmabnahme: [Dokument 33](33_markise_eg_wetterschutz.md).
+
+
+Das zusammenhängende Protokoll der Wetter-/Fensterarbeiten vom 16.10. einschließlich Tunnelbegründung, Schlüsselimport, Sendeempfehlungen und offener Funktionsprüfung steht in [Dokument 32](32_wetter_fenster_inbetriebnahme_2026-10-16.md).
+
+
+Stand: 16.10.2026; ältere Abschnitte behalten ihren jeweils genannten Nachweiszeitpunkt.
+
+## Nachtrag vom 16.10.2026 abends: Wetterstation und HA-Empfang
+
+Wetterstation `1.1.40` mit Applikation B00D29 einschließlich DPT 9.029 für absolute Feuchte erfolgreich geladen; ETS meldet `Programmieren(Appl.): Abgeschlossen`. 33 Mess-/Diagnoseausgänge sind verbunden und in HA visualisiert. Interne Beschattungssteuerung deaktiviert, keine neuen Aktorverknüpfungen. Livewerte und Grenzen: [11 – Wetterstation](11_wetterstation_gira.md).
+
+Die fehlenden elf HA-Empfangssensoren der EG-Griffe wurden durch Entfernen eines ungültigen Template-Schlüssels repariert. Der verwendete HA-Tunnel `1.1.255` hatte in ETS zunächst 0 Assoziationen. Nach Nutzerfreigabe wurden genau die 22 gesicherten Fensteradressen zugeordnet (22 Assoziationen bestätigt); der Nutzer bestätigte Export und Import des neuen Schlüsselbunds. HA zeigt danach Verbunden unter 1.1.255. Der physische Empfangstest ist auf später verschoben; die Anzeigen stehen mangels bestätigter Telegramme auf Unbekannt. Details: [08 – Fenstergriffe](08_rf_fenstergriffe.md).
+
+## Nachtrag vom 16.10.2026: Applikationen geladen
+
+Der Nutzer meldet, alle Applikationen jetzt geladen zu haben. Die aktuell geöffnete ETS-Historie bestätigt erfolgreiche Applikationsdownloads (`Programmieren(Appl.): Abgeschlossen`) für die Fenstergriffe `1.1.11–1.1.19`, `1.1.39` und `1.1.42`. Für `1.1.43 Licht Abstellkammer` ist ein erfolgreicher vollständiger Download (`Programmieren(Alle): Abgeschlossen`) mit Start 10:10:10 und Ende 10:10:33 sichtbar. Darunter stehen ältere fehlgeschlagene Versuche; sie heben den späteren Erfolg nicht auf.
+
+Die gesamte Gerätepopulation wurde nicht einzeln erneut heruntergeladen oder physisch getestet. Die Nutzermeldung und die konkret sichtbaren Historieneinträge werden deshalb getrennt dokumentiert. Am selben Tag zeigt das HA-KNX-Panel `Verbunden` mit Tunneladresse `1.1.255`. Das bestätigt die Verbindung, nicht die reale Funktion jedes einzelnen Tasters, Sensors oder Aktors.
+
+Die parallel gemeldete Störung betrifft Google-Sprachbefehle. Diagnose und vorgenommene Maßnahme stehen im [Protokoll vom 16.10.2026](30_google_knx_pruefung_2026-10-16.md).
+
+## Display-Zeitsteuerung vom 16.10.2026
+
+Für die neue eigene Displayadresse `0/5/4` wurden die Applikationen aller elf MDT-Glastaster `1.1.20–1.1.28`, `1.1.32` und `1.1.33` sowie der Schaltuhr `1.1.7` erfolgreich geladen. Die Schaltuhr erhielt anschließend ihre korrigierte KNX-Zeitversorgung und die feste ETS-Zeitvorgabe. Der Gruppenmonitor bestätigt danach einen selbstständig von `1.1.7` gesendeten Tagwert `1/Ein`. Details und verbleibender Sichttest: [31 – Display-Zeitsteuerung](31_glastaster_display_nacht.md).
 
 ## Bedeutung „Programmieren notwendig“
 

@@ -10,6 +10,7 @@ $canonicalFiles = @(
     'gruppenadressen-komplett.xml',
     'gruppenadressen-abstellkammer.xml',
     'gruppenadressen-zentral-zeit.xml',
+    'gruppenadressen-display-tag-nacht.xml',
     'gruppenadressen-sicherheit.xml',
     'gruppenadressen-reparatur-safe-rauchwarnmelder.xml',
     'gruppenadressen-raumcontroller.xml',

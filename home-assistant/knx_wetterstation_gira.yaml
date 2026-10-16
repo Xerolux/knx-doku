@@ -1,0 +1,342 @@
+# Gira Wetterstation Plus 1.1.40, ETS B00D29, 16.10.2026.
+# Ausschließlich Messwerte und Diagnose; keine Aktorsteuerung.
+knx:
+  sensor:
+    - name: "Außentemperatur"
+      unique_id: gira_wetter_temperatur
+      default_entity_id: sensor.gira_wetter_temperatur
+      state_address: "4/0/0"
+      type: "temperature"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Windgeschwindigkeit"
+      unique_id: gira_wetter_windgeschwindigkeit
+      default_entity_id: sensor.gira_wetter_windgeschwindigkeit
+      state_address: "4/0/1"
+      type: "wind_speed_ms"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Relative Luftfeuchte"
+      unique_id: gira_wetter_luftfeuchte
+      default_entity_id: sensor.gira_wetter_luftfeuchte
+      state_address: "4/0/4"
+      type: "humidity"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Luftdruck"
+      unique_id: gira_wetter_luftdruck
+      default_entity_id: sensor.gira_wetter_luftdruck
+      state_address: "4/0/5"
+      type: "pressure_2byte"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Absolute Luftfeuchte"
+      unique_id: gira_wetter_absolute_feuchte_rohwert
+      default_entity_id: sensor.gira_wetter_absolute_feuchte_rohwert
+      state_address: "4/0/6"
+      type: "absolute_humidity"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Gefühlte Temperatur"
+      unique_id: gira_wetter_gefuehlte_temperatur
+      default_entity_id: sensor.gira_wetter_gefuehlte_temperatur
+      state_address: "4/0/7"
+      type: "temperature"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Globalstrahlung"
+      unique_id: gira_wetter_globalstrahlung
+      default_entity_id: sensor.gira_wetter_globalstrahlung
+      state_address: "4/0/8"
+      type: "power_density"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Dämmerung"
+      unique_id: gira_wetter_daemmerung
+      default_entity_id: sensor.gira_wetter_daemmerung
+      state_address: "4/0/9"
+      type: "illuminance"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Windrichtung"
+      unique_id: gira_wetter_windrichtung
+      default_entity_id: sensor.gira_wetter_windrichtung
+      state_address: "4/0/10"
+      type: "angle"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Windorientierung"
+      unique_id: gira_wetter_windorientierung
+      default_entity_id: sensor.gira_wetter_windorientierung
+      state_address: "4/0/11"
+      type: "string"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "GPS Länge"
+      unique_id: gira_wetter_gps_laenge
+      default_entity_id: sensor.gira_wetter_gps_laenge
+      state_address: "4/0/17"
+      type: "14.007"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "GPS Breite"
+      unique_id: gira_wetter_gps_breite
+      default_entity_id: sensor.gira_wetter_gps_breite
+      state_address: "4/0/18"
+      type: "14.007"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Sonnenazimut"
+      unique_id: gira_wetter_sonnenazimut
+      default_entity_id: sensor.gira_wetter_sonnenazimut
+      state_address: "4/0/19"
+      type: "angle"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Sonnenelevation"
+      unique_id: gira_wetter_sonnenelevation
+      default_entity_id: sensor.gira_wetter_sonnenelevation
+      state_address: "4/0/20"
+      type: "angle"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "GPS Höhe"
+      unique_id: gira_wetter_gps_hoehe
+      default_entity_id: sensor.gira_wetter_gps_hoehe
+      state_address: "4/0/21"
+      type: "14.039"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Fehlercode"
+      unique_id: gira_wetter_fehlercode
+      default_entity_id: sensor.gira_wetter_fehlercode
+      state_address: "4/0/26"
+      type: "1byte_unsigned"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Sensorstatus"
+      unique_id: gira_wetter_sensorstatus
+      default_entity_id: sensor.gira_wetter_sensorstatus
+      state_address: "4/0/27"
+      type: "2byte_unsigned"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Helligkeit Sensor 1"
+      unique_id: gira_wetter_helligkeit_1
+      default_entity_id: sensor.gira_wetter_helligkeit_1
+      state_address: "4/1/3"
+      type: "illuminance"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Helligkeit Sensor 2"
+      unique_id: gira_wetter_helligkeit_2
+      default_entity_id: sensor.gira_wetter_helligkeit_2
+      state_address: "4/1/4"
+      type: "illuminance"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Helligkeit Sensor 3"
+      unique_id: gira_wetter_helligkeit_3
+      default_entity_id: sensor.gira_wetter_helligkeit_3
+      state_address: "4/1/5"
+      type: "illuminance"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Helligkeit Sensor 4"
+      unique_id: gira_wetter_helligkeit_4
+      default_entity_id: sensor.gira_wetter_helligkeit_4
+      state_address: "4/1/6"
+      type: "illuminance"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Maximale Helligkeit"
+      unique_id: gira_wetter_helligkeit_max
+      default_entity_id: sensor.gira_wetter_helligkeit_max
+      state_address: "4/1/7"
+      type: "illuminance"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Helligkeit mit Dämmerung"
+      unique_id: gira_wetter_helligkeit_gesamt
+      default_entity_id: sensor.gira_wetter_helligkeit_gesamt
+      state_address: "4/1/8"
+      type: "illuminance"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+  binary_sensor:
+    - name: "Regen"
+      unique_id: gira_wetter_regen
+      default_entity_id: binary_sensor.gira_wetter_regen
+      state_address: "4/0/2"
+      sync_state: "expire 5"
+      device_class: moisture
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Windbereichsmeldung"
+      unique_id: gira_wetter_windbereich
+      default_entity_id: binary_sensor.gira_wetter_windbereich
+      state_address: "4/0/12"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Schwüle"
+      unique_id: gira_wetter_schwuele
+      default_entity_id: binary_sensor.gira_wetter_schwuele
+      state_address: "4/0/13"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Behaglichkeit"
+      unique_id: gira_wetter_behaglichkeit
+      default_entity_id: binary_sensor.gira_wetter_behaglichkeit
+      state_address: "4/0/14"
+      sync_state: "expire 5"
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Windsensor unverändert"
+      unique_id: gira_wetter_windsensor_unveraendert
+      default_entity_id: binary_sensor.gira_wetter_windsensor_unveraendert
+      state_address: "4/0/22"
+      sync_state: "expire 5"
+      device_class: problem
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Windrichtung unverändert"
+      unique_id: gira_wetter_windrichtung_unveraendert
+      default_entity_id: binary_sensor.gira_wetter_windrichtung_unveraendert
+      state_address: "4/0/23"
+      sync_state: "expire 5"
+      device_class: problem
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Kein Windsignal"
+      unique_id: gira_wetter_kein_windsignal
+      default_entity_id: binary_sensor.gira_wetter_kein_windsignal
+      state_address: "4/0/24"
+      sync_state: "expire 5"
+      device_class: problem
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+    - name: "Versorgungsspannung OK"
+      unique_id: gira_wetter_versorgung_ok
+      default_entity_id: binary_sensor.gira_wetter_versorgung_ok
+      state_address: "4/0/25"
+      sync_state: "expire 5"
+      device_class: power
+      device:
+        id: gira_wetterstation_plus
+        name: Gira Wetterstation Plus
+template:
+  - triggers:
+      - trigger: knx.telegram
+        destination: "4/0/15"
+        group_value_read: false
+        outgoing: false
+    conditions:
+      - condition: template
+        value_template: "{{ trigger.source == '1.1.40' and trigger.payload is sequence and trigger.payload | length == 3 }}"
+    sensor:
+      - name: "Gira Wetter GPS Uhrzeit"
+        unique_id: gira_wetter_gps_uhrzeit
+        default_entity_id: sensor.gira_wetter_gps_uhrzeit
+        state: >-
+          {{ '%02d:%02d:%02d' | format(trigger.payload[0] | bitwise_and(31), trigger.payload[1] | bitwise_and(63), trigger.payload[2] | bitwise_and(63)) }}
+  - triggers:
+      - trigger: knx.telegram
+        destination: "4/0/16"
+        group_value_read: false
+        outgoing: false
+    conditions:
+      - condition: template
+        value_template: "{{ trigger.source == '1.1.40' and trigger.payload is sequence and trigger.payload | length == 3 }}"
+    sensor:
+      - name: "Gira Wetter GPS Datum"
+        unique_id: gira_wetter_gps_datum
+        default_entity_id: sensor.gira_wetter_gps_datum
+        state: >-
+          {% set y = trigger.payload[2] | bitwise_and(127) %}{{ '%04d-%02d-%02d' | format(2000+y if y < 90 else 1900+y, trigger.payload[1] | bitwise_and(15), trigger.payload[0] | bitwise_and(31)) }}
+  - sensor:
+      - name: Gira Wetter Windgeschwindigkeit gültig
+        unique_id: gira_wetter_wind_anzeige
+        default_entity_id: sensor.gira_wetter_wind_anzeige
+        unit_of_measurement: km/h
+        device_class: wind_speed
+        state_class: measurement
+        availability: >-
+          {{ has_value('sensor.gira_wetter_windgeschwindigkeit') and has_value('sensor.gira_wetter_sensorstatus') and is_state('binary_sensor.gira_wetter_versorgung_ok','on') and (states('sensor.gira_wetter_sensorstatus') | int(32764) | bitwise_and(36864)) == 0 and (states('sensor.gira_wetter_windgeschwindigkeit') | float(180)) < (50 if state_attr('sensor.gira_wetter_windgeschwindigkeit','unit_of_measurement') == 'm/s' else 180) }}
+        state: >-
+          {{ (states('sensor.gira_wetter_windgeschwindigkeit') | float * (3.6 if state_attr('sensor.gira_wetter_windgeschwindigkeit','unit_of_measurement') == 'm/s' else 1)) | round(1) }}
+      - name: Gira Wetter Luftdruck hPa
+        unique_id: gira_wetter_luftdruck_hpa
+        default_entity_id: sensor.gira_wetter_luftdruck_hpa
+        unit_of_measurement: hPa
+        device_class: atmospheric_pressure
+        state_class: measurement
+        availability: "{{ has_value('sensor.gira_wetter_luftdruck') }}"
+        state: "{{ (states('sensor.gira_wetter_luftdruck') | float / 100) | round(1) }}"
+automation:
+  - id: gira_wetter_gps_leseanfragen
+    alias: Gira Wetter GPS Zeit und Datum lesen
+    triggers:
+      - trigger: homeassistant
+        event: start
+      - trigger: time_pattern
+        minutes: "/5"
+    actions:
+      - action: knx.read
+        data:
+          address: ["4/0/15", "4/0/16"]
+    mode: single

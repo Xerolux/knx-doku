@@ -1,0 +1,340 @@
+title: Wetter
+views:
+  - title: Wetter
+    path: wetter
+    icon: mdi:weather-partly-cloudy
+    type: sections
+    max_columns: 3
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading: Aktueller Zustand
+          - type: markdown
+            content: >-
+              {% set st = states('sensor.gira_wetter_sensorstatus') | int(-1) %}
+
+              {% if st < 0 %}### ⏳ Warte auf Wetterstation
+
+              {% elif st | bitwise_and(65532) %}### ⚠️ Sensorprüfung
+              erforderlich
+
+              {% if st | bitwise_and(4096) %}Windgeschwindigkeit ist ungültig.
+              Der Ersatzwert 50 m/s (180 km/h) ist **kein gemessener Wind**.
+
+              {% endif %}{% if st | bitwise_and(8192) %}Die Station meldet auch
+              die Windrichtung als ungültig.
+
+              {% endif %}Details unter **Diagnose & GPS**.
+
+              {% else %}### 🌦️ Wetterstation empfängt Messwerte
+
+              {% endif %}
+
+              Nur Anzeige · Beschattungssteuerung deaktiviert.
+          - type: tile
+            entity: binary_sensor.gira_wetter_regen
+            name: Regen
+            icon: mdi:weather-rainy
+            tap_action:
+              action: more-info
+            icon_tap_action:
+              action: more-info
+          - type: tile
+            entity: binary_sensor.gira_wetter_versorgung_ok
+            name: Versorgung
+            icon: mdi:power-plug
+            tap_action:
+              action: more-info
+            icon_tap_action:
+              action: more-info
+      - type: grid
+        cards:
+          - type: heading
+            heading: Temperatur & Luft
+          - type: tile
+            entity: sensor.gira_wetter_temperatur
+            name: Außentemperatur
+            icon: mdi:thermometer
+            tap_action:
+              action: more-info
+            icon_tap_action:
+              action: more-info
+          - type: tile
+            entity: sensor.gira_wetter_gefuehlte_temperatur
+            name: Gefühlt
+            icon: mdi:thermometer-lines
+            tap_action:
+              action: more-info
+            icon_tap_action:
+              action: more-info
+          - type: tile
+            entity: sensor.gira_wetter_luftfeuchte
+            name: Luftfeuchte
+            icon: mdi:water-percent
+            tap_action:
+              action: more-info
+            icon_tap_action:
+              action: more-info
+          - type: tile
+            entity: sensor.gira_wetter_luftdruck_hpa
+            name: Luftdruck
+            icon: mdi:gauge
+            tap_action:
+              action: more-info
+            icon_tap_action:
+              action: more-info
+          - type: history-graph
+            title: Temperatur · 24 Stunden
+            hours_to_show: 24
+            entities:
+              - sensor.gira_wetter_temperatur
+              - sensor.gira_wetter_gefuehlte_temperatur
+      - type: grid
+        cards:
+          - type: heading
+            heading: Wind & Sonne
+          - type: tile
+            entity: sensor.gira_wetter_wind_anzeige
+            name: Wind · gültige Messung
+            icon: mdi:weather-windy
+            tap_action:
+              action: more-info
+            icon_tap_action:
+              action: more-info
+          - type: tile
+            entity: sensor.gira_wetter_windrichtung
+            name: Windrichtung
+            icon: mdi:compass
+            tap_action:
+              action: more-info
+            icon_tap_action:
+              action: more-info
+          - type: tile
+            entity: sensor.gira_wetter_globalstrahlung
+            name: Globalstrahlung
+            icon: mdi:white-balance-sunny
+            tap_action:
+              action: more-info
+            icon_tap_action:
+              action: more-info
+          - type: tile
+            entity: sensor.gira_wetter_helligkeit_gesamt
+            name: Helligkeit
+            icon: mdi:brightness-6
+            tap_action:
+              action: more-info
+            icon_tap_action:
+              action: more-info
+          - type: markdown
+            content: Windanzeige nur bei gültigem Sensorstatus und Versorgung. Der Geräte-Ersatzwert 50 m/s (180 km/h) wird ausgeblendet.
+  - title: Sonne & Helligkeit
+    path: sonne
+    icon: mdi:white-balance-sunny
+    type: sections
+    max_columns: 3
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading: Vier Helligkeitssensoren
+          - type: tile
+            entity: sensor.gira_wetter_helligkeit_1
+            name: Sensor 1
+            icon: mdi:brightness-5
+            tap_action:
+              action: more-info
+            icon_tap_action:
+              action: more-info
+          - type: tile
+            entity: sensor.gira_wetter_helligkeit_2
+            name: Sensor 2
+            icon: mdi:brightness-5
+            tap_action:
+              action: more-info
+            icon_tap_action:
+              action: more-info
+          - type: tile
+            entity: sensor.gira_wetter_helligkeit_3
+            name: Sensor 3
+            icon: mdi:brightness-5
+            tap_action:
+              action: more-info
+            icon_tap_action:
+              action: more-info
+          - type: tile
+            entity: sensor.gira_wetter_helligkeit_4
+            name: Sensor 4
+            icon: mdi:brightness-5
+            tap_action:
+              action: more-info
+            icon_tap_action:
+              action: more-info
+      - type: grid
+        cards:
+          - type: heading
+            heading: Licht & Strahlung
+          - type: tile
+            entity: sensor.gira_wetter_helligkeit_max
+            name: Maximale Helligkeit
+            icon: mdi:brightness-7
+            tap_action:
+              action: more-info
+            icon_tap_action:
+              action: more-info
+          - type: tile
+            entity: sensor.gira_wetter_helligkeit_gesamt
+            name: Helligkeit mit Dämmerung
+            icon: mdi:brightness-6
+            tap_action:
+              action: more-info
+            icon_tap_action:
+              action: more-info
+          - type: tile
+            entity: sensor.gira_wetter_daemmerung
+            name: Dämmerung
+            icon: mdi:weather-sunset
+            tap_action:
+              action: more-info
+            icon_tap_action:
+              action: more-info
+          - type: tile
+            entity: sensor.gira_wetter_globalstrahlung
+            name: Globalstrahlung
+            icon: mdi:white-balance-sunny
+            tap_action:
+              action: more-info
+            icon_tap_action:
+              action: more-info
+      - type: grid
+        cards:
+          - type: heading
+            heading: Sonnenstand
+          - type: tile
+            entity: sensor.gira_wetter_sonnenazimut
+            name: Azimut
+            icon: mdi:compass-outline
+            tap_action:
+              action: more-info
+            icon_tap_action:
+              action: more-info
+          - type: tile
+            entity: sensor.gira_wetter_sonnenelevation
+            name: Elevation
+            icon: mdi:angle-acute
+            tap_action:
+              action: more-info
+            icon_tap_action:
+              action: more-info
+          - type: history-graph
+            title: Helligkeit · 24 Stunden
+            hours_to_show: 24
+            entities:
+              - sensor.gira_wetter_helligkeit_1
+              - sensor.gira_wetter_helligkeit_2
+              - sensor.gira_wetter_helligkeit_3
+              - sensor.gira_wetter_helligkeit_4
+  - title: Diagnose & GPS
+    path: diagnose
+    icon: mdi:stethoscope
+    type: sections
+    max_columns: 3
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading: Sensorzustand
+          - type: markdown
+            content: >-
+              {% set st = states('sensor.gira_wetter_sensorstatus') | int(-1) %}
+
+              **Statuswort:** {{ st if st >= 0 else 'Unbekannt' }}
+
+
+              {% if st >= 0 %}{% set bits = ['Betauungsschutz
+              aktiv','Trocknungsphase','AD-Werte ungültig','Druck
+              ungültig','Helligkeit Nord ungültig','Helligkeit Ost
+              ungültig','Helligkeit Süd ungültig','Helligkeit West
+              ungültig','Dämmerung ungültig','Globalstrahlung
+              ungültig','Temperatur ungültig','Regen
+              ungültig','Windgeschwindigkeit ungültig','Windrichtung
+              ungültig','Feuchte ungültig','Interner Systemfehler'] %}{% for i
+              in range(16) %}{% if st | bitwise_and(2**i) %}- {{ bits[i] }}
+
+              {% endif %}{% endfor %}{% endif %}
+          - type: entities
+            title: Überwachung
+            show_header_toggle: false
+            entities:
+              - entity: sensor.gira_wetter_sensorstatus
+                name: Sensorstatus Rohwert
+              - entity: binary_sensor.gira_wetter_versorgung_ok
+                name: Versorgungsspannung OK
+              - entity: binary_sensor.gira_wetter_windsensor_unveraendert
+                name: Windsensor unverändert
+              - entity: binary_sensor.gira_wetter_windrichtung_unveraendert
+                name: Windrichtung unverändert
+              - entity: binary_sensor.gira_wetter_kein_windsignal
+                name: Kein Windsignal
+      - type: grid
+        cards:
+          - type: heading
+            heading: Alle weiteren Messwerte
+          - type: entities
+            title: Wind & Komfort
+            show_header_toggle: false
+            entities:
+              - entity: sensor.gira_wetter_windgeschwindigkeit
+                name: Wind Rohwert · kann Ersatzwert sein
+              - entity: sensor.gira_wetter_windrichtung
+                name: Windrichtung Grad
+              - entity: sensor.gira_wetter_windorientierung
+                name: Windorientierung Text
+              - entity: binary_sensor.gira_wetter_windbereich
+                name: Windbereichsmeldung
+              - entity: binary_sensor.gira_wetter_schwuele
+                name: Schwüle
+              - entity: binary_sensor.gira_wetter_behaglichkeit
+                name: Behaglichkeit
+              - entity: sensor.gira_wetter_absolute_feuchte_rohwert
+                name: Absolute Luftfeuchte
+              - entity: sensor.gira_wetter_luftdruck
+                name: Luftdruck Rohwert Pa
+          - type: markdown
+            content: >-
+              Die absolute Feuchte wird als DPT 9.029 in g/m³ übertragen.
+              Wind-Rohwerte sind bei gesetztem Fehlerbit ungültig.
+      - type: grid
+        cards:
+          - type: heading
+            heading: GPS & Zeit
+          - type: markdown
+            content: >-
+              {% set gps = states('sensor.gira_wetter_fehlercode') | int(-1) %}
+
+              **GPS:** {% if gps < 0 %}Unbekannt{% elif gps | bitwise_and(3) ==
+              0 %}Daten und Zeit gültig{% else %}Daten oder Zeit ungültig{%
+              endif %}
+
+
+              Code 252 bedeutet gültige Daten und gültige Zeit.
+          - type: entities
+            title: GPS Messwerte
+            show_header_toggle: false
+            entities:
+              - entity: sensor.gira_wetter_gps_uhrzeit
+                name: Uhrzeit
+              - entity: sensor.gira_wetter_gps_datum
+                name: Datum
+              - entity: sensor.gira_wetter_gps_laenge
+                name: Längengrad
+              - entity: sensor.gira_wetter_gps_breite
+                name: Breitengrad
+              - entity: sensor.gira_wetter_gps_hoehe
+                name: Höhe
+              - entity: sensor.gira_wetter_sonnenazimut
+                name: Sonnenazimut
+              - entity: sensor.gira_wetter_sonnenelevation
+                name: Sonnenelevation
+              - entity: sensor.gira_wetter_fehlercode
+                name: GPS Statuscode

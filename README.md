@@ -62,6 +62,10 @@ Die Komplettdatei enthält 174 vorgesehene Basis-Gruppenadressen einschließlich
 | [docs/27_fbh_mdt_raumregelung.md](docs/27_fbh_mdt_raumregelung.md) | live eingerichtete MDT-FBH-Bedienung, HA-Regler und offene Pumpenfrage |
 | [docs/28_ets_bad_vorne_pm_2026-10-14.md](docs/28_ets_bad_vorne_pm_2026-10-14.md) | ETS-Protokoll Lichtverknüpfung Bad vorne und reduzierte HF-Reichweiten Küche/Bad |
 | [docs/29_google_assistant_etagensteuerung.md](docs/29_google_assistant_etagensteuerung.md) | Google-Etagenziele für Licht/Rollläden und separate Einzelbefehle für Sondergeräte |
+| [docs/30_google_knx_pruefung_2026-10-16.md](docs/30_google_knx_pruefung_2026-10-16.md) | ETS-Downloads, KNX-Verbindung und Diagnose der Google-Sprachstörung |
+| [docs/31_glastaster_display_nacht.md](docs/31_glastaster_display_nacht.md) | KNX-Displayumschaltung aller elf MDT-Glastaster um 20:00/07:30 Uhr |
+| [docs/32_wetter_fenster_inbetriebnahme_2026-10-16.md](docs/32_wetter_fenster_inbetriebnahme_2026-10-16.md) | Sitzungsprotokoll Wetter-Dashboard, Fensterdiagnose, Secure-Tunnel und offene Abnahme |
+| [docs/33_markise_eg_wetterschutz.md](docs/33_markise_eg_wetterschutz.md) | Direkter KNX-Wind-/Regenschutz ausschließlich der EG-Markise |
 
 ## Home Assistant
 
@@ -94,7 +98,7 @@ Dokumentiert sind sechs Rollladen-/Markisenentitäten, sieben Lichtentitäten un
 - Küchen-Glastaster `1.1.22`: ETS-Screenshots vom 25.09.2026 belegen die Anzeige-Parameter und Gruppenadressverknüpfungen für Feuchte (`13/0/1`), berechnetes CO2-VOC (`13/0/5`) und echtes CO2 (`13/0/4`). Der rohe VOC-DPT passt zu keinem auswählbaren numerischen MDT-Statuswert. Download und Anzeige am physischen Taster sind noch nicht bestätigt.
 - Glastaster `1.1.21 Eingang Gang`: ETS-Screenshot vom 25.09.2026 belegt Objekt 108 `Temperaturmesswert` → `3/4/1 Gang Isttemperatur` (DPT 9.001). Applikationsdownload, Busprüfung und die passende Home-Assistant-Sensorentität sind noch nicht bestätigt.
 - Glastaster `1.1.32` und `1.1.33`: im ETS-Projekt angelegt; Raum, Funktion und Gruppenadressverknüpfungen sind noch festzulegen.
-- Wetterstation `1.1.40`: im ETS-Screenshot vom 29.08.2026 ohne grüne Statushäkchen; Applikation, Parameter und Gruppenadressverknüpfungen prüfen.
+- Wetterstation `1.1.40`: am 16.10.2026 mit B00D29 programmiert, 33 Mess-/Diagnoseausgänge in HA und eigenem Wetter-Dashboard eingebunden. Interne Beschattungssteuerung deaktiviert; später ausschließlich EG-Markise mit direktem Wind-/Regenschutz verbunden, Alarmrichtung Ab und keine Fahrt bei Alarmende. Stand in [33 – EG-Markise](docs/33_markise_eg_wetterschutz.md); Details und Nachweisgrenzen in [11 – Wetterstation](docs/11_wetterstation_gira.md).
 - Gruppenadress-Iststand vom 29.08.2026 nach dem Zusatzimport: Hauptgruppen `0` bis `11` sowie `13`; unter `11 Wärmepumpe` sind die Mittelgruppen `11/0`, `11/1` und `11/3` sichtbar. Die 43 Einzeladressen und DPTs sind noch durch einen ETS-Export zu bestätigen.
 - Sicherheitsbereich: MDT SCN-SAFE liegt ausschließlich unter `10/0`; die noch nicht in Betrieb genommene Rauchwarnmelder-Planung liegt ausschließlich unter `10/1`. Die versehentliche Namenskollision wurde repariert und als Vorfall dokumentiert.
 - Raumstand: neun getrennte Räume. Die Abstellkammer ist weder Badezimmer noch Bad vorne und erhält ausschließlich `12/0/0` und `12/0/1` unter `12 Licht Erweiterung`.

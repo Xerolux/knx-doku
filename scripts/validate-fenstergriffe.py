@@ -12,6 +12,10 @@ assert len({x["state_address"] for x in raw}) == 22
 assert all(x["sync_state"] is False for x in raw)
 assert len({x["device"]["id"] for x in raw}) == 11
 status = package["template"][0]["sensor"]
+# HA template sensors reject this key; previously all reception helpers failed
+# to load while the position sensors silently kept displaying Unbekannt.
+assert all("entity_category" not in sensor
+           for block in package["template"] for sensor in block.get("sensor", []))
 assert len(status) == 11
 for sensor in status:
     for opened, tilted in product((None, 0, 1), repeat=2):

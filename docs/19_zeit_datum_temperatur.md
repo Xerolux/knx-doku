@@ -18,6 +18,9 @@ Für die KNX-Zeitversorgung wird die zusätzliche E-Mail- und Zeitserver-Applika
 | 0/5/0 | Uhrzeit | 10.001 | reine Tageszeit, 3 Byte |
 | 0/5/1 | Datum | 11.001 | reines Datum, 3 Byte |
 | 0/5/2 | Datum/Uhrzeit | 19.001 | kombinierter Wert, 8 Byte |
+| 0/5/4 | Displays Tag/Nacht (Tag=1) | 1 Bit | separate Displayumschaltung, Tag = 1 / Nacht = 0 |
+
+Die Displayadresse `0/5/4` wurde am 16.10.2026 mit Kanal 1 der Schaltuhr `1.1.7` und Objekt 106 aller elf MDT-Glastaster verbunden. Zeitprogramm und Downloadnachweise stehen in [31 – Display-Zeitsteuerung](31_glastaster_display_nacht.md). Die zusätzliche Importdatei [gruppenadressen-display-tag-nacht.xml](../ets-import/gruppenadressen-display-tag-nacht.xml) enthält nur diese Adresse; sie ist im aktuellen Live-Projekt bereits angelegt.
 
 Für den MDT Glastaster II Smart wird bevorzugt `0/5/2` verwendet, weil Datum und Uhrzeit gemeinsam übertragen werden können. Die getrennten Adressen `0/5/0` und `0/5/1` bleiben für Geräte bestehen, die nur den jeweiligen Einzelwert unterstützen.
 

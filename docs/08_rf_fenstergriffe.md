@@ -1,12 +1,32 @@
 # 08 – MDT KNX-RF-Fenstergriffe
 
-Stand: 15.10.2026
+Stand: 16.10.2026
+
+## Diagnose und HA-Korrektur am 16.10.2026
+
+Die elf Telegramm-Empfangssensoren waren live nicht angelegt. Ursache war der für Template-Sensoren unzulässige Schlüssel `entity_category: diagnostic`; dadurch fehlten die von den Stellungsanzeigen referenzierten Entitäten. Die elf Schlüssel wurden im Live-Paket und in der Repository-Kopie entfernt und Template-Entitäten neu geladen. Alle elf Empfangssensoren existieren nun. Die HA-Konfigurationsprüfung war erfolgreich; `scripts/validate-fenstergriffe.py` schützt zusätzlich vor einer erneuten Einführung dieses Schlüssels.
+
+Zum Prüfzeitpunkt hatte noch keiner der elf Empfangssensoren ein bestätigtes Grifftelegramm gespeichert. Die Anzeigen bleiben daher korrekt **Unbekannt**. Keine Telegramme wurden simuliert und kein Zustand auf geschlossen gesetzt. Ein physischer Test offen/gekippt/geschlossen wurde beim Nutzer angefragt und ist noch nicht nachgewiesen.
+
+Die aktuelle ETS-Geräteliste zeigt grüne Programmierkennzeichen für Koppler und die sichtbaren Griffe. Das ist gegenüber dem gestrigen offenen Downloadstand ein neuer Projektbefund, aber noch kein Funk-/Secure-Funktionsnachweis. HA ist live unter **1.1.255** verbunden, ETS verwendet **1.1.254**. Der ETS-Tunneling-Endpunkt **1.1.255 (Kanal 1)** zeigte zunächst **0 Assoziationen**. Nach ausdrücklicher Nutzerfreigabe wurden genau die 22 Status-/Kippadressen der Tabelle zugeordnet; die ETS bestätigt nun **22 Assoziationen**. Raum-Sammeladressen und der nicht verwendete Bereich 5/2 wurden ausgelassen. Der Nutzer hat den anschließenden Export und Import des neuen Schlüsselbunds in HA bestätigt. Danach zeigt die HA-KNX-Seite wieder Verbunden unter 1.1.255. Den physischen Griff-Test kann der Nutzer erst später durchführen; sichere Grifftelegramme sind deshalb noch nicht bestätigt. Passwörter und Schlüssel werden nicht in dieser Dokumentation gespeichert.
+
+Die folgenden Abschnitte enthalten die vollständige Zuordnung und den historischen Vorbereitungsstand vom 15.10.; offene Punkte sind anhand dieses neuen Befunds fortzuführen.
+
+### Nachprüfung der weiterhin unbekannten Stellungsentitäten
+
+Die Nutzerbeanstandung betrifft ausdrücklich `sensor.eg_fenster_schlafzimmer_rechts_gross_stellung` und alle weiteren Stellungsentitäten. **Die funktionierende Zustandsanzeige ist noch nicht nachgewiesen und darf nicht als behoben gemeldet werden.** Live haben alle 22 Rohsensoren keine Absenderattribute; alle elf Empfangssensoren haben noch keine gespeicherten Zustandsbits. Die Rohwerte `off` sind daher weiterhin kein Beweis für geschlossene Fenster.
+
+Am konkreten Beispiel `1.1.17` wurde in ETS zusätzlich geprüft: Objekt 2 ist mit `5/4/0`, Objekt 3 mit `5/4/20` verbunden. Beide Objekte haben K/Ü, aber kein L-Flag. Fensterstellung und Kippstellung stehen beide auf **zyklisch senden: nicht aktiv**. Die Polarität ist jeweils **Wert 1**. Auch „In Betrieb“ ist nicht zyklisch aktiv; Empfangsbereitschaft nach Neustart ist auf fünf Minuten begrenzt. Damit lässt sich für diesen Griff kein Anfangszustand über regelmäßige Meldungen oder eine normale Gruppenleseanfrage herbeiführen. Diese Parameterprüfung wurde nicht pauschal als Einzelprüfung aller elf Griffe ausgegeben.
+
+Im HA-Core-Protokoll wurde der frühere ungültige Template-Schlüssel zuletzt um 19:10 gemeldet; die später korrigierten elf Empfangssensoren sind geladen. Die sichtbare Protokollübersicht enthält keinen neuen Fehler zur Entschlüsselung der Griffe. Das ist kein Beweis für eine funktionierende Secure-Strecke ohne tatsächliches Grifftelegramm.
+
+Der nächste notwendige Nachweis bleibt ein echter Wechsel eines benannten Griffs mit gleichzeitigem Abgleich im ETS-/HA-Gruppenmonitor (Quelle, Ziel, Nutzdaten, Rohsensor, Empfangsattribute, Stellungsanzeige). Der Nutzer kann dies erst später durchführen. Bis dahin wurde keine geschlossene Stellung unterstellt. Eine spätere Aktivierung zyklischer Statusmeldungen erfordert eine bewusste Intervallwahl und einen Applikationsdownload am aufgeweckten Griff; sie wurde hier nicht unbemerkt vorbereitet oder geladen. Quelle für Sendeparameter und Empfangsbereitschaft: [MDT Handbuch, Abschnitte 3.2.1 und 3.2.2](https://www.mdt.de/fileadmin/user_upload/user_upload/download/RF-FGxS-01S_MDT_TM_V10_DE.pdf).
 
 ## Bestand und Kopplung
 
 Elf MDT KNX RF+ Fenstergriffe, Secure (Produktfamilie RF-FGxS.01S; Farbvariante nicht bestätigt) sind im **RF Segment 1** unter der TP-Linie 1.1 angelegt. Der **Gira 5114 00 RF Multi/TP Medienkoppler 1.1.2** verbindet das Segment mit TP. Eine separate RF-Linie 1.2 ist nicht erforderlich.
 
-Die Tabelle beschreibt die heute im offenen ETS-Projekt gesetzten Objektverknüpfungen. Ihr Download und ihre physische Funktion sind noch nicht bestätigt.
+Die Tabelle beschreibt die im ETS-Projekt gesetzten Objektverknüpfungen. Der am 16.10. dokumentierte ETS-Downloadverlauf bestätigt erfolgreiche Downloads der elf Griffe (siehe [Programmierstand](22_programmierstand_ets.md)). Der Empfang ihrer sicheren Telegramme und die physische Funktion sind weiterhin offen.
 
 | Adresse | Fenstergriff | Objekt 2: Fensterstellung | Objekt 3: Kippstellung | HA-Stellungsanzeige |
 |---|---|---|---|---|
@@ -59,19 +79,40 @@ Die ergänzende Ansicht liegt unter [lovelace_fenster_eg_view.yaml](../home-assi
 
 ## Programmierstand und verbleibende Inbetriebnahme
 
-Vor dieser Erweiterung zeigte die ETS-Historie erfolgreiche vollständige Downloads für Koppler 1.1.2 und Badgriffe 1.1.39/1.1.42. Sie bestätigen nicht den Download der danach neu angelegten Verknüpfungen. Die vorherige Kopplerdiagnose zeigte nur Teilnehmer 11–19 im Subsegment und einen gespeicherten Secure-Sequenzfehler von 1.1.39. Der Nutzer meldete nach Koppler-/Badgriffprogrammierung Erfolg; die ETS-Historie bestätigte die Downloads.
+Der Vorbereitungsstand vom 15.10. ist durch die folgenden Befunde vom 16.10. ergänzt:
 
-Für diese neue Erweiterung sind noch erforderlich:
+- Erfolgreiche Downloads der elf Griffe sind im [ETS-Programmierstand](22_programmierstand_ets.md) dokumentiert. Die dortige Downloadhistorie ist von der späteren HA-Empfangsprüfung zu unterscheiden.
+- Die 22 Status-/Kippadressen sind dem tatsächlich verwendeten HA-Tunnel **1.1.255** zugeordnet; den erneuten Schlüsselbundexport und HA-Import hat der Nutzer bestätigt.
+- Ein erneuter Download aktualisierter Router-/Kopplertabellen wurde in dieser Wetter-/Fensterdiagnose nicht durchgeführt oder nachgewiesen.
+- Alle elf HA-Empfangssensoren sind nach der Template-Korrektur vorhanden, aber noch ohne bestätigte Zustandsbits. Die Stellungsanzeigen bleiben **Unbekannt**.
 
-1. Die 22 gesicherten Gruppenadressen am tatsächlich von HA verwendeten Tunnel-Endpunkt prüfen bzw. zuordnen. Den HA-Tunnel nicht mit dem ETS-Tunnel verwechseln.
-2. Betroffenen Router und Medienkoppler mit aktuellen Tabellen laden.
-3. Aktuellen ETS-Schlüsselbund exportieren und in HA importieren. Schlüssel und Passwörter bleiben privat; KNX Data Secure bleibt aktiviert.
-4. Jeden Griff unmittelbar vor seinem Applikationsdownload mit kurzem Druck auf die Programmiertaste aufwecken. MDT empfiehlt das gegen Deep Sleep. Jeweils nur ein Griff im Programmiermodus.
-5. Geschlossen, geöffnet und gekippt je Griff vor Ort prüfen; Quelle, Zieladresse, Nutzdaten und HA-Anzeige abgleichen. Danach Programmiermodus beenden.
+### Warum die Adressen am HA-Tunnel zugeordnet wurden
 
-Der Nutzer hat am 15.10.2026 den Import der aktuellen Keys in HA bestätigt. Der Applikationsdownload ist für den Folgetag vorgesehen. Der Schlüsselimport wurde nicht unabhängig erneut geprüft; die sichere Kommunikation ist erst nach den Downloads und empfangenen Telegrammen bestätigt.
+Die Zuordnung beschreibt in ETS, welche gesicherten Gruppenadressen der Tunneling-Endpunkt benötigt. Sie dient der passenden Bereitstellung der Gruppeninformationen und Schlüssel für den exportierten Schlüsselbund. HA benutzt **1.1.255**, der ETS-Monitor **1.1.254**; deshalb wurde der HA-Endpunkt ausgewählt. Die Zuordnung erzeugt weder Griffzustände noch Verbindungen zu Rollläden oder anderen Aktoren. Dass die zuvor fehlende Zuordnung die alleinige Ursache für „Unbekannt“ war, ist **nicht nachgewiesen**. Erst ein echtes eingehendes Grifftelegramm kann die Secure-Strecke und die Anzeige bestätigen.
 
-**Download der neuen Verknüpfungen, Prüfung der sicheren Kommunikation und physischer Zustandstest sind noch offen.** Die gespeicherten Karten sind daher noch kein Nachweis einer funktionierenden Fensterüberwachung.
+### Besprochene Sendeparameter – Empfehlung, nicht heruntergeladen
+
+Für **Fensterstellung und Fensterkippstellung jeweils zyklisch alle 1 Stunde** wurde ein Kompromiss zwischen Wiederholung des Zustands und Batteriebedarf empfohlen. Änderungen sollen weiterhin unmittelbar gesendet werden. MDT nennt eine Voreinstellung von fünf Stunden und weist auf den höheren Batteriebedarf kürzerer Intervalle hin. Die Stunde ist unsere besprochene Intervallwahl, keine Herstellervorgabe. Zyklische Meldungen ersetzen keinen Nachweis einer funktionierenden Funk-/Secure-Strecke.
+
+Im anschließend vom Nutzer gezeigten Parameterbild waren folgende Werte sichtbar:
+
+| Parameter | Sichtbarer Wert | Bedeutung |
+|---|---|---|
+| „In Betrieb“ zyklisch senden | nicht aktiv | optionales Lebenszeichen; enthält keine Fensterstellung |
+| Empfangsbereitschaft nach Griffbewegung | aktiv, `00:03` mm:ss | drei Sekunden Empfangsfenster |
+| Empfangsbereitschaft nach Neustart | aktiv, `05:00` mm:ss | fünf Minuten Empfangsfenster |
+
+Die Empfangszeiten wurden als beizubehaltende Werte besprochen. Empfangsbereitschaft schaltet keinen zyklischen Versand von Stellungswerten ein. Für die reine Stellungsanzeige wurde kein zusätzliches „In Betrieb“-Lebenszeichen verlangt. Im Bild ist kein Gerät eindeutig identifiziert; es beweist weder diese Einstellung an allen elf Griffen noch einen Download. Bei der vorherigen Einzelprüfung von 1.1.17 war die Empfangsbereitschaft nach Griffbewegung noch nicht aktiv.
+
+In dieser Sitzung wurden **keine neuen Griffparameter durch uns geladen**. Für eine spätere Änderung muss der jeweilige Griff entsprechend dem MDT-Verfahren wach sein und seine Applikation geladen werden. Der bereits dokumentierte vorherige Downloadstand bleibt davon getrennt.
+
+### Verbleibender Funktionsnachweis
+
+Je Griff geschlossen → geöffnet → gekippt → geschlossen prüfen und Quelle, Zieladresse, Nutzdaten, Empfangsattribute sowie HA-Stellungsanzeige abgleichen. Insbesondere müssen beide Zustandsbits tatsächlich eingetroffen sein, bevor „Geschlossen“ bestätigt werden kann. Der Nutzer hat diesen Test auf später verschoben.
+
+Die sichtbaren Spook-Meldungen zu unbekannten Attributen der Stellungsanzeigen sind ebenfalls noch offen: Die Empfangssensoren existieren, ihre Zustandsattribute fehlen jedoch bis zum ersten passenden Telegramm. Das ist vom behobenen Schemafehler zu unterscheiden.
+
+**Die Fensterüberwachung ist noch nicht funktional abgenommen.** Vollständiges Sitzungsprotokoll: [Wetter und Fenster am 16.10.2026](32_wetter_fenster_inbetriebnahme_2026-10-16.md).
 
 ## Quellen
 
