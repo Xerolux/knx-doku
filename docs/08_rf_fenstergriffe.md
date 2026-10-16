@@ -2,6 +2,19 @@
 
 Stand: 16.10.2026
 
+## Spook-Reparaturen und Paketumbau am 16.10.2026 (zweite Sitzung)
+
+Nach der ersten Korrektur blieben in HA elf aktive Spook-Reparaturen der Art `template_unknown_attribute_references` für alle elf Stellungsanzeigen bestehen. Ursache: Die Stellungsanzeigen lasen `offen`/`gekippt` per `state_attr()` von den Empfangssensoren; diese Attribute existieren erst nach dem ersten bestätigten Grifftelegramm, sodass Spook die Referenzen zu Recht als ungültig meldete.
+
+Umbau des Live-Pakets `packages/knx_fenstergriffe_eg.yaml` (Repository-Kopie synchron):
+
+- Die elf Stellungsanzeigen sind jetzt selbst trigger-basiert (`trigger: knx.telegram` auf beide Adressen des Griffs, Quelle und Nutzdaten gefiltert wie bisher). Sie führen `offen`/`gekippt` als eigene Attribute mit `-1`-Vorelegung und referenzieren keine anderen Entitäten mehr.
+- Die elf separaten Telegramm-Empfangssensoren entfallen; keine Karte, Automation oder derivate Anzeige verwendete sie. Ihre Entitäten wurden aus der Entity-Registry entfernt. Zuletzt empfangenes Telegramm steht jetzt als Attribut `letzte_meldung` der Stellungsanzeige.
+- Zusätzlicher Latenzfehler beseitigt: `knx.telegram` stellt kein `trigger.timestamp` bereit; das alte Zustands-Template der Empfangssensoren hätte beim ersten echten Telegramm einen Template-Fehler erzeugt. Die Zeitmarke verwendet jetzt `now()`.
+- Die 22 KNX-Binärsensoren sind unverändert (bytengleich zur vorherigen Version; `sync_state: false`).
+
+Verifikation: `ha core check` erfolgreich; `template/reload` und `knx/reload` ohne Core-Neustart; elf Stellungsanzeigen live mit Zustand **Unbekannt**; null `_empfang`-Entitäten; Reparatur-Registry von 310 auf 299 aktive Issues gesunken, keine fenstergriffbezogene Reparatur mehr vorhanden. `scripts/validate-fenstergriffe.py` prüft zusätzlich 444 Zustandskombinationen und lehnt `state_attr(`-Querverweise sowie `trigger.timestamp` in den Templates ab; `scripts/generate_fenstergriffe.py` erzeugt das Paket aus der Grifftabelle.
+
 ## Diagnose und HA-Korrektur am 16.10.2026
 
 Die elf Telegramm-Empfangssensoren waren live nicht angelegt. Ursache war der für Template-Sensoren unzulässige Schlüssel `entity_category: diagnostic`; dadurch fehlten die von den Stellungsanzeigen referenzierten Entitäten. Die elf Schlüssel wurden im Live-Paket und in der Repository-Kopie entfernt und Template-Entitäten neu geladen. Alle elf Empfangssensoren existieren nun. Die HA-Konfigurationsprüfung war erfolgreich; `scripts/validate-fenstergriffe.py` schützt zusätzlich vor einer erneuten Einführung dieses Schlüssels.
@@ -60,7 +73,7 @@ Es werden keine Batterie- oder Alarmwerte erfunden. MDT erlaubt eine parametrier
 
 ## Home Assistant
 
-Das Paket [knx_fenstergriffe_eg.yaml](../home-assistant/knx_fenstergriffe_eg.yaml) ist live unter `packages/knx_fenstergriffe_eg.yaml` gespeichert und über die bestehende Paket-Einbindung geladen. Es enthält 22 empfangende KNX-Binärsensoren, elf Telegramm-Empfangssensoren und elf Stellungsanzeigen. KNX und Template-Entitäten wurden ohne Core-Neustart neu geladen. Die HA-Konfigurationsprüfung war erfolgreich.
+Das Paket [knx_fenstergriffe_eg.yaml](../home-assistant/knx_fenstergriffe_eg.yaml) ist live unter `packages/knx_fenstergriffe_eg.yaml` gespeichert und über die bestehende Paket-Einbindung geladen. Es enthält 22 empfangende KNX-Binärsensoren und elf trigger-basierte Stellungsanzeigen. KNX und Template-Entitäten wurden ohne Core-Neustart neu geladen. Die HA-Konfigurationsprüfung war erfolgreich.
 
 Die KNX-Roh-Binärsensoren können bereits nach dem Start `off` anzeigen, ohne dass ein Telegramm empfangen wurde. Deshalb verwendet die sichtbare Stellungsanzeige ausschließlich die gespeicherten Nutzdaten tatsächlich eingehender Telegramme **von der jeweiligen Geräteadresse**. Ausgehende Telegramme, Leseanfragen und andere Absender bestätigen keinen Zustand.
 
@@ -69,7 +82,7 @@ Die KNX-Roh-Binärsensoren können bereits nach dem Start `off` anzeigen, ohne d
 - **Geschlossen**: beide Bits tatsächlich als 0 empfangen.
 - **Unbekannt**: noch nicht genügend bestätigte Daten vorhanden.
 
-Die Empfangssensoren stellen nach einem HA-Neustart den letzten bekannten Zustand wieder her. Das ist kein Beweis für aktuelle Funk-Erreichbarkeit. Es gibt keinen automatischen Reset auf geschlossen. `sync_state: false` vermeidet regelmäßige Leseanfragen an die schlafenden Batteriegeräte. Automationen sollten die bestätigten Stellungsanzeigen statt der initialen Rohwerte verwenden.
+Die Stellungsanzeigen führen `offen` und `gekippt` als eigene Attribute (fehlend = noch kein Telegramm, dargestellt als `-1`) und stellen nach einem HA-Neustart den letzten bekannten Zustand wieder her. Das ist kein Beweis für aktuelle Funk-Erreichbarkeit. Es gibt keinen automatischen Reset auf geschlossen. `sync_state: false` vermeidet regelmäßige Leseanfragen an die schlafenden Batteriegeräte. Automationen sollten die bestätigten Stellungsanzeigen statt der initialen Rohwerte verwenden.
 
 ## Lovelace
 
@@ -108,9 +121,9 @@ In dieser Sitzung wurden **keine neuen Griffparameter durch uns geladen**. Für 
 
 ### Verbleibender Funktionsnachweis
 
-Je Griff geschlossen → geöffnet → gekippt → geschlossen prüfen und Quelle, Zieladresse, Nutzdaten, Empfangsattribute sowie HA-Stellungsanzeige abgleichen. Insbesondere müssen beide Zustandsbits tatsächlich eingetroffen sein, bevor „Geschlossen“ bestätigt werden kann. Der Nutzer hat diesen Test auf später verschoben.
+Je Griff geschlossen → geöffnet → gekippt → geschlossen prüfen und Quelle, Zieladresse, Nutzdaten sowie die HA-Stellungsanzeige samt ihrer Attribute `offen`, `gekippt` und `letzte_meldung` abgleichen. Insbesondere müssen beide Zustandsbits tatsächlich eingetroffen sein, bevor „Geschlossen“ bestätigt werden kann. Der Nutzer hat diesen Test auf später verschoben.
 
-Die sichtbaren Spook-Meldungen zu unbekannten Attributen der Stellungsanzeigen sind ebenfalls noch offen: Die Empfangssensoren existieren, ihre Zustandsattribute fehlen jedoch bis zum ersten passenden Telegramm. Das ist vom behobenen Schemafehler zu unterscheiden.
+Die Spook-Reparaturen zu unbekannten Attributen sind mit dem Paketumbau der zweiten Sitzung vom 16.10. behoben und werden vom Validierungsskript gegen Regression geschützt.
 
 **Die Fensterüberwachung ist noch nicht funktional abgenommen.** Vollständiges Sitzungsprotokoll: [Wetter und Fenster am 16.10.2026](32_wetter_fenster_inbetriebnahme_2026-10-16.md).
 
