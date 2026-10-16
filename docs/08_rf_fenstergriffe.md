@@ -15,6 +15,18 @@ Umbau des Live-Pakets `packages/knx_fenstergriffe_eg.yaml` (Repository-Kopie syn
 
 Verifikation: `ha core check` erfolgreich; `template/reload` und `knx/reload` ohne Core-Neustart; elf Stellungsanzeigen live mit Zustand **Unbekannt**; null `_empfang`-Entitäten; Reparatur-Registry von 310 auf 299 aktive Issues gesunken, keine fenstergriffbezogene Reparatur mehr vorhanden. `scripts/validate-fenstergriffe.py` prüft zusätzlich 444 Zustandskombinationen und lehnt `state_attr(`-Querverweise sowie `trigger.timestamp` in den Templates ab; `scripts/generate_fenstergriffe.py` erzeugt das Paket aus der Grifftabelle.
 
+## Grifftest am Abend des 16.10.2026: Telegramm kam nicht an
+
+Der Nutzer öffnete nach der Korrektur eine Tür; keine Anzeige reagierte. Auswertung des HA-Telegrammprotokolls (`.storage/knx/telegrams.db`, 167 154 Einträge):
+
+- **Null** Telegramme auf irgendeine Griffadresse `5/x/*` und **null** von einer Griff-Quelladresse (1.1.11–1.1.19, 1.1.39, 1.1.42) – jemals, nicht nur heute.
+- Der HA-Tunnel 1.1.255 ist gesund: Wetterstation 1.1.40 liefert fortlaufend, und Data-Secure-Empfang funktioniert nachweislich (Zeitserver 1.1.31 → 0/5/0+0/5/1, 288 secure Telegramme/24 h, entschlüsselt).
+- Damit scheidet die HA-Seite (Tunnel, Schlüsselbund, Trigger, Anzeige) als Fehlerort aus. Der Bruch liegt zwischen Griff und TP-Linie 1.1.
+
+**Hauptverdacht: Filtertabelle des Gira Medienkopplers 1.1.2.** RF→TP-Gruppentelegramme werden nur für Adressen der Koppler-Filtertabelle weitergeleitet; ein aktualisierter Koppler-Download steht bereits seit der Wetter-/Fenstersitzung aus („nicht durchgeführt oder nachgewiesen“). Die erfolgreichen ETS-Griffdownloads belegen nur die individualadressierte Programmierung über den Tunnel, nicht die Gruppenweiterschaltung. Nächster Schritt: vollständiger Download der Koppleranwendung 1.1.2 in ETS, danach Grifftest.
+
+Nebenbefund: `knx.reload` stoppt die Telegrammprotokollierung in `telegrams.db` (letzter Eintrag exakt beim Reload; Busverkehr läuft weiter). Ein Core-Neustart reaktiviert sie; für den Grifftest sind die 22 KNX-Roh-Binärsensoren der zuverlässige Indikator.
+
 ## Diagnose und HA-Korrektur am 16.10.2026
 
 Die elf Telegramm-Empfangssensoren waren live nicht angelegt. Ursache war der für Template-Sensoren unzulässige Schlüssel `entity_category: diagnostic`; dadurch fehlten die von den Stellungsanzeigen referenzierten Entitäten. Die elf Schlüssel wurden im Live-Paket und in der Repository-Kopie entfernt und Template-Entitäten neu geladen. Alle elf Empfangssensoren existieren nun. Die HA-Konfigurationsprüfung war erfolgreich; `scripts/validate-fenstergriffe.py` schützt zusätzlich vor einer erneuten Einführung dieses Schlüssels.
