@@ -34,10 +34,10 @@
 | Adresse | Gerät | Aktueller Stand |
 |---:|---|---|
 | 1.1.20 | MDT BE-GT2Tx.01 / Glastaster II Smart mit Temperatursensor | Eingang; Zentral Licht sowie Zeit-/Temperaturanzeige werden eingerichtet |
-| 1.1.21–1.1.28 | MDT Glastaster II Smart mit Temperatursensor | im ETS-Projekt vorhanden; `1.1.22` ist laut ETS-Screenshot vom 25.09.2026 der Küchen-Glastaster; übrige Raumzuordnungen noch dokumentieren |
-| 1.1.29 | OpenKNX RaumController | Raumklimaobjekte verbunden und am 17.08.2026 erfolgreich im Gruppenmonitor geprüft; VOC und Helligkeit lieferten beim Test noch `0` |
-| 1.1.30 | MDT Präsenzmelder 360° KLR 4S | im ETS-Projekt vorhanden; Screenshot vom 29.08.2026 mit grünen Statushäkchen, genaue Bestellnummer und Raumzuordnung prüfen |
-| 1.1.32–1.1.33 | MDT Glastaster II Smart mit Temperatursensor | im ETS-Projekt angelegt, im Screenshot vom 29.08.2026 ohne grüne Statushäkchen; Raum, Funktion und Gruppenadressverknüpfungen offen |
+| 1.1.21–1.1.28 | MDT Glastaster II Smart mit Temperatursensor | ETS-Räume am 18.10.2026 zugeordnet: Gang, Küche, Wohnzimmer, Arbeitszimmer, Schlafzimmer, Gang, Terrasse, Gang; siehe [Raumtabelle](35_raumzuordnung_ets_2026-10-18.md) |
+| 1.1.29 | OpenKNX RaumController | Treppenhaus; Raumklimaobjekte verbunden und am 17.08.2026 erfolgreich im Gruppenmonitor geprüft; VOC und Helligkeit lieferten beim Test noch `0` |
+| 1.1.30 | MDT Präsenzmelder 360° KLR 4S | im ETS-Projekt vorhanden; Screenshot vom 29.08.2026 mit grünen Statushäkchen, Raum Gang seit 18.10.2026 zugeordnet; genaue Bestellnummer noch abgleichen |
+| 1.1.32–1.1.33 | MDT Glastaster II Smart mit Temperatursensor | ETS-Räume Bad (`1.1.32`) und Bad Gang (`1.1.33`) am 18.10.2026 zugeordnet; Displaydownload siehe [31](31_glastaster_display_nacht.md), Lichtfunktion siehe [34](34_abstellkammer_zentral_bad_2026-10-18.md) |
 | 1.1.38 | Licht Bad vorne, Taster mit Wippen A+B und C+D | Wippe A+B schaltet `1.1.36` über `1/7/0`; A = EIN, B = AUS; am 14.10.2026 in ETS verknüpft |
 | 1.1.40 | Gira Wetterstation Plus, ETS-Applikation B00D21 | im ETS-Projekt; im Screenshot vom 29.08.2026 ohne grüne Statushäkchen, vollständigen Programmier- und Verknüpfungsstand prüfen |
 | 1.1.41 | Reserve/ETS-Platzhalter für Gira KNX Rauchwarnmelder, Applikation C01602 | noch kein vorhandenes oder in Betrieb genommenes KNX-Gerät bestätigt; Gruppenadressen unter `10/1` sind reine Planung |
@@ -69,10 +69,8 @@ Die MDT SCN-RTC20.01 wird für Datum und Uhrzeit als Slave betrieben. Home Assis
 ## Noch zu bestätigen
 
 - Aufgabe und physikalische Adresse des zweiten MDT IP-Routers
-- Raumzuordnung der Glastaster `1.1.21` bis `1.1.28` (außer `1.1.22` Küche)
-- Raum-, Bedienfunktions- und Gruppenadresszuordnung der Glastaster `1.1.32` und `1.1.33`
-- Einbauort und genaue Hardwarevariante des OpenKNX RaumControllers `1.1.29`
-- genaue Bestellnummer und Raumzuordnung des Präsenzmelders `1.1.30`
+- genaue Hardwarevariante des OpenKNX RaumControllers `1.1.29` (Treppenhaus)
+- genaue Bestellnummer des Präsenzmelders `1.1.30` (Gang)
 - funktionaler Programmier- und Verknüpfungsstand von `1.1.29` und `1.1.40`; grüne beziehungsweise fehlende ETS-Statussymbole ersetzen keine Funktionsprüfung
 - tatsächliche Belegung des zweiten Heizungsaktors
 - Einbauort der noch nicht montierten Reservekomponenten
@@ -86,3 +84,7 @@ Das Licht wird in der ersten Ausbaustufe nur ein- und ausgeschaltet. DALI und RG
 ## Lichtzuordnung vom 18.10.2026
 
 `1.1.37 Abstellkammer` ist der MDT AKK-01UP.03 mit KO 0/7 auf `12/0/0` und `12/0/1`. `1.1.43 Licht Abstellkammer` sendet Wippe A+B, KO 0, auf `12/0/0`. Beide Geräte wurden erfolgreich programmiert. `1.1.33 Bad Gang` behält Gang/Bad, die bisherige Abstellkammerfunktion T5/6 ist deaktiviert und geladen. Der falsche AKS-Kanal H auf `1.1.3` ist deaktiviert und geladen. [Protokoll 34](34_abstellkammer_zentral_bad_2026-10-18.md).
+
+## ETS-Räume vom 18.10.2026
+
+Alle 45 ETS-Geräte sind unter Home in 14 Räumen/Bereichen zugeordnet. Alle MDT-Technikgeräte einschließlich `1.1.36` und `1.1.37` liegen nach Nutzerangabe im Keller / Technikraum; ihr Funktionsname bezeichnet das geschaltete Licht. Taster, Fenstergriffe und Raumfühler sind ihren Räumen zugeordnet. Enertex und Rauchmelder-Eintrag liegen ebenfalls im Technikraum, der Gira-Medienkoppler im EG Gang und die Wetterstation unter Dach / Außenbereich. Vollständige Tabelle: [35 – Raumzuordnung](35_raumzuordnung_ets_2026-10-18.md).

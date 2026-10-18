@@ -65,7 +65,7 @@ Der OpenKNX RaumController `1.1.29` stellt seine Raumklimawerte zuerst für Home
 
 Die Adressen liegen deshalb in `13 Raumklima` und nicht in `9 Home Assistant`. Home Assistant ist Verbraucher der Messwerte, aber nicht deren Eigentümer oder Voraussetzung.
 
-Der Einbauort von `1.1.29` ist noch zu bestätigen. Bis dahin bleibt die Benennung gerätebezogen; nach der Raumzuordnung können Mittelgruppe und Namen geändert werden, die Adressen selbst bleiben bestehen.
+`1.1.29` heißt im aktuellen ETS-Projekt Raumcontroller Treppenhaus und wurde am 18.10.2026 formal dem Raum Treppenhaus zugeordnet. Bestehende Gruppenadressen bleiben unverändert; siehe [Raumzuordnung](35_raumzuordnung_ets_2026-10-18.md).
 
 ## Gruppenadressen und Objekte
 

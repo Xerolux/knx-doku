@@ -31,14 +31,19 @@ Die Linie **1.3** bleibt vorerst leer. Die Wetterstation und andere bereits vorh
 1.1.9   MDT SCN-SAFE.01 Sicherheitsmodul
 1.1.10  MDT VC-EASY.02 VisuControl Easy II
 1.1.20  MDT Glastaster II Smart mit Temperatursensor – Eingang
-1.1.21  MDT Glastaster II Smart mit Temperatursensor – Raumzuordnung offen
+1.1.21  MDT Glastaster II Smart mit Temperatursensor – Gang (Eingang Gang)
 1.1.22  MDT Glastaster II Smart mit Temperatursensor – Küche
-1.1.23–1.1.28  weitere MDT Glastaster II Smart mit Temperatursensor – Raumzuordnung offen
-1.1.29  OpenKNX RaumController – Sensorverknüpfung und Programmierstand prüfen
-1.1.30  MDT Präsenzmelder 360° KLR 4S
+1.1.23  MDT Glastaster II Smart mit Temperatursensor – Wohnzimmer
+1.1.24  MDT Glastaster II Smart mit Temperatursensor – Arbeitszimmer
+1.1.25  MDT Glastaster II Smart mit Temperatursensor – Schlafzimmer
+1.1.26  MDT Glastaster II Smart mit Temperatursensor – Gang
+1.1.27  MDT Glastaster II Smart mit Temperatursensor – Terrasse
+1.1.28  MDT Glastaster II Smart mit Temperatursensor – Gang
+1.1.29  OpenKNX RaumController – Treppenhaus
+1.1.30  MDT Präsenzmelder 360° KLR 4S – Gang
 1.1.31  MDT SCN-IP100.03 E-Mail- und Zeitserver-Applikation
-1.1.32  MDT Glastaster II Smart mit Temperatursensor – Raum/Funktion offen
-1.1.33  MDT Glastaster II Smart mit Temperatursensor – Raum/Funktion offen
+1.1.32  MDT Glastaster II Smart mit Temperatursensor – Bad
+1.1.33  MDT Glastaster II Smart mit Temperatursensor – Bad Gang
 1.1.40  Gira Wetterstation Plus – ETS-Applikation B00D21
 1.1.41  Reserve/ETS-Platzhalter für Gira KNX Rauchwarnmelder – noch nicht in Betrieb genommen
 ```
@@ -78,3 +83,5 @@ Bei tatsächlichem Ausbau benötigt die Linie einen passenden Linienkoppler und 
 - Das ETS-Projekt ist die verbindliche Quelle für die tatsächlich programmierten Adressen.
 
 Der ETS-Screenshot vom 29.08.2026 zeigt die angelegten Einträge `1.1.10`, `1.1.20` bis `1.1.33`, `1.1.40` und `1.1.41`. Der Eintrag `1.1.41` ist kein Nachweis eines vorhandenen oder programmierten Rauchwarnmelder-Geräts; derzeit gilt er nur als ETS-Planung. Kommunikationsobjekte und Gruppenadressverknüpfungen werden deshalb getrennt dokumentiert und im ETS-Projekt geprüft.
+
+Die formale ETS-Gebäudezuordnung vom 18.10.2026 steht in [35 – Raumzuordnung](35_raumzuordnung_ets_2026-10-18.md).

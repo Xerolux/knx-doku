@@ -1,38 +1,47 @@
 Adresse;Gerät;Raum/Funktion;Status/Hinweis
-1.1.0;MDT SCN-IP100.03;IP Router Secure;Router-Applikation im ETS-Projekt
-1.1.1;Enertex KNX PowerSupply 960;Busspannungsversorgung;aktuell im ETS-Projekt
-1.1.2;Gira 5114 00;RF Multi/TP Medienkoppler;erzeugt RF Segment 1 unter Linie 1.1
-1.1.3;MDT AKS-2416.03;Schaltaktor 24-fach;Zentralobjekt 289 mit 0/4/0 verbunden
-1.1.4;MDT JAL-0810M.02;Jalousieaktor 8-fach;aktuell im ETS-Projekt
-1.1.5;MDT AKH-0800.02;Heizungsaktor 1;aktuell im ETS-Projekt
-1.1.6;MDT AKH-0800.02;Heizungsaktor 2;Belegung noch bestätigen
-1.1.7;MDT SCN-RTC20.01;Schaltuhr;für Datum/Uhrzeit als Slave vorsehen
-1.1.8;MDT SCN-LOG1.02;Logikmodul;aktuell im ETS-Projekt
-1.1.9;MDT SCN-SAFE.01;Sicherheitsmodul;blockiert ETS-Zugriff im aktiven Schutzbetrieb
-1.1.10;MDT VC-EASY.02;VisuControl Easy II;aktuell im ETS-Projekt
-1.1.20;MDT BE-GT2Tx.01 Glastaster II Smart;Eingang / Zentral Licht / Zeit / Temperatur;programmiert, T1/2 mit 0/4/0
-1.1.21;MDT Glastaster II Smart mit Temperatur;Raum noch zuordnen;im ETS-Projekt programmiert
-1.1.22;MDT Glastaster II Smart mit Temperatur;Raum noch zuordnen;im ETS-Projekt programmiert
-1.1.23;MDT Glastaster II Smart mit Temperatur;Raum noch zuordnen;im ETS-Projekt programmiert
-1.1.24;MDT Glastaster II Smart mit Temperatur;Raum noch zuordnen;im ETS-Projekt programmiert
-1.1.25;MDT Glastaster II Smart mit Temperatur;Raum noch zuordnen;im ETS-Projekt programmiert
-1.1.26;MDT Glastaster II Smart mit Temperatur;Raum noch zuordnen;im ETS-Projekt programmiert
-1.1.27;MDT Glastaster II Smart mit Temperatur;Raum noch zuordnen;im ETS-Projekt programmiert
-1.1.28;MDT Glastaster II Smart mit Temperatur;Raum noch zuordnen;im ETS-Projekt programmiert
-1.1.29;OpenKNX RaumController;Einbauort noch zuordnen;Raumklimaobjekte sichtbar, Verknüpfung und Programmierstand prüfen
-1.1.30;MDT Präsenzmelder 360° KLR 4S;Raum noch zuordnen;Screenshot 29.08.2026 mit grünen Statushäkchen, genaue Bestellnummer und Funktion prüfen
-1.1.31;MDT SCN-IP100.03 Zusatzapplikation;E-Mail- und Zeitserverfunktion;programmiert, kann zum selben realen Gerät wie 1.1.0 gehören
-1.1.32;MDT Glastaster II Smart mit Temperatur;Raum und Funktion noch zuordnen;im ETS-Projekt angelegt, Screenshot 29.08.2026 ohne grüne Statushäkchen, Gruppenadressen offen
-1.1.33;MDT Glastaster II Smart mit Temperatur;Raum und Funktion noch zuordnen;im ETS-Projekt angelegt, Screenshot 29.08.2026 ohne grüne Statushäkchen, Gruppenadressen offen
+1.1.0;MDT SCN-IP100.03;Keller / Technikraum;Router-Applikation im ETS-Projekt
+1.1.1;Enertex KNX PowerSupply 960;Keller / Technikraum;aktuell im ETS-Projekt, ETS-Raum am 18.10.2026 nach Nutzerangabe zugeordnet
+1.1.2;Gira 5114 00;Gang;erzeugt RF Segment 1 unter Linie 1.1, ETS-Raum am 18.10.2026 nach Nutzerangabe zugeordnet (EG Gang)
+1.1.3;MDT AKS-2416.03;Keller / Technikraum;Zentralobjekt 289 mit 0/4/0 verbunden
+1.1.4;MDT JAL-0810M.02;Keller / Technikraum;aktuell im ETS-Projekt
+1.1.5;MDT AKH-0800.02;Keller / Technikraum;aktuell im ETS-Projekt
+1.1.6;MDT AKH-0800.02;Keller / Technikraum;Belegung noch bestätigen
+1.1.7;MDT SCN-RTC20.01;Keller / Technikraum;für Datum/Uhrzeit als Slave vorsehen
+1.1.8;MDT SCN-LOG1.02;Keller / Technikraum;aktuell im ETS-Projekt
+1.1.9;MDT SCN-SAFE.01;Keller / Technikraum;blockiert ETS-Zugriff im aktiven Schutzbetrieb
+1.1.10;MDT VC-EASY.02;Keller / Technikraum;aktuell im ETS-Projekt
+1.1.11;MDT KNX RF+ Fenstergriff;Küche;ETS-Raumzuordnung am 18.10.2026 geprüft, Inbetriebnahme siehe docs/08_rf_fenstergriffe.md
+1.1.12;MDT KNX RF+ Fenstergriff;Küche;ETS-Raumzuordnung am 18.10.2026 geprüft, Inbetriebnahme siehe docs/08_rf_fenstergriffe.md
+1.1.13;MDT KNX RF+ Fenstergriff;Wohnzimmer;ETS-Raumzuordnung am 18.10.2026 geprüft, Inbetriebnahme siehe docs/08_rf_fenstergriffe.md
+1.1.14;MDT KNX RF+ Fenstergriff;Wohnzimmer;ETS-Raumzuordnung am 18.10.2026 geprüft, Inbetriebnahme siehe docs/08_rf_fenstergriffe.md
+1.1.15;MDT KNX RF+ Fenstergriff;Arbeitszimmer;ETS-Raumzuordnung am 18.10.2026 geprüft, Inbetriebnahme siehe docs/08_rf_fenstergriffe.md
+1.1.16;MDT KNX RF+ Fenstergriff;Arbeitszimmer;ETS-Raumzuordnung am 18.10.2026 geprüft, Inbetriebnahme siehe docs/08_rf_fenstergriffe.md
+1.1.17;MDT KNX RF+ Fenstergriff;Schlafzimmer;ETS-Raumzuordnung am 18.10.2026 geprüft, Inbetriebnahme siehe docs/08_rf_fenstergriffe.md
+1.1.18;MDT KNX RF+ Fenstergriff;Schlafzimmer;ETS-Raumzuordnung am 18.10.2026 geprüft, Inbetriebnahme siehe docs/08_rf_fenstergriffe.md
+1.1.19;MDT KNX RF+ Fenstergriff;Wohnzimmer;ETS-Raumzuordnung am 18.10.2026 geprüft, Inbetriebnahme siehe docs/08_rf_fenstergriffe.md
+1.1.20;MDT BE-GT2Tx.01 Glastaster II Smart;Eingang;programmiert, T1/2 mit 0/4/0
+1.1.21;MDT Glastaster II Smart mit Temperatur;Gang;ETS-Raumzuordnung am 18.10.2026 gesetzt und geprüft, Funktionsnachweise siehe Dokumentation
+1.1.22;MDT Glastaster II Smart mit Temperatur;Küche;ETS-Raumzuordnung am 18.10.2026 gesetzt und geprüft, Funktionsnachweise siehe Dokumentation
+1.1.23;MDT Glastaster II Smart mit Temperatur;Wohnzimmer;ETS-Raumzuordnung am 18.10.2026 gesetzt und geprüft, Funktionsnachweise siehe Dokumentation
+1.1.24;MDT Glastaster II Smart mit Temperatur;Arbeitszimmer;ETS-Raumzuordnung am 18.10.2026 gesetzt und geprüft, Funktionsnachweise siehe Dokumentation
+1.1.25;MDT Glastaster II Smart mit Temperatur;Schlafzimmer;ETS-Raumzuordnung am 18.10.2026 gesetzt und geprüft, Funktionsnachweise siehe Dokumentation
+1.1.26;MDT Glastaster II Smart mit Temperatur;Gang;ETS-Raumzuordnung am 18.10.2026 gesetzt und geprüft, Funktionsnachweise siehe Dokumentation
+1.1.27;MDT Glastaster II Smart mit Temperatur;Terrasse;ETS-Raumzuordnung am 18.10.2026 gesetzt und geprüft, Funktionsnachweise siehe Dokumentation
+1.1.28;MDT Glastaster II Smart mit Temperatur;Gang;ETS-Raumzuordnung am 18.10.2026 gesetzt und geprüft, Funktionsnachweise siehe Dokumentation
+1.1.29;OpenKNX RaumController;Treppenhaus;ETS-Raumzuordnung am 18.10.2026 gesetzt und geprüft, Funktionsnachweise siehe Dokumentation
+1.1.30;MDT Präsenzmelder 360° KLR 4S;Gang;ETS-Raumzuordnung am 18.10.2026 gesetzt und geprüft, Funktionsnachweise siehe Dokumentation
+1.1.31;MDT SCN-IP100.03 Zusatzapplikation;Keller / Technikraum;programmiert, kann zum selben realen Gerät wie 1.1.0 gehören
+1.1.32;MDT Glastaster II Smart mit Temperatur;Bad;ETS-Raumzuordnung am 18.10.2026 gesetzt und geprüft, Funktionsnachweise siehe Dokumentation
+1.1.33;MDT Glastaster II Smart mit Temperatur;Bad Gang;ETS-Raumzuordnung am 18.10.2026 gesetzt und geprüft, Funktionsnachweise siehe Dokumentation
 1.1.34;OpenKNX RaumController;Küche;bestehendes Gerät
 1.1.35;OpenKNX RaumController;Bad;bestehendes Gerät
-1.1.36;MDT AKK-01UP.03;Bad vorne Licht;KO 0 1/7/0 und KO 7 1/7/1, Zentral KO 12 0/4/0
-1.1.37;MDT AKK-01UP.03;Abstellkammer Licht;KO 0 12/0/0 und KO 7 12/0/1, Zentral KO 12 0/4/0
+1.1.36;MDT AKK-01UP.03;Keller / Technikraum;KO 0 1/7/0 und KO 7 1/7/1, Zentral KO 12 0/4/0
+1.1.37;MDT AKK-01UP.03;Keller / Technikraum;KO 0 12/0/0 und KO 7 12/0/1, Zentral KO 12 0/4/0
 1.1.38;Taster Licht Bad vorne;Bad vorne;Wippe A+B KO 0 1/7/0
-1.1.39;MDT KNX RF+ Fenstergriff;Bad links;bestehendes Gerät
-1.1.40;Gira Wetterstation Plus;ETS-Applikation B00D21;Screenshot 29.08.2026 ohne grüne Statushäkchen, vollständigen Programmier- und Verknüpfungsstand prüfen
-1.1.41;Reserve/ETS-Platzhalter Gira KNX Rauchwarnmelder;ETS-Applikation C01602;noch kein reales oder in Betrieb genommenes KNX-Gerät bestätigt, Gruppenadressen sind Planung
-1.1.42;MDT KNX RF+ Fenstergriff;Bad rechts;Status 5/5/1 und Kippstellung 5/5/21
+1.1.39;MDT KNX RF+ Fenstergriff;Bad;bestehendes Gerät
+1.1.40;Gira Wetterstation Plus;Dach / Außenbereich;Screenshot 29.08.2026 ohne grüne Statushäkchen, vollständigen Programmier- und Verknüpfungsstand prüfen, ETS-Raum am 18.10.2026 nach Nutzerangabe zugeordnet
+1.1.41;Reserve/ETS-Platzhalter Gira KNX Rauchwarnmelder;Keller / Technikraum;noch kein reales oder in Betrieb genommenes KNX-Gerät bestätigt, Gruppenadressen sind Planung, ETS-Raum am 18.10.2026 nach Nutzerangabe zugeordnet
+1.1.42;MDT KNX RF+ Fenstergriff;Bad;Status 5/5/1 und Kippstellung 5/5/21
 1.1.43;Taster Licht Abstellkammer;Abstellkammer;Wippe A+B KO 0 12/0/0, Applikation am 18.10.2026 erfolgreich geladen
 1.1.44;MDT KNX RF+ Fenstergriff;Bad vorne;KO 2 auf 5/2/0 und KO 3 auf 5/2/20, HA-Tunnel 1.1.255 ergänzt, Download noch offen
 1.1.45-1.1.59;Reserve;weitere Sensoren und Außengeräte;erst bei tatsächlichem Gerät vergeben
