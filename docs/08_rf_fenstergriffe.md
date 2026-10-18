@@ -10,11 +10,36 @@ Neu bestätigt: **1.1.44 Fenstergriff Bad vorne**, KO 2 auf **5/2/0** (Fensterst
 
 Das live gelesene und um Bad vorne erweiterte Paket enthält **24 empfangende KNX-Binärsensoren** und **zwölf direkt durch Telegramme ausgelöste Stellungsanzeigen**. Jede Anzeige führt ihre beiden Bits in eigenen Attributen und akzeptiert nur eingehende Werttelegramme der eigenen physikalischen Adresse. Die zwischenzeitlich verwendeten separaten Empfangs-Hilfssensoren und Querverweise über `state_attr` sind durch die funktionierende Live-Logik ersetzt. Für Bad vorne gilt ausschließlich Quelle `1.1.44`; `sync_state: false` bleibt erhalten.
 
-Paket und zwölfte Karte **EG → Fenster → Bad vorne** sind live gespeichert. HA-Konfigurationsprüfung erfolgreich; KNX und Template-Entitäten ohne Core-Neustart neu geladen. Die lokale vollständige EG-Vorlage und der Fenster-Reiter enthalten ebenfalls zwölf Karten. Der lokale Validator prüft 108 Kombinationen der beiden Zustandsbits sowie Quellen-/Zielfilter und Erhalt des jeweils anderen Bits.
+Paket und zwölfte Karte **EG → Fenster → Bad vorne** sind live gespeichert. HA-Konfigurationsprüfung erfolgreich; KNX und Template-Entitäten ohne Core-Neustart neu geladen. Die lokale vollständige EG-Vorlage und der Fenster-Reiter enthalten ebenfalls zwölf Karten. Der zusammengeführte lokale Validator prüft 432 Kombinationen aus Vorbelegung und eingehendem Telegramm sowie Quellen-/Zielfilter und Erhalt des jeweils anderen Bits. Der Generator umfasst ebenfalls alle zwölf Griffe.
 
 Am neuen Griff war „In Betrieb“ zyklisch alle 5 Stunden aktiv; Empfangsbereitschaft nach Lebenszeichen und Griffbewegung jeweils 3 Sekunden, nach Neustart 5 Minuten. Diese vorhandenen Werte wurden nicht verändert. KO 1, 5, 7 und 8 bleiben ohne neue Zuordnung; Batterie- und Erschütterungswerte werden daher nicht als live verfügbar ausgegeben.
 
 **Noch offen:** Applikationsdownload des neu verknüpften Griffs und physischer Test offen/gekippt/geschlossen. Der Download wurde nur für `1.1.44` gestartet. Nach der Klarstellung des Nutzers, dass der Griff erst später in Betrieb genommen wird, zeigt die ETS-Historie **Abgebrochen** und die Liste aktiver Operationen **keine laufenden Operationen**. Es wartet kein Download auf ein späteres Aufwachen. Bad vorne zeigt bis zum bestätigten Empfang korrekt **Unbekannt**. Kein Zustand wurde simuliert; keine Aktoren wurden programmiert oder bewegt.
+
+## Spook-Reparaturen und Paketumbau am 16.10.2026 (zweite Sitzung)
+
+Nach der ersten Korrektur blieben in HA elf aktive Spook-Reparaturen der Art `template_unknown_attribute_references` für alle elf Stellungsanzeigen bestehen. Ursache: Die Stellungsanzeigen lasen `offen`/`gekippt` per `state_attr()` von den Empfangssensoren; diese Attribute existieren erst nach dem ersten bestätigten Grifftelegramm, sodass Spook die Referenzen zu Recht als ungültig meldete.
+
+Umbau des Live-Pakets `packages/knx_fenstergriffe_eg.yaml` (Repository-Kopie synchron):
+
+- Die elf Stellungsanzeigen sind jetzt selbst trigger-basiert (`trigger: knx.telegram` auf beide Adressen des Griffs, Quelle und Nutzdaten gefiltert wie bisher). Sie führen `offen`/`gekippt` als eigene Attribute mit `-1`-Vorelegung und referenzieren keine anderen Entitäten mehr.
+- Die elf separaten Telegramm-Empfangssensoren entfallen; keine Karte, Automation oder derivate Anzeige verwendete sie. Ihre Entitäten wurden aus der Entity-Registry entfernt. Zuletzt empfangenes Telegramm steht jetzt als Attribut `letzte_meldung` der Stellungsanzeige.
+- Zusätzlicher Latenzfehler beseitigt: `knx.telegram` stellt kein `trigger.timestamp` bereit; das alte Zustands-Template der Empfangssensoren hätte beim ersten echten Telegramm einen Template-Fehler erzeugt. Die Zeitmarke verwendet jetzt `now()`.
+- Die 22 KNX-Binärsensoren sind unverändert (bytengleich zur vorherigen Version; `sync_state: false`).
+
+Verifikation: `ha core check` erfolgreich; `template/reload` und `knx/reload` ohne Core-Neustart; elf Stellungsanzeigen live mit Zustand **Unbekannt**; null `_empfang`-Entitäten; Reparatur-Registry von 310 auf 299 aktive Issues gesunken, keine fenstergriffbezogene Reparatur mehr vorhanden. `scripts/validate-fenstergriffe.py` prüft zusätzlich 444 Zustandskombinationen und lehnt `state_attr(`-Querverweise sowie `trigger.timestamp` in den Templates ab; `scripts/generate_fenstergriffe.py` erzeugt das Paket aus der Grifftabelle.
+
+## Grifftest am Abend des 16.10.2026: Telegramm kam nicht an
+
+Der Nutzer öffnete nach der Korrektur eine Tür; keine Anzeige reagierte. Auswertung des HA-Telegrammprotokolls (`.storage/knx/telegrams.db`, 167 154 Einträge):
+
+- **Null** Telegramme auf irgendeine Griffadresse `5/x/*` und **null** von einer Griff-Quelladresse (1.1.11–1.1.19, 1.1.39, 1.1.42) – jemals, nicht nur heute.
+- Der HA-Tunnel 1.1.255 ist gesund: Wetterstation 1.1.40 liefert fortlaufend, und Data-Secure-Empfang funktioniert nachweislich (Zeitserver 1.1.31 → 0/5/0+0/5/1, 288 secure Telegramme/24 h, entschlüsselt).
+- Damit scheidet die HA-Seite (Tunnel, Schlüsselbund, Trigger, Anzeige) als Fehlerort aus. Der Bruch liegt zwischen Griff und TP-Linie 1.1.
+
+**Hauptverdacht: Filtertabelle des Gira Medienkopplers 1.1.2.** RF→TP-Gruppentelegramme werden nur für Adressen der Koppler-Filtertabelle weitergeleitet; ein aktualisierter Koppler-Download steht bereits seit der Wetter-/Fenstersitzung aus („nicht durchgeführt oder nachgewiesen“). Die erfolgreichen ETS-Griffdownloads belegen nur die individualadressierte Programmierung über den Tunnel, nicht die Gruppenweiterschaltung. Nächster Schritt: vollständiger Download der Koppleranwendung 1.1.2 in ETS, danach Grifftest.
+
+Nebenbefund: `knx.reload` stoppt die Telegrammprotokollierung in `telegrams.db` (letzter Eintrag exakt beim Reload; Busverkehr läuft weiter). Ein Core-Neustart reaktiviert sie; für den Grifftest sind die 22 KNX-Roh-Binärsensoren der zuverlässige Indikator.
 
 ## Diagnose und HA-Korrektur am 16.10.2026
 
@@ -75,7 +100,7 @@ Es werden keine Batterie- oder Alarmwerte erfunden. MDT erlaubt eine parametrier
 
 ## Home Assistant
 
-Das Paket [knx_fenstergriffe_eg.yaml](../home-assistant/knx_fenstergriffe_eg.yaml) ist live unter `packages/knx_fenstergriffe_eg.yaml` gespeichert und über die bestehende Paket-Einbindung geladen. Es enthält 22 empfangende KNX-Binärsensoren, elf Telegramm-Empfangssensoren und elf Stellungsanzeigen. KNX und Template-Entitäten wurden ohne Core-Neustart neu geladen. Die HA-Konfigurationsprüfung war erfolgreich.
+Das Paket [knx_fenstergriffe_eg.yaml](../home-assistant/knx_fenstergriffe_eg.yaml) ist live unter `packages/knx_fenstergriffe_eg.yaml` gespeichert und über die bestehende Paket-Einbindung geladen. Es enthält 22 empfangende KNX-Binärsensoren und elf trigger-basierte Stellungsanzeigen. KNX und Template-Entitäten wurden ohne Core-Neustart neu geladen. Die HA-Konfigurationsprüfung war erfolgreich.
 
 Die KNX-Roh-Binärsensoren können bereits nach dem Start `off` anzeigen, ohne dass ein Telegramm empfangen wurde. Deshalb verwendet die sichtbare Stellungsanzeige ausschließlich die gespeicherten Nutzdaten tatsächlich eingehender Telegramme **von der jeweiligen Geräteadresse**. Ausgehende Telegramme, Leseanfragen und andere Absender bestätigen keinen Zustand.
 
@@ -84,7 +109,7 @@ Die KNX-Roh-Binärsensoren können bereits nach dem Start `off` anzeigen, ohne d
 - **Geschlossen**: beide Bits tatsächlich als 0 empfangen.
 - **Unbekannt**: noch nicht genügend bestätigte Daten vorhanden.
 
-Die Empfangssensoren stellen nach einem HA-Neustart den letzten bekannten Zustand wieder her. Das ist kein Beweis für aktuelle Funk-Erreichbarkeit. Es gibt keinen automatischen Reset auf geschlossen. `sync_state: false` vermeidet regelmäßige Leseanfragen an die schlafenden Batteriegeräte. Automationen sollten die bestätigten Stellungsanzeigen statt der initialen Rohwerte verwenden.
+Die Stellungsanzeigen führen `offen` und `gekippt` als eigene Attribute (fehlend = noch kein Telegramm, dargestellt als `-1`) und stellen nach einem HA-Neustart den letzten bekannten Zustand wieder her. Das ist kein Beweis für aktuelle Funk-Erreichbarkeit. Es gibt keinen automatischen Reset auf geschlossen. `sync_state: false` vermeidet regelmäßige Leseanfragen an die schlafenden Batteriegeräte. Automationen sollten die bestätigten Stellungsanzeigen statt der initialen Rohwerte verwenden.
 
 ## Lovelace
 
@@ -123,9 +148,9 @@ In dieser Sitzung wurden **keine neuen Griffparameter durch uns geladen**. Für 
 
 ### Verbleibender Funktionsnachweis
 
-Je Griff geschlossen → geöffnet → gekippt → geschlossen prüfen und Quelle, Zieladresse, Nutzdaten, Empfangsattribute sowie HA-Stellungsanzeige abgleichen. Insbesondere müssen beide Zustandsbits tatsächlich eingetroffen sein, bevor „Geschlossen“ bestätigt werden kann. Der Nutzer hat diesen Test auf später verschoben.
+Je Griff geschlossen → geöffnet → gekippt → geschlossen prüfen und Quelle, Zieladresse, Nutzdaten sowie die HA-Stellungsanzeige samt ihrer Attribute `offen`, `gekippt` und `letzte_meldung` abgleichen. Insbesondere müssen beide Zustandsbits tatsächlich eingetroffen sein, bevor „Geschlossen“ bestätigt werden kann. Der Nutzer hat diesen Test auf später verschoben.
 
-Die sichtbaren Spook-Meldungen zu unbekannten Attributen der Stellungsanzeigen sind ebenfalls noch offen: Die Empfangssensoren existieren, ihre Zustandsattribute fehlen jedoch bis zum ersten passenden Telegramm. Das ist vom behobenen Schemafehler zu unterscheiden.
+Die Spook-Reparaturen zu unbekannten Attributen sind mit dem Paketumbau der zweiten Sitzung vom 16.10. behoben und werden vom Validierungsskript gegen Regression geschützt.
 
 **Die Fensterüberwachung ist noch nicht funktional abgenommen.** Vollständiges Sitzungsprotokoll: [Wetter und Fenster am 16.10.2026](32_wetter_fenster_inbetriebnahme_2026-10-16.md).
 

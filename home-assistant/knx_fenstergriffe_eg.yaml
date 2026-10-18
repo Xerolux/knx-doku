@@ -203,7 +203,6 @@ knx:
       device:
         id: "eg_fenstergriff_bad_rechts"
         name: "EG Fenstergriff Bad rechts"
-
     - name: "Offen"
       unique_id: "eg_fenstergriff_bad_vorne_offen"
       default_entity_id: "binary_sensor.eg_fenster_bad_vorne_offen"
@@ -553,7 +552,6 @@ template:
           offen: "{{ trigger.payload if trigger.destination == '5/5/1' else this.attributes.get('offen', -1) }}"
           gekippt: "{{ trigger.payload if trigger.destination == '5/5/21' else this.attributes.get('gekippt', -1) }}"
           letzte_meldung: "{{ now().strftime('%d.%m. %H:%M:%S') }} von {{ trigger.source }} auf {{ trigger.destination }}"
-
   - triggers:
       - trigger: knx.telegram
         destination: ["5/2/0", "5/2/20"]
