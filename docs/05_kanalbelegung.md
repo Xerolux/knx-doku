@@ -8,6 +8,8 @@ Die Tabellen bilden den aktuell in ETS sichtbaren Stand ab. Vor der endgültigen
 
 Ergänzung vom 14.10.2026: Der separate Schaltaktor `1.1.36 Bad vorne`, Kanal A (KO 0), ist mit `1/7/0 Bad vorne Licht Schalten` verbunden; KO 7 sendet auf `1/7/1 Bad vorne Licht Status`. Der Taster `1.1.38 Licht Bad vorne` sendet mit Wippe A+B (KO 0) auf `1/7/0`, A = EIN und B = AUS. Details und Downloadnachweise stehen im [ETS-Protokoll](28_ets_bad_vorne_pm_2026-10-14.md).
 
+Ergänzung 18.10.2026: Abstellkammer läuft über UP-Aktor `1.1.37`, KO 0 → `12/0/0`, KO 7 → `12/0/1`; Taster `1.1.43` KO 0 sendet auf `12/0/0`. Beide UP-Lichtaktoren (`1.1.36`, `1.1.37`) nehmen über KO 12 und `0/4/0` an Zentral Licht teil. Kanal-Zentralfunktion aktiv, Downloads bestätigt.
+
 Gerät: MDT Schaltaktor `1.1.3` mit den Kanälen A bis X.
 
 | Kanal | ETS-Bezeichnung | Schalten | Status | zusätzliche Gruppenfunktion |
@@ -19,7 +21,7 @@ Gerät: MDT Schaltaktor `1.1.3` mit den Kanälen A bis X.
 | E | Licht Gang | `1/4/0` | `1/4/1` | zusätzlich `1/4/4 Gang beide Lichter schalten` |
 | F | Licht Gang Neubau | `1/4/2` | `1/4/3` | zusätzlich `1/4/4 Gang beide Lichter schalten` |
 | G | Licht Bad | `1/6/0` | `1/6/1` | Badezimmer |
-| H | Licht Abstellkammer | `12/0/0` | `12/0/1` | eigener Raum; nicht Bad vorne |
+| H | nicht aktiv | – | – | Fehlzuordnung am 18.10.2026 entfernt; Abstellkammer über UP-Aktor `1.1.37` |
 | I–X | noch nicht vollständig dokumentiert | – | – | reale Belegung und Zentralteilnahme prüfen |
 
 ### Objektzuordnung der bestätigten Kanäle
@@ -53,9 +55,8 @@ Kanal G:
   Objekt 73 Schalten EIN/AUS -> 1/6/0
   Objekt 80 Status           -> 1/6/1
 
-Kanal H:
-  Objekt 85 Schalten EIN/AUS -> 12/0/0
-  Objekt 92 Status           -> 12/0/1
+Kanal H: nicht aktiv; frühere Objekte 85/92 ohne Verknüpfung.
+Abstellkammer stattdessen: 1.1.37 Objekt 0 -> 12/0/0, Objekt 7 -> 12/0/1.
 ```
 
 Die Sperrobjekte der Lichtkanäle bleiben frei, solange keine dokumentierte Sperrfunktion vorgesehen ist.

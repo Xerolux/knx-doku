@@ -56,6 +56,7 @@ Entitätstyp in Home Assistant: **Leuchte**. Helligkeit, Farbtemperatur und Farb
 | `light.eg_gang_neubau_licht` | Gang Neubau | `1/4/2` | `1/4/3` |
 | `light.eg_gang_licht_alle` | beide Ganglichter | `1/4/4` | `1/4/5` |
 | `light.eg_bad_vorne_licht` | EG Bad vorne Licht | `1/7/0` | `1/7/1` |
+| `light.eg_abstellkammer_licht` | Abstellkammer Licht | `12/0/0` | `12/0/1` |
 
 Ergänzung vom 14.10.2026: `light.eg_bad_vorne_licht` wurde live über das KNX-Panel angelegt, dem Gerät `EG Bad vorne` und Bereich `Bad vorne` zugeordnet und als Karte „Bad vorne“ in EG → Licht ergänzt. Gespeicherte Gruppenadressen und verfügbarer Zustand `Aus` wurden geprüft. Details stehen im [ETS-/HA-Protokoll](28_ets_bad_vorne_pm_2026-10-14.md).
 
@@ -195,3 +196,7 @@ cover.eg_markise
 - Heizungskreise des aktuellen KNX-Projekts als Klimaentitäten anlegen
 - Bereiche und Gerätenamen in Home Assistant endgültig vereinheitlichen
 - Dashboard nach Erweiterungen aktualisieren
+
+## Ergänzung 18.10.2026: Abstellkammer
+
+Die KNX-UI-Entität `light.eg_abstellkammer_licht` wurde live angelegt und mit Schaltadresse `12/0/0` und Statusadresse `12/0/1` gespeichert. Der Zustand war verfügbar und Aus. In EG → Licht wurde die Karte Abstellkammer im vorhandenen Raster ergänzt und gespeichert; die Repository-Vorlage enthält dieselbe Karte. [knx_abstellkammer_licht.yaml](../home-assistant/knx_abstellkammer_licht.yaml) ist ausschließlich eine YAML-Alternative und darf nicht zusätzlich zur UI-Entität geladen werden. Aktor-/Tasterdownload und Prüfgrenzen: [Protokoll 34](34_abstellkammer_zentral_bad_2026-10-18.md).

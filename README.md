@@ -15,7 +15,7 @@ Die Gruppenadressen können im nativen XML-Format in ein ETS-Projekt mit **3-Ebe
 
 Die Wärmepumpe liegt in einer eigenen Datei: [ets-import/gruppenadressen-waermepumpe.xml](ets-import/gruppenadressen-waermepumpe.xml) mit 43 Adressen auf Hauptgruppe `11`. Die Struktur wurde inzwischen zusätzlich zur Basisstruktur in ETS importiert; Einzeladressen, DPTs und Verknüpfungen müssen noch per Detailansicht oder ETS-Export bestätigt werden. Siehe [docs/25_idm_waermepumpe_knx.md](docs/25_idm_waermepumpe_knx.md).
 
-Die Komplettdatei enthält 174 vorgesehene Basis-Gruppenadressen einschließlich der sechs Gang-Adressen, der zwei Abstellkammer-Lichtadressen, der sechs SCN-SAFE-Adressen und der getrennten Rauchwarnmelder-Planung. Zusammen mit den 43 separat gepflegten Wärmepumpen-Adressen umfasst der geplante Importstand 217 Gruppenadressen. Die bisherigen Basis-Einzeldateien dienen nur der modularen Pflege und werden nicht zusätzlich importiert. Einzelheiten stehen in [ets-import/ETS_IMPORT.md](ets-import/ETS_IMPORT.md).
+Die Komplettdatei enthält 176 vorgesehene Basis-Gruppenadressen einschließlich der sechs Gang-Adressen, der zwei Abstellkammer-Lichtadressen, der sechs SCN-SAFE-Adressen und der getrennten Rauchwarnmelder-Planung. Zusammen mit den 43 separat gepflegten Wärmepumpen-Adressen umfasst der geplante Importstand 219 Gruppenadressen. Die bisherigen Basis-Einzeldateien dienen nur der modularen Pflege und werden nicht zusätzlich importiert. Einzelheiten stehen in [ets-import/ETS_IMPORT.md](ets-import/ETS_IMPORT.md).
 
 > Die Komplettdatei enthält Gruppenadressstrukturen und geplante DPTs, aber keine physikalischen Adressen, Geräte oder Objektverknüpfungen.
 
@@ -110,7 +110,7 @@ Dokumentiert sind sechs Rollladen-/Markisenentitäten, sieben Lichtentitäten un
 
 | Datei | Verwendung |
 |---|---|
-| [ets-import/gruppenadressen-komplett.xml](ets-import/gruppenadressen-komplett.xml) | empfohlener Ein-Datei-Import aller 174 Basis-Gruppenadressen mit DPTs |
+| [ets-import/gruppenadressen-komplett.xml](ets-import/gruppenadressen-komplett.xml) | empfohlener Ein-Datei-Import aller 176 Basis-Gruppenadressen mit DPTs |
 | [ets-import/gruppenadressen.xml](ets-import/gruppenadressen.xml) | Grundstruktur für ETS 6 |
 | [ets-import/gruppenadressen-abstellkammer.xml](ets-import/gruppenadressen-abstellkammer.xml) | einmaliger Zusatzimport für `12 Licht Erweiterung / 12/0 Abstellkammer` |
 | [ets-import/gruppenadressen-zentral-zeit.xml](ets-import/gruppenadressen-zentral-zeit.xml) | Ergänzung für `0/4/0` und `0/5/0` bis `0/5/2` |
@@ -128,13 +128,16 @@ Dokumentiert sind sechs Rollladen-/Markisenentitäten, sieben Lichtentitäten un
 
 Die Importdateien werden lokal und bei jedem relevanten GitHub-Push mit [scripts/validate-group-addresses.ps1](scripts/validate-group-addresses.ps1) auf doppelte Adressen, Namens-/DPT-Konflikte und die feste Trennung von SCN-SAFE und Rauchwarnmelder geprüft.
 
+Aktuelle Änderungen vom 18.10.2026: [Abstellkammer, Zentralfunktionen und Badrollladen](docs/34_abstellkammer_zentral_bad_2026-10-18.md).
+
 ## Home-Assistant-Dateien
 
 | Datei | Verwendung |
 |---|---|
 | [home-assistant/lovelace_knx_eg.yaml](home-assistant/lovelace_knx_eg.yaml) | Lovelace-Dashboard für Licht, Rollläden, Heizung, Raumklima und Fenster |
-| [home-assistant/knx_fenstergriffe_eg.yaml](home-assistant/knx_fenstergriffe_eg.yaml) | Live geladenes Paket für elf MDT-Fenstergriffe; ETS-Download und Secure-Abgleich noch offen |
+| [home-assistant/knx_fenstergriffe_eg.yaml](home-assistant/knx_fenstergriffe_eg.yaml) | Live geladenes Paket für zwölf MDT-Fenstergriffe; Bad vorne noch ohne abgeschlossene Inbetriebnahme |
 | [home-assistant/lovelace_fenster_eg_view.yaml](home-assistant/lovelace_fenster_eg_view.yaml) | Ergänzender EG-Fensterreiter mit bestätigten Stellungsanzeigen |
+| [home-assistant/knx_abstellkammer_licht.yaml](home-assistant/knx_abstellkammer_licht.yaml) | YAML-Alternative zur live angelegten Abstellkammer-Leuchte; nicht doppelt laden |
 | [home-assistant/knx_raumcontroller.yaml](home-assistant/knx_raumcontroller.yaml) | einbindbare KNX-Sensorliste für den OpenKNX RaumController |
 
 ## Planungsprinzip

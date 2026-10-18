@@ -1,6 +1,8 @@
 # EG MDT RF+ Fenstergriffe – nur empfangende Zustände, kein Bus-Polling.
 # ETS: Objekt 2 -> Offen; Objekt 3 -> Gekippt; 1 = aktiv (vor Inbetriebnahme prüfen).
-# Nach ETS-Verknüpfung müssen Koppler und betroffene Griffe programmiert werden.
+# Stellungsanzeige ist trigger-basiert: Sie führt offen/gekippt in eigenen Attributen
+# und wertet nur bestätigte Telegramme der jeweiligen Geräteadresse aus (kein state_attr
+# auf andere Entitäten – Ursache der Spook-Reparaturen vom 16.10.2026).
 knx:
   binary_sensor:
     - name: "Offen"
@@ -202,195 +204,25 @@ knx:
         id: "eg_fenstergriff_bad_rechts"
         name: "EG Fenstergriff Bad rechts"
 
+    - name: "Offen"
+      unique_id: "eg_fenstergriff_bad_vorne_offen"
+      default_entity_id: "binary_sensor.eg_fenster_bad_vorne_offen"
+      state_address: "5/2/0"
+      sync_state: false
+      device_class: window
+      device:
+        id: "eg_fenstergriff_bad_vorne"
+        name: "EG Fenstergriff Bad vorne"
+    - name: "Gekippt"
+      unique_id: "eg_fenstergriff_bad_vorne_gekippt"
+      default_entity_id: "binary_sensor.eg_fenster_bad_vorne_gekippt"
+      state_address: "5/2/20"
+      sync_state: false
+      device_class: window
+      device:
+        id: "eg_fenstergriff_bad_vorne"
+        name: "EG Fenstergriff Bad vorne"
 template:
-  - sensor:
-      - name: "EG Fenster Küche links klein Stellung"
-        unique_id: "eg_fenster_kuche_links_klein_stellung"
-        default_entity_id: "sensor.eg_fenster_kuche_links_klein_stellung"
-        state: >-
-          {% set offen = state_attr('sensor.eg_fenster_kuche_links_klein_empfang', 'offen') %}
-          {% set gekippt = state_attr('sensor.eg_fenster_kuche_links_klein_empfang', 'gekippt') %}
-          {% if gekippt == 1 %}Gekippt
-          {% elif offen == 1 %}Offen
-          {% elif offen == 0 and gekippt == 0 %}Geschlossen
-          {% else %}Unbekannt{% endif %}
-        icon: >-
-          {% set offen = state_attr('sensor.eg_fenster_kuche_links_klein_empfang', 'offen') %}
-          {% set gekippt = state_attr('sensor.eg_fenster_kuche_links_klein_empfang', 'gekippt') %}
-          {% if gekippt == 1 %}mdi:window-open-variant
-          {% elif offen == 1 %}mdi:window-open
-          {% elif offen == 0 and gekippt == 0 %}mdi:window-closed
-          {% else %}mdi:help-circle-outline{% endif %}
-      - name: "EG Fenster Küche rechts groß Stellung"
-        unique_id: "eg_fenster_kuche_rechts_gross_stellung"
-        default_entity_id: "sensor.eg_fenster_kuche_rechts_gross_stellung"
-        state: >-
-          {% set offen = state_attr('sensor.eg_fenster_kuche_rechts_gross_empfang', 'offen') %}
-          {% set gekippt = state_attr('sensor.eg_fenster_kuche_rechts_gross_empfang', 'gekippt') %}
-          {% if gekippt == 1 %}Gekippt
-          {% elif offen == 1 %}Offen
-          {% elif offen == 0 and gekippt == 0 %}Geschlossen
-          {% else %}Unbekannt{% endif %}
-        icon: >-
-          {% set offen = state_attr('sensor.eg_fenster_kuche_rechts_gross_empfang', 'offen') %}
-          {% set gekippt = state_attr('sensor.eg_fenster_kuche_rechts_gross_empfang', 'gekippt') %}
-          {% if gekippt == 1 %}mdi:window-open-variant
-          {% elif offen == 1 %}mdi:window-open
-          {% elif offen == 0 and gekippt == 0 %}mdi:window-closed
-          {% else %}mdi:help-circle-outline{% endif %}
-      - name: "EG Fenster Wohnzimmer links klein Stellung"
-        unique_id: "eg_fenster_wohnzimmer_links_klein_stellung"
-        default_entity_id: "sensor.eg_fenster_wohnzimmer_links_klein_stellung"
-        state: >-
-          {% set offen = state_attr('sensor.eg_fenster_wohnzimmer_links_klein_empfang', 'offen') %}
-          {% set gekippt = state_attr('sensor.eg_fenster_wohnzimmer_links_klein_empfang', 'gekippt') %}
-          {% if gekippt == 1 %}Gekippt
-          {% elif offen == 1 %}Offen
-          {% elif offen == 0 and gekippt == 0 %}Geschlossen
-          {% else %}Unbekannt{% endif %}
-        icon: >-
-          {% set offen = state_attr('sensor.eg_fenster_wohnzimmer_links_klein_empfang', 'offen') %}
-          {% set gekippt = state_attr('sensor.eg_fenster_wohnzimmer_links_klein_empfang', 'gekippt') %}
-          {% if gekippt == 1 %}mdi:window-open-variant
-          {% elif offen == 1 %}mdi:window-open
-          {% elif offen == 0 and gekippt == 0 %}mdi:window-closed
-          {% else %}mdi:help-circle-outline{% endif %}
-      - name: "EG Fenster Wohnzimmer rechts groß Stellung"
-        unique_id: "eg_fenster_wohnzimmer_rechts_gross_stellung"
-        default_entity_id: "sensor.eg_fenster_wohnzimmer_rechts_gross_stellung"
-        state: >-
-          {% set offen = state_attr('sensor.eg_fenster_wohnzimmer_rechts_gross_empfang', 'offen') %}
-          {% set gekippt = state_attr('sensor.eg_fenster_wohnzimmer_rechts_gross_empfang', 'gekippt') %}
-          {% if gekippt == 1 %}Gekippt
-          {% elif offen == 1 %}Offen
-          {% elif offen == 0 and gekippt == 0 %}Geschlossen
-          {% else %}Unbekannt{% endif %}
-        icon: >-
-          {% set offen = state_attr('sensor.eg_fenster_wohnzimmer_rechts_gross_empfang', 'offen') %}
-          {% set gekippt = state_attr('sensor.eg_fenster_wohnzimmer_rechts_gross_empfang', 'gekippt') %}
-          {% if gekippt == 1 %}mdi:window-open-variant
-          {% elif offen == 1 %}mdi:window-open
-          {% elif offen == 0 and gekippt == 0 %}mdi:window-closed
-          {% else %}mdi:help-circle-outline{% endif %}
-      - name: "EG Fenster Arbeitszimmer links klein Stellung"
-        unique_id: "eg_fenster_arbeitszimmer_links_klein_stellung"
-        default_entity_id: "sensor.eg_fenster_arbeitszimmer_links_klein_stellung"
-        state: >-
-          {% set offen = state_attr('sensor.eg_fenster_arbeitszimmer_links_klein_empfang', 'offen') %}
-          {% set gekippt = state_attr('sensor.eg_fenster_arbeitszimmer_links_klein_empfang', 'gekippt') %}
-          {% if gekippt == 1 %}Gekippt
-          {% elif offen == 1 %}Offen
-          {% elif offen == 0 and gekippt == 0 %}Geschlossen
-          {% else %}Unbekannt{% endif %}
-        icon: >-
-          {% set offen = state_attr('sensor.eg_fenster_arbeitszimmer_links_klein_empfang', 'offen') %}
-          {% set gekippt = state_attr('sensor.eg_fenster_arbeitszimmer_links_klein_empfang', 'gekippt') %}
-          {% if gekippt == 1 %}mdi:window-open-variant
-          {% elif offen == 1 %}mdi:window-open
-          {% elif offen == 0 and gekippt == 0 %}mdi:window-closed
-          {% else %}mdi:help-circle-outline{% endif %}
-      - name: "EG Fenster Arbeitszimmer rechts groß Stellung"
-        unique_id: "eg_fenster_arbeitszimmer_rechts_gross_stellung"
-        default_entity_id: "sensor.eg_fenster_arbeitszimmer_rechts_gross_stellung"
-        state: >-
-          {% set offen = state_attr('sensor.eg_fenster_arbeitszimmer_rechts_gross_empfang', 'offen') %}
-          {% set gekippt = state_attr('sensor.eg_fenster_arbeitszimmer_rechts_gross_empfang', 'gekippt') %}
-          {% if gekippt == 1 %}Gekippt
-          {% elif offen == 1 %}Offen
-          {% elif offen == 0 and gekippt == 0 %}Geschlossen
-          {% else %}Unbekannt{% endif %}
-        icon: >-
-          {% set offen = state_attr('sensor.eg_fenster_arbeitszimmer_rechts_gross_empfang', 'offen') %}
-          {% set gekippt = state_attr('sensor.eg_fenster_arbeitszimmer_rechts_gross_empfang', 'gekippt') %}
-          {% if gekippt == 1 %}mdi:window-open-variant
-          {% elif offen == 1 %}mdi:window-open
-          {% elif offen == 0 and gekippt == 0 %}mdi:window-closed
-          {% else %}mdi:help-circle-outline{% endif %}
-      - name: "EG Fenster Schlafzimmer rechts groß Stellung"
-        unique_id: "eg_fenster_schlafzimmer_rechts_gross_stellung"
-        default_entity_id: "sensor.eg_fenster_schlafzimmer_rechts_gross_stellung"
-        state: >-
-          {% set offen = state_attr('sensor.eg_fenster_schlafzimmer_rechts_gross_empfang', 'offen') %}
-          {% set gekippt = state_attr('sensor.eg_fenster_schlafzimmer_rechts_gross_empfang', 'gekippt') %}
-          {% if gekippt == 1 %}Gekippt
-          {% elif offen == 1 %}Offen
-          {% elif offen == 0 and gekippt == 0 %}Geschlossen
-          {% else %}Unbekannt{% endif %}
-        icon: >-
-          {% set offen = state_attr('sensor.eg_fenster_schlafzimmer_rechts_gross_empfang', 'offen') %}
-          {% set gekippt = state_attr('sensor.eg_fenster_schlafzimmer_rechts_gross_empfang', 'gekippt') %}
-          {% if gekippt == 1 %}mdi:window-open-variant
-          {% elif offen == 1 %}mdi:window-open
-          {% elif offen == 0 and gekippt == 0 %}mdi:window-closed
-          {% else %}mdi:help-circle-outline{% endif %}
-      - name: "EG Fenster Schlafzimmer Tür Stellung"
-        unique_id: "eg_fenster_schlafzimmer_tur_stellung"
-        default_entity_id: "sensor.eg_fenster_schlafzimmer_tur_stellung"
-        state: >-
-          {% set offen = state_attr('sensor.eg_fenster_schlafzimmer_tur_empfang', 'offen') %}
-          {% set gekippt = state_attr('sensor.eg_fenster_schlafzimmer_tur_empfang', 'gekippt') %}
-          {% if gekippt == 1 %}Gekippt
-          {% elif offen == 1 %}Offen
-          {% elif offen == 0 and gekippt == 0 %}Geschlossen
-          {% else %}Unbekannt{% endif %}
-        icon: >-
-          {% set offen = state_attr('sensor.eg_fenster_schlafzimmer_tur_empfang', 'offen') %}
-          {% set gekippt = state_attr('sensor.eg_fenster_schlafzimmer_tur_empfang', 'gekippt') %}
-          {% if gekippt == 1 %}mdi:window-open-variant
-          {% elif offen == 1 %}mdi:window-open
-          {% elif offen == 0 and gekippt == 0 %}mdi:window-closed
-          {% else %}mdi:help-circle-outline{% endif %}
-      - name: "EG Fenster Wohnzimmer Tür Stellung"
-        unique_id: "eg_fenster_wohnzimmer_tur_stellung"
-        default_entity_id: "sensor.eg_fenster_wohnzimmer_tur_stellung"
-        state: >-
-          {% set offen = state_attr('sensor.eg_fenster_wohnzimmer_tur_empfang', 'offen') %}
-          {% set gekippt = state_attr('sensor.eg_fenster_wohnzimmer_tur_empfang', 'gekippt') %}
-          {% if gekippt == 1 %}Gekippt
-          {% elif offen == 1 %}Offen
-          {% elif offen == 0 and gekippt == 0 %}Geschlossen
-          {% else %}Unbekannt{% endif %}
-        icon: >-
-          {% set offen = state_attr('sensor.eg_fenster_wohnzimmer_tur_empfang', 'offen') %}
-          {% set gekippt = state_attr('sensor.eg_fenster_wohnzimmer_tur_empfang', 'gekippt') %}
-          {% if gekippt == 1 %}mdi:window-open-variant
-          {% elif offen == 1 %}mdi:window-open
-          {% elif offen == 0 and gekippt == 0 %}mdi:window-closed
-          {% else %}mdi:help-circle-outline{% endif %}
-      - name: "EG Fenster Bad links Stellung"
-        unique_id: "eg_fenster_bad_links_stellung"
-        default_entity_id: "sensor.eg_fenster_bad_links_stellung"
-        state: >-
-          {% set offen = state_attr('sensor.eg_fenster_bad_links_empfang', 'offen') %}
-          {% set gekippt = state_attr('sensor.eg_fenster_bad_links_empfang', 'gekippt') %}
-          {% if gekippt == 1 %}Gekippt
-          {% elif offen == 1 %}Offen
-          {% elif offen == 0 and gekippt == 0 %}Geschlossen
-          {% else %}Unbekannt{% endif %}
-        icon: >-
-          {% set offen = state_attr('sensor.eg_fenster_bad_links_empfang', 'offen') %}
-          {% set gekippt = state_attr('sensor.eg_fenster_bad_links_empfang', 'gekippt') %}
-          {% if gekippt == 1 %}mdi:window-open-variant
-          {% elif offen == 1 %}mdi:window-open
-          {% elif offen == 0 and gekippt == 0 %}mdi:window-closed
-          {% else %}mdi:help-circle-outline{% endif %}
-      - name: "EG Fenster Bad rechts Stellung"
-        unique_id: "eg_fenster_bad_rechts_stellung"
-        default_entity_id: "sensor.eg_fenster_bad_rechts_stellung"
-        state: >-
-          {% set offen = state_attr('sensor.eg_fenster_bad_rechts_empfang', 'offen') %}
-          {% set gekippt = state_attr('sensor.eg_fenster_bad_rechts_empfang', 'gekippt') %}
-          {% if gekippt == 1 %}Gekippt
-          {% elif offen == 1 %}Offen
-          {% elif offen == 0 and gekippt == 0 %}Geschlossen
-          {% else %}Unbekannt{% endif %}
-        icon: >-
-          {% set offen = state_attr('sensor.eg_fenster_bad_rechts_empfang', 'offen') %}
-          {% set gekippt = state_attr('sensor.eg_fenster_bad_rechts_empfang', 'gekippt') %}
-          {% if gekippt == 1 %}mdi:window-open-variant
-          {% elif offen == 1 %}mdi:window-open
-          {% elif offen == 0 and gekippt == 0 %}mdi:window-closed
-          {% else %}mdi:help-circle-outline{% endif %}
   - triggers:
       - trigger: knx.telegram
         destination: ["5/1/0", "5/1/20"]
@@ -400,13 +232,27 @@ template:
       - condition: template
         value_template: "{{ trigger.source == '1.1.11' and trigger.payload in [0, 1] }}"
     sensor:
-      - name: "EG Fenster Küche links klein Empfang"
-        unique_id: "eg_fenster_kuche_links_klein_empfang"
-        default_entity_id: "sensor.eg_fenster_kuche_links_klein_empfang"
-        state: "{{ trigger.timestamp }}"
+      - name: "EG Fenster Küche links klein Stellung"
+        unique_id: "eg_fenster_kuche_links_klein_stellung"
+        default_entity_id: "sensor.eg_fenster_kuche_links_klein_stellung"
+        state: >-
+          {% set offen = trigger.payload if trigger.destination == '5/1/0' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/1/20' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}Gekippt
+          {% elif offen == 1 %}Offen
+          {% elif offen == 0 and gekippt == 0 %}Geschlossen
+          {% else %}Unbekannt{% endif %}
+        icon: >-
+          {% set offen = trigger.payload if trigger.destination == '5/1/0' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/1/20' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}mdi:window-open-variant
+          {% elif offen == 1 %}mdi:window-open
+          {% elif offen == 0 and gekippt == 0 %}mdi:window-closed
+          {% else %}mdi:help-circle-outline{% endif %}
         attributes:
-          offen: "{{ trigger.payload if trigger.destination == '5/1/0' else this.attributes.get('offen') }}"
-          gekippt: "{{ trigger.payload if trigger.destination == '5/1/20' else this.attributes.get('gekippt') }}"
+          offen: "{{ trigger.payload if trigger.destination == '5/1/0' else this.attributes.get('offen', -1) }}"
+          gekippt: "{{ trigger.payload if trigger.destination == '5/1/20' else this.attributes.get('gekippt', -1) }}"
+          letzte_meldung: "{{ now().strftime('%d.%m. %H:%M:%S') }} von {{ trigger.source }} auf {{ trigger.destination }}"
   - triggers:
       - trigger: knx.telegram
         destination: ["5/1/1", "5/1/21"]
@@ -416,13 +262,27 @@ template:
       - condition: template
         value_template: "{{ trigger.source == '1.1.12' and trigger.payload in [0, 1] }}"
     sensor:
-      - name: "EG Fenster Küche rechts groß Empfang"
-        unique_id: "eg_fenster_kuche_rechts_gross_empfang"
-        default_entity_id: "sensor.eg_fenster_kuche_rechts_gross_empfang"
-        state: "{{ trigger.timestamp }}"
+      - name: "EG Fenster Küche rechts groß Stellung"
+        unique_id: "eg_fenster_kuche_rechts_gross_stellung"
+        default_entity_id: "sensor.eg_fenster_kuche_rechts_gross_stellung"
+        state: >-
+          {% set offen = trigger.payload if trigger.destination == '5/1/1' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/1/21' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}Gekippt
+          {% elif offen == 1 %}Offen
+          {% elif offen == 0 and gekippt == 0 %}Geschlossen
+          {% else %}Unbekannt{% endif %}
+        icon: >-
+          {% set offen = trigger.payload if trigger.destination == '5/1/1' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/1/21' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}mdi:window-open-variant
+          {% elif offen == 1 %}mdi:window-open
+          {% elif offen == 0 and gekippt == 0 %}mdi:window-closed
+          {% else %}mdi:help-circle-outline{% endif %}
         attributes:
-          offen: "{{ trigger.payload if trigger.destination == '5/1/1' else this.attributes.get('offen') }}"
-          gekippt: "{{ trigger.payload if trigger.destination == '5/1/21' else this.attributes.get('gekippt') }}"
+          offen: "{{ trigger.payload if trigger.destination == '5/1/1' else this.attributes.get('offen', -1) }}"
+          gekippt: "{{ trigger.payload if trigger.destination == '5/1/21' else this.attributes.get('gekippt', -1) }}"
+          letzte_meldung: "{{ now().strftime('%d.%m. %H:%M:%S') }} von {{ trigger.source }} auf {{ trigger.destination }}"
   - triggers:
       - trigger: knx.telegram
         destination: ["5/0/0", "5/0/20"]
@@ -432,13 +292,27 @@ template:
       - condition: template
         value_template: "{{ trigger.source == '1.1.13' and trigger.payload in [0, 1] }}"
     sensor:
-      - name: "EG Fenster Wohnzimmer links klein Empfang"
-        unique_id: "eg_fenster_wohnzimmer_links_klein_empfang"
-        default_entity_id: "sensor.eg_fenster_wohnzimmer_links_klein_empfang"
-        state: "{{ trigger.timestamp }}"
+      - name: "EG Fenster Wohnzimmer links klein Stellung"
+        unique_id: "eg_fenster_wohnzimmer_links_klein_stellung"
+        default_entity_id: "sensor.eg_fenster_wohnzimmer_links_klein_stellung"
+        state: >-
+          {% set offen = trigger.payload if trigger.destination == '5/0/0' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/0/20' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}Gekippt
+          {% elif offen == 1 %}Offen
+          {% elif offen == 0 and gekippt == 0 %}Geschlossen
+          {% else %}Unbekannt{% endif %}
+        icon: >-
+          {% set offen = trigger.payload if trigger.destination == '5/0/0' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/0/20' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}mdi:window-open-variant
+          {% elif offen == 1 %}mdi:window-open
+          {% elif offen == 0 and gekippt == 0 %}mdi:window-closed
+          {% else %}mdi:help-circle-outline{% endif %}
         attributes:
-          offen: "{{ trigger.payload if trigger.destination == '5/0/0' else this.attributes.get('offen') }}"
-          gekippt: "{{ trigger.payload if trigger.destination == '5/0/20' else this.attributes.get('gekippt') }}"
+          offen: "{{ trigger.payload if trigger.destination == '5/0/0' else this.attributes.get('offen', -1) }}"
+          gekippt: "{{ trigger.payload if trigger.destination == '5/0/20' else this.attributes.get('gekippt', -1) }}"
+          letzte_meldung: "{{ now().strftime('%d.%m. %H:%M:%S') }} von {{ trigger.source }} auf {{ trigger.destination }}"
   - triggers:
       - trigger: knx.telegram
         destination: ["5/0/1", "5/0/21"]
@@ -448,13 +322,27 @@ template:
       - condition: template
         value_template: "{{ trigger.source == '1.1.14' and trigger.payload in [0, 1] }}"
     sensor:
-      - name: "EG Fenster Wohnzimmer rechts groß Empfang"
-        unique_id: "eg_fenster_wohnzimmer_rechts_gross_empfang"
-        default_entity_id: "sensor.eg_fenster_wohnzimmer_rechts_gross_empfang"
-        state: "{{ trigger.timestamp }}"
+      - name: "EG Fenster Wohnzimmer rechts groß Stellung"
+        unique_id: "eg_fenster_wohnzimmer_rechts_gross_stellung"
+        default_entity_id: "sensor.eg_fenster_wohnzimmer_rechts_gross_stellung"
+        state: >-
+          {% set offen = trigger.payload if trigger.destination == '5/0/1' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/0/21' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}Gekippt
+          {% elif offen == 1 %}Offen
+          {% elif offen == 0 and gekippt == 0 %}Geschlossen
+          {% else %}Unbekannt{% endif %}
+        icon: >-
+          {% set offen = trigger.payload if trigger.destination == '5/0/1' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/0/21' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}mdi:window-open-variant
+          {% elif offen == 1 %}mdi:window-open
+          {% elif offen == 0 and gekippt == 0 %}mdi:window-closed
+          {% else %}mdi:help-circle-outline{% endif %}
         attributes:
-          offen: "{{ trigger.payload if trigger.destination == '5/0/1' else this.attributes.get('offen') }}"
-          gekippt: "{{ trigger.payload if trigger.destination == '5/0/21' else this.attributes.get('gekippt') }}"
+          offen: "{{ trigger.payload if trigger.destination == '5/0/1' else this.attributes.get('offen', -1) }}"
+          gekippt: "{{ trigger.payload if trigger.destination == '5/0/21' else this.attributes.get('gekippt', -1) }}"
+          letzte_meldung: "{{ now().strftime('%d.%m. %H:%M:%S') }} von {{ trigger.source }} auf {{ trigger.destination }}"
   - triggers:
       - trigger: knx.telegram
         destination: ["5/3/0", "5/3/20"]
@@ -464,13 +352,27 @@ template:
       - condition: template
         value_template: "{{ trigger.source == '1.1.15' and trigger.payload in [0, 1] }}"
     sensor:
-      - name: "EG Fenster Arbeitszimmer links klein Empfang"
-        unique_id: "eg_fenster_arbeitszimmer_links_klein_empfang"
-        default_entity_id: "sensor.eg_fenster_arbeitszimmer_links_klein_empfang"
-        state: "{{ trigger.timestamp }}"
+      - name: "EG Fenster Arbeitszimmer links klein Stellung"
+        unique_id: "eg_fenster_arbeitszimmer_links_klein_stellung"
+        default_entity_id: "sensor.eg_fenster_arbeitszimmer_links_klein_stellung"
+        state: >-
+          {% set offen = trigger.payload if trigger.destination == '5/3/0' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/3/20' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}Gekippt
+          {% elif offen == 1 %}Offen
+          {% elif offen == 0 and gekippt == 0 %}Geschlossen
+          {% else %}Unbekannt{% endif %}
+        icon: >-
+          {% set offen = trigger.payload if trigger.destination == '5/3/0' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/3/20' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}mdi:window-open-variant
+          {% elif offen == 1 %}mdi:window-open
+          {% elif offen == 0 and gekippt == 0 %}mdi:window-closed
+          {% else %}mdi:help-circle-outline{% endif %}
         attributes:
-          offen: "{{ trigger.payload if trigger.destination == '5/3/0' else this.attributes.get('offen') }}"
-          gekippt: "{{ trigger.payload if trigger.destination == '5/3/20' else this.attributes.get('gekippt') }}"
+          offen: "{{ trigger.payload if trigger.destination == '5/3/0' else this.attributes.get('offen', -1) }}"
+          gekippt: "{{ trigger.payload if trigger.destination == '5/3/20' else this.attributes.get('gekippt', -1) }}"
+          letzte_meldung: "{{ now().strftime('%d.%m. %H:%M:%S') }} von {{ trigger.source }} auf {{ trigger.destination }}"
   - triggers:
       - trigger: knx.telegram
         destination: ["5/3/1", "5/3/21"]
@@ -480,13 +382,27 @@ template:
       - condition: template
         value_template: "{{ trigger.source == '1.1.16' and trigger.payload in [0, 1] }}"
     sensor:
-      - name: "EG Fenster Arbeitszimmer rechts groß Empfang"
-        unique_id: "eg_fenster_arbeitszimmer_rechts_gross_empfang"
-        default_entity_id: "sensor.eg_fenster_arbeitszimmer_rechts_gross_empfang"
-        state: "{{ trigger.timestamp }}"
+      - name: "EG Fenster Arbeitszimmer rechts groß Stellung"
+        unique_id: "eg_fenster_arbeitszimmer_rechts_gross_stellung"
+        default_entity_id: "sensor.eg_fenster_arbeitszimmer_rechts_gross_stellung"
+        state: >-
+          {% set offen = trigger.payload if trigger.destination == '5/3/1' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/3/21' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}Gekippt
+          {% elif offen == 1 %}Offen
+          {% elif offen == 0 and gekippt == 0 %}Geschlossen
+          {% else %}Unbekannt{% endif %}
+        icon: >-
+          {% set offen = trigger.payload if trigger.destination == '5/3/1' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/3/21' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}mdi:window-open-variant
+          {% elif offen == 1 %}mdi:window-open
+          {% elif offen == 0 and gekippt == 0 %}mdi:window-closed
+          {% else %}mdi:help-circle-outline{% endif %}
         attributes:
-          offen: "{{ trigger.payload if trigger.destination == '5/3/1' else this.attributes.get('offen') }}"
-          gekippt: "{{ trigger.payload if trigger.destination == '5/3/21' else this.attributes.get('gekippt') }}"
+          offen: "{{ trigger.payload if trigger.destination == '5/3/1' else this.attributes.get('offen', -1) }}"
+          gekippt: "{{ trigger.payload if trigger.destination == '5/3/21' else this.attributes.get('gekippt', -1) }}"
+          letzte_meldung: "{{ now().strftime('%d.%m. %H:%M:%S') }} von {{ trigger.source }} auf {{ trigger.destination }}"
   - triggers:
       - trigger: knx.telegram
         destination: ["5/4/0", "5/4/20"]
@@ -496,13 +412,27 @@ template:
       - condition: template
         value_template: "{{ trigger.source == '1.1.17' and trigger.payload in [0, 1] }}"
     sensor:
-      - name: "EG Fenster Schlafzimmer rechts groß Empfang"
-        unique_id: "eg_fenster_schlafzimmer_rechts_gross_empfang"
-        default_entity_id: "sensor.eg_fenster_schlafzimmer_rechts_gross_empfang"
-        state: "{{ trigger.timestamp }}"
+      - name: "EG Fenster Schlafzimmer rechts groß Stellung"
+        unique_id: "eg_fenster_schlafzimmer_rechts_gross_stellung"
+        default_entity_id: "sensor.eg_fenster_schlafzimmer_rechts_gross_stellung"
+        state: >-
+          {% set offen = trigger.payload if trigger.destination == '5/4/0' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/4/20' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}Gekippt
+          {% elif offen == 1 %}Offen
+          {% elif offen == 0 and gekippt == 0 %}Geschlossen
+          {% else %}Unbekannt{% endif %}
+        icon: >-
+          {% set offen = trigger.payload if trigger.destination == '5/4/0' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/4/20' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}mdi:window-open-variant
+          {% elif offen == 1 %}mdi:window-open
+          {% elif offen == 0 and gekippt == 0 %}mdi:window-closed
+          {% else %}mdi:help-circle-outline{% endif %}
         attributes:
-          offen: "{{ trigger.payload if trigger.destination == '5/4/0' else this.attributes.get('offen') }}"
-          gekippt: "{{ trigger.payload if trigger.destination == '5/4/20' else this.attributes.get('gekippt') }}"
+          offen: "{{ trigger.payload if trigger.destination == '5/4/0' else this.attributes.get('offen', -1) }}"
+          gekippt: "{{ trigger.payload if trigger.destination == '5/4/20' else this.attributes.get('gekippt', -1) }}"
+          letzte_meldung: "{{ now().strftime('%d.%m. %H:%M:%S') }} von {{ trigger.source }} auf {{ trigger.destination }}"
   - triggers:
       - trigger: knx.telegram
         destination: ["5/4/1", "5/4/21"]
@@ -512,13 +442,27 @@ template:
       - condition: template
         value_template: "{{ trigger.source == '1.1.18' and trigger.payload in [0, 1] }}"
     sensor:
-      - name: "EG Fenster Schlafzimmer Tür Empfang"
-        unique_id: "eg_fenster_schlafzimmer_tur_empfang"
-        default_entity_id: "sensor.eg_fenster_schlafzimmer_tur_empfang"
-        state: "{{ trigger.timestamp }}"
+      - name: "EG Fenster Schlafzimmer Tür Stellung"
+        unique_id: "eg_fenster_schlafzimmer_tur_stellung"
+        default_entity_id: "sensor.eg_fenster_schlafzimmer_tur_stellung"
+        state: >-
+          {% set offen = trigger.payload if trigger.destination == '5/4/1' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/4/21' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}Gekippt
+          {% elif offen == 1 %}Offen
+          {% elif offen == 0 and gekippt == 0 %}Geschlossen
+          {% else %}Unbekannt{% endif %}
+        icon: >-
+          {% set offen = trigger.payload if trigger.destination == '5/4/1' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/4/21' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}mdi:window-open-variant
+          {% elif offen == 1 %}mdi:window-open
+          {% elif offen == 0 and gekippt == 0 %}mdi:window-closed
+          {% else %}mdi:help-circle-outline{% endif %}
         attributes:
-          offen: "{{ trigger.payload if trigger.destination == '5/4/1' else this.attributes.get('offen') }}"
-          gekippt: "{{ trigger.payload if trigger.destination == '5/4/21' else this.attributes.get('gekippt') }}"
+          offen: "{{ trigger.payload if trigger.destination == '5/4/1' else this.attributes.get('offen', -1) }}"
+          gekippt: "{{ trigger.payload if trigger.destination == '5/4/21' else this.attributes.get('gekippt', -1) }}"
+          letzte_meldung: "{{ now().strftime('%d.%m. %H:%M:%S') }} von {{ trigger.source }} auf {{ trigger.destination }}"
   - triggers:
       - trigger: knx.telegram
         destination: ["5/0/2", "5/0/22"]
@@ -528,13 +472,27 @@ template:
       - condition: template
         value_template: "{{ trigger.source == '1.1.19' and trigger.payload in [0, 1] }}"
     sensor:
-      - name: "EG Fenster Wohnzimmer Tür Empfang"
-        unique_id: "eg_fenster_wohnzimmer_tur_empfang"
-        default_entity_id: "sensor.eg_fenster_wohnzimmer_tur_empfang"
-        state: "{{ trigger.timestamp }}"
+      - name: "EG Fenster Wohnzimmer Tür Stellung"
+        unique_id: "eg_fenster_wohnzimmer_tur_stellung"
+        default_entity_id: "sensor.eg_fenster_wohnzimmer_tur_stellung"
+        state: >-
+          {% set offen = trigger.payload if trigger.destination == '5/0/2' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/0/22' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}Gekippt
+          {% elif offen == 1 %}Offen
+          {% elif offen == 0 and gekippt == 0 %}Geschlossen
+          {% else %}Unbekannt{% endif %}
+        icon: >-
+          {% set offen = trigger.payload if trigger.destination == '5/0/2' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/0/22' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}mdi:window-open-variant
+          {% elif offen == 1 %}mdi:window-open
+          {% elif offen == 0 and gekippt == 0 %}mdi:window-closed
+          {% else %}mdi:help-circle-outline{% endif %}
         attributes:
-          offen: "{{ trigger.payload if trigger.destination == '5/0/2' else this.attributes.get('offen') }}"
-          gekippt: "{{ trigger.payload if trigger.destination == '5/0/22' else this.attributes.get('gekippt') }}"
+          offen: "{{ trigger.payload if trigger.destination == '5/0/2' else this.attributes.get('offen', -1) }}"
+          gekippt: "{{ trigger.payload if trigger.destination == '5/0/22' else this.attributes.get('gekippt', -1) }}"
+          letzte_meldung: "{{ now().strftime('%d.%m. %H:%M:%S') }} von {{ trigger.source }} auf {{ trigger.destination }}"
   - triggers:
       - trigger: knx.telegram
         destination: ["5/5/0", "5/5/20"]
@@ -544,13 +502,27 @@ template:
       - condition: template
         value_template: "{{ trigger.source == '1.1.39' and trigger.payload in [0, 1] }}"
     sensor:
-      - name: "EG Fenster Bad links Empfang"
-        unique_id: "eg_fenster_bad_links_empfang"
-        default_entity_id: "sensor.eg_fenster_bad_links_empfang"
-        state: "{{ trigger.timestamp }}"
+      - name: "EG Fenster Bad links Stellung"
+        unique_id: "eg_fenster_bad_links_stellung"
+        default_entity_id: "sensor.eg_fenster_bad_links_stellung"
+        state: >-
+          {% set offen = trigger.payload if trigger.destination == '5/5/0' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/5/20' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}Gekippt
+          {% elif offen == 1 %}Offen
+          {% elif offen == 0 and gekippt == 0 %}Geschlossen
+          {% else %}Unbekannt{% endif %}
+        icon: >-
+          {% set offen = trigger.payload if trigger.destination == '5/5/0' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/5/20' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}mdi:window-open-variant
+          {% elif offen == 1 %}mdi:window-open
+          {% elif offen == 0 and gekippt == 0 %}mdi:window-closed
+          {% else %}mdi:help-circle-outline{% endif %}
         attributes:
-          offen: "{{ trigger.payload if trigger.destination == '5/5/0' else this.attributes.get('offen') }}"
-          gekippt: "{{ trigger.payload if trigger.destination == '5/5/20' else this.attributes.get('gekippt') }}"
+          offen: "{{ trigger.payload if trigger.destination == '5/5/0' else this.attributes.get('offen', -1) }}"
+          gekippt: "{{ trigger.payload if trigger.destination == '5/5/20' else this.attributes.get('gekippt', -1) }}"
+          letzte_meldung: "{{ now().strftime('%d.%m. %H:%M:%S') }} von {{ trigger.source }} auf {{ trigger.destination }}"
   - triggers:
       - trigger: knx.telegram
         destination: ["5/5/1", "5/5/21"]
@@ -560,10 +532,55 @@ template:
       - condition: template
         value_template: "{{ trigger.source == '1.1.42' and trigger.payload in [0, 1] }}"
     sensor:
-      - name: "EG Fenster Bad rechts Empfang"
-        unique_id: "eg_fenster_bad_rechts_empfang"
-        default_entity_id: "sensor.eg_fenster_bad_rechts_empfang"
-        state: "{{ trigger.timestamp }}"
+      - name: "EG Fenster Bad rechts Stellung"
+        unique_id: "eg_fenster_bad_rechts_stellung"
+        default_entity_id: "sensor.eg_fenster_bad_rechts_stellung"
+        state: >-
+          {% set offen = trigger.payload if trigger.destination == '5/5/1' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/5/21' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}Gekippt
+          {% elif offen == 1 %}Offen
+          {% elif offen == 0 and gekippt == 0 %}Geschlossen
+          {% else %}Unbekannt{% endif %}
+        icon: >-
+          {% set offen = trigger.payload if trigger.destination == '5/5/1' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/5/21' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}mdi:window-open-variant
+          {% elif offen == 1 %}mdi:window-open
+          {% elif offen == 0 and gekippt == 0 %}mdi:window-closed
+          {% else %}mdi:help-circle-outline{% endif %}
         attributes:
-          offen: "{{ trigger.payload if trigger.destination == '5/5/1' else this.attributes.get('offen') }}"
-          gekippt: "{{ trigger.payload if trigger.destination == '5/5/21' else this.attributes.get('gekippt') }}"
+          offen: "{{ trigger.payload if trigger.destination == '5/5/1' else this.attributes.get('offen', -1) }}"
+          gekippt: "{{ trigger.payload if trigger.destination == '5/5/21' else this.attributes.get('gekippt', -1) }}"
+          letzte_meldung: "{{ now().strftime('%d.%m. %H:%M:%S') }} von {{ trigger.source }} auf {{ trigger.destination }}"
+
+  - triggers:
+      - trigger: knx.telegram
+        destination: ["5/2/0", "5/2/20"]
+        group_value_read: false
+        outgoing: false
+    conditions:
+      - condition: template
+        value_template: "{{ trigger.source == '1.1.44' and trigger.payload in [0, 1] }}"
+    sensor:
+      - name: "EG Fenster Bad vorne Stellung"
+        unique_id: "eg_fenster_bad_vorne_stellung"
+        default_entity_id: "sensor.eg_fenster_bad_vorne_stellung"
+        state: >-
+          {% set offen = trigger.payload if trigger.destination == '5/2/0' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/2/20' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}Gekippt
+          {% elif offen == 1 %}Offen
+          {% elif offen == 0 and gekippt == 0 %}Geschlossen
+          {% else %}Unbekannt{% endif %}
+        icon: >-
+          {% set offen = trigger.payload if trigger.destination == '5/2/0' else this.attributes.get('offen', -1) %}
+          {% set gekippt = trigger.payload if trigger.destination == '5/2/20' else this.attributes.get('gekippt', -1) %}
+          {% if gekippt == 1 %}mdi:window-open-variant
+          {% elif offen == 1 %}mdi:window-open
+          {% elif offen == 0 and gekippt == 0 %}mdi:window-closed
+          {% else %}mdi:help-circle-outline{% endif %}
+        attributes:
+          offen: "{{ trigger.payload if trigger.destination == '5/2/0' else this.attributes.get('offen', -1) }}"
+          gekippt: "{{ trigger.payload if trigger.destination == '5/2/20' else this.attributes.get('gekippt', -1) }}"
+          letzte_meldung: "{{ now().strftime('%d.%m. %H:%M:%S') }} von {{ trigger.source }} auf {{ trigger.destination }}"

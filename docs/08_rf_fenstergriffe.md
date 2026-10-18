@@ -1,6 +1,20 @@
 # 08 – MDT KNX-RF-Fenstergriffe
 
-Stand: 16.10.2026
+Stand: 17.10.2026
+
+## Erweiterung Bad vorne am 17.10.2026
+
+Der Nutzer meldet die bisherige Fensteranzeige als funktionierend. Live zeigt das EG-Dashboard für die elf bisherigen Griffe Geschlossen bzw. Gekippt. Die folgenden Abschnitte zum 16.10. sind historische Diagnosebefunde.
+
+Neu bestätigt: **1.1.44 Fenstergriff Bad vorne**, KO 2 auf **5/2/0** (Fensterstellung), KO 3 auf **5/2/20** (Kippstellung), beide Secure. Beide Gruppenadressen sind zusätzlich am HA-Tunnel **1.1.255** zugeordnet; ETS zeigt insgesamt **24 Assoziationen**. Der Nutzer hat den danach neu exportierten Schlüsselbund in HA importiert; HA zeigt den Tunnel als verbunden. Schlüsselbund und Passwort bleiben außerhalb des Repositorys.
+
+Das live gelesene und um Bad vorne erweiterte Paket enthält **24 empfangende KNX-Binärsensoren** und **zwölf direkt durch Telegramme ausgelöste Stellungsanzeigen**. Jede Anzeige führt ihre beiden Bits in eigenen Attributen und akzeptiert nur eingehende Werttelegramme der eigenen physikalischen Adresse. Die zwischenzeitlich verwendeten separaten Empfangs-Hilfssensoren und Querverweise über `state_attr` sind durch die funktionierende Live-Logik ersetzt. Für Bad vorne gilt ausschließlich Quelle `1.1.44`; `sync_state: false` bleibt erhalten.
+
+Paket und zwölfte Karte **EG → Fenster → Bad vorne** sind live gespeichert. HA-Konfigurationsprüfung erfolgreich; KNX und Template-Entitäten ohne Core-Neustart neu geladen. Die lokale vollständige EG-Vorlage und der Fenster-Reiter enthalten ebenfalls zwölf Karten. Der lokale Validator prüft 108 Kombinationen der beiden Zustandsbits sowie Quellen-/Zielfilter und Erhalt des jeweils anderen Bits.
+
+Am neuen Griff war „In Betrieb“ zyklisch alle 5 Stunden aktiv; Empfangsbereitschaft nach Lebenszeichen und Griffbewegung jeweils 3 Sekunden, nach Neustart 5 Minuten. Diese vorhandenen Werte wurden nicht verändert. KO 1, 5, 7 und 8 bleiben ohne neue Zuordnung; Batterie- und Erschütterungswerte werden daher nicht als live verfügbar ausgegeben.
+
+**Noch offen:** Applikationsdownload des neu verknüpften Griffs und physischer Test offen/gekippt/geschlossen. Der Download wurde nur für `1.1.44` gestartet. Nach der Klarstellung des Nutzers, dass der Griff erst später in Betrieb genommen wird, zeigt die ETS-Historie **Abgebrochen** und die Liste aktiver Operationen **keine laufenden Operationen**. Es wartet kein Download auf ein späteres Aufwachen. Bad vorne zeigt bis zum bestätigten Empfang korrekt **Unbekannt**. Kein Zustand wurde simuliert; keine Aktoren wurden programmiert oder bewegt.
 
 ## Diagnose und HA-Korrektur am 16.10.2026
 
@@ -41,8 +55,9 @@ Die Tabelle beschreibt die im ETS-Projekt gesetzten Objektverknüpfungen. Der am
 | 1.1.19 | Wohnzimmer Tür | 5/0/2 | 5/0/22 | `sensor.eg_fenster_wohnzimmer_tur_stellung` |
 | 1.1.39 | Bad links | 5/5/0 | 5/5/20 | `sensor.eg_fenster_bad_links_stellung` |
 | 1.1.42 | Bad rechts | 5/5/1 | 5/5/21 | `sensor.eg_fenster_bad_rechts_stellung` |
+| 1.1.44 | Bad vorne (ergänzt 17.10.) | 5/2/0 | 5/2/20 | `sensor.eg_fenster_bad_vorne_stellung` |
 
-Die vorhandenen Statusadressen `5/x/0…2` bleiben erhalten; die Kippadressen `5/x/20…22` wurden neu angelegt. Die frühere Planung für Bad vorne und Raum-Sammeladressen `5/x/10` ist kein Nachweis zusätzlicher realer Griffe. Diese Adressen werden hier nicht in HA eingebunden.
+Die vorhandenen Statusadressen `5/x/0…2` bleiben erhalten; die Kippadressen `5/x/20…22` wurden neu angelegt. Bad vorne wurde am 17.10. als reales Gerät bestätigt und ergänzt. Raum-Sammeladressen `5/x/10` bleiben ungenutzt.
 
 ## Kommunikationsobjekte
 

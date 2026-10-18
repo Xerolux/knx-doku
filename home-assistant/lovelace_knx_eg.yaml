@@ -250,6 +250,10 @@ views:
                 template: card_light
                 entity: light.eg_bad_vorne_licht
                 name: Bad vorne
+              - type: custom:button-card
+                template: card_light
+                entity: light.eg_abstellkammer_licht
+                name: Abstellkammer
 
   - title: Rollläden
     path: rolllaeden
@@ -559,6 +563,24 @@ views:
                 template: base_card
                 entity: sensor.eg_fenster_bad_rechts_stellung
                 name: "Bad rechts"
+                tap_action:
+                  action: more-info
+                styles:
+                  card:
+                    - background: |
+                        [[[
+                          const s = entity?.state;
+                          if (s === 'Geschlossen') return 'linear-gradient(135deg, #3a4a5c, #2c3e50)';
+                          if (s === 'Gekippt') return 'linear-gradient(135deg, #b7791f, #975a16)';
+                          if (s === 'Offen') return 'linear-gradient(135deg, #c53030, #9b2c2c)';
+                          return 'linear-gradient(135deg, #5f6368, #3c4043)';
+                        ]]]
+                state_display: |
+                  [[[ return ['Geschlossen', 'Gekippt', 'Offen'].includes(entity?.state) ? entity.state : 'Unbekannt'; ]]]
+              - type: custom:button-card
+                template: base_card
+                entity: sensor.eg_fenster_bad_vorne_stellung
+                name: "Bad vorne"
                 tap_action:
                   action: more-info
                 styles:

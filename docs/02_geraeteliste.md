@@ -42,7 +42,7 @@
 | 1.1.40 | Gira Wetterstation Plus, ETS-Applikation B00D21 | im ETS-Projekt; im Screenshot vom 29.08.2026 ohne grüne Statushäkchen, vollständigen Programmier- und Verknüpfungsstand prüfen |
 | 1.1.41 | Reserve/ETS-Platzhalter für Gira KNX Rauchwarnmelder, Applikation C01602 | noch kein vorhandenes oder in Betrieb genommenes KNX-Gerät bestätigt; Gruppenadressen unter `10/1` sind reine Planung |
 
-Bestätigt sind elf MDT KNX RF+ Fenstergriffe, Secure, im RF Segment 1: `1.1.11–1.1.19`, `1.1.39` und `1.1.42`. Die am 15.10.2026 gesetzten Status-/Kippverknüpfungen, HA-Zuordnung und noch offenen Inbetriebnahmeschritte stehen in [08 – RF-Fenstergriffe](08_rf_fenstergriffe.md).
+Bestätigt sind zwölf MDT KNX RF+ Fenstergriffe, Secure, im RF Segment 1: `1.1.11–1.1.19`, `1.1.39`, `1.1.42` und `1.1.44` (Bad vorne, ergänzt 17.10.2026). Die am 15.10.2026 gesetzten Status-/Kippverknüpfungen, HA-Zuordnung und noch offenen Inbetriebnahmeschritte stehen in [08 – RF-Fenstergriffe](08_rf_fenstergriffe.md).
 
 ### Visualisierung
 
@@ -82,3 +82,7 @@ Die MDT SCN-RTC20.01 wird für Datum und Uhrzeit als Slave betrieben. Home Assis
 ## Planungsentscheidung
 
 Das Licht wird in der ersten Ausbaustufe nur ein- und ausgeschaltet. DALI und RGBW werden vorbereitet, aber nicht zwingend sofort in Betrieb genommen. Reservegeräte und Reservekanäle gelten erst nach dokumentierter Verdrahtung als betriebsbereit.
+
+## Lichtzuordnung vom 18.10.2026
+
+`1.1.37 Abstellkammer` ist der MDT AKK-01UP.03 mit KO 0/7 auf `12/0/0` und `12/0/1`. `1.1.43 Licht Abstellkammer` sendet Wippe A+B, KO 0, auf `12/0/0`. Beide Geräte wurden erfolgreich programmiert. `1.1.33 Bad Gang` behält Gang/Bad, die bisherige Abstellkammerfunktion T5/6 ist deaktiviert und geladen. Der falsche AKS-Kanal H auf `1.1.3` ist deaktiviert und geladen. [Protokoll 34](34_abstellkammer_zentral_bad_2026-10-18.md).

@@ -58,6 +58,8 @@ Beschattung;Badezimmer;2/3/0;Badezimmer Rollladen Auf Ab;1.008
 Beschattung;Badezimmer;2/3/1;Badezimmer Rollladen Stop;1.010
 Beschattung;Badezimmer;2/3/2;Badezimmer Rollladen Position Soll;5.001
 Beschattung;Badezimmer;2/3/3;Badezimmer Rollladen Position Status;5.001
+Beschattung;Badezimmer;2/3/9;Badezimmer Rollladen Fahrzeitmessung starten;1.010
+Beschattung;Badezimmer;2/3/10;Badezimmer Rollladen Diagnosetext;16.000
 Beschattung;Markise;2/4/0;Markise Auf Ab;1.008
 Beschattung;Markise;2/4/1;Markise Stop;1.010
 Beschattung;Markise;2/4/2;Markise Position Soll;5.001

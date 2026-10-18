@@ -70,6 +70,8 @@
 "";"";"Badezimmer Rollladen Stop";"2/3/1"
 "";"";"Badezimmer Rollladen Position Soll";"2/3/2"
 "";"";"Badezimmer Rollladen Position Status";"2/3/3"
+"";"";"Badezimmer Rollladen Fahrzeitmessung starten";"2/3/9"
+"";"";"Badezimmer Rollladen Diagnosetext";"2/3/10"
 "";"Markise";"";"2/4/-"
 "";"";"Markise Auf Ab";"2/4/0"
 "";"";"Markise Stop";"2/4/1"

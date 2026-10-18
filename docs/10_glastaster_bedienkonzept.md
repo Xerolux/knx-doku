@@ -228,3 +228,7 @@ Die Glastaster sollen je Raum Licht, Beschattung und Statusanzeigen bedienen. Si
 Die konkrete Zuordnung der Glastaster `1.1.21` bis `1.1.28` muss – außer `1.1.22` Küche – noch aus dem realen Einbau übernommen werden.
 
 Dieses Dokument enthält keine Bilder, Passwörter, PINs oder privaten ETS-Dateien.
+
+## Korrektur Abstellkammer vom 18.10.2026
+
+Die bisherige Funktion **T5/6 Abstellkammer** am MDT-Touch `1.1.33 Bad Gang` wurde auf `nicht aktiv` gesetzt; die zugehörigen Gruppenverknüpfungen wurden entfernt. T1/2 Gang und T3/4 Bad bleiben bestehen. Applikationsdownload erfolgreich. Abstellkammer wird stattdessen durch `1.1.43`, Wippe A+B, KO 0 auf `12/0/0` bedient. Aktor ist `1.1.37`, KO 0/7. [Protokoll 34](34_abstellkammer_zentral_bad_2026-10-18.md).

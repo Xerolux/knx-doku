@@ -100,6 +100,8 @@
       <GroupAddress Name="Badezimmer Rollladen Stop" Address="2/3/1" DPTs="DPST-1-10" />
       <GroupAddress Name="Badezimmer Rollladen Position Soll" Address="2/3/2" DPTs="DPST-5-1" />
       <GroupAddress Name="Badezimmer Rollladen Position Status" Address="2/3/3" DPTs="DPST-5-1" />
+      <GroupAddress Name="Badezimmer Rollladen Fahrzeitmessung starten" Address="2/3/9" DPTs="DPST-1-10" />
+      <GroupAddress Name="Badezimmer Rollladen Diagnosetext" Address="2/3/10" DPTs="DPST-16-0" />
     </GroupRange>
     <GroupRange Name="Markise" RangeStart="5120" RangeEnd="5375">
       <GroupAddress Name="Markise Auf Ab" Address="2/4/0" DPTs="DPST-1-8" />

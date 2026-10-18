@@ -31,7 +31,7 @@ Gruppenadressen sind unabhängig von der physikalischen Linie. Geräte auf KNX T
 | 9 | Home Assistant | optionale Diagnose- und Anzeigeobjekte | in ETS vorhanden |
 | 10 | Sicherheit | `10/0` MDT SCN-SAFE; `10/1` Rauchwarnmelder-Planung | SCN-SAFE verbunden; Rauchwarnmelder noch nicht in Betrieb genommen |
 | 11 | IDM Wärmepumpe | Werte und freigegebene Sollvorgaben der Home-Assistant-KNX-Bridge | in ETS importiert; Einzeladressen noch zu exportieren und zu prüfen |
-| 12 | Licht Erweiterung | Abstellkammer Licht Schalten und Status | in ETS vorhanden und mit Aktorkanal H verknüpft |
+| 12 | Licht Erweiterung | Abstellkammer Licht Schalten und Status | in ETS vorhanden; seit 18.10.2026 UP-Aktor `1.1.37`, KO 0/7 und Taster `1.1.43`, KO 0 |
 | 13 | Raumklima | Raumklimawerte sowie spätere Lüftungs- und Kühlungsfunktionen | in ETS vorhanden |
 
 Der erste ETS-Screenshot vom 29.08.2026 zeigte 12 Hauptgruppen: `0` bis `10` sowie `13`. Nach den anschließenden Importen ist zusätzlich Hauptgruppe `11` sichtbar; darunter werden die drei Mittelgruppen `11/0 Objekte 1–230`, `11/1 Objekte 292–499` und `11/3 PV und Batterie` angezeigt. Damit ist die Wärmepumpen-Struktur angelegt. Ob alle 43 Einzeladressen und DPTs vollständig übernommen wurden, muss noch durch Aufklappen der Mittelgruppen oder einen neuen ETS-Export bestätigt werden. Die Kommunikationsobjekte des Aktorkanals H bestätigen außerdem `12/0/0` und `12/0/1` aus Hauptgruppe `12 Licht Erweiterung`. Die Hauptgruppen 14 und 15 bleiben als Reserve frei.
@@ -42,7 +42,7 @@ Der erste ETS-Screenshot vom 29.08.2026 zeigte 12 Hauptgruppen: `0` bis `10` sow
 |---|---:|---|
 | `export.xml` | 144 | älterer ETS-XML-Export der Grundstruktur |
 | `gruppenadressen-ETS6-4-1.csv` | 145 | älterer ETS-CSV-Export; enthält zusätzlich die Altplanung `0/0/0 Zentral Aus` |
-| `gruppenadressen-komplett.xml` | 174 | vorgesehene Basisstruktur einschließlich aller sechs Gang-Adressen, Licht-Erweiterung, Zentralfunktionen, Zeit/Datum, SCN-SAFE, Rauchwarnmelder-Planung und RaumController |
+| `gruppenadressen-komplett.xml` | 176 | vorgesehene Basisstruktur einschließlich aller sechs Gang-Adressen, Licht-Erweiterung, Zentralfunktionen, Zeit/Datum, SCN-SAFE, Rauchwarnmelder-Planung und RaumController |
 | `gruppenadressen-abstellkammer.xml` | 2 | einmaliger Zusatzimport für bereits mit der älteren Komplettdatei angelegte ETS-Projekte |
 | `gruppenadressen-waermepumpe.xml` | 43 | separater Zusatzimport für die IDM-KNX-Bridge |
 | geplanter Gesamtstand | 217 | aktuelle Basis-Komplettdatei plus Wärmepumpen-Datei; ohne die nicht importierte Altplanung `0/0/0` |

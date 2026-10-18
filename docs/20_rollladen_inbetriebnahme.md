@@ -1,6 +1,14 @@
 # 20 – Rollladen: ETS-Zuordnung, Inbetriebnahme und Prüfung
 
-Stand: 03.10.2026
+Stand: 18.10.2026
+
+## Aktuelle Inbetriebnahme vom 18.10.2026
+
+JAL Kanal E Bad wurde über KO 151, Serviceadresse `2/3/9`, automatisch vermessen. KO 167 meldet den Diagnosetext auf `2/3/10`. Die Telegramme von `1.1.4` bestätigen gespeicherte Fahrzeiten **26 s abwärts** und **23 s aufwärts**, außerdem auf `2/3/3` erst **100 %**, danach **0 %**. Die Messfahrt endet oben. Keine Zwischenposition oder reale Sichtkontrolle wurde daraus abgeleitet.
+
+Zentralteilnahme A/B: `absolute Position und Auf/Ab`; C/D/E/F/H: `nur Auf/Ab`; G Markise: **nicht aktiv**. Der JAL-Applikationsdownload wurde erfolgreich abgeschlossen. Einzeladressen für F Küche sind weiterhin nicht verbunden. Eine zentrale Gruppenfahrt wurde nicht ausgelöst.
+
+Die folgenden Screenshotbefunde vom 03.10.2026 bleiben als Historie erhalten; der aktuelle Nachweis steht im [Protokoll 34](34_abstellkammer_zentral_bad_2026-10-18.md).
 
 ## Gerät und Grundprinzip
 

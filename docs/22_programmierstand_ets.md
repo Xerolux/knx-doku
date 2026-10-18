@@ -8,6 +8,10 @@ Das zusammenhängende Protokoll der Wetter-/Fensterarbeiten vom 16.10. einschlie
 
 Stand: 16.10.2026; ältere Abschnitte behalten ihren jeweils genannten Nachweiszeitpunkt.
 
+## Nachtrag 18.10.2026: Abstellkammer, Zentralfunktionen und Bad
+
+Erfolgreiche Applikationsdownloads in der ETS-Historie bestätigt: `1.1.43`, `1.1.37`, `1.1.36`, `1.1.3`, `1.1.33` und `1.1.4`. Bad-Messfahrt mit 26 s abwärts und 23 s aufwärts sowie Endlagenstatus 100/0 % vom JAL bestätigt. Abstellkammer in HA und Lovelace gespeichert. [Vollständiges Protokoll 34](34_abstellkammer_zentral_bad_2026-10-18.md).
+
 ## Nachtrag vom 16.10.2026 abends: Wetterstation und HA-Empfang
 
 Wetterstation `1.1.40` mit Applikation B00D29 einschließlich DPT 9.029 für absolute Feuchte erfolgreich geladen; ETS meldet `Programmieren(Appl.): Abgeschlossen`. 33 Mess-/Diagnoseausgänge sind verbunden und in HA visualisiert. Interne Beschattungssteuerung deaktiviert, keine neuen Aktorverknüpfungen. Livewerte und Grenzen: [11 – Wetterstation](11_wetterstation_gira.md).
@@ -46,7 +50,7 @@ Der allgemeine Geräte- und Programmierstatus-Screenshot vom 29.08.2026 enthält
 
 Der erste Gruppenadress-Screenshot vom 29.08.2026 zeigt 12 Hauptgruppen: `0` bis `10` sowie `13`. Nach dem Import ist zusätzlich Hauptgruppe `11 Wärmepumpe` sichtbar. Der aufgeklappte Bereich zeigt die Mittelgruppen `11/0 Objekte 1–230`, `11/1 Objekte 292–499` und `11/3 PV und Batterie`. Damit ist die Struktur der Wärmepumpen-Importdatei vorhanden. Einzeladressen, DPTs und konkrete Objektverknüpfungen sind in dieser Ansicht nicht nachprüfbar und müssen durch Aufklappen oder einen neuen ETS-Export bestätigt werden. Der ältere Suchordnerstand zeigte 117 Einträge unter „Addresses not assigned“; diese Zahl ist kein Gesamtzähler.
 
-Die Abstellkammer ist ein eigener neunter Raum und weder das Badezimmer noch Bad vorne. Für sie sind ausschließlich `12/0/0 Abstellkammer Licht Schalten` und `12/0/1 Abstellkammer Licht Status` vorgesehen. Beide Adressen sind mit Kanal H des Schaltaktors `1.1.3` verbunden: Objekt 85 schaltet über `12/0/0`, Objekt 92 meldet den Status über `12/0/1`. Eine Tasterzuordnung ist noch zu bestätigen.
+Die Abstellkammer ist ein eigener neunter Raum und weder das Badezimmer noch Bad vorne. Für sie sind ausschließlich `12/0/0 Abstellkammer Licht Schalten` und `12/0/1 Abstellkammer Licht Status` vorgesehen. Korrektur vom 18.10.2026: UP-Aktor `1.1.37` KO 0 schaltet über `12/0/0`, KO 7 meldet über `12/0/1`; Taster `1.1.43` KO 0 sendet auf `12/0/0`. AKS-Kanal H ist deaktiviert. Die bisherige Touch-Funktion `1.1.33` T5/6 wurde deaktiviert. Details: [Protokoll 34](34_abstellkammer_zentral_bad_2026-10-18.md).
 
 Der gemeinsame Ganglichtstatus ist in Funktion F1 des Logikmoduls `1.1.8` als ODER aus `1/4/1` und `1/4/3` angelegt. Ausgang ist `1/4/5`; dessen Objekt 9 besitzt DPT 1.001 sowie die Flags Kommunikation, Lesen und Übertragen. Die ETS-Projektierung ist bestätigt, Download und Busprüfung sind noch offen.
 
@@ -111,3 +115,7 @@ Blockiert das MDT SCN-SAFE.01 den ETS-Zugriff, wird für geplante Arbeiten die z
 - Datum, Uhrzeit und interne Temperatur der Glastaster
 
 Dieses öffentliche Dokument enthält keine Bilder, Passwörter, PINs, Schlüssel oder privaten ETS-Projektdateien.
+
+## Fenstergriff Bad vorne, 17.10.2026
+
+`1.1.44`: KO 2 mit `5/2/0`, KO 3 mit `5/2/20` verknüpft (Secure). Beide GAs am HA-Tunnel `1.1.255`, insgesamt 24 Zuordnungen. Schlüsselbund laut Nutzer neu exportiert und in HA importiert. Applikationsdownload nur dieses Griffs gestartet und abgebrochen; ETS-Historie bestätigt Abgebrochen, aktive Operationen leer. Nutzer stellt klar: Inbetriebnahme erst später. Download und physischer Stellungstest bleiben offen. Kein Download eines Jalousieaktors oder der Wetterstation in diesem Arbeitsschritt. Siehe [RF-Fenstergriffe](08_rf_fenstergriffe.md).

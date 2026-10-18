@@ -121,7 +121,7 @@ foreach ($fileName in $securityFiles) {
 }
 
 $expectedCounts = @{
-    'gruppenadressen-komplett.xml' = 174
+    'gruppenadressen-komplett.xml' = 176
     'gruppenadressen-waermepumpe.xml' = 43
     'gruppenadressen-sicherheit.xml' = 12
     'gruppenadressen-reparatur-safe-rauchwarnmelder.xml' = 12

@@ -44,7 +44,7 @@ L3: LS03, LS06, LS11, LS14
 
 ## Zuordnung zu Aktorkanälen
 
-Die Kanalbelegung des Schaltaktors umfasst derzeit acht bestätigte Raum-Lichtkreise. Die Abstellkammer ist ein separater neunter Raum, ihr Lichtkreis beziehungsweise Aktorkanal ist aber noch nicht bestätigt. Die Kanäle I bis X bleiben bis zur endgültigen Leitungszuordnung Reserve.
+Korrektur 18.10.2026: Die sieben Lichtkanäle A–G liegen auf AKS `1.1.3`. Bad vorne wird durch `1.1.36` und Abstellkammer durch `1.1.37` geschaltet. Die falsche Abstellkammer-Belegung von AKS-Kanal H ist deaktiviert. Die reale Reserveverdrahtung ist weiterhin nicht abgenommen.
 
 | Kanal | Funktion | Schutzorgan |
 |---|---|---|

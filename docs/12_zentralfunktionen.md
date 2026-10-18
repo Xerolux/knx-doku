@@ -1,6 +1,16 @@
 # 12 – Zentralfunktionen
 
-Stand: 03.10.2026
+Stand: 18.10.2026
+
+## Live geprüft am 18.10.2026
+
+Am Eingangstaster `1.1.20` sind KO 0 → `0/4/0`, KO 10 → `0/1/0` und KO 11 → `0/1/1` bestätigt. Alle sieben Lichtkanäle A–G des AKS nehmen teil; KO 289 empfängt `0/4/0`. Zusätzlich sind die UP-Aktoren `1.1.36` und `1.1.37` jeweils mit KO 12 auf `0/4/0` verbunden und ihre Kanal-Zentralfunktion aktiviert. Der fehlerhafte AKS-Kanal H ist deaktiviert.
+
+Am JAL sind A/B auf `absolute Position und Auf/Ab`, C/D/E/F/H auf `nur Auf/Ab` gestellt. G **Markise** wurde von `absolute Position und Auf/Ab` auf **nicht aktiv** korrigiert. Zentralobjekte 0/2 sind mit `0/1/0` und `0/1/1` verbunden; Objekt 3 bleibt ohne Adresse. Die bestehende erweiterte Freigabe von A/B wird durch diesen unverbundenen Positionsbefehl nicht genutzt. Küche F ist im Projekt als Rollladen mit Zentralteilnahme angelegt; reale Motor-/Einzeladresszuordnung bleibt offen.
+
+Die geänderten Aktorapplikationen wurden erfolgreich geladen. Es wurde kein gemeinsamer Fahr- oder Lichtbefehl zum Test aller Verbraucher gesendet. Der Badrollladen wurde separat automatisch vermessen. Einzelheiten und Prüfgrenzen: [Protokoll 34](34_abstellkammer_zentral_bad_2026-10-18.md).
+
+Die folgenden älteren Beschreibungen und Screenshotbefunde sind anhand dieses aktuellen Nachtrags zu lesen.
 
 ## Zentral Licht – aktueller Stand
 
@@ -28,7 +38,7 @@ Die Tasten 1/2 sind als Zwei-Tastenfunktion **Schalten** mit der Belegung **Ein 
 
 Bei jedem Aktorkanal, der ein Licht schaltet, muss die Teilnahme an der Zentralfunktion aktiviert werden. Steckdosen, technische Verbraucher und Reservekanäle dürfen nicht teilnehmen.
 
-Die einzelnen Lichtkanäle des Schaltaktors sind noch nicht vollständig mit den raumbezogenen Schalt- und Statusadressen verbunden. Die Zuordnung erfolgt erst nach Prüfung der realen Ausgangsverdrahtung.
+Die Schalt- und Statusverknüpfungen der sieben belegten Lichtkanäle A–G wurden am 18.10.2026 in ETS bestätigt.
 
 Objekt 291 **Zentralfunktion – In Betrieb** bleibt ohne konkreten Diagnosezweck zunächst unverknüpft.
 
