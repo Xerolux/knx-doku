@@ -71,11 +71,21 @@ Validierung: `python scripts/validate-wetterstation.py` prüft vollständige Anz
 ### Offene Punkte nach der Inbetriebnahme
 
 - HA meldet für `sensor.gira_wetter_absolute_feuchte_rohwert` einen Wechsel der Statistik-Einheit von zuvor ohne Einheit auf g/m³. Die Reparaturmeldung wurde beobachtet; die Bereinigung der bisherigen Statistik ist **noch nicht erfolgt**. Die aktuelle Messwertanzeige und die Langzeitstatistik sind getrennt zu beurteilen.
-- Das Textobjekt Windorientierung war bei der Prüfung noch leer; die numerische Windrichtung ist separat eingebunden.
+- Das Textobjekt Windorientierung war am 16.10. noch leer. Am 18.10. wurden die acht fehlenden ETS-Richtungstexte ergänzt und auf die Station geladen; siehe Nachtrag unten.
 - Regenfunktion und Himmelsrichtung der Helligkeitssensoren sind vor Ort noch zu prüfen. Alle Ausgänge sind eingebunden, aber damit nicht sämtliche Messungen physisch abgenommen.
 - Rollladen-/Markisenanbindung, Alarmgrenzen und Freigaben bleiben einem späteren Auftrag vorbehalten.
 
 Sitzungsprotokoll einschließlich Fensterdiagnose: [16.10.2026](32_wetter_fenster_inbetriebnahme_2026-10-16.md).
+
+## Nachtrag 18.10.2026: Windorientierungstext
+
+Die direkte ETS-Prüfung bestätigte acht leere Textfelder unter **1.1.40 Wetterstation Plus → Windrichtung**. KO 3 auf `4/0/11` (DPT 16.000) liefert parametrierte Texte; die vorhandene numerische Windrichtung auf `4/0/10` erzeugt diese Texte nicht in Home Assistant.
+
+Auf Nutzerauftrag wurden für Nord, Nordost, Ost, Südost, Süd, Südwest, West und Nordwest die gleichnamigen Texte eingetragen. Die bestehende Änderungsschwelle von 3 % und das deaktivierte zyklische Senden der Windrichtung (0) wurden beibehalten. ETS bestätigte anschließend für **1.1.40** ausdrücklich **Programmieren(Appl.): Abgeschlossen**. Keine Gruppenverknüpfungen oder Aktorparameter wurden dabei bearbeitet.
+
+Unmittelbar danach zeigte HA während der Anlaufphase zunächst Sensorstatus 32767, dann 65535 und 12289 mit ungültigen Messwerten. Nach der Anlaufphase live im Dashboard **Diagnose & GPS** bestätigt: **Windorientierung Text = Ost**, **Windrichtung Grad = 90°**, Windrohwert 3,24 km/h und **Sensorstatus = 1** (nur Betauungsschutz aktiv). Damit ist die Textübertragung bis zur HA-Anzeige bestätigt; die anderen sieben Himmelsrichtungen wurden als Parameter kontrolliert, aber nicht durch künstliche Telegramme getestet. HA-YAML und Dashboard benötigten keine Änderung.
+
+Die bestehende Markisenanbindung ist separat in [Dokument 33](33_markise_eg_wetterschutz.md) beschrieben; eine physische Aktorreaktion wurde bei diesem Textauftrag nicht geprüft.
 
 ## Ältere Planung für einen späteren Ausbau (nicht umgesetzt)
 

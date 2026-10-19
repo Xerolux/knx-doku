@@ -1,3 +1,4 @@
+# Ergänzung 18.10.2026: EG Bad und Abstellkammer aufgenommen; Live-Übernahme noch offen.
 # Google Assistant: feste Etagenlisten, 14.10.2026
 # Keine Markise, Garage, Garagentor, Freisitz oder Pool-Abdeckung in Sammelzielen.
 # Neue unbekannte Geraete werden nicht automatisch aufgenommen.
@@ -5,16 +6,16 @@ template:
   - light:
       - name: "Erdgeschoss Lichter"
         unique_id: google_erdgeschoss_lichter
-        state: "{{ expand([\"light.eg_wohnzimmer_licht\",\"light.eg_arbeitszimmer_licht\",\"light.eg_kuche_licht\",\"light.eg_schlafzimmer_licht\",\"light.eg_gang_licht\",\"light.eg_gang_neubau_licht\",\"light.eg_bad_vorne_licht\"]) | selectattr('state', 'eq', 'on') | list | count > 0 }}"
-        availability: "{{ expand([\"light.eg_wohnzimmer_licht\",\"light.eg_arbeitszimmer_licht\",\"light.eg_kuche_licht\",\"light.eg_schlafzimmer_licht\",\"light.eg_gang_licht\",\"light.eg_gang_neubau_licht\",\"light.eg_bad_vorne_licht\"]) | rejectattr('state', 'in', ['unavailable', 'unknown']) | list | count > 0 }}"
+        state: "{{ expand([\"light.eg_wohnzimmer_licht\",\"light.eg_arbeitszimmer_licht\",\"light.eg_kuche_licht\",\"light.eg_schlafzimmer_licht\",\"light.eg_gang_licht\",\"light.eg_gang_neubau_licht\",\"light.eg_bad_licht\",\"light.eg_abstellkammer_licht\",\"light.eg_bad_vorne_licht\"]) | selectattr('state', 'eq', 'on') | list | count > 0 }}"
+        availability: "{{ expand([\"light.eg_wohnzimmer_licht\",\"light.eg_arbeitszimmer_licht\",\"light.eg_kuche_licht\",\"light.eg_schlafzimmer_licht\",\"light.eg_gang_licht\",\"light.eg_gang_neubau_licht\",\"light.eg_bad_licht\",\"light.eg_abstellkammer_licht\",\"light.eg_bad_vorne_licht\"]) | rejectattr('state', 'in', ['unavailable', 'unknown']) | list | count > 0 }}"
         turn_on:
           - action: homeassistant.turn_on
             target:
-              entity_id: ["light.eg_wohnzimmer_licht","light.eg_arbeitszimmer_licht","light.eg_kuche_licht","light.eg_schlafzimmer_licht","light.eg_gang_licht","light.eg_gang_neubau_licht","light.eg_bad_vorne_licht"]
+              entity_id: ["light.eg_wohnzimmer_licht","light.eg_arbeitszimmer_licht","light.eg_kuche_licht","light.eg_schlafzimmer_licht","light.eg_gang_licht","light.eg_gang_neubau_licht","light.eg_bad_licht","light.eg_abstellkammer_licht","light.eg_bad_vorne_licht"]
         turn_off:
           - action: homeassistant.turn_off
             target:
-              entity_id: ["light.eg_wohnzimmer_licht","light.eg_arbeitszimmer_licht","light.eg_kuche_licht","light.eg_schlafzimmer_licht","light.eg_gang_licht","light.eg_gang_neubau_licht","light.eg_bad_vorne_licht"]
+              entity_id: ["light.eg_wohnzimmer_licht","light.eg_arbeitszimmer_licht","light.eg_kuche_licht","light.eg_schlafzimmer_licht","light.eg_gang_licht","light.eg_gang_neubau_licht","light.eg_bad_licht","light.eg_abstellkammer_licht","light.eg_bad_vorne_licht"]
       - name: "Obergeschoss Lichter"
         unique_id: google_obergeschoss_lichter
         state: "{{ expand([\"switch.licht_gang_gang\",\"switch.licht_schlafzimmer\",\"switch.licht_dusche\",\"switch.licht_esszimmer\",\"switch.licht_kuche\",\"switch.licht_melina\",\"switch.licht_wohnzimmer\",\"switch.licht_bad\",\"switch.licht_arbeitszimmer\"]) | selectattr('state', 'eq', 'on') | list | count > 0 }}"
@@ -43,20 +44,20 @@ template:
       - name: "Erdgeschoss Rollläden"
         unique_id: google_erdgeschoss_rollladen
         device_class: shutter
-        state: "{{ 'open' if expand([\"cover.eg_wohnzimmer_rollladen_fenster\",\"cover.eg_wohnzimmer_rollladen_tur\",\"cover.eg_arbeitszimmer_rollladen\",\"cover.eg_schlafzimmer_rollladen_tur\",\"cover.eg_schlafzimmer_rollladen_fenster\"]) | selectattr('state', 'in', ['open', 'opening', 'closing']) | list | count > 0 else 'closed' }}"
-        availability: "{{ expand([\"cover.eg_wohnzimmer_rollladen_fenster\",\"cover.eg_wohnzimmer_rollladen_tur\",\"cover.eg_arbeitszimmer_rollladen\",\"cover.eg_schlafzimmer_rollladen_tur\",\"cover.eg_schlafzimmer_rollladen_fenster\"]) | rejectattr('state', 'in', ['unavailable', 'unknown']) | list | count > 0 }}"
+        state: "{{ 'open' if expand([\"cover.eg_wohnzimmer_rollladen_fenster\",\"cover.eg_wohnzimmer_rollladen_tur\",\"cover.eg_arbeitszimmer_rollladen\",\"cover.eg_schlafzimmer_rollladen_tur\",\"cover.eg_bad_rollladen\",\"cover.eg_schlafzimmer_rollladen_fenster\"]) | selectattr('state', 'in', ['open', 'opening', 'closing']) | list | count > 0 else 'closed' }}"
+        availability: "{{ expand([\"cover.eg_wohnzimmer_rollladen_fenster\",\"cover.eg_wohnzimmer_rollladen_tur\",\"cover.eg_arbeitszimmer_rollladen\",\"cover.eg_schlafzimmer_rollladen_tur\",\"cover.eg_bad_rollladen\",\"cover.eg_schlafzimmer_rollladen_fenster\"]) | rejectattr('state', 'in', ['unavailable', 'unknown']) | list | count > 0 }}"
         open_cover:
           - action: cover.open_cover
             target:
-              entity_id: ["cover.eg_wohnzimmer_rollladen_fenster","cover.eg_wohnzimmer_rollladen_tur","cover.eg_arbeitszimmer_rollladen","cover.eg_schlafzimmer_rollladen_tur","cover.eg_schlafzimmer_rollladen_fenster"]
+              entity_id: ["cover.eg_wohnzimmer_rollladen_fenster","cover.eg_wohnzimmer_rollladen_tur","cover.eg_arbeitszimmer_rollladen","cover.eg_schlafzimmer_rollladen_tur","cover.eg_bad_rollladen","cover.eg_schlafzimmer_rollladen_fenster"]
         close_cover:
           - action: cover.close_cover
             target:
-              entity_id: ["cover.eg_wohnzimmer_rollladen_fenster","cover.eg_wohnzimmer_rollladen_tur","cover.eg_arbeitszimmer_rollladen","cover.eg_schlafzimmer_rollladen_tur","cover.eg_schlafzimmer_rollladen_fenster"]
+              entity_id: ["cover.eg_wohnzimmer_rollladen_fenster","cover.eg_wohnzimmer_rollladen_tur","cover.eg_arbeitszimmer_rollladen","cover.eg_schlafzimmer_rollladen_tur","cover.eg_bad_rollladen","cover.eg_schlafzimmer_rollladen_fenster"]
         stop_cover:
           - action: cover.stop_cover
             target:
-              entity_id: ["cover.eg_wohnzimmer_rollladen_fenster","cover.eg_wohnzimmer_rollladen_tur","cover.eg_arbeitszimmer_rollladen","cover.eg_schlafzimmer_rollladen_tur","cover.eg_schlafzimmer_rollladen_fenster"]
+              entity_id: ["cover.eg_wohnzimmer_rollladen_fenster","cover.eg_wohnzimmer_rollladen_tur","cover.eg_arbeitszimmer_rollladen","cover.eg_schlafzimmer_rollladen_tur","cover.eg_bad_rollladen","cover.eg_schlafzimmer_rollladen_fenster"]
       - name: "Obergeschoss Rollläden"
         unique_id: google_obergeschoss_rollladen
         device_class: shutter

@@ -51,7 +51,7 @@ Die Logik ist im MDT `SCN-LOG1.02` mit physikalischer Adresse `1.1.8` als Funkti
 
 Das Ausgangsobjekt 9 verwendet Priorität **Niedrig**, DPT **1.001 Schalten** und die Flags **Kommunikation, Lesen und Übertragen**. Schreiben und Aktualisieren sind deaktiviert. Dadurch ist das Logikmodul der einzige Sender für `1/4/5` und kann eine `GroupValueRead`-Anfrage von Home Assistant beantworten.
 
-Die Parametrierung und Verknüpfungen sind im ETS-Projekt bestätigt. Als nächster Schritt wird `1.1.8` vollständig programmiert und anschließend im Gruppenmonitor geprüft. Vor diesem Download kann Home Assistant weiterhin einen Timeout beim Lesen von `1/4/5` melden.
+Die Parametrierung und Verknüpfungen sind im ETS-Projekt bestätigt. Am 19.10.2026 wurde auch der Busbetrieb nachgewiesen: `1.1.8` beantwortete um 17:10:55,955 Uhr eine Leseanfrage auf `1/4/5` mit AUS und sendete nach Einzel-EIN auf `1/4/0` um 17:11:43,230 Uhr EIN. Die versuchsweise Verbindung zu KO 6 des Gangmelders `1.1.30` wurde später zur Diagnose des ausbleibenden Automatik-AUS wieder entfernt. Details stehen in [21 – Ganglicht](21_ganglicht_bewegungsmelder.md).
 
 ## Regeln für die Umsetzung
 

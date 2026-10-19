@@ -26,6 +26,8 @@ Die gesamte Gerätepopulation wurde nicht einzeln erneut heruntergeladen oder ph
 
 Die parallel gemeldete Störung betrifft Google-Sprachbefehle. Diagnose und vorgenommene Maßnahme stehen im [Protokoll vom 16.10.2026](30_google_knx_pruefung_2026-10-16.md).
 
+Ganglicht, abschließende Prüfung am 19.10.2026: Nach erneuter Störung Melder 1.1.30 mit Auslösung Tag/Nacht 6, Präsenz 5 und zyklischem EIN 10 s erfolgreich geladen. Zwei echte Durchgänge einschließlich Wiederanlauf bestanden: Melder-AUS um 20:30:12 und 20:36:56, jeweils beide Aktorstatus und Sammelstatus AUS. Dies ergänzt die bereits geprüfte unabhängige manuelle 180-s-Abschaltung. Expliziter Nachtzustand und Langzeitbeobachtung bleiben offen. [Prüfprotokoll 21](21_ganglicht_bewegungsmelder.md).
+
 ## Display-Zeitsteuerung vom 16.10.2026
 
 Für die neue eigene Displayadresse `0/5/4` wurden die Applikationen aller elf MDT-Glastaster `1.1.20–1.1.28`, `1.1.32` und `1.1.33` sowie der Schaltuhr `1.1.7` erfolgreich geladen. Die Schaltuhr erhielt anschließend ihre korrigierte KNX-Zeitversorgung und die feste ETS-Zeitvorgabe. Der Gruppenmonitor bestätigt danach einen selbstständig von `1.1.7` gesendeten Tagwert `1/Ein`. Details und verbleibender Sichttest: [31 – Display-Zeitsteuerung](31_glastaster_display_nacht.md).
@@ -52,9 +54,11 @@ Der erste Gruppenadress-Screenshot vom 29.08.2026 zeigt 12 Hauptgruppen: `0` bis
 
 Die Abstellkammer ist ein eigener neunter Raum und weder das Badezimmer noch Bad vorne. Für sie sind ausschließlich `12/0/0 Abstellkammer Licht Schalten` und `12/0/1 Abstellkammer Licht Status` vorgesehen. Korrektur vom 18.10.2026: UP-Aktor `1.1.37` KO 0 schaltet über `12/0/0`, KO 7 meldet über `12/0/1`; Taster `1.1.43` KO 0 sendet auf `12/0/0`. AKS-Kanal H ist deaktiviert. Die bisherige Touch-Funktion `1.1.33` T5/6 wurde deaktiviert. Details: [Protokoll 34](34_abstellkammer_zentral_bad_2026-10-18.md).
 
-Der gemeinsame Ganglichtstatus ist in Funktion F1 des Logikmoduls `1.1.8` als ODER aus `1/4/1` und `1/4/3` angelegt. Ausgang ist `1/4/5`; dessen Objekt 9 besitzt DPT 1.001 sowie die Flags Kommunikation, Lesen und Übertragen. Die ETS-Projektierung ist bestätigt, Download und Busprüfung sind noch offen.
+Der gemeinsame Ganglichtstatus ist in Funktion F1 des Logikmoduls `1.1.8` als ODER aus `1/4/1` und `1/4/3` angelegt. Ausgang ist `1/4/5`; dessen Objekt 9 besitzt DPT 1.001 sowie die Flags Kommunikation, Lesen und Übertragen. Leseantwort und Statuswechsel sind seit 19.10.2026 am Bus bestätigt. Die Ganglichtkorrektur mit Treppenlicht auf Aktor E/F und zyklischem Melder-EIN wurde auf `1.1.3` und `1.1.30` erfolgreich geladen; [Prüfprotokoll](21_ganglicht_bewegungsmelder.md).
 
 ## Ergänzende Screenshots vom 03.10.2026
+
+Aktueller Zusatzstand vom 19.10.2026: Heizmodus-Bedienung an 1.1.21–1.1.25 und 1.1.32 sowie Modusrückmeldungen und Wiederherstellung nach Buswiederkehr an 1.1.5 und 1.1.6 erfolgreich per Applikationsdownload geladen. Der erste verweigerte Downloadversuch wurde nach erneuter Nutzerfreigabe erfolgreich wiederholt. Betroffene Modusverknüpfungen nach bestätigtem ETS-Objektwechsel identisch wiederhergestellt. Bad-Frostschutz mit 7 °C und Rückkehr zu Standby sowie Küchen-Leseantwort am Bus bestätigt; physischer Tastentest offen. [Details und Abnahme](38_mdt_glas_heizmodi_2026-10-19.md).
 
 - Bad-Rollladen: Einzelverknüpfungen am Bad-Taster und JAL Kanal E sind bestätigt; Download und Bustest bleiben offen. Der spätere Parameterausschnitt zeigt `Zentrale Objekte = nur Auf/Ab`, aber ohne sichtbare Geräte-/Kanalüberschrift. Er bestätigt deshalb noch nicht eindeutig die Einstellung an Kanal E.
 - Heizungsaktor `1.1.5`: Kanal A ist in ETS deaktiviert; die Auswahl einer aktiven Betriebsart ist noch offen. Eigenschaftenstatus `Unbekannt` und historisches Programmierdatum belegen keine aktuelle Inbetriebnahme. Allgemeine Einstellungen stehen in [06 – Heizung und Fenster](06_heizung_fenster.md#heizungsaktor-115-screenshotstand-vom-03102026).
@@ -74,8 +78,8 @@ Nach Kontrolle der Projektierung `1.1.5`, `1.1.6` und alle tatsächlich geänder
 | `1.1.22` | MDT Glastaster Küche | ETS-Parametrierung und Verbindungen für Feuchte, berechnetes CO2-VOC und echtes CO2 sind laut Screenshot gesetzt; Download und Anzeige am realen Taster noch prüfen |
 | jeweils betroffene Taster `1.1.20–1.1.33` | MDT Glastaster | nur wenn Parameter, Licht-, Rollladen-, Status-, Display- oder Wärmepumpen-Verknüpfungen tatsächlich geändert werden |
 | jeweils betroffene Aktoren und Sensoren | KNX-Teilnehmer | nur wenn deren Parameter oder Kommunikationsobjektverknüpfungen geändert werden |
-| `1.1.8` | MDT Logikmodul | F1 für den gemeinsamen Ganglichtstatus ist angelegt; vollständig programmieren und prüfen |
-| `1.1.3` | MDT Schaltaktor | programmieren, falls die bestätigten Gang- oder Abstellkammer-Verknüpfungen noch nicht auf das Gerät geladen wurden |
+| `1.1.8` | MDT Logikmodul | F1-Gangstatus am 19.10.2026 am Bus bestätigt; für diese Funktion kein erneuter Download erforderlich |
+| `1.1.3`, `1.1.30` | MDT Schaltaktor und Gangmelder | Ganglichtkorrektur am 19.10.2026 erfolgreich programmiert; aktuelle Abnahme siehe Prüfprotokoll 21 |
 
 Geräte, an denen keine Parameter oder Verknüpfungen geändert wurden, müssen nicht allein wegen ihrer Position in einer Geräteübersicht erneut programmiert werden.
 

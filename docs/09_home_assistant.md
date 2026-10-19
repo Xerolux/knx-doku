@@ -71,11 +71,13 @@ Die aktuell angelegten Licht-, Rollladen- und Markisenentitäten sowie ihre Grup
 
 Kurzüberblick:
 
-- sechs Abdeckungsentitäten für Rollläden und Markise
-- sieben Lichtentitäten einschließlich beider Ganglichter
-- drei vorhandene Klimaentitäten aus dem Altbestand im Dashboard
+- sieben Abdeckungsentitäten: sechs Rollläden und eine separate Markise
+- neun einzelne Lichtkreise und eine zusätzliche gemeinsame Ganglichtentität
+- sechs MDT-Raumregler mit sechs AKH-Sollwertsensoren sowie drei vorhandene Klimaentitäten aus dem Altbestand im Dashboard
 - gemeinsamer Gang-Schaltbefehl über `1/4/4`
-- gemeinsamer Gang-Status über `1/4/5`; ODER-Logik in ETS angelegt, Download und Busprüfung noch offen
+- gemeinsamer Gang-Status über `1/4/5`; Leseantwort und Statuswechsel des Logikmoduls am 19.10.2026 am Bus bestätigt, siehe [Ganglicht](21_ganglicht_bewegungsmelder.md)
+
+Abgleich und verbleibende Lücken: [Vollständigkeitsprüfung vom 18.10.2026](36_ha_vollstaendigkeit_2026-10-18.md). Die korrigierten lokalen Etagen-Sammellisten sind noch nicht als live übernommen bestätigt.
 
 ## Lovelace
 

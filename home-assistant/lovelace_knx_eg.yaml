@@ -248,6 +248,10 @@ views:
                 icon: mdi:lightbulb-group
               - type: custom:button-card
                 template: card_light
+                entity: light.eg_bad_licht
+                name: Bad
+              - type: custom:button-card
+                template: card_light
                 entity: light.eg_bad_vorne_licht
                 name: Bad vorne
               - type: custom:button-card
@@ -291,6 +295,10 @@ views:
                 entity: cover.eg_schlafzimmer_rollladen_tur
                 name: Schlafzimmer Tür
               - type: custom:button-card
+                template: card_shutter
+                entity: cover.eg_bad_rollladen
+                name: Bad
+              - type: custom:button-card
                 template: card_awning
                 entity: cover.eg_markise
                 name: Markise
@@ -322,6 +330,45 @@ views:
                 template: card_heating
                 entity: climate.heizkorper_omaopa_bad
                 name: WC
+
+      - type: grid
+        cards:
+          - type: markdown
+            content: "## Fußbodenheizung EG · MDT Raumregelung\nKomforttemperatur 19–23 °C; Nacht und Standby können den tatsächlich verwendeten Sollwert absenken. Heizbetrieb bestätigt keine Ventilöffnung."
+          - type: thermostat
+            entity: climate.eg_kuche_mdt_komforttemperatur
+            name: Küche · Komforttemperatur
+          - type: thermostat
+            entity: climate.eg_bad_mdt_komforttemperatur
+            name: Bad · Komforttemperatur
+          - type: thermostat
+            entity: climate.eg_wohnzimmer_mdt_komforttemperatur
+            name: Wohnzimmer · Komforttemperatur
+          - type: thermostat
+            entity: climate.eg_arbeitszimmer_mdt_komforttemperatur
+            name: Arbeitszimmer · Komforttemperatur
+          - type: thermostat
+            entity: climate.eg_gang_mdt_komforttemperatur
+            name: Gang · Komforttemperatur
+          - type: thermostat
+            entity: climate.eg_schlafzimmer_mdt_komforttemperatur
+            name: Schlafzimmer · Komforttemperatur
+          - type: entities
+            title: Tatsächlich verwendete Sollwerte · AKH
+            show_header_toggle: false
+            entities:
+              - entity: sensor.eg_kuche_akh_aktuelle_solltemperatur
+                name: Küche · aktueller Sollwert
+              - entity: sensor.eg_bad_akh_aktuelle_solltemperatur
+                name: Bad · aktueller Sollwert
+              - entity: sensor.eg_wohnzimmer_akh_aktuelle_solltemperatur
+                name: Wohnzimmer · aktueller Sollwert
+              - entity: sensor.eg_arbeitszimmer_akh_aktuelle_solltemperatur
+                name: Arbeitszimmer · aktueller Sollwert
+              - entity: sensor.eg_gang_akh_aktuelle_solltemperatur
+                name: Gang · aktueller Sollwert
+              - entity: sensor.eg_schlafzimmer_akh_aktuelle_solltemperatur
+                name: Schlafzimmer · aktueller Sollwert
 
   - title: Raumklima
     path: raumklima

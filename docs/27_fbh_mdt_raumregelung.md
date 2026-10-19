@@ -23,9 +23,13 @@ Pro Raum sendet genau der oben genannte AKH-Kanal den aktuellen Sollwert bei Än
 
 ## Home Assistant
 
+Zusätzlich wurde am 19.10.2026 die direkte Betriebsartenwahl „Heizmodus“ für sechs Glastaster eingerichtet. Nach erneuter Programmierfreigabe wurden alle sechs Taster und beide AKH erfolgreich geladen. Je Raum besteht ein Modus-Antwortgeber; Wiederherstellung von Betriebsart und Sollwert nach Buswiederkehr ist aktiviert. Bad: Standby → Frostschutz mit bestätigten 7 °C → zurück zu Standby am Bus geprüft. Physischer Tastentest steht noch aus. Tasten, Modusadressen und Prüfprotokoll: [38 – MDT Glas Heizmodi](38_mdt_glas_heizmodi_2026-10-19.md).
+
 Sechs KNX-Klimaentitäten wurden über die KNX-Integration angelegt: `climate.eg_<raum>_mdt_komforttemperatur` mit den Raumteilen `kuche`, `bad`, `wohnzimmer`, `arbeitszimmer`, `gang`, `schlafzimmer`. Sie lesen die jeweilige Istadresse und schreiben/lesen die Basisadresse. Grenzen: 19–23 °C, Schritt 0,5 °C. Die sechs Statussensoren heißen `sensor.eg_<raum>_akh_aktuelle_solltemperatur`, lesen die jeweilige Adresse 3/x/5 mit DPT 9.001 und sind ihren Räumen zugeordnet.
 
 Diese Entitäten sind bereits in HA gespeichert; keine zusätzlichen YAML-Duplikate importieren. Auf `/dashboard-eg/heizung` wurden sechs Thermostatkarten und eine Liste der tatsächlich verwendeten AKH-Sollwerte ergänzt. Die vorhandenen Karten bleiben erhalten. „Heizbetrieb“ bezeichnet bei diesen Klimaentitäten den konfigurierten Heizmodus; eine gemessene Ventilöffnung wird damit nicht bestätigt.
+
+Am 19.10.2026 wurde das fehlende Leseflag der Basis-Komfortobjekte korrigiert: je Raum genau ein AKH-Antwortgeber, partielle Downloads für beide AKH und anschließend sechs bestätigte Leseantworten mit 21 °C. Zuordnung und Busnachweis stehen in [37 – KNX-Sollwertabfrage und HTTP-Sicherheitswarnung](37_knx_sollwert_http_warnungen_2026-10-19.md). Die Basisadressen bleiben von den aktuellen AKH-Sollwerten getrennt.
 
 ## Prüfung und Grenzen
 

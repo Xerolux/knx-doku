@@ -2,6 +2,8 @@
 
 Nachtrag 16.10.2026: Die tägliche Displayumschaltung um 20:00 Uhr auf Nacht und 07:30 Uhr auf Tag ist in [31 – Display-Zeitsteuerung](31_glastaster_display_nacht.md) dokumentiert. Sie verwendet die eigene Gruppenadresse `0/5/4`.
 
+Nachtrag 19.10.2026: Sechs Glastaster erhalten „Heizmodus“ mit Komfort, Standby, Nacht und Frostschutz. Gang/Küche/Wohnzimmer: T5/6; Arbeitszimmer/Bad: Ebene 2 T7/8; Schlafzimmer: Ebene 2 T9/10. Alle sechs Taster und beide Heizungsaktoren erfolgreich geladen, Modusrückmeldungen und Bad-Frostschutz am Bus geprüft. Physische Tasten-/Displayabnahme noch offen. [Bedienung und Prüfprotokoll](38_mdt_glas_heizmodi_2026-10-19.md).
+
 Stand: 03.10.2026
 
 ## Gerätebestand

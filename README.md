@@ -66,6 +66,11 @@ Die Komplettdatei enthält 176 vorgesehene Basis-Gruppenadressen einschließlich
 | [docs/31_glastaster_display_nacht.md](docs/31_glastaster_display_nacht.md) | KNX-Displayumschaltung aller elf MDT-Glastaster um 20:00/07:30 Uhr |
 | [docs/32_wetter_fenster_inbetriebnahme_2026-10-16.md](docs/32_wetter_fenster_inbetriebnahme_2026-10-16.md) | Sitzungsprotokoll Wetter-Dashboard, Fensterdiagnose, Secure-Tunnel und offene Abnahme |
 | [docs/33_markise_eg_wetterschutz.md](docs/33_markise_eg_wetterschutz.md) | Direkter KNX-Wind-/Regenschutz ausschließlich der EG-Markise |
+| [docs/34_abstellkammer_zentral_bad_2026-10-18.md](docs/34_abstellkammer_zentral_bad_2026-10-18.md) | Abstellkammer, Zentralfunktionen und Badrollladen |
+| [docs/35_raumzuordnung_ets_2026-10-18.md](docs/35_raumzuordnung_ets_2026-10-18.md) | Gerätezuordnung zu Räumen und Bereichen in ETS |
+| [docs/36_ha_vollstaendigkeit_2026-10-18.md](docs/36_ha_vollstaendigkeit_2026-10-18.md) | Badlicht, Badrollladen und Vollständigkeit des EG-Dashboards |
+| [docs/37_knx_sollwert_http_warnungen_2026-10-19.md](docs/37_knx_sollwert_http_warnungen_2026-10-19.md) | AKH-Leseantworten korrigiert und HTTP-Filterprüfung dokumentiert |
+| [docs/38_mdt_glas_heizmodi_2026-10-19.md](docs/38_mdt_glas_heizmodi_2026-10-19.md) | Heizmodi an sechs Glastastern geladen, Aktorrückmeldungen und Frostschutz am Bus geprüft |
 
 ## Home Assistant
 
@@ -75,28 +80,30 @@ Die aktuelle Lovelace-Konfiguration liegt unter:
 home-assistant/lovelace_knx_eg.yaml
 ```
 
-Sie verwendet `custom:button-card` und enthält genau drei Reiter:
+Sie verwendet `custom:button-card` und enthält fünf Reiter:
 
 - Licht
 - Rollläden
 - Heizung
+- Raumklima
+- Fenster
 
-Dokumentiert sind sechs Rollladen-/Markisenentitäten, sieben Lichtentitäten und drei vorhandene Klimaentitäten. Die Rollladenkarten zeigen Position und Zustand; die eigentliche Bedienung erfolgt nach dem Anklicken im Dialog **Mehr Informationen**.
+Dokumentiert sind sechs einzelne Rollläden und eine Markise, neun einzelne Lichtkreise sowie die gemeinsame Ganglichtfunktion. Das Heizungsdashboard enthält sechs MDT-Raumregler, sechs AKH-Sollwertsensoren und drei vorhandene Klimaentitäten aus dem Altbestand. Die Rollladenkarten zeigen Position und Zustand; die eigentliche Bedienung erfolgt nach dem Anklicken im Dialog **Mehr Informationen**. Die lokale Dashboardvorlage und der live geprüfte Stand sind in [Dokument 36](docs/36_ha_vollstaendigkeit_2026-10-18.md) abgeglichen.
 
 ## Aktueller Stand
 
-- Heizungsaktoren `1.1.5` und `1.1.6`: [FBH-Projektierung vom 04.10.2026](docs/06_heizung_fenster.md#fbh-projektierung-vom-04102026) mit aktueller Kanalzuordnung, COSMO CTS230N (230 V / NC), Reglerparametern und gemeldeten Aktorverknüpfungen dokumentiert. Küche und Wohnzimmer getrennt; Temperaturgeber auf `3/2/1` bzw. `3/0/1` im Screenshot bestätigt. Weitere Temperaturgeber, Sendeintervalle, Download und Bustests offen.
+- Heizungsaktoren `1.1.5` und `1.1.6`: sechs MDT-Raumregelzonen und HA-Regler eingerichtet; [Raumregelung](docs/27_fbh_mdt_raumregelung.md). Basis-Sollwert-Leseantworten am 19.10.2026 korrigiert und für alle sechs Räume bestätigt; [Prüfung 37](docs/37_knx_sollwert_http_warnungen_2026-10-19.md). Anschließend Heizmodus-Bedienung an sechs Glastastern und beide Aktoren erfolgreich geladen, Frostschutz mit 7 °C am Bus geprüft; [Prüfung 38](docs/38_mdt_glas_heizmodi_2026-10-19.md). Physische Heizmodus-Tastenbedienung und Pumpenabstimmung bleiben offen.
 
 - Schaltaktor `1.1.3`: bestätigte Lichtkanäle A bis F dokumentiert.
 - Gang: zwei getrennte Lichtkreise mit Einzeladressen und gemeinsamer Adresse `1/4/4`.
 - Bewegungsmelder `1.1.30`: schaltet beide Ganglichter über `1/4/4`.
-- Gemeinsamer Ganglichtstatus `1/4/5`: ODER-Logik in Funktion F1 des Logikmoduls `1.1.8` parametriert und verknüpft; Download und Busprüfung stehen noch aus.
-- Jalousieaktor `1.1.4`: Kanal E ist laut Screenshot vom 03.10.2026 als Bad benannt. [ETS-Anleitung für Bad und die Aufnahme in „Alle Rollläden“](docs/20_rollladen_inbetriebnahme.md#ets-anleitung): Taster 10/11/13 ↔ JAL 139/141/148 über `2/3/0`, `2/3/1`, `2/3/3`; Zentralteilnahme E aktivieren. Die nachgereichten Screenshots bestätigen die Verknüpfungen. Zentralparameter, Download und Bustest stehen noch aus.
+- Gemeinsamer Ganglichtstatus `1/4/5`: ODER-Logik in Funktion F1 des Logikmoduls `1.1.8`; Leseantwort und Statuswechsel am 19.10.2026 am Bus bestätigt. Ganglichtkorrektur mit zeitgesteuerten Aktorkanälen und Melder-Nachtriggerung: zwei echte EIN-/AUS-Zyklen einschließlich Wiederanlauf nach abschließender Korrektur bestanden. [Diagnose und Prüfstand](docs/21_ganglicht_bewegungsmelder.md).
+- Jalousieaktor `1.1.4`, Kanal E Bad: Einzeladressen `2/3/0`, `2/3/1`, `2/3/3`, Zentralteilnahme nur Auf/Ab und Applikationsdownload am 18.10.2026 bestätigt. Automatische Fahrzeitmessung ergab 23 s aufwärts / 26 s abwärts mit beiden Endlagenrückmeldungen; absolute Positions-Sendeadresse bleibt frei. [Messprotokoll 34](docs/34_abstellkammer_zentral_bad_2026-10-18.md), [HA-Ergänzung 36](docs/36_ha_vollstaendigkeit_2026-10-18.md). Physische Sichtprüfung und Zwischenposition bleiben offen.
 - Zentral Rollladen: `0/1/0` für Auf/Ab und `0/1/1` für Stopp.
 - Home Assistant: Licht-, Rollladen- und Markisenentitäten angelegt; Live-Dashboard `Übersicht → IOT` zeigt jetzt die sieben Raumklimawerte der Küche. Live-IDs und geprüfte Momentwerte stehen in Dokument 23.
 - OpenKNX RaumController `1.1.29`: sieben Raumklimaobjekte verbunden und am 17.08.2026 erfolgreich im Gruppenmonitor geprüft; VOC und Helligkeit lieferten beim Test noch `0`.
-- Küchen-Glastaster `1.1.22`: ETS-Screenshots vom 25.09.2026 belegen die Anzeige-Parameter und Gruppenadressverknüpfungen für Feuchte (`13/0/1`), berechnetes CO2-VOC (`13/0/5`) und echtes CO2 (`13/0/4`). Der rohe VOC-DPT passt zu keinem auswählbaren numerischen MDT-Statuswert. Download und Anzeige am physischen Taster sind noch nicht bestätigt.
-- Glastaster `1.1.21 Eingang Gang`: ETS-Screenshot vom 25.09.2026 belegt Objekt 108 `Temperaturmesswert` → `3/4/1 Gang Isttemperatur` (DPT 9.001). Applikationsdownload, Busprüfung und die passende Home-Assistant-Sensorentität sind noch nicht bestätigt.
+- Küchen-Glastaster `1.1.22`: Anzeige-Parameter und Gruppenadressverknüpfungen für Feuchte (`13/0/1`), berechnetes CO2-VOC (`13/0/5`) und echtes CO2 (`13/0/4`) sind projektiert. Der rohe VOC-DPT passt zu keinem auswählbaren numerischen MDT-Statuswert. Applikation zuletzt am 19.10.2026 für die Heizmodus-Bedienung geladen, vorhandene Raumklimaobjekte erhalten; deren Anzeige am physischen Taster bleibt offen.
+- Glastaster `1.1.21 Eingang Gang`: Objekt 108 `Temperaturmesswert` → `3/4/1 Gang Isttemperatur` (DPT 9.001). Temperaturquelle und Raumregelung live geprüft, Applikation zuletzt am 19.10.2026 für die Heizmodus-Bedienung geladen. [Raumregelung](docs/27_fbh_mdt_raumregelung.md), [Heizmodi](docs/38_mdt_glas_heizmodi_2026-10-19.md).
 - ETS-Gebäudezuordnung am 18.10.2026: 45 Geräte in 14 Räumen/Bereichen; alle Geräte zugeordnet, `1.1.32` Bad und `1.1.33` Bad Gang. Enertex und Rauchmelder-Eintrag im Technikraum, Gira-Medienkoppler im EG Gang und Wetterstation unter Dach / Außenbereich; siehe [35 – Raumzuordnung](docs/35_raumzuordnung_ets_2026-10-18.md).
 - Wetterstation `1.1.40`: am 16.10.2026 mit B00D29 programmiert, 33 Mess-/Diagnoseausgänge in HA und eigenem Wetter-Dashboard eingebunden. Interne Beschattungssteuerung deaktiviert; später ausschließlich EG-Markise mit direktem Wind-/Regenschutz verbunden, Alarmrichtung Ab und keine Fahrt bei Alarmende. Stand in [33 – EG-Markise](docs/33_markise_eg_wetterschutz.md); Details und Nachweisgrenzen in [11 – Wetterstation](docs/11_wetterstation_gira.md).
 - Gruppenadress-Iststand vom 29.08.2026 nach dem Zusatzimport: Hauptgruppen `0` bis `11` sowie `13`; unter `11 Wärmepumpe` sind die Mittelgruppen `11/0`, `11/1` und `11/3` sichtbar. Die 43 Einzeladressen und DPTs sind noch durch einen ETS-Export zu bestätigen.
@@ -129,6 +136,8 @@ Dokumentiert sind sechs Rollladen-/Markisenentitäten, sieben Lichtentitäten un
 Die Importdateien werden lokal und bei jedem relevanten GitHub-Push mit [scripts/validate-group-addresses.ps1](scripts/validate-group-addresses.ps1) auf doppelte Adressen, Namens-/DPT-Konflikte und die feste Trennung von SCN-SAFE und Rauchwarnmelder geprüft.
 
 Aktuelle Änderungen vom 18.10.2026: [Abstellkammer, Zentralfunktionen und Badrollladen](docs/34_abstellkammer_zentral_bad_2026-10-18.md).
+
+HA-Vollständigkeitsprüfung vom 18.10.2026: [Badlicht und Badrollladen live ergänzt; Licht, Rollläden und Heizung abgeglichen](docs/36_ha_vollstaendigkeit_2026-10-18.md). Offene Zuordnungen und die noch ausstehende Live-Übernahme der korrigierten Etagen-Sammellisten sind dort getrennt aufgeführt.
 
 ## Home-Assistant-Dateien
 

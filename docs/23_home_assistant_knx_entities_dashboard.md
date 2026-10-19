@@ -1,6 +1,6 @@
 # 23 – Home Assistant: KNX-Entitäten und Lovelace-Dashboard
 
-Stand: 05.08.2026
+Stand: 19.10.2026. Historische Prüfungen und noch offene physische Abnahmen sind separat datiert.
 
 ## Ziel
 
@@ -21,14 +21,17 @@ Entitätstyp in Home Assistant: **Abdeckung**.
 | `cover.eg_arbeitszimmer_rollladen` | Arbeitszimmer Rollladen | `2/1/0` | `2/1/1` | `2/1/2` | `2/1/3` |
 | `cover.eg_schlafzimmer_rollladen_fenster` | Schlafzimmer Rollladen Fenster | `2/2/10` | `2/2/11` | `2/2/12` | `2/2/13` |
 | `cover.eg_schlafzimmer_rollladen_tur` | Schlafzimmer Rollladen Türe | `2/2/0` | `2/2/1` | `2/2/2` | `2/2/3` |
+| `cover.eg_bad_rollladen` | Bad Rollladen | `2/3/0` | `2/3/1` | nicht verbunden | `2/3/3` |
 | `cover.eg_markise` | Markise | `2/4/0` | `2/4/1` | `2/4/2` | `2/4/3` |
+
+Bad wurde am 18.10.2026 live ergänzt: Fahrzeiten Öffnen 23 s / Schließen 26 s, keine absolute Positions-Sendeadresse. Zustand und Karte wurden geprüft; die damalige Prüfung löste keine neue Fahrt aus. [Vollständigkeitsprüfung](36_ha_vollstaendigkeit_2026-10-18.md).
 
 ### Einstellungen je Abdeckung
 
 - Öffnen/Schließen umkehren: nicht aktiv
 - Schrittweise Bewegung: nicht verwendet
 - Kippen/Lamellen: nicht verwendet
-- Positions-Sendeadresse und Positions-Statusadresse eintragen
+- Positions-Statusadresse eintragen; Positions-Sendeadresse nur bei bestätigtem verbundenem Aktorobjekt, beim Bad bleibt sie leer
 - Geräteklasse: Rollladen; bei der Markise Markise
 - Fahrzeit in Home Assistant nur als Hilfswert verwenden; maßgeblich bleibt die Fahrzeitmessung des JAL
 
@@ -55,6 +58,7 @@ Entitätstyp in Home Assistant: **Leuchte**. Helligkeit, Farbtemperatur und Farb
 | `light.eg_gang_licht` | Gang Altbau | `1/4/0` | `1/4/1` |
 | `light.eg_gang_neubau_licht` | Gang Neubau | `1/4/2` | `1/4/3` |
 | `light.eg_gang_licht_alle` | beide Ganglichter | `1/4/4` | `1/4/5` |
+| `light.eg_bad_licht` | Bad Licht | `1/6/0` | `1/6/1` |
 | `light.eg_bad_vorne_licht` | EG Bad vorne Licht | `1/7/0` | `1/7/1` |
 | `light.eg_abstellkammer_licht` | Abstellkammer Licht | `12/0/0` | `12/0/1` |
 
@@ -73,9 +77,11 @@ Die Statusadresse `1/4/5 Gang beide Lichter Status` darf nicht direkt von beiden
 
 Damit bedeutet `1`: Mindestens eines der beiden Ganglichter ist eingeschaltet.
 
-Die Logik ist in Funktion F1 des MDT Logikmoduls `1.1.8` parametriert und mit `1/4/1`, `1/4/3` und `1/4/5` verbunden. Das Ausgangsobjekt besitzt das Lese-Flag und kann nach dem Gerätedownload Leseanfragen von Home Assistant beantworten. Bis zur erfolgreichen Programmierung und Busprüfung bleibt der Status der gemeinsamen Lichtentität noch unbestätigt.
+Die Logik ist in Funktion F1 des MDT Logikmoduls `1.1.8` parametriert und mit `1/4/1`, `1/4/3` und `1/4/5` verbunden. Das Ausgangsobjekt besitzt das Lese-Flag. Leseantwort und Statuswechsel von `1.1.8` wurden am 19.10.2026 direkt am Bus bestätigt; siehe [Ganglicht-Prüfprotokoll](21_ganglicht_bewegungsmelder.md). Die aktuelle Anzeige in Home Assistant wurde dabei nicht zusätzlich abgenommen.
 
 ## Heizung im Dashboard
+
+Zusätzlich zu den folgenden Altbestandsentitäten bestehen seit 11.10.2026 sechs MDT-Raumregler `climate.eg_<raum>_mdt_komforttemperatur` und sechs Sensoren `sensor.eg_<raum>_akh_aktuelle_solltemperatur`, mit den Raumteilen `kuche`, `bad`, `wohnzimmer`, `arbeitszimmer`, `gang`, `schlafzimmer`. Die lokale Dashboardvorlage enthält jetzt ebenfalls diese bereits live vorhandenen Karten. Basis-Komfortwert und tatsächlich verwendeter AKH-Sollwert bleiben getrennt. [Raumregelung](27_fbh_mdt_raumregelung.md), [Leseantwortkorrektur](37_knx_sollwert_http_warnungen_2026-10-19.md), [Heizmodus am Glastaster](38_mdt_glas_heizmodi_2026-10-19.md).
 
 Im Dashboard werden derzeit vorhandene Klimaentitäten aus dem Altbestand angezeigt:
 
@@ -158,6 +164,9 @@ light.eg_schlafzimmer_licht
 light.eg_gang_licht
 light.eg_gang_neubau_licht
 light.eg_gang_licht_alle
+light.eg_bad_licht
+light.eg_bad_vorne_licht
+light.eg_abstellkammer_licht
 ```
 
 Rollläden und Markise:
@@ -168,6 +177,7 @@ cover.eg_wohnzimmer_rollladen_tur
 cover.eg_arbeitszimmer_rollladen
 cover.eg_schlafzimmer_rollladen_fenster
 cover.eg_schlafzimmer_rollladen_tur
+cover.eg_bad_rollladen
 cover.eg_markise
 ```
 
@@ -191,7 +201,7 @@ cover.eg_markise
 
 ## Offene Punkte
 
-- Logikmodul `1.1.8` programmieren und Antwort auf `GroupValueRead 1/4/5` prüfen
+- HA-Anzeige des gemeinsamen Gangstatus nach der am 19.10.2026 bestätigten Busantwort prüfen
 - weitere Lichtkanäle und Räume in Home Assistant ergänzen, sobald sie in ETS bestätigt sind
 - Heizungskreise des aktuellen KNX-Projekts als Klimaentitäten anlegen
 - Bereiche und Gerätenamen in Home Assistant endgültig vereinheitlichen

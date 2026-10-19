@@ -1,6 +1,6 @@
 # 05 – Kanalbelegung
 
-Stand: 03.10.2026
+Stand: 19.10.2026 (Ganglichtkorrektur; frühere Ergänzungen sind datiert).
 
 Die Tabellen bilden den aktuell in ETS sichtbaren Stand ab. Vor der endgültigen Abnahme ist jede Zuordnung mit der realen Verdrahtung im Schaltschrank und am Verbraucher abzugleichen.
 
@@ -44,11 +44,11 @@ Kanal D:
   Objekt 44 Status           -> 1/5/1
 
 Kanal E:
-  Objekt 49 Schalten EIN/AUS -> 1/4/0 und 1/4/4
+  Objekt 50 Treppenlicht     -> 1/4/0, 1/4/4 und 0/4/0
   Objekt 56 Status           -> 1/4/1
 
 Kanal F:
-  Objekt 61 Schalten EIN/AUS -> 1/4/2 und 1/4/4
+  Objekt 62 Treppenlicht     -> 1/4/2, 1/4/4 und 0/4/0
   Objekt 68 Status           -> 1/4/3
 
 Kanal G:
@@ -72,7 +72,7 @@ Die Sperrobjekte der Lichtkanäle bleiben frei, solange keine dokumentierte Sper
 | `1/4/4` | beide Ganglichter gemeinsam schalten |
 | `1/4/5` | ODER-Sammelstatus aus Funktion F1 des Logikmoduls `1.1.8` |
 
-Die Statusobjekte der Kanäle E und F werden nicht direkt auf dieselbe Statusadresse gelegt. Der Sammelstatus `1/4/5` wird durch eine ODER-Logik aus `1/4/1` und `1/4/3` erzeugt. Die Parametrierung und die ETS-Objektverknüpfungen sind angelegt; Download und Busprüfung stehen noch aus. Details stehen in [21 – Ganglicht und Bewegungsmelder](21_ganglicht_bewegungsmelder.md).
+Die Statusobjekte der Kanäle E und F werden nicht direkt auf dieselbe Statusadresse gelegt. Der Sammelstatus `1/4/5` wird durch eine ODER-Logik aus `1/4/1` und `1/4/3` erzeugt; deren Leseantwort und Statuswechsel wurden am 19.10.2026 am Bus bestätigt. Seit der Ganglichtkorrektur verwenden E/F Treppenlicht mit 180 Sekunden, Neustart bei EIN und manuellem AUS. Der Melder triggert bei aktivem Ausgang alle 10 Sekunden nach. Details und Abnahmen stehen in [21 – Ganglicht und Bewegungsmelder](21_ganglicht_bewegungsmelder.md).
 
 ### Zentral Licht
 
@@ -81,7 +81,7 @@ Schaltaktor Objekt 289 Zentralfunktion – Schalten EIN/AUS
     -> 0/4/0 Alle Lichter schalten
 ```
 
-Bei jedem echten Lichtkanal wird die Teilnahme an der Zentralfunktion aktiviert. Steckdosen, technische Verbraucher und Reservekanäle dürfen nicht unbeabsichtigt teilnehmen.
+Bei echten Lichtkanälen wird die Teilnahme an der Zentralfunktion aktiviert. Ausnahme seit 19.10.2026: Gang E/F empfangen `0/4/0` direkt am Treppenlichtobjekt, ihre Kanal-Zentralteilnahme ist deaktiviert. Dadurch startet auch Zentral-EIN die Abschaltzeit. Steckdosen, technische Verbraucher und Reservekanäle dürfen nicht unbeabsichtigt teilnehmen.
 
 ### Terrassenlicht
 
