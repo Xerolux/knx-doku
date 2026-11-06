@@ -2,6 +2,10 @@
 
 Stand: 03.10.2026
 
+Nachtrag 06.11.2026: Direkte Gira-Dämmerungsautomatik für die bestätigten
+EG-Rollläden C/D/E/H, ohne Schlafzimmer und Markise; Parameter,
+Verknüpfungen und Prüfstand in [Protokoll 43](43_eg_rollladen_daemmerung_2026-11-06.md).
+
 ## Geräte
 
 - MDT `JAL-0810M.02` Jalousieaktor 8-fach mit Fahrzeitmessung

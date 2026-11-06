@@ -31,6 +31,8 @@ Die Komplettdatei enthält 176 vorgesehene Basis-Gruppenadressen einschließlich
 
 ## Dokumentation
 
+Aktuell vom 06.11.2026: [EG-Dämmerungsautomatik ohne Schlafzimmer](docs/43_eg_rollladen_daemmerung_2026-11-06.md) und [reduzierte HF-Einschaltempfindlichkeit im Bad](docs/42_bad_hf_empfindlichkeit_2026-11-06.md).
+
 | Bereich | Inhalt |
 |---|---|
 | [docs/01_topologie.md](docs/01_topologie.md) | aktive TP-Linie, RF-Segment, Außenreserve und physikalische Adressen |

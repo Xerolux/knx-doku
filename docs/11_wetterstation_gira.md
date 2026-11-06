@@ -1,5 +1,11 @@
 # 11 – Gira Wetterstation: Messwerte und Anzeige
 
+Nachtrag 06.11.2026: Auf neuen Nutzerauftrag wurde die direkte
+Dämmerungssteuerung der bestätigten EG-Rollläden ohne Schlafzimmer
+eingerichtet. Die nachfolgenden historischen Angaben zur reinen Anzeige
+gelten für den damaligen Auftrag. Aktueller Umfang und Prüfstand:
+[Protokoll 43](43_eg_rollladen_daemmerung_2026-11-06.md).
+
 > Späterer Folgeauftrag vom 16.10.: Der Nutzer hat anschließend den direkten KNX-Wetterschutz ausschließlich für die EG-Markise freigegeben. Umsetzung und tatsächlicher Download-/Prüfstand stehen in [Dokument 33](33_markise_eg_wetterschutz.md). Die unten beschriebene reine Anzeige war der davor abgeschlossene Arbeitsstand; OG bleibt unverändert.
 
 
