@@ -2,6 +2,8 @@
 
 Stand: 19.10.2026 (Ganglichtkorrektur; frühere Ergänzungen sind datiert).
 
+Nachtrag 12.11.2026: Kanal I „Licht Haupteingang“ wird über Gira-Dämmerungsgrenzwert 2 und `1/4/12` geschaltet (KO 97). Kanal J „Licht Treppenhaus unten“ wird vom Präsenzmelder des Raumcontrollers `1.1.29` über `1/4/10` geschaltet (KO 109); Status KO 116 → `1/4/11` → Raumcontroller KO 125. Beide Einrichtungen wurden erfolgreich partiell geladen. Physische Abnahme offen. Details: [Treppenhaus](43_treppenhaus_licht_2026-11-12.md) und [Haupteingang / gemeinsame Dämmerungsübersicht](44_haupteingang_daemmerung_2026-11-12.md).
+
 Die Tabellen bilden den aktuell in ETS sichtbaren Stand ab. Vor der endgültigen Abnahme ist jede Zuordnung mit der realen Verdrahtung im Schaltschrank und am Verbraucher abzugleichen.
 
 ## Licht – aktueller ETS-Stand
